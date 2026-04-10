@@ -1,11 +1,425 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zeonpaper</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeonpaper | Controle Financeiro Simples e Profissional</title>
+    <meta name="description" content="A solução definitiva para sair das planilhas. Saiba onde seu dinheiro está indo, evite multas e tenha clareza do seu lucro real.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        :root {
+            --primary: #7c3aed;
+            --primary-dark: #6d28d9;
+            --primary-light: #f5f3ff;
+            --accent: #3b82f6;
+            --secondary: #0f172a;
+            --text-dark: #1e293b;
+            --text-gray: #64748b;
+            --bg-light: #f8fafc;
+            --white: #ffffff;
+            --radius-xl: 2rem;
+            --radius-lg: 1.5rem;
+            --radius-md: 1rem;
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --shadow-strong: 0 20px 40px rgba(124, 58, 237, 0.1);
+            --container: 1200px;
+            --gradient: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        /* Essential Layout Fixes */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .grid-item {
+            min-width: 0; /* Standard CSS Grid fix for shrinking items */
+        }
+
+        .container {
+            max-width: var(--container);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section { padding: 100px 0; }
+
+        .text-primary { color: var(--primary); }
+        .text-gradient {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .bg-light { background-color: var(--bg-light); }
+        .text-center { text-align: center; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mb-12 { margin-bottom: 3rem; }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.15rem 2.5rem;
+            border-radius: var(--radius-md);
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            gap: 0.75rem;
+            font-size: 1.05rem;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: 0 10px 20px rgba(124, 58, 237, 0.2);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover { background-color: var(--primary-light); }
+
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 1.25rem 0;
+        }
+
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem; font-weight: 900;
+            color: var(--secondary); text-decoration: none;
+            display: flex; align-items: center; gap: 0.5rem;
+            white-space: nowrap;
+        }
+        .logo span { color: var(--primary); }
+
+        /* Hero Fix */
+        .hero {
+            padding-top: 180px;
+            padding-bottom: 100px;
+            background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.08) 0%, rgba(255,255,255,0) 50%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero h1 { font-size: clamp(2.5rem, 5vw, 4.2rem); margin-bottom: 1.5rem; line-height: 1; }
+        .hero p { font-size: 1.25rem; color: var(--text-gray); margin-bottom: 3rem; }
+
+        /* General Grid Blocks */
+        .feature-block {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: 6rem;
+            align-items: center;
+            margin-bottom: 80px;
+        }
+        .feature-block:nth-child(even) { direction: rtl; }
+        .feature-block:nth-child(even) .feature-text { direction: ltr; }
+
+        .feature-text h2 { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 1.5rem; }
+        .feature-text p { font-size: 1.15rem; color: var(--text-gray); margin-bottom: 2rem; }
+
+        .feature-list { list-style: none; }
+        .feature-list li { display: flex; gap: 1rem; margin-bottom: 1.25rem; font-weight: 600; }
+        .feature-list i { color: var(--primary); flex-shrink: 0; }
+
+        .feature-img { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-soft); }
+
+        /* Steps Section */
+        .step-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 4rem; }
+        .step-card { text-align: center; }
+        .step-icon { width: 70px; height: 70px; background: var(--primary-light); color: var(--primary); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 1.8rem; font-weight: 900; }
+
+        /* Comparison Table */
+        .table-container { overflow-x: auto; background: white; padding: 2.5rem; border-radius: var(--radius-xl); box-shadow: var(--shadow-strong); border: 1px solid var(--primary-light); }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th { padding: 1.25rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-gray); border-bottom: 2px solid var(--bg-light); text-align: left; }
+        td { padding: 1.25rem; border-bottom: 1px solid var(--bg-light); font-size: 1rem; text-align: left; }
+        .row-highlight { background-color: var(--primary-light); font-weight: 700; color: var(--primary); }
+
+        /* Pricing Card */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 4rem; }
+        .price-card { background: white; padding: 4rem 2rem; border-radius: var(--radius-xl); text-align: center; border: 1px solid var(--bg-light); position: relative; }
+        .price-card.featured { border: 2px solid var(--primary); transform: scale(1.05); box-shadow: 0 30px 60px rgba(124, 58, 237, 0.15); z-index: 10; }
+        .pop-tag { position: absolute; top: -16px; left: 50%; transform: translateX(-50%); background: var(--gradient); color: white; padding: 0.5rem 1.25rem; border-radius: 999px; font-weight: 800; font-size: 0.8rem; white-space: nowrap; }
+        .price-tag { font-size: 3.5rem; font-weight: 900; margin: 1rem 0; color: var(--secondary); font-family: 'Outfit', sans-serif; }
+        .price-tag span { font-size: 1.1rem; color: var(--text-gray); font-weight: 400; }
+
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 10px 20px rgba(0,0,0,0.15); z-index: 1000; transition: transform 0.3s; text-decoration: none; }
+        .whatsapp-float:hover { transform: scale(1.1); }
+
+        [data-reveal] { opacity: 0; transform: translateY(20px); transition: all 0.6s ease-out; }
+        [data-reveal].active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 900px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+            .hero-text { order: 2; }
+            .hero-visual { order: 1; max-width: 500px; margin: 0 auto; }
+            .feature-block, .step-grid { grid-template-columns: 1fr; gap: 3rem; }
+            .feature-block:nth-child(even) { direction: ltr; }
+            .price-card.featured { transform: scale(1); }
+            section { padding: 80px 0; }
+        }
+    </style>
 </head>
 <body>
-  <h1>Em breve</h1>
+
+    <nav>
+        <div class="container nav-content">
+            <a href="#" class="logo">
+                <i data-lucide="layout-dashboard" color="#7c3aed"></i>
+                Zeon<span>paper</span>
+            </a>
+            <div class="nav-links">
+                <a href="#precos" class="btn btn-primary" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">Testar Grátis</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <!-- 1. HERO -->
+        <section class="hero">
+            <div class="container hero-grid">
+                <div class="hero-text grid-item">
+                    <span style="color: var(--primary); font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; font-size: 0.9rem; display: block; margin-bottom: 1rem;">O SUCESSOR DO ZEROPAPER</span>
+                    <h1>Assuma o controle e saiba <span class="text-gradient">seu lucro real</span></h1>
+                    <p>Chega de sentir que o dinheiro desaparece. Tenha clareza total sobre seu caixa, pare de pagar multas por esquecimento e saia das planilhas hoje.</p>
+                    <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <a href="#precos" class="btn btn-primary">Começar agora — Grátis</a>
+                        <a href="#como-funciona" class="btn btn-outline" style="padding: 0 1.5rem;">Saiba mais</a>
+                    </div>
+                </div>
+                <div class="hero-visual grid-item">
+                    <img src="./assets/hero_nibo_style.png" alt="Plataforma Zeonpaper">
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. ANTES X DEPOIS -->
+        <section id="como-funciona" data-reveal>
+            <div class="container">
+                <div class="text-center mb-12">
+                    <span style="color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em;">O Fim do Caos em Minutos</span>
+                </div>
+                
+                <div class="feature-block">
+                    <div class="feature-img grid-item">
+                        <img src="./assets/chaos_vs_order.png" alt="Caos vs Ordem">
+                    </div>
+                    <div class="feature-text grid-item">
+                        <h2 style="line-height: 1.1;">A clareza que o <span class="text-primary">seu negócio exige</span></h2>
+                        <p>No Excel, o controle está "na cabeça" e fórmulas erradas ocultam prejuízos. No Zeonpaper, você visualiza a saúde real do negócio em segundos.</p>
+                        <ul class="feature-list">
+                            <li><i data-lucide="check-circle" size="20"></i> Importação direta do backup ZeroPaper</li>
+                            <li><i data-lucide="check-circle" size="20"></i> Alertas proativos: diga adeus aos juros</li>
+                            <li><i data-lucide="check-circle" size="20"></i> Fluxo de caixa e DRE simplificado</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-grid">
+                    <div class="step-card grid-item">
+                        <div class="step-icon">1</div>
+                        <h3>Mude em segundos</h3>
+                        <p>Importe sua planilha ou o backup do seu ZeroPaper sem perda de histórico.</p>
+                    </div>
+                    <div class="step-card grid-item">
+                        <div class="step-icon">2</div>
+                        <h3>Lançamento Rápido</h3>
+                        <p>Registre entradas e saídas de onde estiver, direto na nuvem.</p>
+                    </div>
+                    <div class="step-card grid-item">
+                        <div class="step-icon">3</div>
+                        <h3>Relatórios Úteis</h3>
+                        <p>Saiba na hora qual o seu lucro real e para onde cada centavo está indo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. COMPARATIVO -->
+        <section class="bg-light" data-reveal>
+            <div class="container">
+                <div class="text-center mb-12">
+                    <h2 style="font-size: clamp(2.2rem, 5vw, 3.5rem);">O <span class="text-gradient">Ponto de Equilíbrio</span> Perfeito</h2>
+                    <p>Simples como uma planilha, profissional como um ERP.</p>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Recurso</th>
+                                <th>Planilha</th>
+                                <th style="color: var(--primary);">Zeonpaper</th>
+                                <th>ERP Pesado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Simplicidade</td>
+                                <td>✅ Média</td>
+                                <td style="color: var(--primary); font-weight: 800;">✅ Extrema</td>
+                                <td>❌ Baixa</td>
+                            </tr>
+                            <tr class="row-highlight">
+                                <td>Usuários Ilimitados</td>
+                                <td>❌ Não</td>
+                                <td>✅ Sim (Grátis)</td>
+                                <td>❌ Pago Extra</td>
+                            </tr>
+                            <tr>
+                                <td>Suporte Humano</td>
+                                <td>❌ Não</td>
+                                <td style="color: var(--primary); font-weight: 800;">✅ WhatsApp</td>
+                                <td>❌ Tickets</td>
+                            </tr>
+                            <tr>
+                                <td>Relatório de Lucro</td>
+                                <td>❌ Manual</td>
+                                <td>✅ Automático</td>
+                                <td>✅ Automático</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. SUPORTE -->
+        <section class="container" data-reveal>
+            <div class="feature-block" style="margin-bottom: 0;">
+                <div class="feature-text grid-item">
+                    <div style="background: var(--primary-light); color: var(--primary); padding: 0.5rem 1rem; border-radius: 99px; font-weight: 800; font-size: 0.8rem; margin-bottom: 1.5rem; display: inline-block;">ATENDIMENTO BRASILEIRO</div>
+                    <h2>Gente de verdade no <span class="text-primary">seu suporte</span></h2>
+                    <p>Enquanto os outros te mandam para robôs ou abrem tickets demorados, nós estamos a um clique no WhatsApp. Respostas rápidas e humanizadas.</p>
+                    <a href="https://wa.me/5500000000000" class="btn btn-outline" target="_blank">Conversar agora</a>
+                </div>
+                <div class="feature-img grid-item">
+                    <img src="./assets/dashboard_v2.png" alt="Suporte Zeonpaper">
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. PREÇOS -->
+        <section id="precos" class="bg-light" data-reveal>
+            <div class="container">
+                <div class="text-center mb-12">
+                    <h2 style="font-size: clamp(2.5rem, 6vw, 4rem);">Planos que <span class="text-primary">cabem no bolso</span></h2>
+                    <p>Assuma o controle total sem letras miúdas.</p>
+                </div>
+                <div class="pricing-grid">
+                    <div class="price-card grid-item">
+                        <h3>Plano Mensal</h3>
+                        <div class="price-tag">R$ 27,90<span>/mês</span></div>
+                        <ul class="feature-list" style="margin-bottom: 2rem; font-size: 0.95rem;">
+                            <li><i data-lucide="check" size="18"></i> Tudo liberado</li>
+                            <li><i data-lucide="check" size="18"></i> Usuários Ilimitados</li>
+                        </ul>
+                        <a href="https://app.zeonpaper.com.br/register" class="btn btn-outline" style="width: 100%;">Assinar</a>
+                    </div>
+                    <div class="price-card featured grid-item">
+                        <div class="pop-tag">ECONOMIA DE R$ 55,80</div>
+                        <h3>Plano Anual</h3>
+                        <div class="price-tag">R$ 23,25<span>/mês</span></div>
+                        <p style="font-weight: 700; color: var(--primary); margin-bottom: 2rem;">R$ 279,00 à vista</p>
+                        <ul class="feature-list" style="margin-bottom: 2rem; font-size: 0.95rem;">
+                            <li><i data-lucide="check" size="18"></i> Melhor custo-benefício</li>
+                            <li><i data-lucide="check" size="18"></i> Suporte Prioritário</li>
+                        </ul>
+                        <a href="https://app.zeonpaper.com.br/register" class="btn btn-primary" style="width: 100%;">Ativar Oferta</a>
+                    </div>
+                    <div class="price-card grid-item">
+                        <h3>Plano Semestral</h3>
+                        <div class="price-tag">R$ 24,48<span>/mês</span></div>
+                        <p style="color: var(--text-gray); margin-bottom: 2rem;">R$ 146,90 à vista</p>
+                        <ul class="feature-list" style="margin-bottom: 2rem; font-size: 0.95rem;">
+                            <li><i data-lucide="check" size="18"></i> Flexibilidade semestral</li>
+                            <li><i data-lucide="check" size="18"></i> Tudo liberado</li>
+                        </ul>
+                        <a href="https://app.zeonpaper.com.br/register" class="btn btn-outline" style="width: 100%;">Assinar</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. CTA FINAL -->
+        <section class="text-center" style="padding: 140px 0;">
+            <div class="container" style="max-width: 800px;">
+                <h2 style="font-size: clamp(2.5rem, 5vw, 3.5rem); margin-bottom: 2rem;">Sua empresa merece <span class="text-gradient">gestão profissional.</span></h2>
+                <p style="font-size: 1.25rem; color: var(--text-gray); margin-bottom: 3rem;">
+                    Dê o primeiro passo para organizar suas finanças hoje mesmo. Teste grátis por 7 dias.
+                </p>
+                <a href="#precos" class="btn btn-primary" style="padding: 1.5rem 3.5rem; font-size: 1.15rem;">Começar Agora</a>
+            </div>
+        </section>
+    </main>
+
+    <footer style="padding: 5rem 0; border-top: 1px solid var(--bg-light);">
+        <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;">
+            <a href="#" class="logo">
+                <i data-lucide="layout-dashboard" color="#7c3aed"></i>
+                Zeon<span>paper</span>
+            </a>
+            <p style="color: var(--text-gray); font-size: 0.9rem;">&copy; 2024 Zeonpaper. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/5500000000000" class="whatsapp-float" target="_blank">
+        <i data-lucide="message-circle" size="30"></i>
+    </a>
+
+    <script>
+        lucide.createIcons();
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
