@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIV — Zeonpaper | Material de Identidade Visual</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* ─── BRAND PALETTE (extraída de zeonpaper.com.br) ─── */
+            --purple-900: #390D8C;
+            --purple-700: #6B21A8;
+            --purple-600: #793BED; /* Primária da marca */
+            --purple-500: #8B5CF6;
+            --purple-400: #A78BFA;
+            --purple-300: #C4B5FD;
+            --purple-200: #DDD6FE;
+            --purple-100: #EDE9FE;
+            --purple-50:  #EFE8FD; /* BG light usado no site */
+
+            --pink-600: #DB2777;
+            --pink-500: #EC4699;
+            --pink-200: #FBCFE8;
+            --pink-100: #FCE7F3;
+
+            --green-600: #16A34A;
+            --green-500: #22C55E; /* CTA do site */
+            --green-400: #4ADE80;
+            --green-100: #DCFCE7;
+
+            --amber-500: #FACC15; /* Destaque/badge */
+            --amber-100: #FEF9C3;
+
+            --dark-950: #020817; /* Texto principal do site */
+            --dark-900: #0F172A;
+            --dark-800: #1E293B;
+
+            --gray-500: #64748B; /* Texto secundário */
+            --gray-400: #94A3B8;
+            --gray-300: #CBD5E1;
+            --gray-200: #E2E8F0;
+            --gray-100: #F1F5F9;
+            --gray-50:  #F8FAFC;
+
+            --paper: #FAF9F5; /* BG warm do site */
+            --white: #FFFFFF;
+
+            --red-500: #F87171;
+            --red-100: #FEE2E2;
+
+            /* Gradiente da marca */
+            --gradient-brand: linear-gradient(135deg, #793BED 0%, #EC4699 100%);
+            --gradient-bg: linear-gradient(to right bottom, #FAF5FF, #FDF2F8, #EFF6FF);
+
+            /* Sombras (o site usa sombras com tom terracota) */
+            --shadow-warm: 0 4px 14px rgba(217, 119, 87, 0.12);
+            --shadow-warm-lg: 0 40px 80px rgba(217, 119, 87, 0.16);
+            --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.06);
+            --shadow-purple: 0 20px 50px rgba(121, 59, 237, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+            color: var(--dark-800);
+            line-height: 1.7;
+            background: var(--white);
+        }
+
+        /* ─── NAV LATERAL ─── */
+        .miv-nav {
+            position: fixed; top: 0; left: 0;
+            width: 260px; height: 100vh;
+            background: var(--dark-950);
+            padding: 2.5rem 1.5rem;
+            overflow-y: auto;
+            z-index: 100;
+        }
+        .miv-nav .brand {
+            display: flex; align-items: center; gap: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+        .miv-nav .brand img { height: 28px; }
+        .miv-nav .brand-text { font-size: 1.3rem; font-weight: 800; color: white; }
+        .miv-nav .brand-text span { color: var(--purple-400); }
+        .miv-nav .subtitle {
+            font-size: 0.7rem; color: var(--purple-400);
+            letter-spacing: 0.12em; text-transform: uppercase;
+            margin-bottom: 2.5rem;
+        }
+        .miv-nav a {
+            display: block; color: var(--gray-400); text-decoration: none;
+            font-size: 0.85rem; padding: 0.45rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            transition: color 0.2s;
+        }
+        .miv-nav a:hover { color: var(--purple-300); }
+        .miv-nav .nav-section {
+            font-size: 0.65rem; color: var(--purple-600);
+            text-transform: uppercase; letter-spacing: 0.12em;
+            margin-top: 1.5rem; margin-bottom: 0.5rem; font-weight: 700;
+        }
+
+        /* ─── CONTENT ─── */
+        .miv-content { margin-left: 260px; min-height: 100vh; }
+
+        .miv-section {
+            padding: 80px 60px;
+            border-bottom: 1px solid var(--gray-200);
+            max-width: 1100px;
+        }
+
+        .section-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem; color: var(--purple-600);
+            letter-spacing: 0.12em; text-transform: uppercase;
+            margin-bottom: 0.75rem; font-weight: 600;
+        }
+
+        h1 { font-size: 3rem; font-weight: 800; color: var(--dark-950); line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 1rem; }
+        h2 { font-size: 2.2rem; font-weight: 800; color: var(--dark-950); line-height: 1.12; letter-spacing: -0.025em; margin-bottom: 1rem; }
+        h3 { font-size: 1.1rem; font-weight: 700; color: var(--dark-800); margin-bottom: 0.5rem; }
+        h4 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem; font-weight: 600; color: var(--gray-500);
+            letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem;
+        }
+
+        p { margin-bottom: 1rem; max-width: 700px; }
+        .lead { font-size: 1.1rem; color: var(--gray-500); line-height: 1.8; }
+        .note { font-size: 0.85rem; color: var(--gray-500); font-style: italic; }
+        code { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; background: var(--purple-50); padding: 2px 6px; border-radius: 4px; color: var(--purple-600); }
+
+        /* ─── COVER ─── */
+        .miv-cover {
+            background: var(--dark-950);
+            padding: 120px 60px 100px;
+            position: relative; overflow: hidden;
+        }
+        .miv-cover::before {
+            content: ''; position: absolute;
+            top: -100px; right: -50px;
+            width: 500px; height: 500px;
+            background: radial-gradient(circle, rgba(121, 59, 237, 0.2) 0%, transparent 70%);
+        }
+        .miv-cover::after {
+            content: ''; position: absolute;
+            bottom: -100px; left: 30%;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(236, 70, 153, 0.1) 0%, transparent 70%);
+        }
+        .miv-cover .overline {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem; color: var(--green-500);
+            letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.5rem;
+        }
+        .miv-cover h1 { font-size: 3.5rem; color: white; max-width: 600px; }
+        .miv-cover h1 .gradient-text {
+            background: var(--gradient-brand);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .miv-cover .tagline { margin-top: 1.5rem; color: var(--gray-400); font-size: 1.1rem; max-width: 500px; line-height: 1.8; }
+        .miv-cover .meta { margin-top: 3rem; display: flex; gap: 3rem; }
+        .miv-cover .meta-item { color: var(--gray-400); font-size: 0.85rem; }
+        .miv-cover .meta-label { font-size: 0.65rem; color: var(--purple-400); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.25rem; font-weight: 600; }
+
+        /* ─── GRIDS ─── */
+        .color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.75rem; margin: 2rem 0; }
+        .color-swatch { border-radius: 10px; overflow: hidden; border: 1px solid var(--gray-200); background: white; }
+        .color-swatch .swatch-block { height: 72px; }
+        .color-swatch .swatch-info { padding: 0.6rem; }
+        .color-swatch .swatch-name { font-weight: 700; font-size: 0.75rem; color: var(--dark-800); }
+        .color-swatch .swatch-hex { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--gray-500); }
+
+        .demo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+        .demo-card { background: white; border-radius: 12px; padding: 2rem; border: 1px solid var(--gray-200); }
+        .demo-card.dark { background: var(--dark-950); border-color: transparent; color: var(--gray-300); }
+
+        .type-sample { background: white; border-radius: 12px; padding: 2.5rem; margin: 1.5rem 0; border: 1px solid var(--gray-200); }
+        .type-row { display: flex; align-items: baseline; gap: 2rem; padding: 1.25rem 0; border-bottom: 1px solid var(--gray-100); }
+        .type-row:last-child { border-bottom: none; }
+        .type-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.1em; min-width: 80px; flex-shrink: 0; }
+        .type-spec { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--purple-400); min-width: 140px; flex-shrink: 0; }
+
+        .tone-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.25rem; margin: 2rem 0; }
+        .tone-card { background: white; border-radius: 12px; padding: 1.75rem; border: 1px solid var(--gray-200); }
+
+        .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+        .do-card { padding: 1.5rem; border-radius: 12px; background: var(--green-100); border-left: 4px solid var(--green-500); }
+        .dont-card { padding: 1.5rem; border-radius: 12px; background: var(--red-100); border-left: 4px solid var(--red-500); }
+
+        /* ─── BUTTONS DEMO ─── */
+        .btn-demo {
+            display: inline-flex; align-items: center; justify-content: center;
+            padding: 10px 24px; border-radius: 10px; font-weight: 600;
+            font-size: 14px; text-decoration: none; border: none; cursor: pointer;
+            font-family: 'Inter', sans-serif; margin-right: 0.75rem; margin-bottom: 0.75rem;
+        }
+        .btn-demo.gradient { background: var(--gradient-brand); color: white; }
+        .btn-demo.green { background: var(--green-500); color: white; }
+        .btn-demo.outline { background: transparent; border: 2px solid var(--gray-300); color: var(--dark-950); }
+        .btn-demo.ghost { background: transparent; color: var(--purple-600); text-decoration: underline; text-underline-offset: 3px; }
+
+        /* ─── GRADIENT BAND DEMO ─── */
+        .gradient-band { height: 80px; border-radius: 12px; margin: 1.5rem 0; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1rem; }
+
+        /* ─── SPACING ─── */
+        .spacing-demo { display: flex; flex-direction: column; gap: 0.4rem; margin: 2rem 0; }
+        .spacing-row { display: flex; align-items: center; gap: 1rem; }
+        .spacing-bar { height: 20px; background: var(--purple-100); border-radius: 4px; border: 1px solid var(--purple-200); }
+        .spacing-label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--gray-500); min-width: 60px; }
+        .spacing-value { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--purple-400); }
+
+        .shadow-demos { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 2rem 0; }
+        .shadow-box {
+            width: 110px; height: 110px; background: white; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; color: var(--gray-500);
+            text-align: center; line-height: 1.4;
+        }
+
+        .radius-demos { display: flex; gap: 1.5rem; flex-wrap: wrap; margin: 2rem 0; align-items: end; }
+        .radius-box {
+            width: 70px; height: 70px; background: var(--purple-50); border: 2px solid var(--purple-200);
+            display: flex; align-items: center; justify-content: center;
+            font-family: 'JetBrains Mono', monospace; font-size: 0.55rem; color: var(--purple-600);
+        }
+
+        .persona-card { background: white; border-radius: 12px; padding: 1.75rem; border: 1px solid var(--gray-200); margin-bottom: 1rem; }
+        .persona-card .priority { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; display: inline-block; margin-bottom: 0.75rem; }
+        .persona-card .priority.alta { background: var(--green-100); color: var(--green-600); }
+        .persona-card .priority.media { background: var(--amber-100); color: var(--amber-500); }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 900px) {
+            .miv-nav { display: none; }
+            .miv-content { margin-left: 0; }
+            .miv-section { padding: 60px 1.5rem; }
+            .miv-cover { padding: 80px 1.5rem 60px; }
+            .miv-cover h1 { font-size: 2.5rem; }
+            .demo-grid, .do-dont, .tone-grid { grid-template-columns: 1fr; }
+        }
+        @media print {
+            .miv-nav { display: none; }
+            .miv-content { margin-left: 0; }
+            .miv-section { page-break-inside: avoid; padding: 40px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <aside class="miv-nav">
+        <div class="brand">
+            <span class="brand-text">Zeon<span>paper</span></span>
+        </div>
+        <div class="subtitle">Material de Identidade Visual</div>
+
+        <div class="nav-section">Fundamentos</div>
+        <a href="#conceito">01. Conceito e posicionamento</a>
+        <a href="#cores">02. Paleta de cores</a>
+        <a href="#tipografia">03. Tipografia</a>
+        <a href="#logo">04. Logo</a>
+        <a href="#gradientes">05. Gradientes</a>
+
+        <div class="nav-section">Componentes</div>
+        <a href="#botoes">06. Botões e CTAs</a>
+        <a href="#sombras">07. Sombras e raios</a>
+        <a href="#espacamento">08. Espaçamento</a>
+        <a href="#icones">09. Iconografia</a>
+
+        <div class="nav-section">Linguagem</div>
+        <a href="#voz">10. Voz e tom</a>
+        <a href="#personas">11. Personas</a>
+        <a href="#copy">12. Copy e headlines</a>
+        <a href="#dondont">13. Faça / Evite</a>
+    </aside>
+
+    <main class="miv-content">
+
+        <!-- COVER -->
+        <div class="miv-cover" id="capa">
+            <div class="overline">Material de Identidade Visual &mdash; v1.0</div>
+            <h1>Zeon<span class="gradient-text">paper</span></h1>
+            <p class="tagline">Controle financeiro simples para MEIs, microempresas e pequenos negócios que já perceberam que planilhas não acompanham mais a rotina financeira da empresa.</p>
+            <div class="meta">
+                <div class="meta-item"><div class="meta-label">Versão</div>1.0</div>
+                <div class="meta-item"><div class="meta-label">Data</div>Abril 2026</div>
+                <div class="meta-item"><div class="meta-label">Projeto</div>Corelab &times; Zeonpaper</div>
+            </div>
+        </div>
+
+        <!-- 01. CONCEITO -->
+        <section class="miv-section" id="conceito">
+            <div class="section-number">01 &mdash; Conceito e Posicionamento</div>
+            <h2>Simplicidade com credibilidade</h2>
+            <p class="lead">O Zeonpaper é a próxima etapa natural para o pequeno negócio que quer organizar contas a pagar e receber, ganhar clareza do caixa e reduzir o caos manual, sem implantar uma solução complexa demais para seu estágio.</p>
+
+            <div class="tone-grid" style="margin-top: 3rem;">
+                <div class="tone-card">
+                    <h3>Posicionamento</h3>
+                    <p style="font-size: 1.05rem; color: var(--dark-950); font-weight: 600; line-height: 1.5;">"Não é ERP pesado. Não é contabilidade. É controle financeiro simples para sair da planilha."</p>
+                </div>
+                <div class="tone-card">
+                    <h3>Categoria</h3>
+                    <p style="font-size: 0.9rem;">Controle financeiro simples para pequenos negócios.</p>
+                    <p style="font-size: 0.85rem; color: var(--gray-500); margin-top: 0.5rem;">Território: saída da planilha com mais clareza, controle e simplicidade, sem o peso de um ERP.</p>
+                </div>
+            </div>
+
+            <div class="tone-grid">
+                <div class="tone-card">
+                    <h3>Essência da marca</h3>
+                    <p style="font-size: 0.9rem;">
+                        <strong>Simplicidade.</strong> Faz o essencial, bem feito.<br>
+                        <strong>Clareza.</strong> Sem jargão, sem funcionalidade escondida.<br>
+                        <strong>Credibilidade.</strong> Profissional sem ser pesado.<br>
+                        <strong>Acessibilidade.</strong> Preço justo, barreira de entrada baixa.
+                    </p>
+                </div>
+                <div class="tone-card">
+                    <h3>Perceção desejada</h3>
+                    <p style="font-size: 0.9rem;">
+                        &bull; Simples de usar<br>
+                        &bull; Profissional o suficiente para dar confiança<br>
+                        &bull; Acessível para entrada<br>
+                        &bull; Objetivo no que resolve<br>
+                        &bull; Claro em relação ao que não promete
+                    </p>
+                </div>
+            </div>
+
+            <h4 style="margin-top: 2rem;">Proposta de valor</h4>
+            <p><strong>Comercial:</strong> Controle o financeiro do seu negócio de forma simples, sem ERP pesado e sem depender de planilhas.</p>
+            <p><strong>One-liner:</strong> O jeito simples de sair da planilha e organizar o financeiro do seu pequeno negócio.</p>
+        </section>
+
+        <!-- 02. CORES -->
+        <section class="miv-section" id="cores">
+            <div class="section-number">02 &mdash; Paleta de Cores</div>
+            <h2>Purple, Pink, Green</h2>
+            <p class="lead">A marca usa um gradiente roxo-para-rosa como identidade principal, verde para CTAs de conversão, e tons escuros para contraste e profundidade.</p>
+
+            <h4 style="margin-top: 3rem;">Purple &mdash; Cor principal da marca</h4>
+            <div class="color-grid">
+                <div class="color-swatch"><div class="swatch-block" style="background: #390D8C;"></div><div class="swatch-info"><div class="swatch-name">Purple 900</div><div class="swatch-hex">#390D8C</div></div></div>
+                <div class="color-swatch"><div class="swatch-block" style="background: #6B21A8;"></div><div class="swatch-info"><div class="swatch-name">Purple 700</div><div class="swatch-hex">#6B21A8</div></div></div>
+                <div class="color-swatch"><div class="swatch-block" style="background: #793BED;"></div><div class="swatch-info"><div class="swatch-name">Purple 600</div><div class="swatch-hex">#793BED &bull; Primária</div></div></div>
+                <div class="color-swatch"><div class="swatch-block" style="background: #8B5CF6;"></div><div class="swatch-info"><div class="swatch-name">Purple 500</div><div class="swatch-hex">#8B5CF6</div></div></div>
+                <div class="color-swatch"><div class="swatch-block" style="background: #A78BFA;"></div><div class="swatch-info"><div class="swatch-name">Purple 400</div><div class="swatch-hex">#A78BFA</div></div></div>
+                <div class="color-swatch"><div class="swatch-block" style="background: #DDD6FE;"></div><div class="swatch-info"><div class="swatch-name">Purple 200</div><div class="swatch-hex">#DDD6FE</div></div></div>
+                <div class="color-swatch"><div class="swatch-block" style="background: #EDE9FE;"></div><div class="swatch-info"><div class="swatch-name">Purple 100</div><div class="swatch-hex">#EDE9FE</div></div></div>
+                <div class="color-swatch"><div class="swatch-block" style="background: #EFE8FD;"></div><div class="swatch-info"><div class="swatch-name">Purple 50</div><div class="swatch-hex">#EFE8FD &bull; BG light</div></div></div>
+            </div>
+
+            <h4 style="margin-top: 2.5rem;">Pink &mdash; Acento do gradiente</h4>
+            <div class="color-grid">
+                <div class="color-swatch"><div class="swatch-block" style="background: #DB2777;"></div><div class="swatch-info"><div class="swatch-name">Pink 600</div><div class="swatch-hex">#DB2777</div></div></div>
+                <div class="color-swatch"><div class="swatch-block" style="background: #EC4699;"></div><div class="swatch-info"><div class="swatch-name">Pink 500</div><div class="swatch-hex">#EC4699 &bull; Gradiente</div></div></div>
+                <div class="color-swatch"><div class="swatch-block" style="background: #FBCFE8;"></div><div class="swatch-info"><div class="swatch-name">Pink 200</div><div class="swatch-hex">#FBCFE8</div></div></div>
+                <div class="color-swatch"><div class="swatch-block" style="background: #FCE7F3;"></div><div class="swatch-info"><div class="swatch-name">Pink 100</div><div class="swatch-hex">#FCE7F3</div></div></div>
+            </div>
+
+            <h4 style="margin-top: 2.5rem;">Green &mdash; CTA e conversão</h4>
+            <div class="color-grid">
+                <div class="color-swatch"><div class="swatch-block" style="background: #16A34A;"></div><div class="swatch-info"><div class="swatch-name">Green 600</div><div class="swatch-hex">#16A34A</div></div></div>
+                <div class="color-swatch"><div class="swatch-block" style="background: #22C55E;"></div><div class="swatch-info"><div class="swatch-name">Green 500</div><div class="swatch-hex">#22C55E &bull; CTA</div></div></div>
+                <div class="color-swatch"><div class="swatch-block" style="background: #4ADE80;"></div><div class="swatch-info"><div class="swatch-name">Green 400</div><div class="swatch-hex">#4ADE80</div></div></div>
+                <div class="color-swatch"><div class="swatch-block" style="background: #DCFCE7;"></div><div class="swatch-info"><div class="swatch-name">Green 100</div><div class="swatch-hex">#DCFCE7</div></div></div>
+            </div>
+
+            <h4 style="margin-top: 2.5rem;">Dark &mdash; Backgrounds e texto</h4>
+            <div class="color-grid">
+                <div class="color-swatch"><div class="swatch-block" style="background: #020817;"></div><div class="swatch-info"><div class="swatch-name">Dark 950</div><div class="swatch-hex">#020817 &bull; Texto / Hero</div></div></div>
+                <div class="color-swatch"><div class="swatch-block" style="background: #0F172A;"></div><div class="swatch-info"><div class="swatch-name">Dark 900</div><div class="swatch-hex">#0F172A</div></div></div>
+                <div class="color-swatch"><div class="swatch-block" style="background: #64748B;"></div><div class="swatch-info"><div class="swatch-name">Gray 500</div><div class="swatch-hex">#64748B &bull; Secundário</div></div></div>
+                <div class="color-swatch"><div class="swatch-block" style="background: #F8FAFC;"></div><div class="swatch-info"><div class="swatch-name">Gray 50</div><div class="swatch-hex">#F8FAFC</div></div></div>
+            </div>
+
+            <h4 style="margin-top: 2.5rem;">Backgrounds especiais</h4>
+            <div class="color-grid">
+                <div class="color-swatch"><div class="swatch-block" style="background: #FAF9F5;"></div><div class="swatch-info"><div class="swatch-name">Paper</div><div class="swatch-hex">#FAF9F5 &bull; BG warm</div></div></div>
+                <div class="color-swatch"><div class="swatch-block" style="background: #FACC15;"></div><div class="swatch-info"><div class="swatch-name">Amber 500</div><div class="swatch-hex">#FACC15 &bull; Badge</div></div></div>
+                <div class="color-swatch"><div class="swatch-block" style="background: #F87171;"></div><div class="swatch-info"><div class="swatch-name">Red 400</div><div class="swatch-hex">#F87171 &bull; Alerta</div></div></div>
+            </div>
+        </section>
+
+        <!-- 03. TIPOGRAFIA -->
+        <section class="miv-section" id="tipografia">
+            <div class="section-number">03 &mdash; Tipografia</div>
+            <h2>Inter + JetBrains Mono</h2>
+            <p class="lead">A marca usa <strong>Inter</strong> (system-ui fallback) para todo o texto, com <strong>JetBrains Mono</strong> para labels, badges e valores financeiros. Hierarquia clara por peso e tamanho.</p>
+
+            <div class="type-sample">
+                <div class="type-row">
+                    <div class="type-label">H1</div>
+                    <div style="font-size: 48px; font-weight: 700; color: var(--dark-950); line-height: 1;">O melhor custo-benefício</div>
+                    <div class="type-spec">Inter Bold<br>48px / 48px</div>
+                </div>
+                <div class="type-row">
+                    <div class="type-label">H2</div>
+                    <div style="font-size: 36px; font-weight: 700; color: var(--dark-950); line-height: 1.1;">Funcionalidades essenciais</div>
+                    <div class="type-spec">Inter Bold<br>36px / 40px</div>
+                </div>
+                <div class="type-row">
+                    <div class="type-label">H3</div>
+                    <div style="font-size: 20px; font-weight: 700; color: var(--dark-950); line-height: 1.4;">Contas a Pagar e Receber</div>
+                    <div class="type-spec">Inter Bold<br>20px / 28px</div>
+                </div>
+                <div class="type-row">
+                    <div class="type-label">Body</div>
+                    <div style="font-size: 16px; color: var(--gray-500); line-height: 1.6;">Organize seu financeiro sem ERP pesado e sem depender de planilhas.</div>
+                    <div class="type-spec">Inter Regular<br>16px / 24px</div>
+                </div>
+                <div class="type-row">
+                    <div class="type-label">Small</div>
+                    <div style="font-size: 14px; color: var(--gray-500);">7 dias grátis para testar - sem cartão de crédito</div>
+                    <div class="type-spec">Inter Regular<br>14px / 20px</div>
+                </div>
+                <div class="type-row">
+                    <div class="type-label">Label</div>
+                    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--purple-600); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600;">PARA EMPREENDEDORES</div>
+                    <div class="type-spec">JetBrains Mono<br>12px, 0.1em, upper</div>
+                </div>
+                <div class="type-row">
+                    <div class="type-label">Preço</div>
+                    <div style="font-size: 36px; font-weight: 800; color: var(--dark-950);">R$ 27,90<span style="font-size: 16px; color: var(--gray-500); font-weight: 400;">/mês</span></div>
+                    <div class="type-spec">Inter ExtraBold<br>36px</div>
+                </div>
+                <div class="type-row">
+                    <div class="type-label">Gradient</div>
+                    <div style="font-size: 36px; font-weight: 700; background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">gestão financeira</div>
+                    <div class="type-spec">Inter Bold + gradient<br>background-clip: text</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04. LOGO -->
+        <section class="miv-section" id="logo">
+            <div class="section-number">04 &mdash; Logo</div>
+            <h2>Marca Zeonpaper</h2>
+            <p class="lead">Logo em formato de imagem (PNG). Usado no header do site com fundo branco e no footer com fundo escuro.</p>
+
+            <div class="demo-grid">
+                <div class="demo-card" style="display: flex; align-items: center; justify-content: center; min-height: 160px;">
+                    <img src="https://www.zeonpaper.com.br/images/logo.png" alt="Logo Zeonpaper" style="height: 40px;">
+                </div>
+                <div class="demo-card dark" style="display: flex; align-items: center; justify-content: center; min-height: 160px;">
+                    <img src="https://www.zeonpaper.com.br/images/logo.png" alt="Logo Zeonpaper fundo escuro" style="height: 40px; filter: brightness(1.2);">
+                </div>
+            </div>
+            <p class="note" style="margin-top: 1rem;">Fonte do logo: <code>https://www.zeonpaper.com.br/images/logo.png</code>. Manter área de proteção mínima de 16px ao redor. Tamanho mínimo: 120px de largura.</p>
+        </section>
+
+        <!-- 05. GRADIENTES -->
+        <section class="miv-section" id="gradientes">
+            <div class="section-number">05 &mdash; Gradientes</div>
+            <h2>Gradientes da marca</h2>
+            <p>O gradiente purple-to-pink é a assinatura visual principal. Usado em CTAs, textos destacados e elementos de branding.</p>
+
+            <h4 style="margin-top: 2rem;">Gradiente principal</h4>
+            <div class="gradient-band" style="background: var(--gradient-brand);">linear-gradient(135deg, #793BED, #EC4699)</div>
+
+            <h4 style="margin-top: 2rem;">Gradiente de background</h4>
+            <div class="gradient-band" style="background: var(--gradient-bg); color: var(--gray-500);">linear-gradient(to right bottom, #FAF5FF, #FDF2F8, #EFF6FF)</div>
+
+            <h4 style="margin-top: 2rem;">Uso em texto</h4>
+            <p style="font-size: 2rem; font-weight: 800; background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-top: 1rem;">custo-benefício em gestão financeira</p>
+            <p class="note" style="margin-top: 0.5rem;"><code>background: var(--gradient-brand); -webkit-background-clip: text;</code></p>
+        </section>
+
+        <!-- 06. BOTÕES -->
+        <section class="miv-section" id="botoes">
+            <div class="section-number">06 &mdash; Botões e CTAs</div>
+            <h2>Hierarquia de ação</h2>
+            <p>CTA principal em verde (conversão). Ações de marca em gradiente. Secundários em outline.</p>
+
+            <h4 style="margin-top: 2rem;">Fundo claro</h4>
+            <div style="padding: 2rem; background: var(--gray-50); border-radius: 12px; border: 1px solid var(--gray-200); margin: 1rem 0;">
+                <button class="btn-demo green">Começar Gratuitamente</button>
+                <button class="btn-demo gradient">Ver Funcionalidades</button>
+                <button class="btn-demo outline">Entrar</button>
+                <button class="btn-demo ghost">Saiba mais</button>
+            </div>
+
+            <h4 style="margin-top: 2rem;">Fundo escuro</h4>
+            <div style="padding: 2rem; background: var(--dark-950); border-radius: 12px; margin: 1rem 0;">
+                <button class="btn-demo green">Começar Gratuitamente</button>
+                <button class="btn-demo gradient">Ver Planos</button>
+                <button class="btn-demo outline" style="border-color: rgba(255,255,255,0.15); color: white;">Entrar</button>
+            </div>
+
+            <h4 style="margin-top: 2rem;">Specs</h4>
+            <p>Padding: <code>8px 16px</code> (small) | <code>10px 24px</code> (default) | <code>14px 32px</code> (large)<br>
+            Font: Inter Medium/SemiBold, 14px<br>
+            Border-radius: <code>10px</code><br>
+            Transição: 200ms ease</p>
+        </section>
+
+        <!-- 07. SOMBRAS E RAIOS -->
+        <section class="miv-section" id="sombras">
+            <div class="section-number">07 &mdash; Sombras e Border Radius</div>
+            <h2>Sombras quentes, cantos arredondados</h2>
+            <p>O site usa sombras com subtom terracota <code>rgba(217, 119, 87)</code>, criando calor visual.</p>
+
+            <h4 style="margin-top: 2rem;">Sombras</h4>
+            <div class="shadow-demos">
+                <div class="shadow-box" style="box-shadow: var(--shadow-card);">Card<br>default</div>
+                <div class="shadow-box" style="box-shadow: var(--shadow-warm);">Warm<br>terracota</div>
+                <div class="shadow-box" style="box-shadow: var(--shadow-warm-lg);">Warm LG<br>hero</div>
+                <div class="shadow-box" style="box-shadow: var(--shadow-purple);">Purple<br>featured</div>
+            </div>
+
+            <h4 style="margin-top: 2rem;">Border Radius</h4>
+            <div class="radius-demos">
+                <div><div class="radius-box" style="border-radius: 10px;">10px</div><div class="spacing-value" style="text-align:center;margin-top:0.5rem;">Botão/Input</div></div>
+                <div><div class="radius-box" style="border-radius: 12px;">12px</div><div class="spacing-value" style="text-align:center;margin-top:0.5rem;">Card</div></div>
+                <div><div class="radius-box" style="border-radius: 16px;">16px</div><div class="spacing-value" style="text-align:center;margin-top:0.5rem;">Container</div></div>
+                <div><div class="radius-box" style="border-radius: 24px;">24px</div><div class="spacing-value" style="text-align:center;margin-top:0.5rem;">Section</div></div>
+                <div><div class="radius-box" style="border-radius: 9999px; width: 50px;">Pill</div><div class="spacing-value" style="text-align:center;margin-top:0.5rem;">Badge</div></div>
+            </div>
+        </section>
+
+        <!-- 08. ESPAÇAMENTO -->
+        <section class="miv-section" id="espacamento">
+            <div class="section-number">08 &mdash; Espaçamento</div>
+            <h2>Sistema de espaçamento</h2>
+            <p>Base de 4px com escala multiplicativa. Container: 1200px. Padding lateral: 24px.</p>
+            <div class="spacing-demo">
+                <div class="spacing-row"><div class="spacing-label">4px</div><div class="spacing-bar" style="width: 16px;"></div><div class="spacing-value">gaps mínimos</div></div>
+                <div class="spacing-row"><div class="spacing-label">8px</div><div class="spacing-bar" style="width: 32px;"></div><div class="spacing-value">padding de botão</div></div>
+                <div class="spacing-row"><div class="spacing-label">16px</div><div class="spacing-bar" style="width: 64px;"></div><div class="spacing-value">gap entre items</div></div>
+                <div class="spacing-row"><div class="spacing-label">24px</div><div class="spacing-bar" style="width: 96px;"></div><div class="spacing-value">padding lateral</div></div>
+                <div class="spacing-row"><div class="spacing-label">32px</div><div class="spacing-bar" style="width: 128px;"></div><div class="spacing-value">gap de grid</div></div>
+                <div class="spacing-row"><div class="spacing-label">48px</div><div class="spacing-bar" style="width: 192px;"></div><div class="spacing-value">entre blocos</div></div>
+                <div class="spacing-row"><div class="spacing-label">80px</div><div class="spacing-bar" style="width: 320px;"></div><div class="spacing-value">padding de seção</div></div>
+                <div class="spacing-row"><div class="spacing-label">120px</div><div class="spacing-bar" style="width: 480px;"></div><div class="spacing-value">seções maiores</div></div>
+            </div>
+        </section>
+
+        <!-- 09. ÍCONES -->
+        <section class="miv-section" id="icones">
+            <div class="section-number">09 &mdash; Iconografia</div>
+            <h2>Lucide Icons</h2>
+            <p>Set de ícones <strong>Lucide</strong>. Stroke: 1.75px. Tamanhos: 16, 20, 24px. Cor padrão: <code>var(--purple-600)</code> ou <code>var(--gray-500)</code>.</p>
+            <p class="note">Ícones de feature usam containers arredondados com background <code>purple-50</code>.</p>
+        </section>
+
+        <!-- 10. VOZ E TOM -->
+        <section class="miv-section" id="voz">
+            <div class="section-number">10 &mdash; Voz e Tom</div>
+            <h2>Como o Zeonpaper fala</h2>
+            <p class="lead">Operacional, não institucional. Direto, acolhedor e sem jargão. O lead reage a promessas tangíveis, não a discurso amplo.</p>
+
+            <div class="tone-grid">
+                <div class="tone-card">
+                    <h3>Direto e operacional</h3>
+                    <p style="font-size: 0.9rem;">"Veja o que entra, sai e vence" em vez de "Acesse dashboards com KPIs customizáveis".</p>
+                </div>
+                <div class="tone-card">
+                    <h3>Simples e acolhedor</h3>
+                    <p style="font-size: 0.9rem;">"Para quem cansou da planilha" em vez de "Solução enterprise-grade para gestão financeira".</p>
+                </div>
+                <div class="tone-card">
+                    <h3>Profissional sem ser pesado</h3>
+                    <p style="font-size: 0.9rem;">Simplicidade com credibilidade. Não deve parecer app limitado, mas não deve parecer ERP incompleto.</p>
+                </div>
+                <div class="tone-card">
+                    <h3>Honesto com filtro</h3>
+                    <p style="font-size: 0.9rem;">"Se sua dor é contabilidade, provavelmente não somos a ferramenta certa." Filtro claro aumenta qualidade de lead.</p>
+                </div>
+            </div>
+
+            <h4 style="margin-top: 2rem;">Regras de copy</h4>
+            <p style="font-size: 0.9rem;">
+                &bull; Sempre usar "você" (nunca "o usuário" ou "o cliente")<br>
+                &bull; Frases curtas. Parágrafos de 2-3 linhas<br>
+                &bull; "DRE" sempre acompanhado de "relatório de lucro"<br>
+                &bull; CTA em primeira pessoa: "Começar meu teste" &gt; "Iniciar trial"<br>
+                &bull; Valores sempre com R$ e vírgula: R$ 25,30<br>
+                &bull; Mensagens por estágio: frio (dor), morno (prova), quente (CTA/oferta)
+            </p>
+        </section>
+
+        <!-- 11. PERSONAS -->
+        <section class="miv-section" id="personas">
+            <div class="section-number">11 &mdash; Personas</div>
+            <h2>Para quem falamos</h2>
+
+            <div class="persona-card">
+                <div class="priority alta">PRIORIDADE ALTA</div>
+                <h3>Dono(a) operacional</h3>
+                <p style="font-size: 0.9rem; color: var(--gray-500);">Fundador(a) de pequeno negócio que acumula operação, vendas e financeiro. Não se considera especialista em finanças.</p>
+                <p style="font-size: 0.9rem;"><strong>Dor:</strong> Sente que o financeiro está bagunçado, esquece vencimentos, não confia nos números.</p>
+                <p style="font-size: 0.9rem; color: var(--purple-600); font-weight: 600;">"Você não precisa de um ERP pesado para organizar o financeiro. Precisa de um jeito simples de saber o que entra, sai e vence."</p>
+            </div>
+
+            <div class="persona-card">
+                <div class="priority alta">PRIORIDADE ALTA</div>
+                <h3>Assistente administrativo / financeiro enxuto</h3>
+                <p style="font-size: 0.9rem; color: var(--gray-500);">Pessoa que ajuda o dono no controle do dia a dia. Cuida de cobranças, vencimentos e organização básica.</p>
+                <p style="font-size: 0.9rem;"><strong>Dor:</strong> Retrabalho manual, informações espalhadas em planilhas.</p>
+                <p style="font-size: 0.9rem; color: var(--purple-600); font-weight: 600;">"Organize contas a pagar e receber em um fluxo simples, sem aumentar sua carga operacional."</p>
+            </div>
+
+            <div class="persona-card">
+                <div class="priority media">PRIORIDADE MÉDIA-ALTA</div>
+                <h3>Prestador de serviço em crescimento</h3>
+                <p style="font-size: 0.9rem; color: var(--gray-500);">Empresa de serviço com receitas recorrentes. Sente necessidade de mais disciplina financeira.</p>
+                <p style="font-size: 0.9rem;"><strong>Dor:</strong> Caixa imprevisível, cobrança inconsistente, falta de visão consolidada.</p>
+                <p style="font-size: 0.9rem; color: var(--purple-600); font-weight: 600;">"Saia da planilha e profissionalize seu controle financeiro sem adotar solução pesada demais."</p>
+            </div>
+
+            <div class="persona-card">
+                <div class="priority media">PRIORIDADE MÉDIA</div>
+                <h3>MEI que quer clareza e separação financeira</h3>
+                <p style="font-size: 0.9rem; color: var(--gray-500);">Autônomo ou MEI com receita recorrente que ainda mistura pessoa física com empresa.</p>
+                <p style="font-size: 0.9rem;"><strong>Dor:</strong> Não sabe quanto realmente lucra, não sabe quanto pode sacar.</p>
+                <p style="font-size: 0.9rem; color: var(--purple-600); font-weight: 600;">"Pare de misturar o dinheiro do negócio com o pessoal e tenha visão clara do que sobra."</p>
+            </div>
+        </section>
+
+        <!-- 12. COPY E HEADLINES -->
+        <section class="miv-section" id="copy">
+            <div class="section-number">12 &mdash; Copy e Headlines</div>
+            <h2>Mensagens aprovadas</h2>
+
+            <h4 style="margin-top: 2rem;">Headline principal</h4>
+            <p style="font-size: 1.3rem; font-weight: 700; color: var(--dark-950);">"Organize o financeiro da sua empresa sem depender de planilhas"</p>
+
+            <h4 style="margin-top: 1.5rem;">Subheadline</h4>
+            <p style="font-size: 1rem; color: var(--gray-500);">"Para MEIs, microempresas e pequenos negócios que precisam controlar contas a pagar e receber com mais clareza, sem ERP pesado e sem complicação"</p>
+
+            <h4 style="margin-top: 1.5rem;">Headlines alternativas (nível 1)</h4>
+            <p style="font-size: 0.9rem;">
+                &bull; "Para quem já percebeu que planilhas não acompanham mais o financeiro do negócio"<br>
+                &bull; "Organize seu financeiro sem ERP pesado"<br>
+                &bull; "Saia da planilha e tenha clareza do que entra, sai e vence"<br>
+                &bull; "O melhor custo-benefício em gestão financeira para sua empresa"
+            </p>
+
+            <h4 style="margin-top: 1.5rem;">Bullets de valor</h4>
+            <p style="font-size: 0.9rem;">
+                &bull; Veja com clareza o que entra, sai e vence<br>
+                &bull; Reduza erros e retrabalho do controle manual<br>
+                &bull; Organize contas a pagar e receber sem sistema complexo<br>
+                &bull; Ganhe mais controle financeiro no dia a dia
+            </p>
+
+            <h4 style="margin-top: 1.5rem;">Mensagem de qualificação</h4>
+            <p style="font-size: 0.85rem; color: var(--gray-500); border-left: 3px solid var(--purple-200); padding-left: 1rem;">"O Zeonpaper é para MEIs, microempresas e pequenos negócios que já perceberam que planilhas não acompanham mais a rotina financeira. Se você precisa organizar contas a pagar e receber com simplicidade e mais clareza do caixa, faz sentido. Se você busca ERP completo, contabilidade ou operação financeira avançada, provavelmente não é a ferramenta certa."</p>
+        </section>
+
+        <!-- 13. FAÇA / EVITE -->
+        <section class="miv-section" id="dondont">
+            <div class="section-number">13 &mdash; Faça / Evite</div>
+            <h2>Aplicação da marca</h2>
+
+            <h4 style="margin-top: 2rem;">Visual</h4>
+            <div class="do-dont">
+                <div class="do-card">
+                    <h4 style="color: var(--green-600); margin-bottom: 0.75rem;">Faça</h4>
+                    <p style="font-size: 0.85rem;">
+                        &bull; Use o gradiente purple-pink em destaques<br>
+                        &bull; Use verde <code>#22C55E</code> para CTAs de conversão<br>
+                        &bull; Use <code>#020817</code> para texto principal<br>
+                        &bull; Use sombras quentes (terracota)<br>
+                        &bull; Use border-radius 10-24px<br>
+                        &bull; Use fotos reais de empreendedores BR<br>
+                        &bull; Use +1.200 empresas como prova social
+                    </p>
+                </div>
+                <div class="dont-card">
+                    <h4 style="color: var(--red-500); margin-bottom: 0.75rem;">Evite</h4>
+                    <p style="font-size: 0.85rem;">
+                        &bull; Nunca use azul puro como cor principal<br>
+                        &bull; Nunca use gradientes que não sejam purple-pink<br>
+                        &bull; Nunca use sombras cinza frio<br>
+                        &bull; Nunca use fotos stock genéricas<br>
+                        &bull; Nunca diga "solução" ou "plataforma"<br>
+                        &bull; Nunca pareça ERP incompleto<br>
+                        &bull; Nunca use linguagem técnica ("KPIs", "dashboards")
+                    </p>
+                </div>
+            </div>
+
+            <h4 style="margin-top: 2rem;">Comunicação</h4>
+            <div class="do-dont">
+                <div class="do-card">
+                    <h4 style="color: var(--green-600); margin-bottom: 0.75rem;">Copy: Faça</h4>
+                    <p style="font-size: 0.85rem;">
+                        &bull; "Veja o que entra, sai e vence"<br>
+                        &bull; "Comece grátis por 7 dias"<br>
+                        &bull; "Para quem cansou da planilha"<br>
+                        &bull; "Sem ERP pesado. Sem planilha."<br>
+                        &bull; "Organize o financeiro do seu negócio"<br>
+                        &bull; "Atendimento humanizado via WhatsApp"<br>
+                        &bull; "Pessoas reais ajudando você"
+                    </p>
+                </div>
+                <div class="dont-card">
+                    <h4 style="color: var(--red-500); margin-bottom: 0.75rem;">Copy: Evite</h4>
+                    <p style="font-size: 0.85rem;">
+                        &bull; "A solução definitiva para gestão financeira"<br>
+                        &bull; "Plataforma completa de controle"<br>
+                        &bull; "Dashboard com KPIs customizáveis"<br>
+                        &bull; "Software de gestão empresarial"<br>
+                        &bull; "Maximize a eficiência operacional"<br>
+                        &bull; "ERP para pequenas empresas"<br>
+                        &bull; "O sistema mais completo do mercado"
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLOSE -->
+        <div class="miv-section" style="text-align: center; padding: 100px 60px; border-bottom: none;">
+            <p class="section-number">FIM DO DOCUMENTO</p>
+            <h2 style="background: var(--gradient-brand); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Simplicidade com credibilidade.</h2>
+            <p style="margin: 1rem auto; color: var(--gray-500);">Zeonpaper MIV v1.0 &mdash; Abril 2026</p>
+        </div>
+
+    </main>
+</body>
+</html>
