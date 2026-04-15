@@ -795,7 +795,7 @@
         .for-who-list i { flex-shrink: 0; margin-top: 2px; }
 
         /* ─── TESTIMONIALS ─── */
-        .testimonials-section { background: var(--bg-light); }
+        .testimonials-section { background: var(--bg-light); border-radius: 48px 48px 0 0; }
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -847,7 +847,7 @@
 
         /* ─── SUPPORT ─── */
         .support-section {
-            background: white;
+            background: var(--bg-light);
             padding-bottom: 0;
             overflow: hidden;
         }
@@ -902,7 +902,7 @@
         }
 
         /* ─── PRICING ─── */
-        .pricing-section { background: var(--bg-light); }
+        .pricing-section { background: white; }
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -973,19 +973,6 @@
             margin-bottom: 0.6rem; font-size: 0.85rem;
         }
         .plan-features-list i { flex-shrink: 0; margin-top: 2px; }
-
-        /* Pricing + Testimonials side-by-side */
-        .pricing-testimonials-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
-        }
-        .testimonials-grid-vertical {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 1.5rem;
-        }
 
         /* ─── FAQ ─── */
         .faq-section { background: white; border-radius: 48px 48px 0 0; }
@@ -1132,7 +1119,7 @@
             .proof-stats { gap: 2rem; }
             .proof-divider { display: none; }
             .feature-grid, .step-grid, .pricing-grid, .for-who-grid, .testimonials-grid, .diag-grid { grid-template-columns: 1fr; }
-            .pricing-testimonials-grid { grid-template-columns: 1fr; gap: 2rem; }
+
             .support-visual { min-height: auto; }
             .support-visual img { width: 70%; }
             .support-pill { font-size: 0.75rem; padding: 0.45rem 0.75rem; }
@@ -1414,118 +1401,115 @@
             </div>
         </section>
 
-        <!-- ═══ PRICING + TESTIMONIALS ═══ -->
+        <!-- ═══ PRICING ═══ -->
         <section id="precos" class="pricing-section" data-reveal>
             <div class="container">
                 <div class="text-center" style="margin-bottom: 4rem;">
-                    <span class="section-label">Planos e Depoimentos</span>
-                    <h2 class="section-title">Preços que <span class="text-gradient">cabem no bolso</span></h2>
+                    <span class="section-label">Preços</span>
+                    <h2 class="section-title">Planos que <span class="text-gradient">cabem no bolso</span></h2>
                     <p class="section-subtitle">Sem surpresas, sem letras miúdas. Usuários ilimitados em todos os planos.</p>
                 </div>
-                <div class="pricing-testimonials-grid">
-                    <!-- PRICING COLUMN -->
-                    <div>
-                        <div class="pricing-grid">
-                            <!-- PLANO ORGANIZA -->
-                            <div class="price-card grid-item">
-                                <h3 class="plan-name">Organiza</h3>
-                                <p class="plan-desc">Para quem quer sair da planilha e organizar o financeiro do negócio.</p>
-
-                                <div class="price-period-options">
-                                    <div class="price-option">
-                                        <span class="label">Mensal</span>
-                                        <span class="value">R$ 27,90/mês</span>
-                                    </div>
-                                    <div class="price-option highlight">
-                                        <span class="label">Trimestral <span class="discount">-9%</span></span>
-                                        <span class="value">R$ 75,90 <small>≈ R$ 25,30/mês</small></span>
-                                    </div>
-                                    <div class="price-option">
-                                        <span class="label">Anual <span class="discount">-14%</span></span>
-                                        <span class="value">R$ 286,80 <small>≈ R$ 23,90/mês</small></span>
-                                    </div>
-                                </div>
-
-                                <ul class="plan-features-list">
-                                    <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Contas a pagar e receber</li>
-                                    <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Fluxo de caixa e DRE</li>
-                                    <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Lançamentos recorrentes</li>
-                                    <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Avisos de vencimentos</li>
-                                    <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Gestão de contas bancárias e contatos</li>
-                                    <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Relatórios gerenciais e centro de custos</li>
-                                    <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Multiempresas · 50 GB · Usuários ilimitados</li>
-                                </ul>
-                                <a href="https://app.zeonpaper.com.br/register" class="btn btn-outline" style="width: 100%;">Começar com Organiza</a>
+                <div class="pricing-grid">
+                    <!-- PLANO ORGANIZA -->
+                    <div class="price-card grid-item">
+                        <h3 class="plan-name">Organiza</h3>
+                        <p class="plan-desc">Para quem quer sair da planilha e organizar o financeiro do negócio.</p>
+                        <div class="price-period-options">
+                            <div class="price-option">
+                                <span class="label">Mensal</span>
+                                <span class="value">R$ 27,90/mês</span>
                             </div>
+                            <div class="price-option highlight">
+                                <span class="label">Trimestral <span class="discount">-9%</span></span>
+                                <span class="value">R$ 75,90 <small>≈ R$ 25,30/mês</small></span>
+                            </div>
+                            <div class="price-option">
+                                <span class="label">Anual <span class="discount">-14%</span></span>
+                                <span class="value">R$ 286,80 <small>≈ R$ 23,90/mês</small></span>
+                            </div>
+                        </div>
+                        <ul class="plan-features-list">
+                            <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Contas a pagar e receber</li>
+                            <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Fluxo de caixa e DRE</li>
+                            <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Lançamentos recorrentes</li>
+                            <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Avisos de vencimentos</li>
+                            <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Gestão de contas bancárias e contatos</li>
+                            <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Relatórios gerenciais e centro de custos</li>
+                            <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Multiempresas · 50 GB · Usuários ilimitados</li>
+                        </ul>
+                        <a href="https://app.zeonpaper.com.br/register" class="btn btn-outline" style="width: 100%;">Começar com Organiza</a>
+                    </div>
 
-                            <!-- PLANO CRESCE -->
-                            <div class="price-card featured grid-item">
-                                <div class="pop-tag">MAIS POPULAR</div>
-                                <h3 class="plan-name">Cresce</h3>
-                                <p class="plan-desc">Financeiro completo com nota fiscal e recibo no mesmo lugar.</p>
+                    <!-- PLANO CRESCE -->
+                    <div class="price-card featured grid-item">
+                        <div class="pop-tag">MAIS POPULAR</div>
+                        <h3 class="plan-name">Cresce</h3>
+                        <p class="plan-desc">Financeiro completo com nota fiscal e recibo no mesmo lugar.</p>
+                        <div class="price-period-options">
+                            <div class="price-option">
+                                <span class="label">Mensal</span>
+                                <span class="value">R$ 49,90/mês</span>
+                            </div>
+                            <div class="price-option highlight">
+                                <span class="label">Trimestral <span class="discount">-20%</span></span>
+                                <span class="value">R$ 119,70 <small>≈ R$ 39,90/mês</small></span>
+                            </div>
+                            <div class="price-option">
+                                <span class="label">Anual <span class="discount">-40%</span></span>
+                                <span class="value">R$ 358,80 <small>≈ R$ 29,90/mês</small></span>
+                            </div>
+                        </div>
+                        <ul class="plan-features-list">
+                            <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Tudo do Organiza incluído</li>
+                            <li><i data-lucide="star" size="15" style="color: #f59e0b;"></i> Geração de recibo de pagamento</li>
+                            <li><i data-lucide="star" size="15" style="color: #f59e0b;"></i> Emissão de até 50 NFs/mês</li>
+                            <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> R$ 0,30 por NF excedente</li>
+                            <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> 150 GB · Usuários ilimitados</li>
+                        </ul>
+                        <a href="https://app.zeonpaper.com.br/register" class="btn btn-cta" style="width: 100%;">Começar com Cresce</a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                                <div class="price-period-options">
-                                    <div class="price-option">
-                                        <span class="label">Mensal</span>
-                                        <span class="value">R$ 49,90/mês</span>
-                                    </div>
-                                    <div class="price-option highlight">
-                                        <span class="label">Trimestral <span class="discount">-20%</span></span>
-                                        <span class="value">R$ 119,70 <small>≈ R$ 39,90/mês</small></span>
-                                    </div>
-                                    <div class="price-option">
-                                        <span class="label">Anual <span class="discount">-40%</span></span>
-                                        <span class="value">R$ 358,80 <small>≈ R$ 29,90/mês</small></span>
-                                    </div>
-                                </div>
-
-                                <ul class="plan-features-list">
-                                    <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Tudo do Organiza incluído</li>
-                                    <li><i data-lucide="star" size="15" style="color: #f59e0b;"></i> Geração de recibo de pagamento</li>
-                                    <li><i data-lucide="star" size="15" style="color: #f59e0b;"></i> Emissão de até 50 NFs/mês</li>
-                                    <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> R$ 0,30 por NF excedente</li>
-                                    <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> 150 GB · Usuários ilimitados</li>
-                                </ul>
-                                <a href="https://app.zeonpaper.com.br/register" class="btn btn-cta" style="width: 100%;">Começar com Cresce</a>
+        <!-- ═══ TESTIMONIALS ═══ -->
+        <section class="testimonials-section" data-reveal>
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 4rem;">
+                    <span class="section-label">Depoimentos</span>
+                    <h2 class="section-title">Quem já usa, <span class="text-gradient">aprova</span></h2>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <div class="testimonial-quote">"O Zeonpaper transformou a forma como controlo o financeiro da minha agência. Saí da planilha e nunca mais volto."</div>
+                        <div class="testimonial-author">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=maria" alt="Maria Silva">
+                            <div>
+                                <div class="testimonial-author-name">Maria Silva</div>
+                                <div class="testimonial-author-role">Agência de Marketing • SP</div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- TESTIMONIALS COLUMN -->
-                    <div>
-                        <div class="testimonials-grid-vertical">
-                            <div class="testimonial-card">
-                                <div class="testimonial-stars">★★★★★</div>
-                                <div class="testimonial-quote">"O Zeonpaper transformou a forma como controlo o financeiro da minha agência. Saí da planilha e nunca mais volto."</div>
-                                <div class="testimonial-author">
-                                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=maria" alt="Maria Silva">
-                                    <div>
-                                        <div class="testimonial-author-name">Maria Silva</div>
-                                        <div class="testimonial-author-role">Agência de Marketing • SP</div>
-                                    </div>
-                                </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <div class="testimonial-quote">"Como prestador de serviço, não tinha tempo pra controlar financeiro. Agora vejo tudo em tempo real pelo celular."</div>
+                        <div class="testimonial-author">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=carlos" alt="Carlos Mendes">
+                            <div>
+                                <div class="testimonial-author-name">Carlos Mendes</div>
+                                <div class="testimonial-author-role">Consultor de TI • MG</div>
                             </div>
-                            <div class="testimonial-card">
-                                <div class="testimonial-stars">★★★★★</div>
-                                <div class="testimonial-quote">"Como prestador de serviço, não tinha tempo pra controlar financeiro. Agora vejo tudo em tempo real pelo celular."</div>
-                                <div class="testimonial-author">
-                                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=carlos" alt="Carlos Mendes">
-                                    <div>
-                                        <div class="testimonial-author-name">Carlos Mendes</div>
-                                        <div class="testimonial-author-role">Consultor de TI • MG</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card">
-                                <div class="testimonial-stars">★★★★★</div>
-                                <div class="testimonial-quote">"Suporte via WhatsApp que responde rápido, sistema intuitivo e sem complicações. Exatamente o que meu comércio precisava."</div>
-                                <div class="testimonial-author">
-                                    <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=ana" alt="Ana Costa">
-                                    <div>
-                                        <div class="testimonial-author-name">Ana Costa</div>
-                                        <div class="testimonial-author-role">Loja de Roupas • RJ</div>
-                                    </div>
-                                </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">★★★★★</div>
+                        <div class="testimonial-quote">"Suporte via WhatsApp que responde rápido, sistema intuitivo e sem complicações. Exatamente o que meu comércio precisava."</div>
+                        <div class="testimonial-author">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=ana" alt="Ana Costa">
+                            <div>
+                                <div class="testimonial-author-name">Ana Costa</div>
+                                <div class="testimonial-author-role">Loja de Roupas • RJ</div>
                             </div>
                         </div>
                     </div>
