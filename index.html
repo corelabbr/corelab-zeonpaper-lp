@@ -910,14 +910,66 @@
             max-width: 920px;
             margin: 0 auto;
         }
+
+        /* Toggle de período */
+        .price-toggle-wrap {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 3.5rem;
+        }
+        .price-toggle {
+            display: inline-flex;
+            background: var(--bg-light);
+            border-radius: 999px;
+            padding: 5px;
+            gap: 4px;
+            border: 1px solid rgba(0,0,0,0.07);
+        }
+        .price-toggle-btn {
+            background: transparent;
+            border: none;
+            padding: 0.55rem 1.4rem;
+            border-radius: 999px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.875rem;
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            white-space: nowrap;
+        }
+        .price-toggle-btn:hover { color: var(--text-dark); }
+        .price-toggle-btn.active {
+            background: var(--secondary);
+            color: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+        .toggle-badge {
+            background: var(--accent);
+            color: white;
+            padding: 0.1rem 0.45rem;
+            border-radius: 999px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            letter-spacing: 0.02em;
+        }
+        .price-toggle-btn.active .toggle-badge {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* Card */
         .price-card {
             background: white;
             padding: 2.5rem 2rem;
             border-radius: var(--radius-xl);
-            border: 1px solid rgba(0,0,0,0.06);
+            border: 1px solid rgba(0,0,0,0.08);
             position: relative;
-            box-shadow: var(--shadow-soft);
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
         .price-card:hover { box-shadow: var(--shadow-card); transform: translateY(-2px); }
         .price-card.featured {
@@ -938,39 +990,52 @@
             letter-spacing: 0.05em;
             white-space: nowrap;
         }
-        .plan-name { font-size: 1.3rem; margin-bottom: 0.25rem; }
-        .plan-desc { color: var(--text-gray); font-size: 0.85rem; margin-bottom: 1.5rem; line-height: 1.5; }
+        .plan-name { font-size: 1.4rem; margin-bottom: 0.4rem; }
+        .plan-desc { color: var(--text-gray); font-size: 0.875rem; line-height: 1.55; }
 
-        .price-period-options { display: flex; flex-direction: column; gap: 0.5rem; margin-bottom: 1.5rem; }
-        .price-option {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0.7rem 1rem;
-            border-radius: var(--radius-sm);
-            background: var(--bg-light);
-            font-size: 0.85rem;
+        /* Preço em destaque */
+        .plan-price {
+            display: flex;
+            align-items: baseline;
+            gap: 0.2rem;
+            margin: 1.75rem 0 0.4rem;
+        }
+        .plan-price-currency {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            align-self: flex-start;
+            margin-top: 0.5rem;
+        }
+        .plan-price-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-dark);
+            letter-spacing: -0.04em;
+            line-height: 1;
             transition: all 0.2s ease;
         }
-        .price-option.highlight {
-            background: var(--primary-light);
-            border: 1.5px solid rgba(121, 59, 237, 0.3);
-            color: var(--primary);
+        .plan-price-period {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            font-weight: 500;
         }
-        .price-option .label { font-weight: 600; display: flex; align-items: center; gap: 0.4rem; }
-        .price-option .value { font-weight: 700; font-size: 0.85rem; }
-        .price-option .value small { font-weight: 400; color: var(--text-gray); }
-        .discount {
-            background: var(--gradient);
-            color: white;
-            padding: 0.1rem 0.4rem;
-            border-radius: 99px;
-            font-size: 0.7rem;
-            font-weight: 800;
+        .plan-price-note {
+            font-size: 0.78rem;
+            color: var(--text-gray);
+            margin-bottom: 1.75rem;
+            line-height: 1.5;
+            min-height: 2.4em;
         }
-
-        .plan-features-list { list-style: none; margin-bottom: 1.5rem; }
+        .plan-features-divider {
+            border: none;
+            border-top: 1px solid rgba(0,0,0,0.07);
+            margin: 1.5rem 0;
+        }
+        .plan-features-list { list-style: none; flex: 1; }
         .plan-features-list li {
             display: flex; gap: 0.6rem; align-items: flex-start;
-            margin-bottom: 0.6rem; font-size: 0.85rem;
+            margin-bottom: 0.65rem; font-size: 0.875rem; color: var(--text-dark);
         }
         .plan-features-list i { flex-shrink: 0; margin-top: 2px; }
 
@@ -1404,30 +1469,40 @@
         <!-- ═══ PRICING ═══ -->
         <section id="precos" class="pricing-section" data-reveal>
             <div class="container">
-                <div class="text-center" style="margin-bottom: 4rem;">
-                    <span class="section-label">Preços</span>
-                    <h2 class="section-title">Planos que <span class="text-gradient">cabem no bolso</span></h2>
-                    <p class="section-subtitle">Sem surpresas, sem letras miúdas. Usuários ilimitados em todos os planos.</p>
+                <div class="text-center" style="margin-bottom: 2.5rem;">
+                    <span class="section-label">Planos</span>
+                    <h2 class="section-title">Encontre o plano <span class="text-gradient">certo para você</span></h2>
+                    <p class="section-subtitle">7 dias grátis, sem cartão de crédito. Cancele quando quiser.</p>
                 </div>
+
+                <!-- Toggle de período -->
+                <div class="price-toggle-wrap">
+                    <div class="price-toggle">
+                        <button class="price-toggle-btn active" data-period="anual">Anual <span class="toggle-badge">-14%</span></button>
+                        <button class="price-toggle-btn" data-period="trimestral">Trimestral <span class="toggle-badge">-9%</span></button>
+                        <button class="price-toggle-btn" data-period="mensal">Mensal</button>
+                    </div>
+                </div>
+
                 <div class="pricing-grid">
                     <!-- PLANO ORGANIZA -->
                     <div class="price-card grid-item">
                         <h3 class="plan-name">Organiza</h3>
                         <p class="plan-desc">Para quem quer sair da planilha e organizar o financeiro do negócio.</p>
-                        <div class="price-period-options">
-                            <div class="price-option">
-                                <span class="label">Mensal</span>
-                                <span class="value">R$ 27,90/mês</span>
-                            </div>
-                            <div class="price-option highlight">
-                                <span class="label">Trimestral <span class="discount">-9%</span></span>
-                                <span class="value">R$ 75,90 <small>≈ R$ 25,30/mês</small></span>
-                            </div>
-                            <div class="price-option">
-                                <span class="label">Anual <span class="discount">-14%</span></span>
-                                <span class="value">R$ 286,80 <small>≈ R$ 23,90/mês</small></span>
-                            </div>
+                        <div class="plan-price">
+                            <span class="plan-price-currency">R$</span>
+                            <span class="plan-price-amount"
+                                data-anual="23,90"
+                                data-trimestral="25,30"
+                                data-mensal="27,90">23,90</span>
+                            <span class="plan-price-period">/mês</span>
                         </div>
+                        <p class="plan-price-note"
+                            data-anual="Cobrança anual — R$ 286,80. Economize 14%."
+                            data-trimestral="Cobrança trimestral — R$ 75,90. Economize 9%."
+                            data-mensal="Cobrança mensal. Sem fidelidade.">Cobrança anual — R$ 286,80. Economize 14%.</p>
+                        <a href="https://app.zeonpaper.com.br/register" class="btn btn-outline" style="width: 100%;">Começar com Organiza</a>
+                        <hr class="plan-features-divider">
                         <ul class="plan-features-list">
                             <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Contas a pagar e receber</li>
                             <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Fluxo de caixa e DRE</li>
@@ -1437,7 +1512,6 @@
                             <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Relatórios gerenciais e centro de custos</li>
                             <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Multiempresas · 50 GB · Usuários ilimitados</li>
                         </ul>
-                        <a href="https://app.zeonpaper.com.br/register" class="btn btn-outline" style="width: 100%;">Começar com Organiza</a>
                     </div>
 
                     <!-- PLANO CRESCE -->
@@ -1445,20 +1519,20 @@
                         <div class="pop-tag">MAIS POPULAR</div>
                         <h3 class="plan-name">Cresce</h3>
                         <p class="plan-desc">Financeiro completo com nota fiscal e recibo no mesmo lugar.</p>
-                        <div class="price-period-options">
-                            <div class="price-option">
-                                <span class="label">Mensal</span>
-                                <span class="value">R$ 49,90/mês</span>
-                            </div>
-                            <div class="price-option highlight">
-                                <span class="label">Trimestral <span class="discount">-20%</span></span>
-                                <span class="value">R$ 119,70 <small>≈ R$ 39,90/mês</small></span>
-                            </div>
-                            <div class="price-option">
-                                <span class="label">Anual <span class="discount">-40%</span></span>
-                                <span class="value">R$ 358,80 <small>≈ R$ 29,90/mês</small></span>
-                            </div>
+                        <div class="plan-price">
+                            <span class="plan-price-currency">R$</span>
+                            <span class="plan-price-amount"
+                                data-anual="29,90"
+                                data-trimestral="39,90"
+                                data-mensal="49,90">29,90</span>
+                            <span class="plan-price-period">/mês</span>
                         </div>
+                        <p class="plan-price-note"
+                            data-anual="Cobrança anual — R$ 358,80. Economize 40%."
+                            data-trimestral="Cobrança trimestral — R$ 119,70. Economize 20%."
+                            data-mensal="Cobrança mensal. Sem fidelidade.">Cobrança anual — R$ 358,80. Economize 40%.</p>
+                        <a href="https://app.zeonpaper.com.br/register" class="btn btn-cta" style="width: 100%;">Começar com Cresce</a>
+                        <hr class="plan-features-divider">
                         <ul class="plan-features-list">
                             <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Tudo do Organiza incluído</li>
                             <li><i data-lucide="star" size="15" style="color: #f59e0b;"></i> Geração de recibo de pagamento</li>
@@ -1466,7 +1540,6 @@
                             <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> R$ 0,30 por NF excedente</li>
                             <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> 150 GB · Usuários ilimitados</li>
                         </ul>
-                        <a href="https://app.zeonpaper.com.br/register" class="btn btn-cta" style="width: 100%;">Começar com Cresce</a>
                     </div>
                 </div>
             </div>
@@ -1732,6 +1805,27 @@
                     item.classList.add('active');
                     const screen = document.querySelector(`.feat-screenshot[data-feat="${idx}"]`);
                     if (screen) screen.classList.add('active');
+                });
+            });
+        })();
+
+        // Pricing period toggle
+        (function() {
+            const btns = document.querySelectorAll('.price-toggle-btn');
+            const amounts = document.querySelectorAll('.plan-price-amount');
+            const notes = document.querySelectorAll('.plan-price-note');
+
+            btns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const period = btn.dataset.period;
+                    btns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    amounts.forEach(el => {
+                        el.textContent = el.dataset[period];
+                    });
+                    notes.forEach(el => {
+                        el.textContent = el.dataset[period];
+                    });
                 });
             });
         })();
