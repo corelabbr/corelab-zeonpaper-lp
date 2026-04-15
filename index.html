@@ -792,6 +792,7 @@
             line-height: 1.65;
             margin: 0;
         }
+        .feat-inline-img { display: none; }
         .features-screenshot-panel {
             position: sticky;
             top: 100px;
@@ -832,6 +833,16 @@
         @media (max-width: 900px) {
             .features-showcase-layout { grid-template-columns: 1fr; }
             .features-screenshot-panel { display: none; }
+            .feat-item.active .feat-item-body {
+                max-height: 600px;
+            }
+            .feat-inline-img {
+                display: block;
+                width: 100%;
+                margin-top: 1rem;
+                border-radius: 10px;
+                box-shadow: 0 4px 20px rgba(121, 59, 237, 0.10);
+            }
             .features-trust { gap: 1.5rem; }
         }
 
@@ -916,10 +927,11 @@
             display: flex; gap: 0.75rem; align-items: flex-start;
             margin-bottom: 0.75rem; font-size: 0.9rem; color: var(--text-dark);
         }
-        .for-who-list i { flex-shrink: 0; margin-top: 2px; }
+        .for-who-list li svg,
+        .for-who-list li i { flex-shrink: 0; width: 16px; height: 16px; margin-top: 3px; }
 
         /* ─── TESTIMONIALS ─── */
-        .testimonials-section { background: var(--bg-light); border-radius: 48px 48px 0 0; }
+        .testimonials-section { background: white; border-radius: 48px 48px 0 0; }
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -1026,7 +1038,7 @@
         }
 
         /* ─── PRICING ─── */
-        .pricing-section { background: white; }
+        .pricing-section { background: var(--bg-light); }
         .pricing-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -1848,6 +1860,7 @@
                             </div>
                             <div class="feat-item-body">
                                 <p>Gerencie várias empresas em uma conta só. Relatórios separados, visão unificada — sem precisar trocar de sistema nem misturar as finanças.</p>
+                                <img src="assets/mais-cnpjs.png" class="feat-inline-img" alt="Multiempresas">
                             </div>
                         </div>
                         <div class="feat-item" data-feat="1">
@@ -1857,6 +1870,7 @@
                             </div>
                             <div class="feat-item-body">
                                 <p>Lance contas a pagar e receber em segundos. Saiba exatamente o que entra, o que sai e onde está indo o dinheiro do seu negócio.</p>
+                                <img src="assets/contas-pagar-receber.png" class="feat-inline-img" alt="Contas a Pagar e Receber">
                             </div>
                         </div>
                         <div class="feat-item" data-feat="2">
@@ -1866,6 +1880,7 @@
                             </div>
                             <div class="feat-item-body">
                                 <p>Veja o saldo projetado dos próximos dias. Identifique períodos de aperto e tome decisões antes que virem um problema.</p>
+                                <img src="assets/fluxo-caixa.png" class="feat-inline-img" alt="Fluxo de Caixa">
                             </div>
                         </div>
                         <div class="feat-item" data-feat="3">
@@ -1875,6 +1890,7 @@
                             </div>
                             <div class="feat-item-body">
                                 <p>O Zeonpaper avisa você antes de cada vencimento. Nunca mais aquela multa que chegou de surpresa e comeu o lucro do mês.</p>
+                                <img src="assets/vencimentos.png" class="feat-inline-img" alt="Avisos de Vencimentos">
                             </div>
                         </div>
                         <div class="feat-item" data-feat="4">
@@ -1884,6 +1900,7 @@
                             </div>
                             <div class="feat-item-body">
                                 <p>Bradesco, Nubank, caixa físico — cadastre tudo e acompanhe os saldos em tempo real. Fim da confusão entre contas bancárias.</p>
+                                <img src="assets/contas-bancarias.png" class="feat-inline-img" alt="Gestão de Contas Bancárias">
                             </div>
                         </div>
                         <div class="feat-item" data-feat="5">
@@ -1893,6 +1910,7 @@
                             </div>
                             <div class="feat-item-body">
                                 <p>Cadastre clientes e fornecedores e veja o histórico financeiro de cada um. Nunca mais ficar sem saber quem está em dia.</p>
+                                <img src="assets/fornecedores.png" class="feat-inline-img" alt="Gestão de Contatos">
                             </div>
                         </div>
                     </div>
@@ -1937,6 +1955,38 @@
                         <div class="step-number">3</div>
                         <h3>Veja seu lucro real</h3>
                         <p>Relatórios gerenciais, DRE e fluxo de caixa atualizados em tempo real. Clareza total.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ PARA QUEM É ═══ -->
+        <section class="for-who-section" data-reveal>
+            <div class="container">
+                <div class="text-center" style="margin-bottom: 4rem;">
+                    <span class="section-label">Para quem é</span>
+                    <h2 class="section-title">O Zeonpaper é para <span class="text-gradient">você?</span></h2>
+                </div>
+                <div class="for-who-grid">
+                    <div class="for-who-card positive">
+                        <h3><i data-lucide="check-circle" size="20" style="color: #22C55E;"></i> Feito para</h3>
+                        <ul class="for-who-list">
+                            <li><i data-lucide="check" size="16" style="color: #22C55E;"></i> MEI e microempresa que quer sair da planilha</li>
+                            <li><i data-lucide="check" size="16" style="color: #22C55E;"></i> Prestador de serviço e autônomo</li>
+                            <li><i data-lucide="check" size="16" style="color: #22C55E;"></i> Pequeno comércio e loja local</li>
+                            <li><i data-lucide="check" size="16" style="color: #22C55E;"></i> Clínicas e consultórios</li>
+                            <li><i data-lucide="check" size="16" style="color: #22C55E;"></i> Agências e consultorias pequenas</li>
+                            <li><i data-lucide="check" size="16" style="color: #22C55E;"></i> Quem achou ERP complexo demais</li>
+                        </ul>
+                    </div>
+                    <div class="for-who-card negative">
+                        <h3><i data-lucide="x-circle" size="20" style="color: #ef4444;"></i> Não é para</h3>
+                        <ul class="for-who-list">
+                            <li><i data-lucide="x" size="16" style="color: #ef4444;"></i> Empresas que precisam de ERP completo (estoque, produção)</li>
+                            <li><i data-lucide="x" size="16" style="color: #ef4444;"></i> Quem precisa de folha de pagamento / RH</li>
+                            <li><i data-lucide="x" size="16" style="color: #ef4444;"></i> Escritórios de contabilidade (BPO)</li>
+                            <li><i data-lucide="x" size="16" style="color: #ef4444;"></i> Empresas com faturamento acima de R$ 1M/ano</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -2026,68 +2076,36 @@
                 <div class="testimonials-grid">
                     <div class="testimonial-card">
                         <div class="testimonial-stars">★★★★★</div>
-                        <div class="testimonial-quote">"O Zeonpaper transformou a forma como controlo o financeiro da minha agência. Saí da planilha e nunca mais volto."</div>
+                        <div class="testimonial-quote">"Eu vivia perdida na planilha. Hoje sei exatamente quanto entra e quanto sai da minha loja. O Zeonpaper salvou meu negócio."</div>
                         <div class="testimonial-author">
-                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=maria" alt="Maria Silva">
+                            <img src="https://i.pravatar.cc/80?img=47" alt="Renata Oliveira">
                             <div>
-                                <div class="testimonial-author-name">Maria Silva</div>
-                                <div class="testimonial-author-role">Agência de Marketing • SP</div>
+                                <div class="testimonial-author-name">Renata Oliveira</div>
+                                <div class="testimonial-author-role">Brechó da Re • Curitiba, PR</div>
                             </div>
                         </div>
                     </div>
                     <div class="testimonial-card">
                         <div class="testimonial-stars">★★★★★</div>
-                        <div class="testimonial-quote">"Como prestador de serviço, não tinha tempo pra controlar financeiro. Agora vejo tudo em tempo real pelo celular."</div>
+                        <div class="testimonial-quote">"Tenho 2 CNPJs e antes era uma bagunça. Agora controlo tudo num lugar só e sei o lucro real de cada empresa."</div>
                         <div class="testimonial-author">
-                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=carlos" alt="Carlos Mendes">
+                            <img src="https://i.pravatar.cc/80?img=68" alt="Felipe Santana">
                             <div>
-                                <div class="testimonial-author-name">Carlos Mendes</div>
-                                <div class="testimonial-author-role">Consultor de TI • MG</div>
+                                <div class="testimonial-author-name">Felipe Santana</div>
+                                <div class="testimonial-author-role">Santana Elétrica • Belo Horizonte, MG</div>
                             </div>
                         </div>
                     </div>
                     <div class="testimonial-card">
                         <div class="testimonial-stars">★★★★★</div>
-                        <div class="testimonial-quote">"Suporte via WhatsApp que responde rápido, sistema intuitivo e sem complicações. Exatamente o que meu comércio precisava."</div>
+                        <div class="testimonial-quote">"O suporte pelo WhatsApp responde rápido e me ajudou a configurar tudo. Em 2 dias já tava usando no dia a dia do salão."</div>
                         <div class="testimonial-author">
-                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=ana" alt="Ana Costa">
+                            <img src="https://i.pravatar.cc/80?img=45" alt="Camila Ferreira">
                             <div>
-                                <div class="testimonial-author-name">Ana Costa</div>
-                                <div class="testimonial-author-role">Loja de Roupas • RJ</div>
+                                <div class="testimonial-author-name">Camila Ferreira</div>
+                                <div class="testimonial-author-role">Studio Camila Hair • Salvador, BA</div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ═══ PARA QUEM É ═══ -->
-        <section class="for-who-section" data-reveal>
-            <div class="container">
-                <div class="text-center" style="margin-bottom: 4rem;">
-                    <span class="section-label">Para quem é</span>
-                    <h2 class="section-title">O Zeonpaper é para <span class="text-gradient">você?</span></h2>
-                </div>
-                <div class="for-who-grid">
-                    <div class="for-who-card positive">
-                        <h3><i data-lucide="check-circle" size="20" style="color: #22C55E;"></i> Feito para</h3>
-                        <ul class="for-who-list">
-                            <li><i data-lucide="check" size="16" style="color: #22C55E;"></i> MEI e microempresa que quer sair da planilha</li>
-                            <li><i data-lucide="check" size="16" style="color: #22C55E;"></i> Prestador de serviço e autônomo</li>
-                            <li><i data-lucide="check" size="16" style="color: #22C55E;"></i> Pequeno comércio e loja local</li>
-                            <li><i data-lucide="check" size="16" style="color: #22C55E;"></i> Clínicas e consultórios</li>
-                            <li><i data-lucide="check" size="16" style="color: #22C55E;"></i> Agências e consultorias pequenas</li>
-                            <li><i data-lucide="check" size="16" style="color: #22C55E;"></i> Quem achou ERP complexo demais</li>
-                        </ul>
-                    </div>
-                    <div class="for-who-card negative">
-                        <h3><i data-lucide="x-circle" size="20" style="color: #ef4444;"></i> Não é para</h3>
-                        <ul class="for-who-list">
-                            <li><i data-lucide="x" size="16" style="color: #ef4444;"></i> Empresas que precisam de ERP completo (estoque, produção)</li>
-                            <li><i data-lucide="x" size="16" style="color: #ef4444;"></i> Quem precisa de folha de pagamento / RH</li>
-                            <li><i data-lucide="x" size="16" style="color: #ef4444;"></i> Escritórios de contabilidade (BPO)</li>
-                            <li><i data-lucide="x" size="16" style="color: #ef4444;"></i> Empresas com faturamento acima de R$ 1M/ano</li>
-                        </ul>
                     </div>
                 </div>
             </div>
