@@ -1313,19 +1313,6 @@
         }
         .footer-logo img { height: 30px; width: auto; display: block; filter: brightness(0) invert(1); }
 
-        /* ─── WHATSAPP ─── */
-        .whatsapp-float {
-            position: fixed; bottom: 28px; right: 28px;
-            background: #25d366; color: white;
-            width: 56px; height: 56px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 14px rgba(37, 211, 102, 0.3);
-            z-index: 1000;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-        .whatsapp-float:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); }
-
         /* ─── SCROLL MARGIN ─── */
         #funcionalidades, #precos, #faq, #como-funciona {
             scroll-margin-top: 80px;
@@ -1464,9 +1451,6 @@
             .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
             .footer-bottom { flex-direction: column; text-align: center; gap: 0.5rem; }
             .footer-bottom p { font-size: 0.8rem; }
-
-            /* ── WhatsApp float ── */
-            .whatsapp-float { bottom: 16px; right: 16px; width: 48px; height: 48px; }
         }
         /* ─── LEAD QUALIFICATION MODAL ─── */
         .lead-overlay {
@@ -2278,7 +2262,6 @@
                 </div>
                 <div class="footer-col">
                     <h4>Suporte</h4>
-                    <a href="https://wa.me/5500000000000" target="_blank">WhatsApp</a>
                     <a href="mailto:contato@zeonpaper.com.br">E-mail</a>
                 </div>
             </div>
@@ -2288,11 +2271,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- WhatsApp -->
-    <a href="https://wa.me/5500000000000" class="whatsapp-float" target="_blank" aria-label="Falar pelo WhatsApp">
-        <i data-lucide="message-circle" size="26"></i>
-    </a>
 
     <!-- LEAD QUALIFICATION MODAL -->
     <div class="lead-overlay" id="lead-overlay">
