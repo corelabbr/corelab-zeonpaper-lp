@@ -20,19 +20,22 @@
     <meta property="og:url" content="https://lp.zeonpaper.com.br">
     <meta property="og:title" content="Zeonpaper | Sistema Financeiro para MEI e Pequena Empresa">
     <meta property="og:description" content="Saia da planilha e organize o financeiro do seu negócio sem ERP pesado. Contas a pagar, receber e fluxo de caixa. Teste grátis 7 dias, sem cartão.">
-    <meta property="og:image" content="https://lp.zeonpaper.com.br/assets/og-image.png">
+    <meta property="og:image" content="https://lp.zeonpaper.com.br/assets/og-image.jpg">
     <meta property="og:locale" content="pt_BR">
     <meta property="og:site_name" content="Zeonpaper">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Zeonpaper | Sistema Financeiro para MEI e Pequena Empresa">
     <meta name="twitter:description" content="Saia da planilha e organize o financeiro do seu negócio sem ERP pesado. Contas a pagar, receber e fluxo de caixa. Teste grátis 7 dias, sem cartão.">
-    <meta name="twitter:image" content="https://lp.zeonpaper.com.br/assets/og-image.png">
+    <meta name="twitter:image" content="https://lp.zeonpaper.com.br/assets/og-image.jpg">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Preload LCP image -->
+    <link rel="preload" as="image" href="./assets/hero_1.webp" type="image/webp" fetchpriority="high">
 
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -1693,7 +1696,10 @@
         <div class="container nav-content">
             <div class="nav-left">
                 <a href="#" class="logo">
-                    <img src="./assets/logo.png" alt="Zeonpaper">
+                    <picture>
+                        <source srcset="./assets/logo.webp" type="image/webp">
+                        <img src="./assets/logo.png" alt="Zeonpaper" decoding="async">
+                    </picture>
                 </a>
                 <div class="nav-links">
                     <a href="#funcionalidades" class="nav-link">Funcionalidades</a>
@@ -1762,28 +1768,40 @@
                     <div class="hero-img-wrap">
                         <div class="hero-carousel">
                             <div class="hero-slide active">
-                                <img src="./assets/hero_1.png" alt="Lúcia, dona do Salão da Lúcia">
+                                <picture>
+                                    <source srcset="./assets/hero_1.webp" type="image/webp">
+                                    <img src="./assets/hero_1.png" alt="Lúcia, dona do Salão da Lúcia" fetchpriority="high" decoding="async">
+                                </picture>
                                 <div class="hero-persona">
                                     <span class="persona-name">Lúcia</span>
                                     <span class="persona-biz">Salão da Lúcia · Beleza &amp; Afeto</span>
                                 </div>
                             </div>
                             <div class="hero-slide">
-                                <img src="./assets/hero_2.png" alt="Marcos, dono do Café & Cozinha Dona Maria">
+                                <picture>
+                                    <source srcset="./assets/hero_2.webp" type="image/webp">
+                                    <img src="./assets/hero_2.png" alt="Marcos, dono do Café & Cozinha Dona Maria" loading="lazy" decoding="async">
+                                </picture>
                                 <div class="hero-persona">
                                     <span class="persona-name">Marcos</span>
                                     <span class="persona-biz">Café &amp; Cozinha Dona Maria</span>
                                 </div>
                             </div>
                             <div class="hero-slide">
-                                <img src="./assets/hero_3.png" alt="Ana, empreendedora de pedidos artesanais">
+                                <picture>
+                                    <source srcset="./assets/hero_3.webp" type="image/webp">
+                                    <img src="./assets/hero_3.png" alt="Ana, empreendedora de pedidos artesanais" loading="lazy" decoding="async">
+                                </picture>
                                 <div class="hero-persona">
                                     <span class="persona-name">Ana</span>
                                     <span class="persona-biz">Pedidos Artesanais · E-commerce</span>
                                 </div>
                             </div>
                             <div class="hero-slide">
-                                <img src="./assets/hero_4.png" alt="Rafael, dono da Academia Força & Movimento">
+                                <picture>
+                                    <source srcset="./assets/hero_4.webp" type="image/webp">
+                                    <img src="./assets/hero_4.png" alt="Rafael, dono da Academia Força & Movimento" loading="lazy" decoding="async">
+                                </picture>
                                 <div class="hero-persona">
                                     <span class="persona-name">Rafael</span>
                                     <span class="persona-biz">Academia Força &amp; Movimento</span>
@@ -1872,7 +1890,10 @@
                             </div>
                             <div class="feat-item-body">
                                 <p>Gerencie várias empresas em uma conta só. Relatórios separados, visão unificada — sem precisar trocar de sistema nem misturar as finanças.</p>
-                                <img src="assets/mais-cnpjs.png" class="feat-inline-img" alt="Multiempresas">
+                                <picture>
+                                    <source srcset="assets/mais-cnpjs.webp" type="image/webp">
+                                    <img src="assets/mais-cnpjs.png" class="feat-inline-img" alt="Multiempresas" loading="lazy" decoding="async">
+                                </picture>
                             </div>
                         </div>
                         <div class="feat-item" data-feat="1">
@@ -1882,7 +1903,10 @@
                             </div>
                             <div class="feat-item-body">
                                 <p>Lance contas a pagar e receber em segundos. Saiba exatamente o que entra, o que sai e onde está indo o dinheiro do seu negócio.</p>
-                                <img src="assets/contas-pagar-receber.png" class="feat-inline-img" alt="Contas a Pagar e Receber">
+                                <picture>
+                                    <source srcset="assets/contas-pagar-receber.webp" type="image/webp">
+                                    <img src="assets/contas-pagar-receber.png" class="feat-inline-img" alt="Contas a Pagar e Receber" loading="lazy" decoding="async">
+                                </picture>
                             </div>
                         </div>
                         <div class="feat-item" data-feat="2">
@@ -1892,7 +1916,10 @@
                             </div>
                             <div class="feat-item-body">
                                 <p>Veja o saldo projetado dos próximos dias. Identifique períodos de aperto e tome decisões antes que virem um problema.</p>
-                                <img src="assets/fluxo-caixa.png" class="feat-inline-img" alt="Fluxo de Caixa">
+                                <picture>
+                                    <source srcset="assets/fluxo-caixa.webp" type="image/webp">
+                                    <img src="assets/fluxo-caixa.png" class="feat-inline-img" alt="Fluxo de Caixa" loading="lazy" decoding="async">
+                                </picture>
                             </div>
                         </div>
                         <div class="feat-item" data-feat="3">
@@ -1902,7 +1929,10 @@
                             </div>
                             <div class="feat-item-body">
                                 <p>O Zeonpaper avisa você antes de cada vencimento. Nunca mais aquela multa que chegou de surpresa e comeu o lucro do mês.</p>
-                                <img src="assets/vencimentos.png" class="feat-inline-img" alt="Avisos de Vencimentos">
+                                <picture>
+                                    <source srcset="assets/vencimentos.webp" type="image/webp">
+                                    <img src="assets/vencimentos.png" class="feat-inline-img" alt="Avisos de Vencimentos" loading="lazy" decoding="async">
+                                </picture>
                             </div>
                         </div>
                         <div class="feat-item" data-feat="4">
@@ -1912,7 +1942,10 @@
                             </div>
                             <div class="feat-item-body">
                                 <p>Bradesco, Nubank, caixa físico — cadastre tudo e acompanhe os saldos em tempo real. Fim da confusão entre contas bancárias.</p>
-                                <img src="assets/contas-bancarias.png" class="feat-inline-img" alt="Gestão de Contas Bancárias">
+                                <picture>
+                                    <source srcset="assets/contas-bancarias.webp" type="image/webp">
+                                    <img src="assets/contas-bancarias.png" class="feat-inline-img" alt="Gestão de Contas Bancárias" loading="lazy" decoding="async">
+                                </picture>
                             </div>
                         </div>
                         <div class="feat-item" data-feat="5">
@@ -1922,18 +1955,39 @@
                             </div>
                             <div class="feat-item-body">
                                 <p>Cadastre clientes e fornecedores e veja o histórico financeiro de cada um. Nunca mais ficar sem saber quem está em dia.</p>
-                                <img src="assets/fornecedores.png" class="feat-inline-img" alt="Gestão de Contatos">
+                                <picture>
+                                    <source srcset="assets/fornecedores.webp" type="image/webp">
+                                    <img src="assets/fornecedores.png" class="feat-inline-img" alt="Gestão de Contatos" loading="lazy" decoding="async">
+                                </picture>
                             </div>
                         </div>
                     </div>
                     <!-- Direita: screenshots -->
                     <div class="features-screenshot-panel">
-                        <img src="assets/mais-cnpjs.png" class="feat-screenshot active" data-feat="0" alt="Multiempresas">
-                        <img src="assets/contas-pagar-receber.png" class="feat-screenshot" data-feat="1" alt="Contas a Pagar e Receber">
-                        <img src="assets/fluxo-caixa.png" class="feat-screenshot" data-feat="2" alt="Fluxo de Caixa">
-                        <img src="assets/vencimentos.png" class="feat-screenshot" data-feat="3" alt="Avisos de Vencimentos">
-                        <img src="assets/contas-bancarias.png" class="feat-screenshot" data-feat="4" alt="Gestão de Contas Bancárias">
-                        <img src="assets/fornecedores.png" class="feat-screenshot" data-feat="5" alt="Gestão de Contatos">
+                        <picture>
+                            <source srcset="assets/mais-cnpjs.webp" type="image/webp">
+                            <img src="assets/mais-cnpjs.png" class="feat-screenshot active" data-feat="0" alt="Multiempresas" loading="lazy" decoding="async">
+                        </picture>
+                        <picture>
+                            <source srcset="assets/contas-pagar-receber.webp" type="image/webp">
+                            <img src="assets/contas-pagar-receber.png" class="feat-screenshot" data-feat="1" alt="Contas a Pagar e Receber" loading="lazy" decoding="async">
+                        </picture>
+                        <picture>
+                            <source srcset="assets/fluxo-caixa.webp" type="image/webp">
+                            <img src="assets/fluxo-caixa.png" class="feat-screenshot" data-feat="2" alt="Fluxo de Caixa" loading="lazy" decoding="async">
+                        </picture>
+                        <picture>
+                            <source srcset="assets/vencimentos.webp" type="image/webp">
+                            <img src="assets/vencimentos.png" class="feat-screenshot" data-feat="3" alt="Avisos de Vencimentos" loading="lazy" decoding="async">
+                        </picture>
+                        <picture>
+                            <source srcset="assets/contas-bancarias.webp" type="image/webp">
+                            <img src="assets/contas-bancarias.png" class="feat-screenshot" data-feat="4" alt="Gestão de Contas Bancárias" loading="lazy" decoding="async">
+                        </picture>
+                        <picture>
+                            <source srcset="assets/fornecedores.webp" type="image/webp">
+                            <img src="assets/fornecedores.png" class="feat-screenshot" data-feat="5" alt="Gestão de Contatos" loading="lazy" decoding="async">
+                        </picture>
                     </div>
                 </div>
                 <!-- Trust bar -->
@@ -2132,7 +2186,10 @@
                     <p class="section-subtitle">Somos um time pequeno, dedicado a resolver o problema financeiro de quem trabalha por conta própria.</p>
                 </div>
                 <div class="support-visual">
-                    <img src="./assets/team.png" alt="Time Zeonpaper">
+                    <picture>
+                        <source srcset="./assets/team.webp" type="image/webp">
+                        <img src="./assets/team.png" alt="Time Zeonpaper" loading="lazy" decoding="async">
+                    </picture>
                     <div class="support-pill p1"><i data-lucide="zap" size="16"></i> Rápido</div>
                     <div class="support-pill p2"><i data-lucide="heart" size="16"></i> Humanizado</div>
                     <div class="support-pill p3"><i data-lucide="shield" size="16"></i> Seguro</div>
@@ -2193,7 +2250,10 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="#" class="footer-logo">
-                        <img src="./assets/logo.png" alt="Zeonpaper">
+                        <picture>
+                        <source srcset="./assets/logo.webp" type="image/webp">
+                        <img src="./assets/logo.png" alt="Zeonpaper" decoding="async">
+                    </picture>
                     </a>
                     <p>Sistema financeiro simples para MEI, microempresa e prestador de serviço. Controle contas a pagar e receber sem ERP pesado.</p>
                 </div>
