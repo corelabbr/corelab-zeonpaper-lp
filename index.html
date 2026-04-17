@@ -2500,7 +2500,16 @@
             const whatsInput = document.getElementById('lead-whatsapp');
 
             const WEBHOOK = 'https://hook.us1.make.com/4w9ewge45cwym9rj6vcmrycu1ifrz1sr';
-            const REGISTER_BASE = 'https://app.zeonpaper.com.br/user/register';
+            const CHECKOUT_URLS = {
+                organiza: {
+                    trimestral: 'https://link.fanthon.com.br/DUkqJD361K/plano-basico-trimestral-982051/customer',
+                    anual:      'https://link.fanthon.com.br/DUkqJD361K/plano-basico-anual-274899/customer'
+                },
+                cresce: {
+                    trimestral: 'https://link.fanthon.com.br/DUkqJD361K/plano-extra-trimestral-349009/customer',
+                    anual:      'https://link.fanthon.com.br/DUkqJD361K/plano-extra-anual-402048/customer'
+                }
+            };
             const DISQUALIFY_VALUES = { porte: 'outro', faturamento: '80k+', controle: 'sistema' };
 
             let leadData = {};
@@ -2648,17 +2657,27 @@
                     })
                 }).catch(() => {});
 
-                // Redirect
-                const params = new URLSearchParams({
-                    plan: period,
-                    media: 'lp',
+                // Lead conversion event → GTM → GA4 / Meta Ads / Google Ads
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({
+                    event: 'lead_qualificado',
+                    lead_plano: ctaPlan || '',
+                    lead_periodo: period,
                     lead_porte: leadData.porte,
                     lead_faturamento: leadData.faturamento,
                     lead_controle: leadData.controle
                 });
-                if (ctaPlan) params.set('plano', ctaPlan);
 
-                window.location.href = REGISTER_BASE + '?' + params.toString();
+                // Redirect
+                const planUrls = ctaPlan && CHECKOUT_URLS[ctaPlan];
+                const checkoutUrl = planUrls ? planUrls[period] : null;
+
+                if (checkoutUrl) {
+                    window.location.href = checkoutUrl;
+                } else {
+                    window.location.href = '#precos';
+                    closeModal();
+                }
             });
 
             // Close handlers
