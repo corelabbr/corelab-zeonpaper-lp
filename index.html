@@ -1555,10 +1555,6 @@
             border-color: var(--primary);
             color: white;
         }
-        .lead-chip.disqualify.selected {
-            background: #ef4444;
-            border-color: #ef4444;
-        }
         .lead-submit {
             width: 100%;
             padding: 1rem;
@@ -1620,51 +1616,6 @@
         }
         .lead-input:focus { border-color: var(--primary); }
         .lead-input::placeholder { color: #94a3b8; }
-
-        /* Disqualification screen */
-        .lead-disqualify {
-            display: none;
-            text-align: center;
-            padding: 1rem 0;
-        }
-        .lead-disqualify.show { display: block; }
-        .lead-disqualify-icon {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            background: rgba(239, 68, 68, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.25rem;
-            font-size: 1.5rem;
-        }
-        .lead-disqualify h3 {
-            font-size: 1.15rem;
-            font-weight: 800;
-            color: var(--text-dark);
-            margin-bottom: 0.75rem;
-        }
-        .lead-disqualify p {
-            font-size: 0.88rem;
-            color: var(--text-gray);
-            line-height: 1.65;
-            margin-bottom: 1.5rem;
-        }
-        .lead-dismiss {
-            width: 100%;
-            padding: 0.85rem;
-            border: 1.5px solid rgba(0, 0, 0, 0.12);
-            border-radius: var(--radius-btn);
-            background: white;
-            font-family: inherit;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-dark);
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .lead-dismiss:hover { background: rgba(0, 0, 0, 0.03); }
 
         @media (max-width: 480px) {
             .lead-modal { padding: 1.75rem 1.25rem; }
@@ -2327,7 +2278,7 @@
                         <button class="lead-chip" data-value="ate5k">Até R$ 5 mil</button>
                         <button class="lead-chip" data-value="5k-20k">R$ 5 mil – R$ 20 mil</button>
                         <button class="lead-chip" data-value="20k-80k">R$ 20 mil – R$ 80 mil</button>
-                        <button class="lead-chip disqualify" data-value="80k+">Acima de R$ 80 mil</button>
+                        <button class="lead-chip" data-value="80k+">Acima de R$ 80 mil</button>
                     </div>
                 </div>
 
@@ -2337,20 +2288,13 @@
                         <button class="lead-chip" data-value="planilha">Planilha</button>
                         <button class="lead-chip" data-value="caderno">Caderno / anotações</button>
                         <button class="lead-chip" data-value="nenhum">Não controlo</button>
-                        <button class="lead-chip disqualify" data-value="sistema">Já uso um sistema</button>
+                        <button class="lead-chip" data-value="sistema">Já uso um sistema</button>
                     </div>
                 </div>
 
                 <button class="lead-submit" id="lead-submit" disabled>Criar minha conta</button>
             </div>
 
-            <!-- Disqualification -->
-            <div class="lead-disqualify" id="lead-disqualify">
-                <div class="lead-disqualify-icon">&#128566;</div>
-                <h3>O Zeonpaper pode não ser o melhor fit agora</h3>
-                <p>O Zeonpaper foi feito para MEIs, microempresas e pequenos negócios que ainda controlam o financeiro de forma manual. Para perfis mais avançados, pode fazer mais sentido avaliar o Contaazul ou o Omie.</p>
-                <button class="lead-dismiss" id="lead-dismiss">Entendi</button>
-            </div>
         </div>
     </div>
 
@@ -2488,11 +2432,9 @@
             const modal = document.getElementById('lead-modal');
             const step1 = document.getElementById('lead-step1');
             const step2 = document.getElementById('lead-step2');
-            const disqualifyScreen = document.getElementById('lead-disqualify');
             const nextBtn = document.getElementById('lead-next');
             const submitBtn = document.getElementById('lead-submit');
             const closeBtn = document.getElementById('lead-close');
-            const dismissBtn = document.getElementById('lead-dismiss');
             const dots = modal.querySelectorAll('.lead-step-dot');
 
             const nameInput = document.getElementById('lead-name');
@@ -2510,7 +2452,6 @@
                     anual:      'https://link.fanthon.com.br/DUkqJD361K/plano-extra-anual-402048/customer'
                 }
             };
-            const DISQUALIFY_VALUES = { faturamento: '80k+', controle: 'sistema' };
 
             let leadData = {};
             let ctaPlan = null;
@@ -2542,7 +2483,6 @@
             function goToStep(n) {
                 step1.style.display = n === 1 ? '' : 'none';
                 step2.style.display = n === 2 ? '' : 'none';
-                disqualifyScreen.classList.remove('show');
                 dots.forEach(d => d.classList.toggle('active', +d.dataset.step <= n));
                 modal.scrollTop = 0;
             }
@@ -2609,37 +2549,8 @@
 
             // Step 2 submit
             submitBtn.addEventListener('click', function() {
-                const isDisqualified = Object.entries(DISQUALIFY_VALUES).some(
-                    ([key, val]) => leadData[key] === val
-                );
-
-                if (isDisqualified) {
-                    step2.style.display = 'none';
-                    disqualifyScreen.classList.add('show');
-
-                    // Dispatch full data (desqualificado)
-                    fetch(WEBHOOK, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({
-                            etapa: 2,
-                            qualificado: false,
-                            nome: leadData.nome,
-                            email: leadData.email,
-                            whatsapp: leadData.whatsapp,
-                            lead_porte: leadData.porte,
-                            lead_faturamento: leadData.faturamento,
-                            lead_controle: leadData.controle,
-                            plano: ctaPlan || '',
-                            periodo: getActivePeriod()
-                        })
-                    }).catch(() => {});
-                    return;
-                }
-
                 const period = getActivePeriod();
 
-                // Dispatch full data (qualificado)
                 fetch(WEBHOOK, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -2682,7 +2593,6 @@
 
             // Close handlers
             closeBtn.addEventListener('click', closeModal);
-            dismissBtn.addEventListener('click', closeModal);
             overlay.addEventListener('click', function(e) {
                 if (e.target === overlay) closeModal();
             });
