@@ -2145,7 +2145,7 @@
                         <button class="lead-chip" data-value="mei">MEI</button>
                         <button class="lead-chip" data-value="micro">Microempresa</button>
                         <button class="lead-chip" data-value="pequena">Pequena empresa</button>
-                        <button class="lead-chip disqualify" data-value="outro">Médio ou grande porte</button>
+                        <button class="lead-chip" data-value="outro">Médio ou grande porte</button>
                     </div>
                 </div>
 
@@ -2155,7 +2155,7 @@
                         <button class="lead-chip" data-value="ate5k">Até R$ 5 mil</button>
                         <button class="lead-chip" data-value="5k-20k">R$ 5 mil – R$ 20 mil</button>
                         <button class="lead-chip" data-value="20k-80k">R$ 20 mil – R$ 80 mil</button>
-                        <button class="lead-chip disqualify" data-value="80k+">Acima de R$ 80 mil</button>
+                        <button class="lead-chip" data-value="80k+">Acima de R$ 80 mil</button>
                     </div>
                 </div>
 
@@ -2165,7 +2165,7 @@
                         <button class="lead-chip" data-value="planilha">Planilha</button>
                         <button class="lead-chip" data-value="caderno">Caderno / anotações</button>
                         <button class="lead-chip" data-value="nenhum">Não controlo</button>
-                        <button class="lead-chip disqualify" data-value="sistema">Já uso um sistema</button>
+                        <button class="lead-chip" data-value="sistema">Já uso um sistema</button>
                     </div>
                 </div>
 
@@ -2407,7 +2407,6 @@
             submitBtn.addEventListener('click', function() {
                 const period = getActivePeriod();
 
-                // Dispatch full data (qualificado)
                 fetch(WEBHOOK, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
