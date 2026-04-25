@@ -40,7 +40,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
     <!-- Preload LCP image -->
-    <link rel="preload" as="image" href="./assets/hero_1.webp" type="image/webp" fetchpriority="high">
+    <link rel="preload" as="image" href="./assets/example-zeonpaper.png" fetchpriority="high">
 
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -367,16 +367,17 @@
 
         .hero-grid {
             display: grid;
-            grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
-            gap: 4rem;
-            align-items: stretch;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+            gap: 3rem;
+            align-items: center;
         }
 
         .hero h1 {
-            font-size: clamp(2.8rem, 5vw, 4rem);
+            font-size: clamp(2.4rem, 4vw, 3.5rem);
             margin-bottom: 1.5rem;
             color: white;
             letter-spacing: -0.04em;
+            line-height: 1.1;
         }
         .hero p { font-size: 1.0625rem; color: #94a3b8; margin-bottom: 2rem; line-height: 1.65; }
         .hero-label {
@@ -512,30 +513,8 @@
         }
 
         /* ─── HERO EMAIL CAPTURE ─── */
-        .hero-email-form {
-            display: flex;
-            gap: 8px;
-            max-width: 460px;
+        .hero-cta-wrap {
             margin-bottom: 1.5rem;
-        }
-        .hero-email-input {
-            flex: 1;
-            min-width: 0;
-            height: 54px;
-            padding: 0 18px;
-            background: rgba(255,255,255,0.07);
-            border: 1px solid rgba(255,255,255,0.14);
-            border-radius: var(--radius-btn);
-            font-size: 0.95rem;
-            font-family: inherit;
-            color: var(--white);
-            outline: none;
-            transition: border-color 0.2s, background 0.2s;
-        }
-        .hero-email-input::placeholder { color: rgba(255,255,255,0.35); }
-        .hero-email-input:focus {
-            border-color: var(--accent);
-            background: rgba(255,255,255,0.10);
         }
 
         /* ─── HERO SOCIAL PROOF ROW ─── */
@@ -577,65 +556,37 @@
             color: rgba(255,255,255,0.50);
         }
 
-        /* ─── HERO IMAGE CAROUSEL ─── */
+        /* ─── HERO PRODUCT SHOT ─── */
         .hero-img-wrap {
             flex: 1;
-            min-height: 520px;
-            border-radius: var(--radius-section);
-            overflow: hidden;
             position: relative;
-            box-shadow: 0 -10px 60px rgba(121, 59, 237, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .hero-carousel {
-            position: absolute;
-            inset: 0;
+        .hero-product-frame {
+            position: relative;
+            width: 110%;
+            margin-right: -10%;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(121, 59, 237, 0.35);
+            box-shadow:
+                0 0 0 1px rgba(255,255,255,0.06),
+                0 24px 64px rgba(0,0,0,0.55),
+                0 0 100px rgba(121, 59, 237, 0.35);
+            transform: perspective(1200px) rotateY(-4deg) rotateX(2deg);
+            transform-origin: left center;
         }
-        .hero-slide {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity 1.2s ease-in-out;
-        }
-        .hero-slide.active { opacity: 1; }
-        .hero-slide img {
+        .hero-product-frame img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center center;
             display: block;
         }
-        .hero-persona {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            z-index: 2;
-            background: rgba(2, 8, 23, 0.62);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.10);
-            border-radius: var(--radius-card);
-            padding: 9px 14px;
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            pointer-events: none;
-        }
-        .persona-name {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--white);
-            line-height: 1.3;
-        }
-        .persona-biz {
-            font-size: 0.72rem;
-            color: rgba(255,255,255,0.58);
-            line-height: 1.3;
-        }
-        .hero-img-wrap::after {
+        .hero-product-frame::before {
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(to bottom, var(--bg-dark) 0%, transparent 22%);
+            background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 50%);
             pointer-events: none;
             z-index: 1;
         }
@@ -1333,35 +1284,16 @@
             .hero h1 { order: 2; }
             .hero .hero-text > p { order: 3; }
             .hero-visual { order: 4; width: 100%; max-width: 420px; margin: 0 auto; }
-            .hero-email-form { order: 5; }
+            .hero-cta-wrap { order: 5; }
             .hero-social-proof { order: 6; }
             .hero-proof { order: 7; }
-            .hero-img-wrap { min-height: 360px; max-height: 420px; }
-            .hero-slide img { object-position: center top; }
-            .hero-float-badge { right: 8px; }
-            .hero-float-lucro, .hero-float-receber {
-                padding: 8px 12px;
-                gap: 8px;
-                left: 8px;
+            .hero-img-wrap { overflow: visible; }
+            .hero-product-frame {
+                width: 100%;
+                margin-right: 0;
+                transform: none;
             }
-            .hero-float-lucro { bottom: auto; top: 40%; }
-            .hero-float-receber { bottom: auto; top: 58%; }
-            .hero-float-lucro .float-icon,
-            .hero-float-receber .float-icon { width: 30px; height: 30px; border-radius: 8px; }
-            .hero-float-lucro .float-value,
-            .hero-float-receber .float-value { font-size: 0.85rem; }
-            .hero-float-lucro .float-sublabel,
-            .hero-float-receber .float-sublabel { font-size: 0.62rem; }
-            .hero-email-form { flex-direction: column; max-width: 100%; gap: 12px; }
-            .hero-email-form input {
-                height: auto;
-                padding: 1.1rem 1.25rem;
-                font-size: 1rem;
-                background: rgba(255,255,255,0.10);
-                border: 1.5px solid rgba(255,255,255,0.20);
-                border-radius: var(--radius-card);
-            }
-            .hero-email-form .btn-cta { width: 100%; justify-content: center; font-size: 1.05rem; padding: 1.1rem 1.25rem; border-radius: var(--radius-card); }
+            .hero-cta-wrap .btn-cta { width: 100%; justify-content: center; font-size: 1.05rem; padding: 1.1rem 1.25rem; border-radius: var(--radius-card); }
             .hero-social-proof { justify-content: center; }
             .hero-proof { flex-direction: column; align-items: center; gap: 0.75rem; padding-top: 1.5rem; }
             .hero-proof-item { white-space: normal; font-size: 0.9rem; }
@@ -1555,6 +1487,10 @@
             border-color: var(--primary);
             color: white;
         }
+        .lead-chip.disqualify.selected {
+            background: var(--primary);
+            border-color: var(--primary);
+        }
         .lead-submit {
             width: 100%;
             padding: 1rem;
@@ -1617,6 +1553,7 @@
         .lead-input:focus { border-color: var(--primary); }
         .lead-input::placeholder { color: #94a3b8; }
 
+
         @media (max-width: 480px) {
             .lead-modal { padding: 1.75rem 1.25rem; }
             .lead-title { font-size: 1.2rem; }
@@ -1649,7 +1586,7 @@
             </div>
             <div class="nav-actions">
                 <a href="https://app.zeonpaper.com.br/user/login" class="btn-nav-login">Login</a>
-                <a href="#precos" class="btn-nav-cta">Criar conta</a>
+                <a href="#" class="btn-nav-cta" data-lead-modal>Comece grátis</a>
             </div>
             <button class="hamburger" aria-label="Abrir menu" aria-expanded="false">
                 <span></span><span></span><span></span>
@@ -1662,7 +1599,7 @@
             <a href="#faq" class="mobile-drawer-link">FAQ</a>
             <div class="mobile-drawer-actions">
                 <a href="https://app.zeonpaper.com.br/user/login" class="mobile-drawer-login">Login</a>
-                <a href="#precos" class="mobile-drawer-cta">Criar conta grátis</a>
+                <a href="#" class="mobile-drawer-cta" data-lead-modal>Comece grátis</a>
             </div>
         </div>
     </nav>
@@ -1673,12 +1610,11 @@
             <div class="container hero-grid">
                 <div class="hero-text grid-item">
                     <span class="hero-label">Sistema financeiro para MEI e pequena empresa</span>
-                    <h1>Controle financeiro simples: <span class="text-gradient">contas a pagar, receber e fluxo de caixa</span></h1>
+                    <h1>Controle financeiro simples:<br><span class="text-gradient">contas a pagar, receber e fluxo de caixa</span></h1>
                     <p>Saia da planilha e organize o financeiro do seu negócio sem ERP pesado. Para MEI, microempresa, autônomo e prestador de&nbsp;serviço.</p>
-                    <form class="hero-email-form" action="https://app.zeonpaper.com.br/register" method="GET">
-                        <input type="email" name="email" class="hero-email-input" placeholder="Seu melhor e-mail" required>
-                        <button type="submit" class="btn btn-cta">Organizar agora</button>
-                    </form>
+                    <div class="hero-cta-wrap">
+                        <a href="#" class="btn btn-cta" data-lead-modal>Comece gratuitamente</a>
+                    </div>
                     <div class="hero-social-proof">
                         <div class="social-avatars">
                             <img class="social-avatar" src="https://i.pravatar.cc/80?img=32" alt="Empreendedora">
@@ -1706,67 +1642,8 @@
                 </div>
                 <div class="hero-visual grid-item">
                     <div class="hero-img-wrap">
-                        <div class="hero-carousel">
-                            <div class="hero-slide active">
-                                <picture>
-                                    <source srcset="./assets/hero_1.webp" type="image/webp">
-                                    <img src="./assets/hero_1.png" alt="Lúcia, dona do Salão da Lúcia" fetchpriority="high" decoding="async">
-                                </picture>
-                                <div class="hero-persona">
-                                    <span class="persona-name">Lúcia</span>
-                                    <span class="persona-biz">Salão da Lúcia · Beleza &amp; Afeto</span>
-                                </div>
-                            </div>
-                            <div class="hero-slide">
-                                <picture>
-                                    <source srcset="./assets/hero_2.webp" type="image/webp">
-                                    <img src="./assets/hero_2.png" alt="Marcos, dono do Café & Cozinha Dona Maria" loading="lazy" decoding="async">
-                                </picture>
-                                <div class="hero-persona">
-                                    <span class="persona-name">Marcos</span>
-                                    <span class="persona-biz">Café &amp; Cozinha Dona Maria</span>
-                                </div>
-                            </div>
-                            <div class="hero-slide">
-                                <picture>
-                                    <source srcset="./assets/hero_3.webp" type="image/webp">
-                                    <img src="./assets/hero_3.png" alt="Ana, empreendedora de pedidos artesanais" loading="lazy" decoding="async">
-                                </picture>
-                                <div class="hero-persona">
-                                    <span class="persona-name">Ana</span>
-                                    <span class="persona-biz">Pedidos Artesanais · E-commerce</span>
-                                </div>
-                            </div>
-                            <div class="hero-slide">
-                                <picture>
-                                    <source srcset="./assets/hero_4.webp" type="image/webp">
-                                    <img src="./assets/hero_4.png" alt="Rafael, dono da Academia Força & Movimento" loading="lazy" decoding="async">
-                                </picture>
-                                <div class="hero-persona">
-                                    <span class="persona-name">Rafael</span>
-                                    <span class="persona-biz">Academia Força &amp; Movimento</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Floating badge: social proof -->
-                    <div class="hero-float hero-float-badge">
-                        <span class="float-number">+1.200</span>
-                        <span class="float-label">Empresas ativas</span>
-                    </div>
-                    <!-- Floating metric cards -->
-                    <div class="hero-float-receber">
-                        <div class="float-icon"><i data-lucide="clock" size="16"></i></div>
-                        <div>
-                            <div class="float-value" id="card-receber">R$ 1.800</div>
-                            <div class="float-sublabel">A receber</div>
-                        </div>
-                    </div>
-                    <div class="hero-float-lucro">
-                        <div class="float-icon"><i data-lucide="wallet" size="16"></i></div>
-                        <div>
-                            <div class="float-value" id="card-lucro">R$ 4.200</div>
-                            <div class="float-sublabel">Lucro líquido</div>
+                        <div class="hero-product-frame">
+                            <img src="./assets/example-zeonpaper.png" alt="Dashboard Zeonpaper" fetchpriority="high" decoding="async">
                         </div>
                     </div>
                 </div>
@@ -2030,7 +1907,7 @@
                         <p class="plan-price-note"
                             data-trimestral="Cobrança trimestral — R$ 75,90. Economize 9%."
                             data-anual="Cobrança anual — R$ 286,80. Economize 14%.">Cobrança trimestral — R$ 75,90. Economize 9%.</p>
-                        <a href="https://app.zeonpaper.com.br/register" class="btn btn-outline" style="width: 100%;" data-lead-modal data-plan="organiza">Assinar Organiza</a>
+                        <a href="#" class="btn btn-outline" style="width: 100%;" data-lead-modal data-plan="organiza">Comece gratuitamente</a>
                         <hr class="plan-features-divider">
                         <ul class="plan-features-list">
                             <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Contas a pagar e receber</li>
@@ -2056,7 +1933,7 @@
                         <p class="plan-price-note"
                             data-trimestral="Cobrança trimestral — R$ 119,70. Economize 9%."
                             data-anual="Cobrança anual — R$ 358,80. Economize 14%.">Cobrança trimestral — R$ 119,70. Economize 9%.</p>
-                        <a href="https://app.zeonpaper.com.br/register" class="btn btn-cta" style="width: 100%;" data-lead-modal data-plan="cresce">Assinar Cresce</a>
+                        <a href="#" class="btn btn-cta" style="width: 100%;" data-lead-modal data-plan="cresce">Comece gratuitamente</a>
                         <hr class="plan-features-divider">
                         <ul class="plan-features-list">
                             <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Tudo do Organiza incluído</li>
@@ -2309,39 +2186,6 @@
         }, { threshold: 0.08 });
         document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
 
-        // Hero carousel -- crossfade every 5 s + sync metric cards
-        (function () {
-            const slides = document.querySelectorAll('.hero-slide');
-            if (!slides.length) return;
-
-            const PERSONAS = [
-                { lucro: 'R$ 4.200',  receber: 'R$ 1.800' },
-                { lucro: 'R$ 24.800', receber: 'R$ 8.400' },
-                { lucro: 'R$ 3.100',  receber: 'R$ 2.200' },
-                { lucro: 'R$ 15.400', receber: 'R$ 4.600' },
-            ];
-            const elLucro   = document.getElementById('card-lucro');
-            const elReceber = document.getElementById('card-receber');
-            const cards     = [elLucro, elReceber].filter(Boolean);
-
-            function updateCards(idx) {
-                const p = PERSONAS[idx];
-                cards.forEach(c => c.style.opacity = '0');
-                setTimeout(() => {
-                    if (elLucro)   elLucro.textContent   = p.lucro;
-                    if (elReceber) elReceber.textContent = p.receber;
-                    cards.forEach(c => c.style.opacity = '1');
-                }, 350);
-            }
-
-            let cur = 0;
-            setInterval(() => {
-                slides[cur].classList.remove('active');
-                cur = (cur + 1) % slides.length;
-                slides[cur].classList.add('active');
-                updateCards(cur);
-            }, 5000);
-        })();
 
         // Nav active state on scroll
         (function () {
@@ -2426,6 +2270,27 @@
                 if (!wasOpen) item.classList.add('open');
             });
         });
+        // ─── UTM cookie capture ───
+        (function() {
+            const params = new URLSearchParams(window.location.search);
+            const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+            const expires = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toUTCString();
+            utmKeys.forEach(function(key) {
+                if (params.has(key)) {
+                    document.cookie = key + '=' + encodeURIComponent(params.get(key)) + '; expires=' + expires + '; path=/';
+                }
+            });
+        })();
+
+        function getUtmMedia() {
+            const keys = ['utm_source', 'utm_medium', 'utm_campaign'];
+            for (var i = 0; i < keys.length; i++) {
+                var match = document.cookie.match('(?:^|; )' + keys[i] + '=([^;]*)');
+                if (match) return decodeURIComponent(match[1]);
+            }
+            return 'lp';
+        }
+
         // ─── Lead Qualification Modal (2 steps) ───
         (function() {
             const overlay = document.getElementById('lead-overlay');
@@ -2442,16 +2307,7 @@
             const whatsInput = document.getElementById('lead-whatsapp');
 
             const WEBHOOK = 'https://hook.us1.make.com/4w9ewge45cwym9rj6vcmrycu1ifrz1sr';
-            const CHECKOUT_URLS = {
-                organiza: {
-                    trimestral: 'https://link.fanthon.com.br/DUkqJD361K/plano-basico-trimestral-982051/customer',
-                    anual:      'https://link.fanthon.com.br/DUkqJD361K/plano-basico-anual-274899/customer'
-                },
-                cresce: {
-                    trimestral: 'https://link.fanthon.com.br/DUkqJD361K/plano-extra-trimestral-349009/customer',
-                    anual:      'https://link.fanthon.com.br/DUkqJD361K/plano-extra-anual-402048/customer'
-                }
-            };
+            const REGISTER_URL = 'https://app.zeonpaper.com.br/user/register';
 
             let leadData = {};
             let ctaPlan = null;
@@ -2579,16 +2435,8 @@
                     lead_controle: leadData.controle
                 });
 
-                // Redirect
-                const planUrls = ctaPlan && CHECKOUT_URLS[ctaPlan];
-                const checkoutUrl = planUrls ? planUrls[period] : null;
-
-                if (checkoutUrl) {
-                    window.location.href = checkoutUrl;
-                } else {
-                    window.location.href = '#precos';
-                    closeModal();
-                }
+                // Redirect para cadastro com UTM
+                window.location.href = REGISTER_URL + '?plan=mensal&media=' + encodeURIComponent(getUtmMedia());
             });
 
             // Close handlers
@@ -2601,26 +2449,6 @@
             });
         })();
 
-        // ─── Hero email form → webhook + redirect ───
-        (function() {
-            const heroForm = document.querySelector('.hero-email-form');
-            if (!heroForm) return;
-            const WEBHOOK = 'https://hook.us1.make.com/4w9ewge45cwym9rj6vcmrycu1ifrz1sr';
-
-            heroForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const email = heroForm.querySelector('.hero-email-input').value.trim();
-                if (!email) return;
-
-                fetch(WEBHOOK, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ etapa: 'hero', email: email })
-                }).catch(() => {});
-
-                window.location.href = 'https://app.zeonpaper.com.br/user/register?media=lp&email=' + encodeURIComponent(email);
-            });
-        })();
     </script>
 </body>
 </html>
