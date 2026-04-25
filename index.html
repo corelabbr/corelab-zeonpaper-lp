@@ -1,6 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
+    <!-- A/B Split 50/50 → v2 -->
+    <script>
+    (function() {
+        var cookie = document.cookie.match('(?:^|; )ab_variant=([^;]*)');
+        var variant = cookie ? decodeURIComponent(cookie[1]) : null;
+        if (!variant) {
+            variant = Math.random() < 0.5 ? 'v2' : 'v1';
+            var exp = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toUTCString();
+            document.cookie = 'ab_variant=' + variant + '; expires=' + exp + '; path=/';
+        }
+        if (variant === 'v2') {
+            window.location.replace('/v2');
+        }
+    })();
+    </script>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
