@@ -519,9 +519,33 @@
             white-space: nowrap;
         }
 
-        /* ─── HERO EMAIL CAPTURE ─── */
-        .hero-cta-wrap {
+        /* ─── HERO LEAD FORM ─── */
+        .hero-cta-wrap { margin-bottom: 1.5rem; }
+        .hero-lead-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 420px;
             margin-bottom: 1.5rem;
+        }
+        .hero-form-input {
+            height: 52px;
+            padding: 0 16px;
+            background: rgba(255,255,255,0.07);
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: var(--radius-btn);
+            font-size: 0.9rem;
+            font-family: inherit;
+            color: var(--white);
+            outline: none;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .hero-form-input::placeholder { color: rgba(255,255,255,0.35); }
+        .hero-form-input:focus { border-color: var(--accent); background: rgba(255,255,255,0.10); }
+        .hero-form-microcopy {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.45);
+            text-align: center;
         }
 
         /* ─── HERO SOCIAL PROOF ROW ─── */
@@ -1153,6 +1177,16 @@
         }
         .plan-features-list i { flex-shrink: 0; margin-top: 2px; }
 
+        .plan-trial-note {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--accent-dark);
+            margin-bottom: 1rem;
+        }
+        .plan-trial-note i { flex-shrink: 0; color: var(--accent-dark); }
         .plan-nf-note {
             font-size: 0.7rem;
             color: #94a3b8;
@@ -1296,6 +1330,7 @@
             .hero .hero-text > p { order: 3; }
             .hero-visual { order: 4; width: 100%; max-width: 420px; margin: 0 auto; }
             .hero-cta-wrap { order: 5; }
+            .hero-lead-form { order: 5; }
             .hero-social-proof { order: 6; }
             .hero-proof { order: 7; }
             .hero-img-wrap { overflow: visible; }
@@ -1310,7 +1345,9 @@
             .hero-proof-item { white-space: normal; font-size: 0.9rem; }
             .proof-stats { gap: 2rem; }
             .proof-divider { display: none; }
-            .feature-grid, .step-grid, .pricing-grid, .for-who-grid, .testimonials-grid, .diag-grid { grid-template-columns: 1fr; }
+            .feature-grid, .step-grid, .pricing-grid, .for-who-grid, .testimonials-grid, .diag-grid, .benefits-grid { grid-template-columns: 1fr; }
+            .hero-lead-form { max-width: 100%; }
+            .cta-lead-form { max-width: 100%; }
             .features-trust { flex-wrap: wrap; gap: 0.75rem; }
 
             .price-toggle-wrap { margin-bottom: 2rem; }
@@ -1395,7 +1432,66 @@
             .footer-bottom { flex-direction: column; text-align: center; gap: 0.5rem; }
             .footer-bottom p { font-size: 0.8rem; }
         }
-        /* ─── LEAD QUALIFICATION MODAL ─── */
+        /* ─── BENEFÍCIOS ─── */
+        .benefits-section { background: var(--white); }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+        .benefit-card {
+            padding: 2rem 1.75rem;
+            background: var(--bg-light);
+            border-radius: var(--radius-section);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .benefit-icon {
+            width: 48px; height: 48px;
+            border-radius: var(--radius-card);
+            background: var(--primary-light);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--primary);
+            flex-shrink: 0;
+        }
+        .benefit-card h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.35;
+        }
+
+        /* ─── CTA FORM ─── */
+        .cta-lead-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 420px;
+            margin: 2rem auto 0;
+        }
+        .cta-form-input {
+            height: 52px;
+            padding: 0 16px;
+            background: rgba(255,255,255,0.09);
+            border: 1px solid rgba(255,255,255,0.18);
+            border-radius: var(--radius-btn);
+            font-size: 0.9rem;
+            font-family: inherit;
+            color: var(--white);
+            outline: none;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .cta-form-input::placeholder { color: rgba(255,255,255,0.40); }
+        .cta-form-input:focus { border-color: var(--accent); background: rgba(255,255,255,0.12); }
+        .cta-form-microcopy {
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.45);
+            text-align: center;
+            margin-top: 4px;
+        }
+
+        /* ─── LEAD PLAN MODAL ─── */
         .lead-overlay {
             position: fixed;
             inset: 0;
@@ -1414,6 +1510,18 @@
         .lead-overlay.open {
             opacity: 1;
             visibility: visible;
+        }
+        .lead-plan-badge {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            margin-bottom: 1rem;
         }
         .lead-modal {
             background: white;
@@ -1560,6 +1668,7 @@
             background: white;
             outline: none;
             transition: border-color 0.2s;
+            margin-bottom: 1rem;
         }
         .lead-input:focus { border-color: var(--primary); }
         .lead-input::placeholder { color: #94a3b8; }
@@ -1589,28 +1698,19 @@
                         <img src="./assets/logo.png" alt="Zeonpaper" decoding="async">
                     </picture>
                 </a>
-                <div class="nav-links">
-                    <a href="#funcionalidades" class="nav-link">Funcionalidades</a>
-                    <a href="#precos" class="nav-link">Preços</a>
-                    <a href="#faq" class="nav-link">FAQ</a>
-                </div>
             </div>
             <div class="nav-actions">
                 <a href="https://app.zeonpaper.com.br/user/login" class="btn-nav-login">Login</a>
-                <a href="#" class="btn-nav-cta" data-lead-modal>Comece grátis</a>
+                <a href="#hero-form" class="btn-nav-cta">Criar conta grátis</a>
             </div>
             <button class="hamburger" aria-label="Abrir menu" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
         </div>
         <div class="mobile-drawer" aria-hidden="true">
-            <a href="#funcionalidades" class="mobile-drawer-link">Funcionalidades</a>
-            <a href="#precos" class="mobile-drawer-link">Preços</a>
-            <a href="#como-funciona" class="mobile-drawer-link">Como funciona</a>
-            <a href="#faq" class="mobile-drawer-link">FAQ</a>
             <div class="mobile-drawer-actions">
                 <a href="https://app.zeonpaper.com.br/user/login" class="mobile-drawer-login">Login</a>
-                <a href="#" class="mobile-drawer-cta" data-lead-modal>Comece grátis</a>
+                <a href="#hero-form" class="mobile-drawer-cta">Criar conta grátis</a>
             </div>
         </div>
     </nav>
@@ -1620,12 +1720,14 @@
         <section class="hero">
             <div class="container hero-grid">
                 <div class="hero-text grid-item">
-                    <span class="hero-label">Sistema financeiro para MEI e pequena empresa</span>
-                    <h1>Controle financeiro simples:<br><span class="text-gradient">contas a pagar, receber e fluxo de caixa</span></h1>
-                    <p>Saia da planilha e organize o financeiro do seu negócio sem ERP pesado. Para MEI, microempresa, autônomo e prestador de&nbsp;serviço.</p>
-                    <div class="hero-cta-wrap">
-                        <a href="#" class="btn btn-cta" data-lead-modal>Comece gratuitamente</a>
-                    </div>
+                    <h1>Organize o financeiro do seu negócio <span class="text-gradient">sem depender de planilhas</span></h1>
+                    <p>Para MEIs, microempresas e pequenos negócios que precisam controlar contas a pagar e receber com mais clareza, sem ERP pesado.</p>
+                    <form class="hero-lead-form" id="hero-form" novalidate>
+                        <input type="text" name="nome" class="hero-form-input" placeholder="Seu nome" autocomplete="name" required>
+                        <input type="email" name="email" class="hero-form-input" placeholder="Seu melhor e-mail" autocomplete="email" required>
+                        <button type="submit" class="btn btn-cta" style="height: 52px; font-size: 1rem;">Criar minha conta grátis</button>
+                        <p class="hero-form-microcopy">7 dias grátis · Sem cartão · Cancele quando quiser</p>
+                    </form>
                     <div class="hero-social-proof">
                         <div class="social-avatars">
                             <img class="social-avatar" src="https://i.pravatar.cc/80?img=32" alt="Empreendedora">
@@ -1699,7 +1801,27 @@
 
                 <p class="diag-closing">O problema não é trabalhar muito. É <em>não saber onde o dinheiro está indo.</em></p>
                 <div class="diag-cta">
-                    <a href="#precos" class="btn btn-cta">Quero resolver isso agora</a>
+                    <a href="#cta-final" class="btn btn-cta">Quero resolver isso agora</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══ BENEFÍCIOS ═══ -->
+        <section class="benefits-section" data-reveal>
+            <div class="container">
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i data-lucide="eye" size="22"></i></div>
+                        <h3>Saiba exatamente o que entra, sai e vence</h3>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i data-lucide="shield-check" size="22"></i></div>
+                        <h3>Menos erro, menos retrabalho, mais controle</h3>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon"><i data-lucide="rocket" size="22"></i></div>
+                        <h3>Simples de adotar — sem ERP, sem implantação</h3>
+                    </div>
                 </div>
             </div>
         </section>
@@ -1866,23 +1988,20 @@
                 </div>
                 <div class="for-who-grid">
                     <div class="for-who-card positive">
-                        <h3><i data-lucide="check-circle" size="20" style="color: #22C55E;"></i> Feito para</h3>
+                        <h3><i data-lucide="check-circle" size="20" style="color: #22C55E;"></i> Ideal para</h3>
                         <ul class="for-who-list">
-                            <li><i data-lucide="check" size="16" style="color: #22C55E;"></i> MEI e microempresa que quer sair da planilha</li>
+                            <li><i data-lucide="check" size="16" style="color: #22C55E;"></i> MEIs, microempresas e pequenos negócios com financeiro ainda manual</li>
                             <li><i data-lucide="check" size="16" style="color: #22C55E;"></i> Prestador de serviço e autônomo</li>
                             <li><i data-lucide="check" size="16" style="color: #22C55E;"></i> Pequeno comércio e loja local</li>
-                            <li><i data-lucide="check" size="16" style="color: #22C55E;"></i> Clínicas e consultórios</li>
-                            <li><i data-lucide="check" size="16" style="color: #22C55E;"></i> Agências e consultorias pequenas</li>
                             <li><i data-lucide="check" size="16" style="color: #22C55E;"></i> Quem achou ERP complexo demais</li>
                         </ul>
                     </div>
                     <div class="for-who-card negative">
-                        <h3><i data-lucide="x-circle" size="20" style="color: #ef4444;"></i> Não é para</h3>
+                        <h3><i data-lucide="x-circle" size="20" style="color: #ef4444;"></i> Não indicado para</h3>
                         <ul class="for-who-list">
-                            <li><i data-lucide="x" size="16" style="color: #ef4444;"></i> Empresas que precisam de ERP completo (estoque, produção)</li>
-                            <li><i data-lucide="x" size="16" style="color: #ef4444;"></i> Quem precisa de folha de pagamento / RH</li>
-                            <li><i data-lucide="x" size="16" style="color: #ef4444;"></i> Escritórios de contabilidade (BPO)</li>
-                            <li><i data-lucide="x" size="16" style="color: #ef4444;"></i> Empresas com faturamento acima de R$ 1M/ano</li>
+                            <li><i data-lucide="x" size="16" style="color: #ef4444;"></i> Quem precisa de ERP completo (estoque, produção)</li>
+                            <li><i data-lucide="x" size="16" style="color: #ef4444;"></i> Quem precisa de contabilidade ou BPO fiscal</li>
+                            <li><i data-lucide="x" size="16" style="color: #ef4444;"></i> Quem precisa de conta digital integrada</li>
                         </ul>
                     </div>
                 </div>
@@ -1898,30 +2017,18 @@
                     <p class="section-subtitle">Feito para MEIs e pequenas empresas que querem sair da planilha sem complicação.</p>
                 </div>
 
-                <!-- Toggle de período -->
-                <div class="price-toggle-wrap">
-                    <div class="price-toggle">
-                        <button class="price-toggle-btn active" data-period="trimestral">Trimestral <span class="toggle-badge">-9%</span></button>
-                        <button class="price-toggle-btn" data-period="anual">Anual <span class="toggle-badge">-14%</span></button>
-                    </div>
-                </div>
-
                 <div class="pricing-grid">
-                    <!-- PLANO ORGANIZA -->
                     <div class="price-card">
                         <h3 class="plan-name">Organiza</h3>
                         <p class="plan-desc">Para quem quer sair da planilha e organizar o financeiro do negócio.</p>
                         <div class="plan-price">
                             <span class="plan-price-currency">R$</span>
-                            <span class="plan-price-amount"
-                                data-trimestral="25,30"
-                                data-anual="23,90">25,30</span>
+                            <span class="plan-price-amount">27,90</span>
                             <span class="plan-price-period">/mês</span>
                         </div>
-                        <p class="plan-price-note"
-                            data-trimestral="Cobrança trimestral — R$ 75,90. Economize 9%."
-                            data-anual="Cobrança anual — R$ 286,80. Economize 14%.">Cobrança trimestral — R$ 75,90. Economize 9%.</p>
-                        <a href="#" class="btn btn-outline" style="width: 100%;" data-lead-modal data-plan="organiza">Comece gratuitamente</a>
+                        <p class="plan-price-note">Cobrança mensal. Cancele quando quiser.</p>
+                        <p class="plan-trial-note"><i data-lucide="gift" size="14"></i> 7 dias grátis para testar — sem cartão de crédito</p>
+                        <button type="button" class="btn btn-outline" style="width: 100%;" data-lead-modal data-plan="organiza">Começar com Organiza</button>
                         <hr class="plan-features-divider">
                         <ul class="plan-features-list">
                             <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Contas a pagar e receber</li>
@@ -1932,22 +2039,18 @@
                         </ul>
                     </div>
 
-                    <!-- PLANO CRESCE -->
                     <div class="price-card featured">
                         <div class="pop-tag">MAIS POPULAR</div>
                         <h3 class="plan-name">Cresce</h3>
                         <p class="plan-desc">Financeiro completo com nota fiscal e recibo no mesmo lugar.</p>
                         <div class="plan-price">
                             <span class="plan-price-currency">R$</span>
-                            <span class="plan-price-amount"
-                                data-trimestral="39,90"
-                                data-anual="29,90">39,90</span>
+                            <span class="plan-price-amount">75,90</span>
                             <span class="plan-price-period">/mês</span>
                         </div>
-                        <p class="plan-price-note"
-                            data-trimestral="Cobrança trimestral — R$ 119,70. Economize 9%."
-                            data-anual="Cobrança anual — R$ 358,80. Economize 14%.">Cobrança trimestral — R$ 119,70. Economize 9%.</p>
-                        <a href="#" class="btn btn-cta" style="width: 100%;" data-lead-modal data-plan="cresce">Comece gratuitamente</a>
+                        <p class="plan-price-note">Cobrança mensal. Cancele quando quiser.</p>
+                        <p class="plan-trial-note"><i data-lucide="gift" size="14"></i> 7 dias grátis para testar — sem cartão de crédito</p>
+                        <button type="button" class="btn btn-cta" style="width: 100%;" data-lead-modal data-plan="cresce">Começar com Cresce</button>
                         <hr class="plan-features-divider">
                         <ul class="plan-features-list">
                             <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Tudo do Organiza incluído</li>
@@ -1959,7 +2062,6 @@
                         <p class="plan-nf-note">Após as 50 NFs incluídas: R$ 0,30 por emissão adicional</p>
                     </div>
                 </div>
-
             </div>
         </section>
 
@@ -2066,11 +2168,16 @@
         </section>
 
         <!-- ═══ CTA FINAL ═══ -->
-        <section class="cta-section text-center" data-reveal>
-            <div class="container" style="max-width: 700px; position: relative; z-index: 1;">
-                <h2>Hora de sair da planilha e <span style="color: #A78BFA;">profissionalizar seu financeiro</span></h2>
-                <p>Sistema financeiro para MEI, microempresa e prestador de serviço. Sem planilha, sem ERP pesado.</p>
-                <a href="#precos" class="btn btn-cta" style="padding: 1.25rem 3rem; font-size: 1.1rem;">Quero organizar meu financeiro</a>
+        <section id="cta-final" class="cta-section text-center" data-reveal>
+            <div class="container" style="max-width: 600px; position: relative; z-index: 1;">
+                <h2>Organize o financeiro do seu negócio <span style="color: #A78BFA;">sem depender de planilhas</span></h2>
+                <p>Para MEIs, microempresas e pequenos negócios com financeiro ainda manual.</p>
+                <form class="cta-lead-form" id="cta-form" novalidate>
+                    <input type="text" name="nome" class="cta-form-input" placeholder="Seu nome" autocomplete="name" required>
+                    <input type="email" name="email" class="cta-form-input" placeholder="Seu melhor e-mail" autocomplete="email" required>
+                    <button type="submit" class="btn btn-cta" style="height: 52px; font-size: 1rem;">Criar minha conta grátis</button>
+                    <p class="cta-form-microcopy">7 dias grátis · Sem cartão · Cancele quando quiser</p>
+                </form>
             </div>
         </section>
     </main>
@@ -2114,78 +2221,18 @@
         </div>
     </footer>
 
-    <!-- LEAD QUALIFICATION MODAL -->
-    <div class="lead-overlay" id="lead-overlay">
-        <div class="lead-modal" id="lead-modal">
-            <button class="lead-close" id="lead-close" aria-label="Fechar">&times;</button>
-
-            <!-- Step indicator -->
-            <div class="lead-steps">
-                <div class="lead-step-dot active" data-step="1"></div>
-                <div class="lead-step-dot" data-step="2"></div>
-            </div>
-
-            <!-- STEP 1: Dados pessoais -->
-            <div id="lead-step1" class="lead-step">
-                <div class="lead-title">Crie sua conta grátis</div>
-                <p class="lead-subtitle">Preencha seus dados para começar.</p>
-
-                <div class="lead-field">
-                    <label class="lead-field-label" for="lead-name">Nome completo</label>
-                    <input type="text" id="lead-name" class="lead-input" placeholder="Ex: Maria Silva" autocomplete="name" required>
-                </div>
-
-                <div class="lead-field">
-                    <label class="lead-field-label" for="lead-email">E-mail</label>
-                    <input type="email" id="lead-email" class="lead-input" placeholder="seu@email.com" autocomplete="email" required>
-                </div>
-
-                <div class="lead-field">
-                    <label class="lead-field-label" for="lead-whatsapp">WhatsApp</label>
-                    <input type="tel" id="lead-whatsapp" class="lead-input" placeholder="(11) 99999-9999" autocomplete="tel" required>
-                </div>
-
-                <button class="lead-submit" id="lead-next" disabled>Continuar</button>
-            </div>
-
-            <!-- STEP 2: Qualificação -->
-            <div id="lead-step2" class="lead-step" style="display:none;">
-                <div class="lead-title">Quase lá!</div>
-                <p class="lead-subtitle">Responda 3 perguntas rápidas para personalizarmos sua experiência.</p>
-
-                <div class="lead-question">
-                    <span class="lead-question-label">Qual é o porte da sua empresa?</span>
-                    <div class="lead-chips" data-group="porte">
-                        <button class="lead-chip" data-value="mei">MEI</button>
-                        <button class="lead-chip" data-value="micro">Microempresa</button>
-                        <button class="lead-chip" data-value="pequena">Pequena empresa</button>
-                        <button class="lead-chip" data-value="outro">Médio ou grande porte</button>
-                    </div>
-                </div>
-
-                <div class="lead-question">
-                    <span class="lead-question-label">Qual é o faturamento mensal aproximado?</span>
-                    <div class="lead-chips" data-group="faturamento">
-                        <button class="lead-chip" data-value="ate5k">Até R$ 5 mil</button>
-                        <button class="lead-chip" data-value="5k-20k">R$ 5 mil – R$ 20 mil</button>
-                        <button class="lead-chip" data-value="20k-80k">R$ 20 mil – R$ 80 mil</button>
-                        <button class="lead-chip" data-value="80k+">Acima de R$ 80 mil</button>
-                    </div>
-                </div>
-
-                <div class="lead-question">
-                    <span class="lead-question-label">Como você controla o financeiro hoje?</span>
-                    <div class="lead-chips" data-group="controle">
-                        <button class="lead-chip" data-value="planilha">Planilha</button>
-                        <button class="lead-chip" data-value="caderno">Caderno / anotações</button>
-                        <button class="lead-chip" data-value="nenhum">Não controlo</button>
-                        <button class="lead-chip" data-value="sistema">Já uso um sistema</button>
-                    </div>
-                </div>
-
-                <button class="lead-submit" id="lead-submit" disabled>Criar minha conta</button>
-            </div>
-
+    <!-- Plan selection modal -->
+    <div class="lead-overlay" id="plan-modal" role="dialog" aria-modal="true" aria-labelledby="plan-modal-title">
+        <div class="lead-modal">
+            <button class="lead-close" id="plan-modal-close" aria-label="Fechar">&#x2715;</button>
+            <div class="lead-plan-badge" id="plan-modal-badge">Organiza</div>
+            <h2 class="lead-title" id="plan-modal-title">Comece seu teste grátis</h2>
+            <p class="lead-subtitle">7 dias grátis · Sem cartão · Cancele quando quiser</p>
+            <form id="plan-modal-form" novalidate>
+                <input type="text" name="nome" class="lead-input" placeholder="Seu nome" autocomplete="name" required>
+                <input type="email" name="email" class="lead-input" placeholder="Seu melhor e-mail" autocomplete="email" required>
+                <button type="submit" class="lead-submit">Criar minha conta grátis</button>
+            </form>
         </div>
     </div>
 
@@ -2200,27 +2247,6 @@
         }, { threshold: 0.08 });
         document.querySelectorAll('[data-reveal]').forEach(el => observer.observe(el));
 
-
-        // Nav active state on scroll
-        (function () {
-            const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
-            const sections = Array.from(navLinks)
-                .map(l => document.querySelector(l.getAttribute('href')))
-                .filter(Boolean);
-
-            const navObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        navLinks.forEach(l => l.classList.remove('active'));
-                        const active = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
-                        if (active) active.classList.add('active');
-                    }
-                });
-            }, { rootMargin: '-30% 0px -60% 0px' });
-
-            sections.forEach(s => navObserver.observe(s));
-        })();
-
         // Features showcase accordion
         (function () {
             const items = document.querySelectorAll('.feat-item');
@@ -2233,23 +2259,6 @@
                     item.classList.add('active');
                     const screen = document.querySelector(`.feat-screenshot[data-feat="${idx}"]`);
                     if (screen) screen.classList.add('active');
-                });
-            });
-        })();
-
-        // Pricing period toggle
-        (function() {
-            const btns = document.querySelectorAll('.price-toggle-btn');
-            const amounts = document.querySelectorAll('.plan-price-amount');
-            const notes = document.querySelectorAll('.plan-price-note');
-
-            btns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const period = btn.dataset.period;
-                    btns.forEach(b => b.classList.remove('active'));
-                    btn.classList.add('active');
-                    amounts.forEach(el => { el.textContent = el.dataset[period]; });
-                    notes.forEach(el => { el.textContent = el.dataset[period]; });
                 });
             });
         })();
@@ -2284,6 +2293,7 @@
                 if (!wasOpen) item.classList.add('open');
             });
         });
+
         // ─── UTM cookie capture ───
         (function() {
             const params = new URLSearchParams(window.location.search);
@@ -2305,164 +2315,115 @@
             return 'lp';
         }
 
-        // ─── Lead Qualification Modal (2 steps) ───
+        // ─── Lead form submission ───
+        // Envia dados ao webhook (Make.com dispara e-mail de recuperação se não completar em 5 min)
+        // Redireciona para cadastro com nome + email pré-preenchidos via URL params
         (function() {
-            const overlay = document.getElementById('lead-overlay');
-            const modal = document.getElementById('lead-modal');
-            const step1 = document.getElementById('lead-step1');
-            const step2 = document.getElementById('lead-step2');
-            const nextBtn = document.getElementById('lead-next');
-            const submitBtn = document.getElementById('lead-submit');
-            const closeBtn = document.getElementById('lead-close');
-            const dots = modal.querySelectorAll('.lead-step-dot');
+            var WEBHOOK = 'https://hook.us1.make.com/4w9ewge45cwym9rj6vcmrycu1ifrz1sr';
+            var REGISTER_URL = 'https://app.zeonpaper.com.br/user/register';
 
-            const nameInput = document.getElementById('lead-name');
-            const emailInput = document.getElementById('lead-email');
-            const whatsInput = document.getElementById('lead-whatsapp');
+            function submitLeadForm(e) {
+                e.preventDefault();
+                var form = e.currentTarget;
+                var nome = form.querySelector('[name="nome"]').value.trim();
+                var email = form.querySelector('[name="email"]').value.trim();
 
-            const WEBHOOK = 'https://hook.us1.make.com/4w9ewge45cwym9rj6vcmrycu1ifrz1sr';
-            const REGISTER_URL = 'https://app.zeonpaper.com.br/user/register';
+                if (nome.length < 2) { form.querySelector('[name="nome"]').focus(); return; }
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { form.querySelector('[name="email"]').focus(); return; }
 
-            let leadData = {};
-            let ctaPlan = null;
+                var btn = form.querySelector('[type="submit"]');
+                btn.disabled = true;
+                btn.textContent = 'Aguarde...';
 
-            function getActivePeriod() {
-                const active = document.querySelector('.price-toggle-btn.active');
-                return active ? active.dataset.period : 'trimestral';
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({ event: 'lead_capturado', lead_nome: nome, lead_email: email });
+
+                fetch(WEBHOOK, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ etapa: 1, nome: nome, email: email, utm: getUtmMedia() })
+                }).catch(function() {});
+
+                var params = new URLSearchParams(window.location.search);
+                params.set('name', nome);
+                params.set('email', email);
+                window.location.href = REGISTER_URL + '?' + params.toString();
             }
 
-            // WhatsApp mask: (99) 99999-9999
-            whatsInput.addEventListener('input', function() {
-                let v = this.value.replace(/\D/g, '').slice(0, 11);
-                if (v.length > 6) v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
-                else if (v.length > 2) v = '(' + v.slice(0,2) + ') ' + v.slice(2);
-                else if (v.length > 0) v = '(' + v;
-                this.value = v;
-                checkStep1();
+            ['hero-form', 'cta-form'].forEach(function(id) {
+                var form = document.getElementById(id);
+                if (form) form.addEventListener('submit', submitLeadForm);
             });
+        })();
 
-            function checkStep1() {
-                const valid = nameInput.value.trim().length >= 2
-                    && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())
-                    && whatsInput.value.replace(/\D/g, '').length >= 10;
-                nextBtn.disabled = !valid;
-            }
-            nameInput.addEventListener('input', checkStep1);
-            emailInput.addEventListener('input', checkStep1);
-
-            function goToStep(n) {
-                step1.style.display = n === 1 ? '' : 'none';
-                step2.style.display = n === 2 ? '' : 'none';
-                dots.forEach(d => d.classList.toggle('active', +d.dataset.step <= n));
-                modal.scrollTop = 0;
-            }
+        // ─── Plan modal ───
+        (function() {
+            var overlay  = document.getElementById('plan-modal');
+            if (!overlay) return;
+            var badge    = document.getElementById('plan-modal-badge');
+            var form     = document.getElementById('plan-modal-form');
+            var closeBtn = document.getElementById('plan-modal-close');
+            var WEBHOOK      = 'https://hook.us1.make.com/4w9ewge45cwym9rj6vcmrycu1ifrz1sr';
+            var REGISTER_URL = 'https://app.zeonpaper.com.br/user/register';
+            var currentPlan  = '';
 
             function openModal(plan) {
-                ctaPlan = plan || null;
-                leadData = {};
-                nameInput.value = '';
-                emailInput.value = '';
-                whatsInput.value = '';
-                nextBtn.disabled = true;
-                submitBtn.disabled = true;
-                modal.querySelectorAll('.lead-chip').forEach(c => c.classList.remove('selected'));
-                goToStep(1);
+                currentPlan = plan;
+                badge.textContent = plan.charAt(0).toUpperCase() + plan.slice(1);
                 overlay.classList.add('open');
                 document.body.style.overflow = 'hidden';
-                setTimeout(() => nameInput.focus(), 300);
+                setTimeout(function() { form.querySelector('[name="nome"]').focus(); }, 50);
             }
 
             function closeModal() {
                 overlay.classList.remove('open');
                 document.body.style.overflow = '';
+                form.reset();
+                var btn = form.querySelector('[type="submit"]');
+                btn.disabled = false;
+                btn.textContent = 'Criar minha conta grátis';
             }
 
-            // Intercept CTAs
-            document.querySelectorAll('[data-lead-modal]').forEach(el => {
+            document.querySelectorAll('[data-lead-modal]').forEach(function(el) {
                 el.addEventListener('click', function(e) {
                     e.preventDefault();
-                    openModal(this.dataset.plan);
+                    openModal(el.dataset.plan || '');
                 });
             });
 
-            // Step 1 → Step 2
-            nextBtn.addEventListener('click', function() {
-                leadData.nome = nameInput.value.trim();
-                leadData.email = emailInput.value.trim();
-                leadData.whatsapp = whatsInput.value.trim();
-
-                // Dispatch step 1 data to webhook
-                fetch(WEBHOOK, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        etapa: 1,
-                        nome: leadData.nome,
-                        email: leadData.email,
-                        whatsapp: leadData.whatsapp
-                    })
-                }).catch(() => {});
-
-                goToStep(2);
-            });
-
-            // Chip selection (Step 2)
-            modal.addEventListener('click', function(e) {
-                const chip = e.target.closest('.lead-chip');
-                if (!chip) return;
-                const group = chip.parentElement.dataset.group;
-                chip.parentElement.querySelectorAll('.lead-chip').forEach(c => c.classList.remove('selected'));
-                chip.classList.add('selected');
-                leadData[group] = chip.dataset.value;
-                submitBtn.disabled = !(leadData.porte && leadData.faturamento && leadData.controle);
-            });
-
-            // Step 2 submit
-            submitBtn.addEventListener('click', function() {
-                const period = getActivePeriod();
-
-                fetch(WEBHOOK, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        etapa: 2,
-                        qualificado: true,
-                        nome: leadData.nome,
-                        email: leadData.email,
-                        whatsapp: leadData.whatsapp,
-                        lead_porte: leadData.porte,
-                        lead_faturamento: leadData.faturamento,
-                        lead_controle: leadData.controle,
-                        plano: ctaPlan || '',
-                        periodo: period
-                    })
-                }).catch(() => {});
-
-                // Lead conversion event → GTM → GA4 / Meta Ads / Google Ads
-                window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push({
-                    event: 'lead_qualificado',
-                    lead_plano: ctaPlan || '',
-                    lead_periodo: period,
-                    lead_porte: leadData.porte,
-                    lead_faturamento: leadData.faturamento,
-                    lead_controle: leadData.controle
-                });
-
-                // Redirect para cadastro com UTM
-                window.location.href = REGISTER_URL + '?plan=mensal&media=' + encodeURIComponent(getUtmMedia());
-            });
-
-            // Close handlers
             closeBtn.addEventListener('click', closeModal);
-            overlay.addEventListener('click', function(e) {
-                if (e.target === overlay) closeModal();
-            });
+            overlay.addEventListener('click', function(e) { if (e.target === overlay) closeModal(); });
             document.addEventListener('keydown', function(e) {
                 if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
             });
-        })();
 
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var nome  = form.querySelector('[name="nome"]').value.trim();
+                var email = form.querySelector('[name="email"]').value.trim();
+                if (nome.length < 2)  { form.querySelector('[name="nome"]').focus();  return; }
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { form.querySelector('[name="email"]').focus(); return; }
+
+                var btn = form.querySelector('[type="submit"]');
+                btn.disabled = true;
+                btn.textContent = 'Aguarde...';
+
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({ event: 'lead_capturado', lead_nome: nome, lead_email: email, lead_plano: currentPlan });
+
+                fetch(WEBHOOK, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ etapa: 1, nome: nome, email: email, plano: currentPlan, utm: getUtmMedia() })
+                }).catch(function() {});
+
+                var params = new URLSearchParams(window.location.search);
+                params.set('name', nome);
+                params.set('email', email);
+                params.set('plan', currentPlan);
+                window.location.href = REGISTER_URL + '?' + params.toString();
+            });
+        })();
     </script>
 </body>
 </html>
