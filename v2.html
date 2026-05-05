@@ -2342,7 +2342,8 @@
                 fetch(WEBHOOK, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ etapa: 1, nome: nome, email: email, utm: getUtmMedia() })
+                    body: JSON.stringify({ etapa: 1, nome: nome, email: email, utm: getUtmMedia() }),
+                    keepalive: true
                 }).catch(function() {});
 
                 var params = new URLSearchParams(window.location.search);
@@ -2416,7 +2417,8 @@
                 fetch(WEBHOOK, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ etapa: 1, nome: nome, email: email, telefone: telefone, plano: currentPlan, utm: getUtmMedia() })
+                    body: JSON.stringify({ etapa: 1, nome: nome, email: email, telefone: telefone, plano: currentPlan, utm: getUtmMedia() }),
+                    keepalive: true
                 }).catch(function() {});
 
                 var params = new URLSearchParams(window.location.search);
