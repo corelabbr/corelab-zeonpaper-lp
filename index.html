@@ -2319,6 +2319,7 @@
             <form id="plan-modal-form" novalidate>
                 <input type="text" name="nome" class="lead-input" placeholder="Seu nome" autocomplete="name" required>
                 <input type="email" name="email" class="lead-input" placeholder="Seu melhor e-mail" autocomplete="email" required>
+                <input type="tel" name="telefone" class="lead-input" placeholder="WhatsApp (opcional)" autocomplete="tel">
                 <button type="submit" class="lead-submit">Criar minha conta grátis</button>
             </form>
         </div>
@@ -2541,8 +2542,9 @@
 
             form.addEventListener('submit', function(e) {
                 e.preventDefault();
-                var nome  = form.querySelector('[name="nome"]').value.trim();
-                var email = form.querySelector('[name="email"]').value.trim();
+                var nome     = form.querySelector('[name="nome"]').value.trim();
+                var email    = form.querySelector('[name="email"]').value.trim();
+                var telefone = form.querySelector('[name="telefone"]').value.trim();
                 if (nome.length < 2)  { form.querySelector('[name="nome"]').focus();  return; }
                 if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { form.querySelector('[name="email"]').focus(); return; }
 
@@ -2556,7 +2558,7 @@
                 fetch(WEBHOOK, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ etapa: 1, nome: nome, email: email, plano: currentPlan, utm: getUtmMedia() })
+                    body: JSON.stringify({ etapa: 1, nome: nome, email: email, telefone: telefone, plano: currentPlan, utm: getUtmMedia() })
                 }).catch(function() {});
 
                 var params = new URLSearchParams(window.location.search);
