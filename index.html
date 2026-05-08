@@ -1903,6 +1903,7 @@
                     <form class="hero-lead-form" id="hero-form" novalidate>
                         <input type="text" name="nome" class="hero-form-input" placeholder="Seu nome" autocomplete="name" required>
                         <input type="email" name="email" class="hero-form-input" placeholder="Seu melhor e-mail" autocomplete="email" required>
+                        <input type="tel" name="telefone" class="hero-form-input" placeholder="WhatsApp (opcional)" autocomplete="tel">
                         <button type="submit" class="btn btn-cta" style="height: 52px; font-size: 1rem;">Criar minha conta grátis</button>
                         <p class="hero-form-microcopy">7 dias grátis · Sem cartão · Cancele quando quiser</p>
                     </form>
@@ -2507,6 +2508,7 @@
                 <form class="cta-lead-form" id="cta-form" novalidate>
                     <input type="text" name="nome" class="cta-form-input" placeholder="Seu nome" autocomplete="name" required>
                     <input type="email" name="email" class="cta-form-input" placeholder="Seu melhor e-mail" autocomplete="email" required>
+                    <input type="tel" name="telefone" class="cta-form-input" placeholder="WhatsApp (opcional)" autocomplete="tel">
                     <button type="submit" class="btn btn-cta" style="height: 52px; font-size: 1rem;">Criar minha conta grátis</button>
                     <p class="cta-form-microcopy">7 dias grátis · Sem cartão · Cancele quando quiser</p>
                 </form>
@@ -2665,6 +2667,8 @@
                 var form = e.currentTarget;
                 var nome = form.querySelector('[name="nome"]').value.trim();
                 var email = form.querySelector('[name="email"]').value.trim();
+                var telefoneEl = form.querySelector('[name="telefone"]');
+                var telefone = telefoneEl ? telefoneEl.value.trim() : '';
 
                 if (nome.length < 2) { form.querySelector('[name="nome"]').focus(); return; }
                 if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { form.querySelector('[name="email"]').focus(); return; }
@@ -2679,7 +2683,7 @@
                 fetch(WEBHOOK, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ etapa: 1, nome: nome, email: email, utm: getUtmMedia() }),
+                    body: JSON.stringify({ etapa: 1, nome: nome, email: email, telefone: telefone, utm: getUtmMedia() }),
                     keepalive: true
                 }).catch(function() {});
 
