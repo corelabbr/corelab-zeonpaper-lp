@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeonpaper vs Conta Azul: Qual é Melhor para MEI e Pequena Empresa?</title>
+    <meta name="description" content="Conta Azul é para empresas com contador. Zeonpaper é para o próprio empreendedor gerenciar o financeiro sozinho — sem ERP, sem contador, sem complicação.">
+    <meta name="keywords" content="zeonpaper vs conta azul, conta azul ou zeonpaper, sistema financeiro mei, alternativa conta azul, controle financeiro pequena empresa">
+    <link rel="canonical" href="https://lp.zeonpaper.com.br/zeonpaper-vs-conta-azul">
+    <meta property="og:title" content="Zeonpaper vs Conta Azul: Qual é Melhor para MEI e Pequena Empresa?">
+    <meta property="og:description" content="Conta Azul é para empresas com contador. Zeonpaper é para o próprio empreendedor gerenciar o financeiro sozinho — sem ERP, sem contador, sem complicação.">
+    <meta property="og:url" content="https://lp.zeonpaper.com.br/zeonpaper-vs-conta-azul">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://lp.zeonpaper.com.br/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Zeonpaper vs Conta Azul: Qual é Melhor para MEI e Pequena Empresa?">
+    <meta name="twitter:description" content="Conta Azul é para empresas com contador. Zeonpaper é para o próprio empreendedor gerenciar o financeiro sozinho — sem ERP, sem contador, sem complicação.">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        :root {
+            --primary: #793BED; --primary-dark: #6B21A8; --primary-light: #EFE8FD;
+            --accent: #22C55E; --accent-dark: #16A34A;
+            --text-dark: #020817; --text-gray: #64748B;
+            --bg-light: #FAF9F5; --bg-dark: #020817; --white: #FFFFFF;
+            --radius-pill: 9999px; --radius-section: 24px; --radius-container: 16px;
+            --radius-card: 12px; --radius-btn: 10px;
+            --shadow-card: 0 4px 20px rgba(0,0,0,0.06);
+            --container: 1200px;
+            --gradient: linear-gradient(135deg, #793BED 0%, #EC4699 100%);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Plus Jakarta Sans','Inter',sans-serif; color:var(--text-dark); line-height:1.6; background:#fff; overflow-x:hidden; -webkit-font-smoothing:antialiased; }
+        h1,h2,h3,h4 { font-family:'Plus Jakarta Sans','Inter',sans-serif; font-weight:800; line-height:1.1; letter-spacing:-0.03em; text-wrap:balance; }
+        p { text-wrap:pretty; }
+        img { max-width:100%; height:auto; display:block; }
+        .container { max-width:var(--container); margin:0 auto; padding:0 1.5rem; }
+        .text-gradient { background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+        .section-label { display:inline-block; background:var(--primary-light); color:var(--primary); font-size:0.78rem; font-weight:700; padding:0.3rem 0.9rem; border-radius:var(--radius-pill); letter-spacing:0.05em; text-transform:uppercase; margin-bottom:1rem; }
+        .text-center { text-align:center; }
+
+        nav { position:fixed; top:0; left:0; right:0; background:rgba(15,23,42,0.88); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); z-index:1000; border-bottom:1px solid rgba(255,255,255,0.07); padding:0.75rem 0; }
+        .nav-content { display:flex; justify-content:space-between; align-items:center; gap:2rem; }
+        .nav-left { display:flex; align-items:center; gap:2rem; }
+        .nav-links { display:flex; align-items:center; gap:1.5rem; }
+        .nav-link { text-decoration:none; color:rgba(255,255,255,0.55); font-weight:500; font-size:0.82rem; transition:color 0.2s; }
+        .nav-link:hover { color:rgba(255,255,255,0.9); }
+        .nav-actions { display:flex; align-items:center; gap:0.5rem; }
+        .btn-nav-login { background:transparent; border:none; color:rgba(255,255,255,0.65); font-family:'Plus Jakarta Sans',sans-serif; font-weight:500; font-size:0.82rem; padding:0.45rem 0.9rem; border-radius:var(--radius-btn); cursor:pointer; text-decoration:none; transition:color 0.2s; }
+        .btn-nav-login:hover { color:white; }
+        .btn-nav-cta { background:var(--primary); color:white; font-family:'Plus Jakarta Sans',sans-serif; font-weight:600; font-size:0.82rem; padding:0.45rem 1rem; border-radius:var(--radius-btn); border:none; cursor:pointer; text-decoration:none; transition:background 0.2s; white-space:nowrap; }
+        .btn-nav-cta:hover { background:var(--primary-dark); }
+        .logo { text-decoration:none; display:flex; align-items:center; flex-shrink:0; }
+        .hamburger { display:none; flex-direction:column; justify-content:center; align-items:center; gap:5px; width:36px; height:36px; background:transparent; border:none; cursor:pointer; padding:4px; flex-shrink:0; }
+        .hamburger span { display:block; width:22px; height:2px; background:rgba(255,255,255,0.8); border-radius:2px; transition:all 0.25s ease; transform-origin:center; }
+        .hamburger.open span:nth-child(1) { transform:translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity:0; transform:scaleX(0); }
+        .hamburger.open span:nth-child(3) { transform:translateY(-7px) rotate(-45deg); }
+        .mobile-drawer { display:none; flex-direction:column; gap:0; background:rgba(10,15,30,0.98); border-top:1px solid rgba(255,255,255,0.07); padding:0; max-height:0; overflow:hidden; transition:max-height 0.32s ease, padding 0.32s ease; }
+        .mobile-drawer.open { max-height:700px; padding:1rem 0 1.5rem; }
+        .mobile-drawer-link { display:block; padding:0.9rem 1.5rem; color:rgba(255,255,255,0.7); text-decoration:none; font-weight:500; font-size:1rem; border-bottom:1px solid rgba(255,255,255,0.05); transition:color 0.2s; }
+        .mobile-drawer-link:hover { color:white; }
+        .mobile-drawer-section-label { display:block; padding:0.7rem 1.5rem 0.3rem; font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color:rgba(255,255,255,0.28); }
+        .mobile-drawer-sublink { display:block; padding:0.65rem 1.5rem 0.65rem 2rem; color:rgba(255,255,255,0.55); text-decoration:none; font-weight:500; font-size:0.9rem; border-bottom:1px solid rgba(255,255,255,0.04); transition:color 0.2s; }
+        .mobile-drawer-sublink:hover { color:rgba(255,255,255,0.9); }
+        .mobile-drawer-actions { display:flex; flex-direction:column; gap:0.75rem; padding:1.25rem 1.5rem 0; }
+        .mobile-drawer-login { display:block; text-align:center; padding:0.75rem; color:rgba(255,255,255,0.65); text-decoration:none; font-weight:500; font-size:0.95rem; border:1px solid rgba(255,255,255,0.12); border-radius:var(--radius-btn); transition:color 0.2s, border-color 0.2s; }
+        .mobile-drawer-login:hover { color:white; border-color:rgba(255,255,255,0.3); }
+        .mobile-drawer-cta { display:block; text-align:center; padding:0.85rem; background:var(--accent); color:white; text-decoration:none; font-weight:700; font-size:1rem; border-radius:var(--radius-btn); transition:opacity 0.2s; }
+        .mobile-drawer-cta:hover { opacity:0.9; }
+        .nav-dropdown { position:relative; }
+        .nav-dropdown-toggle { display:flex; align-items:center; gap:0.25rem; cursor:default; text-decoration:none; color:rgba(255,255,255,0.55); font-weight:500; font-size:0.82rem; transition:color 0.2s; user-select:none; }
+        .nav-dropdown-toggle svg { transition:transform 0.2s; }
+        .nav-dropdown:hover .nav-dropdown-toggle { color:rgba(255,255,255,0.9); }
+        .nav-dropdown:hover .nav-dropdown-toggle svg { transform:rotate(180deg); }
+        .nav-dropdown-menu { position:absolute; top:100%; left:50%; transform:translateX(-50%) translateY(-6px); background:rgba(10,15,30,0.97); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); border:1px solid rgba(255,255,255,0.09); border-radius:var(--radius-card); padding:0.875rem 0 0.4rem; min-width:210px; opacity:0; visibility:hidden; transition:opacity 0.18s ease, visibility 0.18s ease, transform 0.18s ease; pointer-events:none; z-index:100; }
+        .nav-dropdown:hover .nav-dropdown-menu { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); pointer-events:auto; }
+        .nav-dropdown-item { display:block; padding:0.55rem 1rem; color:rgba(255,255,255,0.6); text-decoration:none; font-size:0.82rem; font-weight:500; transition:color 0.15s, background 0.15s; white-space:nowrap; }
+        .nav-dropdown-item:hover { color:white; background:rgba(255,255,255,0.05); }
+        .nav-dropdown-divider { height:1px; background:rgba(255,255,255,0.07); margin:0.3rem 0; }
+
+        footer { background:var(--bg-dark); color:#94a3b8; padding:80px 0 40px; border-top:1px solid rgba(255,255,255,0.06); }
+        .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr 1fr; gap:2.5rem; margin-bottom:3rem; }
+        .footer-brand p { font-size:0.9rem; line-height:1.7; margin-top:1rem; max-width:280px; }
+        .footer-col h4 { font-size:0.8rem; text-transform:uppercase; letter-spacing:0.1em; color:white; margin-bottom:1rem; font-weight:700; }
+        .footer-col a { display:block; color:#94a3b8; text-decoration:none; font-size:0.9rem; margin-bottom:0.6rem; transition:color 0.2s; }
+        .footer-col a:hover { color:white; }
+        .footer-logo { text-decoration:none; display:flex; align-items:center; }
+        .footer-bottom { padding-top:2rem; border-top:1px solid rgba(255,255,255,0.06); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; font-size:0.85rem; }
+
+        .btn { display:inline-flex; align-items:center; justify-content:center; gap:0.5rem; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; border:none; cursor:pointer; text-decoration:none; transition:all 0.2s; }
+        .btn-cta { background:var(--gradient); color:white; padding:0.875rem 2rem; border-radius:var(--radius-btn); font-size:1rem; }
+        .btn-cta:hover { opacity:0.92; transform:translateY(-1px); }
+
+        .page-hero { padding-top:140px; padding-bottom:5rem; background:var(--bg-dark); }
+        .page-hero h1 { font-size:clamp(2rem, 4vw, 3rem); color:white; margin-bottom:1.25rem; max-width:700px; }
+        .page-hero p { color:rgba(255,255,255,0.7); font-size:1.1rem; max-width:600px; margin-bottom:2rem; line-height:1.7; }
+        .hero-badge { display:inline-flex; align-items:center; gap:0.4rem; background:rgba(121,59,237,0.18); border:1px solid rgba(121,59,237,0.35); color:rgba(255,255,255,0.75); font-size:0.78rem; font-weight:600; padding:0.3rem 0.85rem; border-radius:var(--radius-pill); letter-spacing:0.04em; margin-bottom:1.25rem; }
+
+        .compare-section { padding:80px 0; background:#fff; }
+        .compare-table-wrap { background:white; border:1px solid #e2e8f0; border-radius:var(--radius-card); overflow:hidden; box-shadow:var(--shadow-card); }
+        .compare-table { width:100%; border-collapse:collapse; margin:0; }
+        .compare-table th, .compare-table td { padding:0.9rem 1.2rem; text-align:left; border-bottom:1px solid #e2e8f0; font-size:0.92rem; }
+        .compare-table th { background:#f8fafc; font-weight:700; font-size:0.8rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-gray); }
+        .compare-table tr:last-child td { border-bottom:none; }
+        .compare-table .check { color:#22c55e; font-weight:700; font-size:1.1rem; }
+        .compare-table .cross { color:#ef4444; font-weight:700; font-size:1.1rem; }
+        .compare-table .col-zeon { color:var(--primary); font-weight:700; }
+        .compare-table th.col-zeon { background:var(--primary-light); color:var(--primary); }
+        .compare-section-title { font-size:clamp(1.6rem, 3vw, 2.2rem); margin-bottom:0.75rem; }
+        .compare-subtitle { color:var(--text-gray); font-size:1rem; margin-bottom:2.5rem; max-width:600px; }
+        .table-note { font-size:0.8rem; color:var(--text-gray); margin-top:0.75rem; }
+
+        .when-section { padding:80px 0; background:var(--bg-light); }
+        .when-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-top:2.5rem; }
+        .when-card { background:white; border-radius:var(--radius-card); padding:2rem; box-shadow:var(--shadow-card); border:1px solid #e2e8f0; }
+        .when-card.highlighted { border-color:var(--primary); border-width:2px; }
+        .when-card .when-badge { display:inline-block; font-size:0.72rem; font-weight:700; padding:0.25rem 0.7rem; border-radius:var(--radius-pill); margin-bottom:1rem; text-transform:uppercase; letter-spacing:0.05em; }
+        .when-card.highlighted .when-badge { background:var(--primary-light); color:var(--primary); }
+        .when-card .when-badge.neutral { background:#f1f5f9; color:var(--text-gray); }
+        .when-list { list-style:none; margin-top:1rem; display:flex; flex-direction:column; gap:0.5rem; }
+        .when-list li { display:flex; align-items:flex-start; gap:0.5rem; font-size:0.92rem; color:var(--text-dark); }
+        .when-list li::before { content:"•"; color:var(--primary); font-weight:900; flex-shrink:0; margin-top:0.05rem; }
+
+        .faq-section { background:#f8fafc; padding:80px 0; }
+        .faq-list { max-width:800px; margin:0 auto; display:flex; flex-direction:column; gap:0.75rem; }
+        .faq-item { background:white; border:1px solid #e2e8f0; border-radius:var(--radius-card); overflow:hidden; }
+        .faq-question { width:100%; display:flex; justify-content:space-between; align-items:center; padding:1.2rem 1.5rem; background:none; border:none; cursor:pointer; text-align:left; gap:1rem; font-family:'Plus Jakarta Sans',sans-serif; font-weight:600; font-size:1rem; color:var(--text-dark); }
+        .faq-icon { flex-shrink:0; width:20px; height:20px; color:var(--primary); transition:transform 0.25s; }
+        .faq-item.open .faq-icon { transform:rotate(180deg); }
+        .faq-answer { max-height:0; overflow:hidden; transition:max-height 0.3s ease; }
+        .faq-answer p { padding:0 1.5rem 1.25rem; color:var(--text-gray); font-size:0.95rem; line-height:1.7; }
+
+        .cta-section { padding:80px 0; background:var(--bg-dark); text-align:center; }
+        .cta-section h2 { font-size:clamp(1.8rem, 3.5vw, 2.5rem); color:white; margin-bottom:1rem; }
+        .cta-section p { color:rgba(255,255,255,0.65); font-size:1.05rem; max-width:500px; margin:0 auto 2rem; }
+        .cta-note { font-size:0.8rem; color:rgba(255,255,255,0.35); margin-top:0.75rem; }
+
+        /* Table group header */
+        .table-group-header td { background: var(--primary-light); color: var(--primary); font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 0.6rem 1.2rem; }
+
+        /* Why wins cards */
+        .why-grid { display:grid; grid-template-columns:repeat(3, 1fr); gap:1.5rem; }
+        @media (max-width:900px) { .why-grid { grid-template-columns:1fr; } }
+
+        @media (max-width:900px) {
+            .nav-links { display:none; }
+            .nav-actions { display:none; }
+            .hamburger { display:flex; }
+            .mobile-drawer { display:flex; }
+            .footer-grid { grid-template-columns:1fr 1fr; gap:2rem; }
+            .when-grid { grid-template-columns:1fr; }
+        }
+        @media (max-width:600px) {
+            .footer-grid { grid-template-columns:1fr; gap:2rem; }
+            .footer-bottom { flex-direction:column; text-align:center; gap:0.5rem; }
+            .compare-table th, .compare-table td { padding:0.7rem 0.8rem; font-size:0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container nav-content">
+        <div class="nav-left">
+            <a href="./index.html" class="logo">
+                <picture>
+                    <source srcset="./assets/logo.webp" type="image/webp">
+                    <img src="./assets/logo.png" alt="Zeonpaper" decoding="async" style="height:30px;width:auto;filter:brightness(0) invert(1);">
+                </picture>
+            </a>
+        </div>
+        <div class="nav-links">
+            <a href="./index.html#funcionalidades" class="nav-link">Funcionalidades</a>
+            <a href="./index.html#precos" class="nav-link">Preços</a>
+            <a href="./index.html#faq" class="nav-link">FAQ</a>
+            <div class="nav-dropdown">
+                <span class="nav-dropdown-toggle">Comparativos <i data-lucide="chevron-down" style="width:12px;height:12px;"></i></span>
+                <div class="nav-dropdown-menu">
+                    <a href="./zeonpaper-vs-bling.html" class="nav-dropdown-item">Zeonpaper vs Bling</a>
+                    <a href="./zeonpaper-vs-conta-azul.html" class="nav-dropdown-item">Zeonpaper vs Conta Azul</a>
+                    <a href="./zeonpaper-vs-nibo.html" class="nav-dropdown-item">Zeonpaper vs Nibo</a>
+                    <div class="nav-dropdown-divider"></div>
+                    <a href="./controle-financeiro-para-mei.html" class="nav-dropdown-item">Para MEI</a>
+                    <a href="./controle-financeiro-para-prestador-de-servico.html" class="nav-dropdown-item">Para Prestador de Serviço</a>
+                    <a href="./sistema-financeiro-para-microempresa.html" class="nav-dropdown-item">Para Microempresa</a>
+                </div>
+            </div>
+        </div>
+        <div class="nav-actions">
+            <a href="https://app.zeonpaper.com.br/user/login" class="btn-nav-login">Login</a>
+            <a href="https://app.zeonpaper.com.br/user/register" class="btn-nav-cta">Criar conta grátis</a>
+        </div>
+        <button class="hamburger" aria-label="Abrir menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+    <div class="mobile-drawer" aria-hidden="true">
+        <a href="./index.html#funcionalidades" class="mobile-drawer-link">Funcionalidades</a>
+        <a href="./index.html#precos" class="mobile-drawer-link">Preços</a>
+        <a href="./index.html#faq" class="mobile-drawer-link">FAQ</a>
+        <span class="mobile-drawer-section-label">Comparativos</span>
+        <a href="./zeonpaper-vs-bling.html" class="mobile-drawer-sublink">vs Bling</a>
+        <a href="./zeonpaper-vs-conta-azul.html" class="mobile-drawer-sublink">vs Conta Azul</a>
+        <a href="./zeonpaper-vs-nibo.html" class="mobile-drawer-sublink">vs Nibo</a>
+        <span class="mobile-drawer-section-label">Para quem</span>
+        <a href="./controle-financeiro-para-mei.html" class="mobile-drawer-sublink">Para MEI</a>
+        <a href="./controle-financeiro-para-prestador-de-servico.html" class="mobile-drawer-sublink">Para Prestador de Serviço</a>
+        <a href="./sistema-financeiro-para-microempresa.html" class="mobile-drawer-sublink">Para Microempresa</a>
+        <div class="mobile-drawer-actions">
+            <a href="https://app.zeonpaper.com.br/user/login" class="mobile-drawer-login">Login</a>
+            <a href="https://app.zeonpaper.com.br/user/register" class="mobile-drawer-cta">Criar conta grátis</a>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <!-- Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="hero-badge">Comparativo</div>
+            <h1>Conta Azul precisa de contador. <span class="text-gradient">O Zeonpaper você usa sozinho.</span></h1>
+            <p>A Conta Azul foi projetada para empresas que já têm contador e precisam de integração fiscal, NF-e e relatórios contábeis avançados. Se você é MEI, prestador de serviço ou microempresa que quer controlar o próprio financeiro sem depender de ninguém — o Zeonpaper é feito para você.</p>
+            <a href="https://app.zeonpaper.com.br/user/register" class="btn btn-cta">Testar o Zeonpaper grátis por 7 dias</a>
+            <p style="color:rgba(255,255,255,0.35); font-size:0.8rem; margin-top:0.75rem;">Sem cartão de crédito. Cancele quando quiser.</p>
+        </div>
+    </section>
+
+    <!-- Compare Table -->
+    <section class="compare-section">
+        <div class="container">
+            <div class="section-label">Comparativo</div>
+            <h2 class="compare-section-title">Funcionalidades lado a lado</h2>
+            <p class="compare-subtitle">O que importa para quem gerencia o próprio financeiro — e os módulos contábeis que você provavelmente não precisa.</p>
+            <div class="compare-table-wrap">
+                <table class="compare-table">
+                    <thead>
+                        <tr>
+                            <th>Recurso</th>
+                            <th class="col-zeon">Zeonpaper</th>
+                            <th>Conta Azul</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-group-header">
+                            <td colspan="3">Para o empreendedor que gerencia o próprio financeiro</td>
+                        </tr>
+                        <tr>
+                            <td>Contas a pagar e receber</td>
+                            <td class="col-zeon"><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Fluxo de caixa</td>
+                            <td class="col-zeon"><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Alertas de vencimento</td>
+                            <td class="col-zeon"><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>DRE simplificado</td>
+                            <td class="col-zeon"><span class="check">✓</span></td>
+                            <td><span class="check">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td>Feito para usar sem contador</td>
+                            <td class="col-zeon"><span class="check">✓</span></td>
+                            <td><span class="cross">✗</span></td>
+                        </tr>
+                        <tr>
+                            <td>Setup em minutos</td>
+                            <td class="col-zeon"><span class="check">✓</span></td>
+                            <td><span class="cross">✗</span></td>
+                        </tr>
+                        <tr>
+                            <td>Emissão de NFS-e (nota fiscal de serviço)</td>
+                            <td class="col-zeon"><span class="check">✓</span></td>
+                            <td><span style="font-size:0.8rem;color:var(--text-gray);">módulo fiscal avançado (com contador)</span></td>
+                        </tr>
+                        <tr>
+                            <td>Preço acessível para MEI</td>
+                            <td class="col-zeon" style="font-weight:700;">R$27,90/mês</td>
+                            <td>Consulte o site*</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="table-note">* Preços e condições da Conta Azul podem variar. Consulte o site deles para informações atualizadas.</p>
+        </div>
+    </section>
+
+    <!-- Why Zeonpaper wins -->
+    <section style="padding:80px 0; background:#fff;">
+        <div class="container">
+            <div class="section-label">Por que o Zeonpaper ganha</div>
+            <h2 class="compare-section-title text-center">Por que o Zeonpaper ganha para quem não tem contador</h2>
+            <p style="color:var(--text-gray); font-size:1rem; max-width:620px; margin:0.75rem auto 3rem; text-align:center; line-height:1.7;">Para MEI e microempresa que quer autonomia financeira, o Zeonpaper vence em todos os critérios que realmente importam.</p>
+            <div class="why-grid">
+                <div style="background:var(--bg-light); border-radius:var(--radius-card); padding:1.75rem; border:1px solid #e8e5f0;">
+                    <div style="width:44px; height:44px; background:var(--primary-light); border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:1rem;">
+                        <i data-lucide="user-check" style="width:22px; height:22px; color:var(--primary);"></i>
+                    </div>
+                    <h3 style="font-size:1rem; margin-bottom:0.5rem;">Sem contador, sem dependência</h3>
+                    <p style="color:var(--text-gray); font-size:0.9rem; line-height:1.6;">O Zeonpaper foi pensado para o próprio dono do negócio gerenciar. Você não precisa de formação contábil, não precisa de contador e não precisa de treinamento. Abre, lança e pronto.</p>
+                </div>
+                <div style="background:var(--bg-light); border-radius:var(--radius-card); padding:1.75rem; border:1px solid #e8e5f0;">
+                    <div style="width:44px; height:44px; background:var(--primary-light); border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:1rem;">
+                        <i data-lucide="dollar-sign" style="width:22px; height:22px; color:var(--primary);"></i>
+                    </div>
+                    <h3 style="font-size:1rem; margin-bottom:0.5rem;">Mais barato para quem não precisa de fiscal</h3>
+                    <p style="color:var(--text-gray); font-size:0.9rem; line-height:1.6;">A Conta Azul cobra por um pacote completo que inclui módulos fiscais que a maioria dos MEIs e prestadores não usa. No Zeonpaper, você paga apenas pelo controle financeiro que realmente vai usar.</p>
+                </div>
+                <div style="background:var(--bg-light); border-radius:var(--radius-card); padding:1.75rem; border:1px solid #e8e5f0;">
+                    <div style="width:44px; height:44px; background:var(--primary-light); border-radius:10px; display:flex; align-items:center; justify-content:center; margin-bottom:1rem;">
+                        <i data-lucide="zap" style="width:22px; height:22px; color:var(--primary);"></i>
+                    </div>
+                    <h3 style="font-size:1rem; margin-bottom:0.5rem;">Rápido de começar</h3>
+                    <p style="color:var(--text-gray); font-size:0.9rem; line-height:1.6;">Enquanto a Conta Azul tem curva de onboarding mais longa (configuração de empresa, dados fiscais, perfil contábil), no Zeonpaper você está lançando contas em menos de 5 minutos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Para quem é o Zeonpaper -->
+    <section class="when-section">
+        <div class="container">
+            <div class="section-label">Para quem é o Zeonpaper</div>
+            <h2 class="compare-section-title">Gerencie o seu financeiro <span class="text-gradient">sem depender de ninguém</span></h2>
+            <p class="compare-subtitle">Sem contador, sem onboarding longo, sem pagar por módulos que você não usa.</p>
+            <div style="background:white; border:2px solid var(--primary); border-radius:var(--radius-card); padding:2.5rem; box-shadow:var(--shadow-card); max-width:780px; margin:0 auto;">
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.6rem 2.5rem;">
+                    <div style="display:flex; align-items:flex-start; gap:0.6rem; font-size:0.95rem;">
+                        <span style="color:var(--accent); font-weight:900; flex-shrink:0;">✓</span> É MEI, autônomo ou microempresa
+                    </div>
+                    <div style="display:flex; align-items:flex-start; gap:0.6rem; font-size:0.95rem;">
+                        <span style="color:var(--accent); font-weight:900; flex-shrink:0;">✓</span> Quer controlar o caixa sem formação contábil
+                    </div>
+                    <div style="display:flex; align-items:flex-start; gap:0.6rem; font-size:0.95rem;">
+                        <span style="color:var(--accent); font-weight:900; flex-shrink:0;">✓</span> Quer emitir NFS-e direto na plataforma
+                    </div>
+                    <div style="display:flex; align-items:flex-start; gap:0.6rem; font-size:0.95rem;">
+                        <span style="color:var(--accent); font-weight:900; flex-shrink:0;">✓</span> Quer pagar justo — só pelo que usa
+                    </div>
+                    <div style="display:flex; align-items:flex-start; gap:0.6rem; font-size:0.95rem;">
+                        <span style="color:var(--accent); font-weight:900; flex-shrink:0;">✓</span> Quer começar em minutos, não em dias
+                    </div>
+                    <div style="display:flex; align-items:flex-start; gap:0.6rem; font-size:0.95rem;">
+                        <span style="color:var(--accent); font-weight:900; flex-shrink:0;">✓</span> Quer alertas antes de perder um vencimento
+                    </div>
+                </div>
+                <div style="margin-top:2rem; padding-top:2rem; border-top:1px solid #e2e8f0; text-align:center;">
+                    <a href="https://app.zeonpaper.com.br/user/register" class="btn btn-cta" style="font-size:1rem;">Criar minha conta grátis agora</a>
+                    <p style="margin-top:0.6rem; font-size:0.78rem; color:var(--text-gray);">7 dias grátis · Sem cartão · Cancele quando quiser</p>
+                </div>
+            </div>
+            <p style="text-align:center; margin-top:1.5rem; font-size:0.82rem; color:#94a3b8;">A Conta Azul é voltada para empresas com contador ativo e obrigações fiscais complexas. Se esse é o seu perfil, ela pode ser mais adequada para a sua realidade.</p>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="text-center" style="margin-bottom:2.5rem;">
+                <div class="section-label">Perguntas frequentes</div>
+                <h2 class="compare-section-title">Dúvidas sobre Zeonpaper vs Conta Azul</h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Preciso de contador para usar o Zeonpaper?
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Não. Essa é exatamente a diferença principal. O Zeonpaper foi criado para que o próprio empreendedor gerencie o financeiro sem precisar de formação contábil ou suporte de contador. A Conta Azul, por ter módulos fiscais avançados, tende a ser mais aproveitada quando há um contador operando o sistema.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        O Zeonpaper é mais barato que a Conta Azul?
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Em geral, sim — especialmente para MEI e pequenas empresas que não precisam dos módulos fiscais. O plano Organiza do Zeonpaper começa em R$27,90/mês. Para saber os preços atuais da Conta Azul, consulte o site deles.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        A Conta Azul tem mais funcionalidades — isso não é melhor?
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Ter mais funcionalidades não significa ser melhor para você. Se você vai usar 20% do sistema, está pagando por 80% que não agrega. O Zeonpaper faz menos coisas, mas faz o que importa para MEI e prestadores de serviço de forma muito mais direta.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        O Zeonpaper tem relatórios para o contador?
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim. Você pode exportar relatórios em PDF e planilha para compartilhar com o seu contador se precisar. O Zeonpaper não substitui um sistema contábil completo, mas complementa o trabalho do contador com dados financeiros organizados.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Gerencie seu financeiro sem depender de ninguém</h2>
+            <p>7 dias grátis, sem cartão de crédito. Configure em minutos e tenha clareza do seu fluxo de caixa hoje mesmo.</p>
+            <a href="https://app.zeonpaper.com.br/user/register" class="btn btn-cta">Criar conta grátis agora</a>
+            <p class="cta-note">Sem fidelidade. Cancele quando quiser.</p>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="./index.html" class="footer-logo">
+                    <picture>
+                        <source srcset="./assets/logo.webp" type="image/webp">
+                        <img src="./assets/logo.png" alt="Zeonpaper" decoding="async" style="height:30px;width:auto;filter:brightness(0) invert(1);">
+                    </picture>
+                </a>
+                <p>Sistema financeiro simples para MEI, microempresa e prestador de serviço. Controle contas a pagar e receber sem ERP pesado.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Produto</h4>
+                <a href="./index.html#funcionalidades">Funcionalidades</a>
+                <a href="./index.html#precos">Preços</a>
+                <a href="./index.html#faq">FAQ</a>
+            </div>
+            <div class="footer-col">
+                <h4>Para quem</h4>
+                <a href="./controle-financeiro-para-mei.html">MEI</a>
+                <a href="./controle-financeiro-para-prestador-de-servico.html">Prestador de Serviço</a>
+                <a href="./sistema-financeiro-para-microempresa.html">Microempresa</a>
+            </div>
+            <div class="footer-col">
+                <h4>Comparativos</h4>
+                <a href="./zeonpaper-vs-bling.html">vs Bling</a>
+                <a href="./zeonpaper-vs-conta-azul.html">vs Conta Azul</a>
+                <a href="./zeonpaper-vs-nibo.html">vs Nibo</a>
+            </div>
+            <div class="footer-col">
+                <h4>Suporte</h4>
+                <a href="mailto:contato@zeonpaper.com.br">E-mail</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Zeonpaper. Todos os direitos reservados.</p>
+            <p>Feito no Brasil</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+    lucide.createIcons();
+    const ham = document.querySelector('.hamburger');
+    const drawer = document.querySelector('.mobile-drawer');
+    if (ham && drawer) {
+        ham.addEventListener('click', () => {
+            const isOpen = ham.classList.toggle('open');
+            drawer.classList.toggle('open', isOpen);
+            ham.setAttribute('aria-expanded', isOpen);
+            drawer.setAttribute('aria-hidden', !isOpen);
+        });
+        document.querySelectorAll('.mobile-drawer-link, .mobile-drawer-sublink, .mobile-drawer-cta').forEach(link => {
+            link.addEventListener('click', () => {
+                ham.classList.remove('open');
+                drawer.classList.remove('open');
+                ham.setAttribute('aria-expanded', 'false');
+                drawer.setAttribute('aria-hidden', 'true');
+            });
+        });
+    }
+    document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const item = btn.closest('.faq-item');
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-item.open').forEach(el => {
+                el.classList.remove('open');
+                el.querySelector('.faq-answer').style.maxHeight = null;
+            });
+            if (!isOpen) {
+                item.classList.add('open');
+                item.querySelector('.faq-answer').style.maxHeight = item.querySelector('.faq-answer').scrollHeight + 'px';
+            }
+        });
+    });
+</script>
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+        {
+            "@type": "Question",
+            "name": "Preciso de contador para usar o Zeonpaper?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Não. Essa é exatamente a diferença principal. O Zeonpaper foi criado para que o próprio empreendedor gerencie o financeiro sem precisar de formação contábil ou suporte de contador. A Conta Azul, por ter módulos fiscais avançados, tende a ser mais aproveitada quando há um contador operando o sistema."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "O Zeonpaper é mais barato que a Conta Azul?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Em geral, sim — especialmente para MEI e pequenas empresas que não precisam dos módulos fiscais. O plano Organiza do Zeonpaper começa em R$27,90/mês. Para saber os preços atuais da Conta Azul, consulte o site deles."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "A Conta Azul tem mais funcionalidades — isso não é melhor?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Ter mais funcionalidades não significa ser melhor para você. Se você vai usar 20% do sistema, está pagando por 80% que não agrega. O Zeonpaper faz menos coisas, mas faz o que importa para MEI e prestadores de serviço de forma muito mais direta."
+            }
+        },
+        {
+            "@type": "Question",
+            "name": "O Zeonpaper tem relatórios para o contador?",
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sim. Você pode exportar relatórios em PDF e planilha para compartilhar com o seu contador se precisar. O Zeonpaper não substitui um sistema contábil completo, mas complementa o trabalho do contador com dados financeiros organizados."
+            }
+        }
+    ]
+}
+</script>
+</body>
+</html>
