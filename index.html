@@ -469,11 +469,11 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.4rem, 4vw, 3.5rem);
-            margin-bottom: 1.5rem;
+            font-size: clamp(1.9rem, 3vw, 2.75rem);
+            margin-bottom: 1.25rem;
             color: white;
-            letter-spacing: -0.04em;
-            line-height: 1.1;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
         }
         .hero p { font-size: 1.0625rem; color: #94a3b8; margin-bottom: 2rem; line-height: 1.65; }
         .hero-label {
@@ -637,6 +637,28 @@
             text-align: center;
         }
 
+        /* ─── HERO BENEFITS ─── */
+        .hero-benefits {
+            list-style: none;
+            padding: 0;
+            margin: 1.25rem 0 1.75rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.55rem;
+        }
+        .hero-benefits li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.82);
+            line-height: 1.4;
+        }
+        .hero-benefits li svg {
+            flex-shrink: 0;
+            color: var(--primary);
+        }
+
         /* ─── HERO SOCIAL PROOF ROW ─── */
         .hero-social-proof {
             display: flex;
@@ -694,8 +716,8 @@
         }
         .hero-product-frame {
             position: relative;
-            width: 110%;
-            margin-right: -10%;
+            width: 92%;
+            margin-right: -4%;
             border-radius: 16px;
             overflow: hidden;
             border: 1px solid rgba(121, 59, 237, 0.35);
@@ -1915,7 +1937,7 @@
             </div>
             <div class="nav-actions">
                 <a href="https://app.zeonpaper.com.br/user/login" class="btn-nav-login">Login</a>
-                <a href="#hero-form" class="btn-nav-cta">Criar conta grátis</a>
+                <a href="#precos" class="btn-nav-cta">Criar conta grátis</a>
             </div>
             <button class="hamburger" aria-label="Abrir menu" aria-expanded="false">
                 <span></span><span></span><span></span>
@@ -1935,7 +1957,7 @@
             <a href="./sistema-financeiro-para-microempresa.html" class="mobile-drawer-sublink">Para Microempresa</a>
             <div class="mobile-drawer-actions">
                 <a href="https://app.zeonpaper.com.br/user/login" class="mobile-drawer-login">Login</a>
-                <a href="#hero-form" class="mobile-drawer-cta">Criar conta grátis</a>
+                <a href="#precos" class="mobile-drawer-cta">Criar conta grátis</a>
             </div>
         </div>
     </nav>
@@ -1945,15 +1967,18 @@
         <section class="hero">
             <div class="container hero-grid">
                 <div class="hero-text grid-item">
-                    <h1>Organize o financeiro do seu negócio — <span class="text-gradient">sem planilha e sem ERP pesado</span></h1>
-                    <p>Para MEIs, microempresas e prestadores de serviço que querem controlar contas a pagar e receber, fluxo de caixa e vencimentos em um só lugar — sem complicação, sem treinamento.</p>
-                    <form class="hero-lead-form" id="hero-form" novalidate>
-                        <input type="text" name="nome" class="hero-form-input" placeholder="Seu nome" autocomplete="name" required>
-                        <input type="email" name="email" class="hero-form-input" placeholder="Seu melhor e-mail" autocomplete="email" required>
-                        <input type="tel" name="telefone" class="hero-form-input" placeholder="WhatsApp (opcional)" autocomplete="tel">
-                        <button type="submit" class="btn btn-cta" style="height: 52px; font-size: 1rem;">Criar minha conta grátis</button>
+                    <h1>Controle financeiro para MEIs e pequenas empresas — <span class="text-gradient">simples assim.</span></h1>
+                    <p>Você sabe quanto vai sobrar no fim do mês? Com o Zeonpaper, a resposta está a um clique.</p>
+                    <ul class="hero-benefits">
+                        <li><i data-lucide="check-circle-2" size="17"></i> Veja se seu negócio está no lucro — hoje</li>
+                        <li><i data-lucide="check-circle-2" size="17"></i> Nunca mais esqueça um vencimento</li>
+                        <li><i data-lucide="check-circle-2" size="17"></i> Fluxo de caixa atualizado em tempo real</li>
+                        <li><i data-lucide="check-circle-2" size="17"></i> Relatórios e DRE sem precisar de contador</li>
+                    </ul>
+                    <div class="hero-lead-form">
+                        <a href="#precos" class="btn btn-cta" style="height: 52px; font-size: 1rem; display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">Criar minha conta grátis</a>
                         <p class="hero-form-microcopy">7 dias grátis · Sem cartão · Cancele quando quiser</p>
-                    </form>
+                    </div>
                     <div class="hero-social-proof">
                         <div class="social-avatars">
                             <img class="social-avatar" src="https://i.pravatar.cc/80?img=32" alt="Empreendedora">
