@@ -1363,6 +1363,31 @@
             padding-top: 0.75rem;
             line-height: 1.5;
         }
+        .plan-extras {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            margin-top: auto;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(148,163,184,0.15);
+        }
+        .plan-extras-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.68rem;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+        .plan-extras-item span:first-child {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .plan-extras-item span:last-child {
+            font-weight: 500;
+            color: #64748b;
+        }
 
         /* Garantia */
         .pricing-guarantee {
@@ -2233,7 +2258,7 @@
                         <p class="plan-desc">O ponto de partida ideal. Saia da planilha hoje e organize o financeiro do seu negócio sem complicação.</p>
                         <div class="plan-price">
                             <span class="plan-price-currency">R$</span>
-                            <span class="plan-price-amount">27,90</span>
+                            <span class="plan-price-amount">39,90</span>
                             <span class="plan-price-period">/mês</span>
                         </div>
                         <p class="plan-price-note">Depois dos 7 dias grátis. Cancele quando quiser.</p>
@@ -2259,9 +2284,9 @@
                                 <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Contas bancárias e contatos</li>
                                 <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Agenda financeira e centro de custos</li>
                                 <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Relatórios gerenciais e DRE</li>
-                                <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Multiempresas e usuários ilimitados</li>
                             </ul>
                         </div>
+                        <p class="plan-nf-note">PJ adicional: + R$ 19,90/mês</p>
                     </div>
 
                     <!-- CRESCE -->
@@ -2305,7 +2330,16 @@
                                 <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Suporte prioritário</li>
                             </ul>
                         </div>
-                        <p class="plan-nf-note">NFs excedentes: R$ 0,40/unidade</p>
+                        <div class="plan-extras">
+                            <div class="plan-extras-item">
+                                <span><i data-lucide="receipt" size="12"></i> NFs excedentes</span>
+                                <span>R$ 0,40/unidade</span>
+                            </div>
+                            <div class="plan-extras-item">
+                                <span><i data-lucide="building-2" size="12"></i> PJ adicional</span>
+                                <span>+ R$ 19,90/mês</span>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- PRO -->
@@ -2353,7 +2387,16 @@
                                 <li><i data-lucide="check" size="15" style="color: var(--primary);"></i> Suporte prioritário no WhatsApp</li>
                             </ul>
                         </div>
-                        <p class="plan-nf-note">NFs excedentes: R$ 0,40/unidade</p>
+                        <div class="plan-extras">
+                            <div class="plan-extras-item">
+                                <span><i data-lucide="receipt" size="12"></i> NFs excedentes</span>
+                                <span>R$ 0,40/unidade</span>
+                            </div>
+                            <div class="plan-extras-item">
+                                <span><i data-lucide="building-2" size="12"></i> PJ adicional</span>
+                                <span>+ R$ 19,90/mês</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -2713,6 +2756,7 @@
                 var params = new URLSearchParams(window.location.search);
                 params.set('name', nome);
                 params.set('email', email);
+                if (telefone) params.set('phone', telefone);
                 window.location.href = REGISTER_URL + '?' + params.toString();
             }
 
@@ -2788,6 +2832,7 @@
                 var params = new URLSearchParams(window.location.search);
                 params.set('name', nome);
                 params.set('email', email);
+                if (telefone) params.set('phone', telefone);
                 params.set('plan', currentPlan);
                 window.location.href = REGISTER_URL + '?' + params.toString();
             });
