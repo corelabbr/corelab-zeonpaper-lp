@@ -2760,6 +2760,7 @@
                 var email = form.querySelector('[name="email"]').value.trim();
                 var telefoneEl = form.querySelector('[name="telefone"]');
                 var telefone = telefoneEl ? telefoneEl.value.trim() : '';
+                if (telefone) { var _d = telefone.replace(/\D/g, ''); telefone = _d.startsWith('55') ? _d : '55' + _d; }
 
                 if (nome.length < 2) { form.querySelector('[name="nome"]').focus(); return; }
                 if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { form.querySelector('[name="email"]').focus(); return; }
@@ -2837,6 +2838,7 @@
                 var nome     = form.querySelector('[name="nome"]').value.trim();
                 var email    = form.querySelector('[name="email"]').value.trim();
                 var telefone = form.querySelector('[name="telefone"]').value.trim();
+                if (telefone) { var _d = telefone.replace(/\D/g, ''); telefone = _d.startsWith('55') ? _d : '55' + _d; }
                 if (nome.length < 2)  { form.querySelector('[name="nome"]').focus();  return; }
                 if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { form.querySelector('[name="email"]').focus(); return; }
 
