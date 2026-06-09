@@ -453,12 +453,11 @@
 
         /* ─── HERO ─── */
         .hero {
-            padding-top: 160px;
-            padding-bottom: 5rem;
+            padding-top: 140px;
+            padding-bottom: 4rem;
             background: var(--bg-dark);
             position: relative;
             overflow: hidden;
-            min-height: 85vh;
         }
 
         .hero-grid {
@@ -632,12 +631,64 @@
         .hero-form-input::placeholder { color: rgba(255,255,255,0.35); }
         .hero-form-input:focus { border-color: var(--accent); background: rgba(255,255,255,0.10); }
         .hero-form-microcopy {
+            display: none;
             font-size: 0.78rem;
             color: rgba(255,255,255,0.45);
             text-align: center;
         }
 
-        /* ─── HERO BENEFITS ─── */
+        /* ─── HERO AUDIENCE (para quem é) ─── */
+        .hero-audience {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 1.1rem;
+            color: rgba(255,255,255,0.78);
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+        .hero-audience li {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .hero-audience li svg {
+            color: #C4B5FD;
+            flex-shrink: 0;
+        }
+
+        /* ─── HERO CHIPS (Versão C) ─── */
+        .hero-chips {
+            display: none;
+            list-style: none;
+            padding: 0;
+            margin: 1.25rem 0 1.5rem;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+        .hero-chips li {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.45rem 0.75rem;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.14);
+            border-radius: 999px;
+            font-size: 0.78rem;
+            color: rgba(255,255,255,0.92);
+            font-weight: 500;
+            white-space: nowrap;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .hero-chips li svg {
+            color: var(--accent);
+            flex-shrink: 0;
+        }
+
+        /* ─── HERO BENEFITS (legado) ─── */
         .hero-benefits {
             list-style: none;
             padding: 0;
@@ -648,7 +699,7 @@
         }
         .hero-benefits li {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 0.5rem;
             font-size: 0.95rem;
             color: rgba(255,255,255,0.82);
@@ -657,6 +708,7 @@
         .hero-benefits li svg {
             flex-shrink: 0;
             color: var(--primary);
+            margin-top: 2px;
         }
 
         /* ─── HERO SOCIAL PROOF ROW ─── */
@@ -1540,22 +1592,29 @@
         /* ─── RESPONSIVE ─── */
         @media (max-width: 900px) {
             section { padding: 80px 0; }
-            .hero { padding-top: 120px; min-height: auto; }
-            .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 1.5rem; }
-            .hero-label { justify-content: center; }
+            .hero { padding-top: 88px; padding-bottom: 40px; min-height: auto; }
+            .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 0.75rem; }
+            .hero-label { display: none; }
             .hero-text { display: contents; }
             .hero-label { order: 1; }
             .hero h1 { order: 2; }
             .hero .hero-text > p { order: 3; }
-            .hero-benefits { order: 4; }
-            .hero-visual { order: 5; width: 100%; max-width: 420px; margin: 0 auto; }
-            .hero-cta-wrap { order: 6; }
-            .hero-lead-form { order: 6; }
+            .hero-audience { display: none; }
+            .hero-chips { display: none; }
+            .hero-form-microcopy { display: none; }
+            .hero-visual { order: 4; width: 100%; max-width: 420px; margin: 0 auto; }
+            .hero-cta-wrap { order: 5; }
+            .hero-lead-form { order: 5; }
+            .hero-benefits { order: 6; max-width: 320px; margin-left: auto; margin-right: auto; text-align: left; }
             .hero-social-proof { order: 7; }
-            .hero-proof { order: 8; }
+            .hero-proof { display: none; }
+            /* Imagem do dashboard: menos rounded e mais compacta no mobile */
+            .hero-product-frame { border-radius: 8px; animation: none; transform: none; }
             /* Zera margins verticais — o gap do hero-grid (1.5rem) já cuida do espaçamento */
             .hero h1,
             .hero .hero-text > p,
+            .hero-audience,
+            .hero-chips,
             .hero-benefits,
             .hero-cta-wrap,
             .hero-lead-form,
@@ -1597,7 +1656,7 @@
         @media (max-width: 480px) {
             /* ── Espaçamento ── */
             section { padding: 64px 0; }
-            .hero { padding-top: 96px; }
+            .hero { padding-top: 80px; padding-bottom: 32px; }
             .container { padding: 0 1.25rem; }
 
             /* ── Tipografia ── */
@@ -1609,7 +1668,7 @@
             .cta-section p { font-size: 0.95rem; }
 
             /* ── Hero ── */
-            .hero-img-wrap { min-height: 340px; max-height: 400px; }
+            .hero-img-wrap { min-height: 0; max-height: none; }
             .hero-proof { flex-direction: column; align-items: center; gap: 0.5rem; }
             .hero-proof-item { font-size: 0.8rem; }
             /* email já tratado no 900px */
@@ -1910,6 +1969,133 @@
             .lead-chips { gap: 6px; }
             .lead-chip { padding: 0.5rem 0.85rem; font-size: 0.8rem; }
         }
+
+        /* ─── FAQ TOGGLE (mobile) ─── */
+        .faq-toggle-wrap { display: none; }
+        @media (max-width: 900px) {
+            .faq-toggle-wrap {
+                display: flex;
+                justify-content: center;
+                margin-top: 1.5rem;
+            }
+            .faq-toggle {
+                background: transparent;
+                border: 1px solid rgba(0,0,0,0.12);
+                color: var(--text-dark);
+                font-weight: 600;
+                font-size: 0.92rem;
+                padding: 0.85rem 1.5rem;
+                border-radius: 999px;
+                cursor: pointer;
+                font-family: inherit;
+                transition: background 0.2s, border-color 0.2s;
+            }
+            .faq-toggle:hover { background: rgba(121, 59, 237, 0.04); border-color: var(--primary); color: var(--primary); }
+            .faq-grid .faq-item.faq-extra { display: none; }
+            .faq-grid.expanded .faq-item.faq-extra { display: block; }
+        }
+
+        /* ─── PRICING TABS (mobile) ─── */
+        .pricing-tabs { display: none; }
+        @media (max-width: 900px) {
+            .pricing-tabs {
+                display: flex;
+                gap: 6px;
+                padding: 4px;
+                margin: 0 auto 1.5rem;
+                max-width: 480px;
+                background: rgba(121, 59, 237, 0.08);
+                border-radius: 999px;
+                position: relative;
+            }
+            .pricing-tab {
+                flex: 1;
+                padding: 0.7rem 0.5rem;
+                background: transparent;
+                border: none;
+                border-radius: 999px;
+                font-family: inherit;
+                font-size: 0.88rem;
+                font-weight: 600;
+                color: var(--text-dark);
+                cursor: pointer;
+                transition: background 0.2s, color 0.2s;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 6px;
+            }
+            .pricing-tab.active {
+                background: var(--primary);
+                color: var(--white);
+                box-shadow: 0 4px 14px rgba(121, 59, 237, 0.25);
+            }
+            .pricing-tab-badge {
+                font-size: 0.62rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.04em;
+                background: rgba(255,255,255,0.18);
+                color: inherit;
+                padding: 2px 6px;
+                border-radius: 999px;
+            }
+            .pricing-tab:not(.active) .pricing-tab-badge {
+                background: rgba(121, 59, 237, 0.12);
+                color: var(--primary);
+            }
+            /* Esconde cards não selecionados no mobile */
+            .pricing-grid > .price-card { display: none; }
+            .pricing-grid > .price-card.active { display: flex; }
+        }
+
+        /* ─── STICKY CTA MOBILE ─── */
+        .sticky-cta-mobile { display: none; }
+        @media (max-width: 900px) {
+            .sticky-cta-mobile {
+                display: block;
+                position: fixed;
+                left: 0; right: 0; bottom: 0;
+                z-index: 90;
+                padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+                background: rgba(10, 15, 30, 0.94);
+                backdrop-filter: blur(14px);
+                -webkit-backdrop-filter: blur(14px);
+                border-top: 1px solid rgba(255,255,255,0.08);
+                transform: translateY(110%);
+                transition: transform 0.28s ease;
+                pointer-events: none;
+            }
+            .sticky-cta-mobile.visible {
+                transform: translateY(0);
+                pointer-events: auto;
+            }
+            .sticky-cta-mobile-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                width: 100%;
+                height: 52px;
+                background: var(--accent);
+                color: #052e16;
+                font-weight: 700;
+                font-family: inherit;
+                font-size: 1rem;
+                border: none;
+                border-radius: var(--radius-btn);
+                text-decoration: none;
+                cursor: pointer;
+                box-shadow: 0 8px 24px rgba(34, 197, 94, 0.35);
+            }
+            .sticky-cta-mobile-micro {
+                display: block;
+                text-align: center;
+                color: rgba(255,255,255,0.55);
+                font-size: 0.72rem;
+                margin-top: 6px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1978,16 +2164,21 @@
         <section class="hero">
             <div class="container hero-grid">
                 <div class="hero-text grid-item">
-                    <h1>Controle financeiro para MEIs e pequenas empresas — <span class="text-gradient">simples assim.</span></h1>
-                    <p>Você sabe quanto vai sobrar no fim do mês? Com o Zeonpaper, a resposta está a um clique.</p>
-                    <ul class="hero-benefits">
-                        <li><i data-lucide="check-circle-2" size="17"></i> Veja se seu negócio está no lucro — hoje</li>
-                        <li><i data-lucide="check-circle-2" size="17"></i> Nunca mais esqueça um vencimento</li>
-                        <li><i data-lucide="check-circle-2" size="17"></i> Fluxo de caixa atualizado em tempo real</li>
-                        <li><i data-lucide="check-circle-2" size="17"></i> Relatórios e DRE sem precisar de contador</li>
+                    <div class="hero-label">Controle financeiro sem planilha</div>
+                    <h1>O financeiro do seu negócio <span class="text-gradient">em uma tela só.</span></h1>
+                    <p>Pra MEI, prestador e pequena empresa.<br>Sem planilha, sem contador, sem ERP.</p>
+                    <ul class="hero-audience" aria-label="Para quem é o Zeonpaper">
+                        <li><i data-lucide="user" size="14"></i> MEI</li>
+                        <li><i data-lucide="briefcase" size="14"></i> Prestador de serviço</li>
+                        <li><i data-lucide="building-2" size="14"></i> Pequena empresa</li>
+                    </ul>
+                    <ul class="hero-chips">
+                        <li><i data-lucide="zap" size="15"></i> Setup em 10 min</li>
+                        <li><i data-lucide="bell-ring" size="15"></i> Alertas automáticos</li>
+                        <li><i data-lucide="bar-chart-3" size="15"></i> DRE automática</li>
                     </ul>
                     <div class="hero-lead-form">
-                        <a href="#precos" class="btn btn-cta" style="height: 52px; font-size: 1rem; display: inline-flex; align-items: center; justify-content: center; text-decoration: none;">Criar minha conta grátis</a>
+                        <button type="button" class="btn btn-cta" data-lead-modal data-plan="cresce" style="height: 52px; font-size: 1rem; display: inline-flex; align-items: center; justify-content: center; width: 100%;">Testar grátis por 7 dias</button>
                         <p class="hero-form-microcopy">7 dias grátis · Sem cartão · Cancele quando quiser</p>
                     </div>
                     <div class="hero-social-proof">
@@ -2287,9 +2478,16 @@
                     <div class="pricing-trust-item"><i data-lucide="refresh-ccw" size="16"></i> Mude ou cancele a qualquer hora</div>
                 </div>
 
+                <!-- Tabs (visíveis só no mobile) -->
+                <div class="pricing-tabs" role="tablist" aria-label="Planos">
+                    <button type="button" role="tab" class="pricing-tab" data-tab="organiza">Organiza</button>
+                    <button type="button" role="tab" class="pricing-tab active" data-tab="cresce">Cresce <span class="pricing-tab-badge">popular</span></button>
+                    <button type="button" role="tab" class="pricing-tab" data-tab="pro">Pro</button>
+                </div>
+
                 <div class="pricing-grid">
                     <!-- ORGANIZA -->
-                    <div class="price-card">
+                    <div class="price-card" data-plan-card="organiza">
                         <h3 class="plan-name">Organiza</h3>
                         <p class="plan-desc">O ponto de partida ideal. Saia da planilha hoje e organize o financeiro do seu negócio sem complicação.</p>
                         <div class="plan-price">
@@ -2326,7 +2524,7 @@
                     </div>
 
                     <!-- CRESCE -->
-                    <div class="price-card featured">
+                    <div class="price-card featured active" data-plan-card="cresce">
                         <div class="pop-tag">MAIS ESCOLHIDO</div>
                         <h3 class="plan-name">Cresce</h3>
                         <p class="plan-desc">A escolha de quem já saiu da planilha e quer emitir nota fiscal no mesmo lugar do financeiro.</p>
@@ -2379,7 +2577,7 @@
                     </div>
 
                     <!-- PRO -->
-                    <div class="price-card anchor">
+                    <div class="price-card anchor" data-plan-card="pro">
                         <h3 class="plan-name">Pro</h3>
                         <p class="plan-desc">Para quem já tem volume alto e quer automação completa com atendimento dedicado.</p>
                         <div class="plan-price">
@@ -2598,6 +2796,9 @@
                         <div class="faq-answer"><div class="faq-answer-inner">Com o Open Finance, o Zeonpaper se conecta à sua conta bancária e importa automaticamente os lançamentos. Você faz a conciliação bancária — conferindo se o que está no banco bate com o que está no sistema — sem precisar exportar extrato e colar na planilha. O plano Organiza inclui 1 conta conectada.</div></div>
                     </div>
                 </div>
+                <div class="faq-toggle-wrap">
+                    <button type="button" class="faq-toggle" aria-expanded="false">Ver todas as perguntas</button>
+                </div>
             </div>
         </section>
 
@@ -2676,6 +2877,12 @@
                 <button type="submit" class="lead-submit">Criar minha conta grátis</button>
             </form>
         </div>
+    </div>
+
+    <!-- Sticky CTA mobile (aparece após rolar 1ª dobra, some no CTA final) -->
+    <div class="sticky-cta-mobile" aria-hidden="true">
+        <button type="button" class="sticky-cta-mobile-btn" data-lead-modal data-plan="cresce">Testar grátis por 7 dias</button>
+        <span class="sticky-cta-mobile-micro">Sem cartão · Cancele quando quiser</span>
     </div>
 
     <script>
@@ -2874,6 +3081,64 @@
                 params.set('plan', currentPlan);
                 window.location.href = REGISTER_URL + '?' + params.toString();
             });
+        })();
+
+        // FAQ — esconde extras no mobile + botão "Ver todas"
+        (function () {
+            var grid = document.querySelector('.faq-grid');
+            var btn = document.querySelector('.faq-toggle');
+            if (!grid || !btn) return;
+            var items = grid.querySelectorAll('.faq-item');
+            var visibleCount = 6;
+            for (var i = visibleCount; i < items.length; i++) items[i].classList.add('faq-extra');
+            var hiddenCount = items.length - visibleCount;
+            btn.textContent = 'Ver mais ' + hiddenCount + ' perguntas';
+            btn.addEventListener('click', function () {
+                var expanded = grid.classList.toggle('expanded');
+                btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                btn.textContent = expanded ? 'Ver menos perguntas' : ('Ver mais ' + hiddenCount + ' perguntas');
+            });
+        })();
+
+        // Pricing tabs (mobile)
+        (function () {
+            var tabs = document.querySelectorAll('.pricing-tabs [data-tab]');
+            var cards = document.querySelectorAll('.pricing-grid [data-plan-card]');
+            if (!tabs.length || !cards.length) return;
+            tabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    var plan = tab.dataset.tab;
+                    tabs.forEach(function (t) { t.classList.toggle('active', t === tab); });
+                    cards.forEach(function (c) { c.classList.toggle('active', c.dataset.planCard === plan); });
+                });
+            });
+        })();
+
+        // Sticky CTA mobile — mostra após 1ª dobra, esconde quando o CTA final aparece
+        (function () {
+            var sticky = document.querySelector('.sticky-cta-mobile');
+            if (!sticky) return;
+            var ctaFinal = document.getElementById('cta-final');
+            var threshold = Math.round(window.innerHeight * 0.9);
+
+            function update() {
+                var passed = window.scrollY > threshold;
+                var nearFinal = false;
+                if (ctaFinal) {
+                    var r = ctaFinal.getBoundingClientRect();
+                    // esconde quando o topo do CTA final entra na metade inferior do viewport
+                    nearFinal = r.top < window.innerHeight * 0.85;
+                }
+                if (passed && !nearFinal) sticky.classList.add('visible');
+                else sticky.classList.remove('visible');
+            }
+
+            window.addEventListener('scroll', update, { passive: true });
+            window.addEventListener('resize', function () {
+                threshold = Math.round(window.innerHeight * 0.9);
+                update();
+            });
+            update();
         })();
     </script>
 
