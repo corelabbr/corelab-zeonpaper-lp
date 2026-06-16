@@ -36,17 +36,17 @@
 
     <!-- Open Graph / WhatsApp / LinkedIn -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://lp.zeonpaper.com.br">
+    <meta property="og:url" content="https://zeonpaper.com.br">
     <meta property="og:title" content="Controle Financeiro para MEI e Pequena Empresa | Zeonpaper">
     <meta property="og:description" content="Sistema financeiro para MEI, microempresa e prestador de serviço. Controle contas a pagar e receber, fluxo de caixa e alertas de vencimento sem planilha e sem ERP pesado. 7 dias grátis, sem cartão.">
-    <meta property="og:image" content="https://lp.zeonpaper.com.br/assets/og-image.jpg">
+    <meta property="og:image" content="https://zeonpaper.com.br/assets/og-image.jpg">
     <meta property="og:locale" content="pt_BR">
     <meta property="og:site_name" content="Zeonpaper">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Controle Financeiro para MEI e Pequena Empresa | Zeonpaper">
     <meta name="twitter:description" content="Sistema financeiro para MEI, microempresa e prestador de serviço. Controle contas a pagar e receber, fluxo de caixa e alertas de vencimento sem planilha e sem ERP pesado. 7 dias grátis, sem cartão.">
-    <meta name="twitter:image" content="https://lp.zeonpaper.com.br/assets/og-image.jpg">
+    <meta name="twitter:image" content="https://zeonpaper.com.br/assets/og-image.jpg">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
@@ -1961,6 +1961,115 @@
         }
         .lead-input:focus { border-color: var(--primary); }
         .lead-input::placeholder { color: #94a3b8; }
+        .lead-input.invalid { border-color: #ef4444; background: #fef2f2; }
+
+        /* Password field + toggle (modal) */
+        .lead-password-wrap { position: relative; }
+        .lead-password-wrap .lead-input { padding-right: 3rem; }
+        .lead-password-toggle {
+            position: absolute;
+            top: calc(50% - 0.5rem);
+            right: 0.5rem;
+            transform: translateY(-50%);
+            background: transparent;
+            border: 0;
+            padding: 0.5rem;
+            cursor: pointer;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+        }
+        .lead-password-toggle:hover { color: var(--primary); }
+        .lead-password-toggle:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+
+        /* Password field + toggle (cta-final, dark bg) */
+        .cta-password-wrap { position: relative; }
+        .cta-password-wrap .cta-form-input { padding-right: 3rem; }
+        .cta-password-toggle {
+            position: absolute;
+            top: 50%;
+            right: 0.5rem;
+            transform: translateY(-50%);
+            background: transparent;
+            border: 0;
+            padding: 0.5rem;
+            cursor: pointer;
+            color: rgba(255,255,255,0.55);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+        }
+        .cta-password-toggle:hover { color: #fff; }
+
+        /* Inline error message */
+        .lead-error,
+        .cta-form-error {
+            background: #fef2f2;
+            color: #b91c1c;
+            border: 1px solid #fecaca;
+            border-radius: 8px;
+            padding: 0.65rem 0.85rem;
+            font-size: 0.85rem;
+            line-height: 1.35;
+            margin-bottom: 0.85rem;
+        }
+        .cta-form-error {
+            background: rgba(239, 68, 68, 0.12);
+            color: #fecaca;
+            border-color: rgba(239, 68, 68, 0.35);
+        }
+        .lead-error a, .cta-form-error a { color: inherit; text-decoration: underline; font-weight: 600; }
+
+        /* Submit loading state */
+        .lead-submit.is-loading,
+        .cta-lead-form .btn.is-loading { opacity: 0.7; cursor: wait; }
+
+        /* Password rules checklist */
+        .pwd-rules {
+            list-style: none;
+            padding: 0;
+            margin: -0.4rem 0 0.85rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.25rem 0.6rem;
+        }
+        .pwd-rules li {
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+            font-size: 0.78rem;
+            color: #94a3b8;
+            line-height: 1.25;
+            transition: color 0.15s;
+        }
+        .pwd-rules li i { flex-shrink: 0; }
+        .pwd-rules li.met { color: #16a34a; font-weight: 500; }
+        .pwd-rules li.met i { color: #16a34a; }
+        .pwd-rules--dark li { color: rgba(255,255,255,0.55); }
+        .pwd-rules--dark li.met { color: #4ade80; }
+        .pwd-rules--dark li.met i { color: #4ade80; }
+        @media (max-width: 380px) {
+            .pwd-rules { grid-template-columns: 1fr; }
+        }
+
+        /* Success state */
+        .lead-success { text-align: center; padding: 1rem 0; }
+        .lead-success-icon { color: #16a34a; display: flex; justify-content: center; margin-bottom: 0.75rem; }
+        .lead-success-title { font-size: 1.25rem; font-weight: 700; color: var(--text-dark); margin: 0 0 0.5rem; }
+        .lead-success-text { color: #475569; font-size: 0.95rem; line-height: 1.5; margin: 0; }
+
+        /* Terms microcopy */
+        .lead-terms-microcopy {
+            font-size: 0.75rem;
+            color: #64748b;
+            text-align: center;
+            margin: 0.75rem 0 0;
+            line-height: 1.45;
+        }
+        .lead-terms-microcopy a { color: var(--primary); text-decoration: underline; }
 
 
         @media (max-width: 480px) {
@@ -2178,7 +2287,7 @@
                         <li><i data-lucide="bar-chart-3" size="15"></i> DRE automática</li>
                     </ul>
                     <div class="hero-lead-form">
-                        <a href="#precos" class="btn btn-cta" style="height: 52px; font-size: 1rem; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-decoration: none;">Testar grátis por 7 dias</a>
+                        <button type="button" class="btn btn-cta" style="height: 52px; font-size: 1rem; display: inline-flex; align-items: center; justify-content: center; width: 100%; border: 0; cursor: pointer;" data-lead-modal data-plan="organiza">Testar grátis por 7 dias</button>
                         <p class="hero-form-microcopy">7 dias grátis · Sem cartão · Cancele quando quiser</p>
                     </div>
                     <div class="hero-social-proof">
@@ -2810,9 +2919,32 @@
                 <form class="cta-lead-form" id="cta-form" novalidate>
                     <input type="text" name="nome" class="cta-form-input" placeholder="Seu nome" autocomplete="name" required>
                     <input type="email" name="email" class="cta-form-input" placeholder="Seu melhor e-mail" autocomplete="email" required>
-                    <input type="tel" name="telefone" class="cta-form-input" placeholder="WhatsApp (opcional)" autocomplete="tel">
+                    <input type="tel" name="telefone" class="cta-form-input" placeholder="WhatsApp (com DDD)" autocomplete="tel" inputmode="numeric" maxlength="15" required>
+                    <input type="text" name="cnpj" class="cta-form-input" placeholder="CNPJ" autocomplete="off" inputmode="numeric" maxlength="18" required>
+                    <div class="cta-password-wrap">
+                        <input type="password" name="senha" class="cta-form-input cta-password-input" placeholder="Crie uma senha forte" autocomplete="new-password" minlength="8" required>
+                        <button type="button" class="cta-password-toggle" aria-label="Mostrar senha" tabindex="-1">
+                            <i data-lucide="eye" width="18" height="18"></i>
+                        </button>
+                    </div>
+                    <ul class="pwd-rules pwd-rules--dark" data-pwd-rules>
+                        <li data-rule="length"><i data-lucide="circle" width="13" height="13"></i> 8 caracteres ou mais</li>
+                        <li data-rule="upper"><i data-lucide="circle" width="13" height="13"></i> 1 letra maiúscula</li>
+                        <li data-rule="lower"><i data-lucide="circle" width="13" height="13"></i> 1 letra minúscula</li>
+                        <li data-rule="number"><i data-lucide="circle" width="13" height="13"></i> 1 número</li>
+                    </ul>
+                    <input type="password" name="senha_confirm" class="cta-form-input" placeholder="Confirme sua senha" autocomplete="new-password" minlength="8" required>
+                    <div class="cta-form-error" data-lead-error hidden></div>
                     <button type="submit" class="btn btn-cta" style="height: 52px; font-size: 1rem;">Criar minha conta grátis</button>
                     <p class="cta-form-microcopy">7 dias grátis · Sem cartão · Cancele quando quiser</p>
+                    <input type="hidden" name="utm_source">
+                    <input type="hidden" name="utm_medium">
+                    <input type="hidden" name="utm_campaign">
+                    <input type="hidden" name="utm_content">
+                    <input type="hidden" name="utm_term">
+                    <input type="hidden" name="utm_adgroup">
+                    <input type="hidden" name="matchtype">
+                    <input type="hidden" name="keyword">
                 </form>
             </div>
         </section>
@@ -2873,9 +3005,38 @@
             <form id="plan-modal-form" novalidate>
                 <input type="text" name="nome" class="lead-input" placeholder="Seu nome" autocomplete="name" required>
                 <input type="email" name="email" class="lead-input" placeholder="Seu melhor e-mail" autocomplete="email" required>
-                <input type="tel" name="telefone" class="lead-input" placeholder="WhatsApp (opcional)" autocomplete="tel">
+                <input type="tel" name="telefone" class="lead-input" placeholder="WhatsApp (com DDD)" autocomplete="tel" inputmode="numeric" maxlength="15" required>
+                <input type="text" name="cnpj" class="lead-input" placeholder="CNPJ" autocomplete="off" inputmode="numeric" maxlength="18" required>
+                <div class="lead-password-wrap">
+                    <input type="password" name="senha" class="lead-input lead-password-input" placeholder="Crie uma senha forte" autocomplete="new-password" minlength="8" required>
+                    <button type="button" class="lead-password-toggle" aria-label="Mostrar senha" tabindex="-1">
+                        <i data-lucide="eye" width="18" height="18"></i>
+                    </button>
+                </div>
+                <ul class="pwd-rules" data-pwd-rules>
+                    <li data-rule="length"><i data-lucide="circle" width="13" height="13"></i> 8 caracteres ou mais</li>
+                    <li data-rule="upper"><i data-lucide="circle" width="13" height="13"></i> 1 letra maiúscula</li>
+                    <li data-rule="lower"><i data-lucide="circle" width="13" height="13"></i> 1 letra minúscula</li>
+                    <li data-rule="number"><i data-lucide="circle" width="13" height="13"></i> 1 número</li>
+                </ul>
+                <input type="password" name="senha_confirm" class="lead-input" placeholder="Confirme sua senha" autocomplete="new-password" minlength="8" required>
+                <div class="lead-error" data-lead-error hidden></div>
                 <button type="submit" class="lead-submit">Criar minha conta grátis</button>
+                <p class="lead-terms-microcopy">Ao continuar, você concorda com nossos <a href="https://www.zeonpaper.com.br/termos" target="_blank" rel="noopener">Termos</a> e <a href="https://www.zeonpaper.com.br/privacidade" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
+                <input type="hidden" name="utm_source">
+                <input type="hidden" name="utm_medium">
+                <input type="hidden" name="utm_campaign">
+                <input type="hidden" name="utm_content">
+                <input type="hidden" name="utm_term">
+                <input type="hidden" name="utm_adgroup">
+                <input type="hidden" name="matchtype">
+                <input type="hidden" name="keyword">
             </form>
+            <div class="lead-success" data-lead-success hidden>
+                <div class="lead-success-icon"><i data-lucide="check-circle-2" width="44" height="44"></i></div>
+                <h3 class="lead-success-title">Conta criada com sucesso!</h3>
+                <p class="lead-success-text">Te enviamos um e-mail de boas-vindas. Em instantes você vai para a tela de login.</p>
+            </div>
         </div>
     </div>
 
@@ -2943,144 +3104,488 @@
             });
         });
 
-        // ─── UTM cookie capture ───
+        // ─── UTM capture (Google + Meta) + cookie 30d ───
+        var UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_adgroup','matchtype','keyword'];
         (function() {
-            const params = new URLSearchParams(window.location.search);
-            const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
-            const expires = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toUTCString();
-            utmKeys.forEach(function(key) {
+            var params = new URLSearchParams(window.location.search);
+            var expires = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toUTCString();
+            UTM_KEYS.forEach(function(key) {
                 if (params.has(key)) {
                     document.cookie = key + '=' + encodeURIComponent(params.get(key)) + '; expires=' + expires + '; path=/';
                 }
             });
         })();
 
+        function readUtm(key) {
+            var m = document.cookie.match('(?:^|; )' + key + '=([^;]*)');
+            return m ? decodeURIComponent(m[1]) : '';
+        }
+
+        function getUtmObject() {
+            var out = {};
+            UTM_KEYS.forEach(function(k) { var v = readUtm(k); if (v) out[k] = v; });
+            return out;
+        }
+
         function getUtmMedia() {
-            const keys = ['utm_source', 'utm_medium', 'utm_campaign'];
+            var keys = ['utm_source', 'utm_medium', 'utm_campaign'];
             for (var i = 0; i < keys.length; i++) {
-                var match = document.cookie.match('(?:^|; )' + keys[i] + '=([^;]*)');
-                if (match) return decodeURIComponent(match[1]);
+                var v = readUtm(keys[i]);
+                if (v) return v;
             }
             return 'lp';
         }
 
-        // ─── Lead form submission ───
-        // Envia dados ao webhook (Make.com dispara e-mail de recuperação se não completar em 5 min)
-        // Redireciona para cadastro com nome + email pré-preenchidos via URL params
+        // Hidrata hidden inputs UTM em todos os forms
         (function() {
-            var WEBHOOK = 'https://hook.us1.make.com/4w9ewge45cwym9rj6vcmrycu1ifrz1sr';
-            var REGISTER_URL = 'https://app.zeonpaper.com.br/user/register';
-
-            function submitLeadForm(e) {
-                e.preventDefault();
-                var form = e.currentTarget;
-                var nome = form.querySelector('[name="nome"]').value.trim();
-                var email = form.querySelector('[name="email"]').value.trim();
-                var telefoneEl = form.querySelector('[name="telefone"]');
-                var telefone = telefoneEl ? telefoneEl.value.trim() : '';
-                if (telefone) { var _d = telefone.replace(/\D/g, ''); telefone = _d.startsWith('55') ? _d : '55' + _d; }
-
-                if (nome.length < 2) { form.querySelector('[name="nome"]').focus(); return; }
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { form.querySelector('[name="email"]').focus(); return; }
-
-                var btn = form.querySelector('[type="submit"]');
-                btn.disabled = true;
-                btn.textContent = 'Aguarde...';
-
-                window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push({ event: 'lead_capturado', lead_nome: nome, lead_email: email });
-
-                fetch(WEBHOOK, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ etapa: 1, nome: nome, email: email, telefone: telefone, utm: getUtmMedia() }),
-                    keepalive: true
-                }).catch(function() {});
-
-                var params = new URLSearchParams(window.location.search);
-                params.set('name', nome);
-                params.set('email', email);
-                if (telefone) params.set('phone', telefone);
-                window.location.href = REGISTER_URL + '?' + params.toString();
-            }
-
-            ['hero-form', 'cta-form'].forEach(function(id) {
-                var form = document.getElementById(id);
-                if (form) form.addEventListener('submit', submitLeadForm);
+            var utm = getUtmObject();
+            document.querySelectorAll('form').forEach(function(form) {
+                UTM_KEYS.forEach(function(k) {
+                    var input = form.querySelector('input[type="hidden"][name="' + k + '"]');
+                    if (input && utm[k]) input.value = utm[k];
+                });
             });
         })();
 
-        // ─── Plan modal ───
-        (function() {
-            var overlay  = document.getElementById('plan-modal');
-            if (!overlay) return;
-            var badge    = document.getElementById('plan-modal-badge');
-            var form     = document.getElementById('plan-modal-form');
-            var closeBtn = document.getElementById('plan-modal-close');
-            var WEBHOOK      = 'https://hook.us1.make.com/4w9ewge45cwym9rj6vcmrycu1ifrz1sr';
-            var REGISTER_URL = 'https://app.zeonpaper.com.br/user/register';
-            var currentPlan  = '';
+        // ─── CNPJ: máscara + validação dígito verificador ───
+        function maskCNPJ(value) {
+            var d = (value || '').replace(/\D/g, '').slice(0, 14);
+            if (d.length <= 2) return d;
+            if (d.length <= 5) return d.replace(/^(\d{2})(\d+)/, '$1.$2');
+            if (d.length <= 8) return d.replace(/^(\d{2})(\d{3})(\d+)/, '$1.$2.$3');
+            if (d.length <= 12) return d.replace(/^(\d{2})(\d{3})(\d{3})(\d+)/, '$1.$2.$3/$4');
+            return d.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d+)/, '$1.$2.$3/$4-$5');
+        }
 
-            function openModal(plan) {
-                currentPlan = plan;
-                badge.textContent = plan.charAt(0).toUpperCase() + plan.slice(1);
-                overlay.classList.add('open');
-                document.body.style.overflow = 'hidden';
-                setTimeout(function() { form.querySelector('[name="nome"]').focus(); }, 50);
-            }
+        function isValidCNPJ(value) {
+            var c = (value || '').replace(/\D/g, '');
+            if (c.length !== 14) return false;
+            if (/^(\d)\1{13}$/.test(c)) return false;
+            var calc = function(slice) {
+                var nums = slice.split('').map(Number);
+                var weights = nums.length === 12
+                    ? [5,4,3,2,9,8,7,6,5,4,3,2]
+                    : [6,5,4,3,2,9,8,7,6,5,4,3,2];
+                var sum = 0;
+                for (var i = 0; i < nums.length; i++) sum += nums[i] * weights[i];
+                var rest = sum % 11;
+                return rest < 2 ? 0 : 11 - rest;
+            };
+            var d1 = calc(c.slice(0, 12));
+            var d2 = calc(c.slice(0, 12) + d1);
+            return d1 === parseInt(c.charAt(12), 10) && d2 === parseInt(c.charAt(13), 10);
+        }
 
-            function closeModal() {
-                overlay.classList.remove('open');
-                document.body.style.overflow = '';
-                form.reset();
-                var btn = form.querySelector('[type="submit"]');
-                btn.disabled = false;
-                btn.textContent = 'Criar minha conta grátis';
-            }
+        // Aplica máscara CNPJ em todos os inputs name="cnpj"
+        document.querySelectorAll('input[name="cnpj"]').forEach(function(input) {
+            input.addEventListener('input', function() {
+                var pos = input.selectionStart;
+                var before = input.value;
+                input.value = maskCNPJ(input.value);
+                if (before.length < input.value.length) pos += (input.value.length - before.length);
+                try { input.setSelectionRange(pos, pos); } catch(_) {}
+            });
+        });
 
-            document.querySelectorAll('[data-lead-modal]').forEach(function(el) {
-                el.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    openModal(el.dataset.plan || '');
+        // ─── Telefone BR: máscara + bloqueio de letras ───
+        function maskPhone(value) {
+            var d = (value || '').replace(/\D/g, '').slice(0, 11);
+            if (!d) return '';
+            if (d.length <= 2) return '(' + d;
+            if (d.length <= 6) return d.replace(/^(\d{2})(\d+)/, '($1) $2');
+            if (d.length <= 10) return d.replace(/^(\d{2})(\d{4})(\d+)/, '($1) $2-$3');
+            return d.replace(/^(\d{2})(\d{5})(\d+)/, '($1) $2-$3');
+        }
+
+        document.querySelectorAll('input[name="telefone"]').forEach(function(input) {
+            input.addEventListener('input', function() {
+                var pos = input.selectionStart;
+                var before = input.value;
+                input.value = maskPhone(input.value);
+                if (before.length < input.value.length) pos += (input.value.length - before.length);
+                try { input.setSelectionRange(pos, pos); } catch(_) {}
+            });
+        });
+
+        // Toggle de senha (modal + cta-final)
+        document.querySelectorAll('.lead-password-toggle, .cta-password-toggle').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var input = btn.parentElement.querySelector('input[name="senha"]');
+                if (!input) return;
+                var showing = input.type === 'text';
+                input.type = showing ? 'password' : 'text';
+                btn.setAttribute('aria-label', showing ? 'Mostrar senha' : 'Ocultar senha');
+                var icon = btn.querySelector('[data-lucide]');
+                if (icon) {
+                    icon.setAttribute('data-lucide', showing ? 'eye' : 'eye-off');
+                    if (window.lucide && window.lucide.createIcons) window.lucide.createIcons();
+                }
+            });
+        });
+
+        // ─── Senha forte: regras em tempo real ───
+        function evalPasswordRules(pwd) {
+            return {
+                length: pwd.length >= 8,
+                upper:  /[A-Z]/.test(pwd),
+                lower:  /[a-z]/.test(pwd),
+                number: /\d/.test(pwd)
+            };
+        }
+
+        function isStrongPassword(pwd) {
+            var r = evalPasswordRules(pwd);
+            return r.length && r.upper && r.lower && r.number;
+        }
+
+        // Atualiza checklist visual conforme usuário digita
+        document.querySelectorAll('input[name="senha"]').forEach(function(input) {
+            var form = input.closest('form');
+            if (!form) return;
+            var rules = form.querySelector('[data-pwd-rules]');
+            if (!rules) return;
+            input.addEventListener('input', function() {
+                var r = evalPasswordRules(input.value);
+                Object.keys(r).forEach(function(key) {
+                    var li = rules.querySelector('[data-rule="' + key + '"]');
+                    if (!li) return;
+                    li.classList.toggle('met', r[key]);
+                    var icon = li.querySelector('[data-lucide]');
+                    if (icon) {
+                        icon.setAttribute('data-lucide', r[key] ? 'check-circle-2' : 'circle');
+                        if (window.lucide && window.lucide.createIcons) window.lucide.createIcons();
+                    }
                 });
             });
+        });
 
-            closeBtn.addEventListener('click', closeModal);
-            overlay.addEventListener('click', function(e) { if (e.target === overlay) closeModal(); });
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
-            });
+        // ─── Cadastro: chamada à API Zeonpaper ───
+        (function() {
+            var API_URL      = 'https://back.zeonpaper.com.br/api/register/submit';
+            var WEBHOOK      = 'https://hook.us1.make.com/4w9ewge45cwym9rj6vcmrycu1ifrz1sr';
+            var LOGIN_URL    = 'https://app.zeonpaper.com.br/login';
+            var EMAIL_RE     = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                var nome     = form.querySelector('[name="nome"]').value.trim();
-                var email    = form.querySelector('[name="email"]').value.trim();
-                var telefone = form.querySelector('[name="telefone"]').value.trim();
-                if (telefone) { var _d = telefone.replace(/\D/g, ''); telefone = _d.startsWith('55') ? _d : '55' + _d; }
-                if (nome.length < 2)  { form.querySelector('[name="nome"]').focus();  return; }
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { form.querySelector('[name="email"]').focus(); return; }
+            function normalizePhone(v) {
+                var d = (v || '').replace(/\D/g, '');
+                if (!d) return '';
+                if (d.length >= 12 && d.startsWith('55')) return d;
+                return '55' + d;
+            }
 
+            function setFieldError(form, name) {
+                var el = form.querySelector('[name="' + name + '"]');
+                if (el) { el.classList.add('invalid'); el.focus(); }
+            }
+
+            function clearFieldErrors(form) {
+                form.querySelectorAll('.invalid').forEach(function(el) { el.classList.remove('invalid'); });
+            }
+
+            function showError(form, html) {
+                var box = form.querySelector('[data-lead-error]');
+                if (!box) { console.warn(html); return; }
+                box.innerHTML = html;
+                box.hidden = false;
+            }
+
+            function hideError(form) {
+                var box = form.querySelector('[data-lead-error]');
+                if (box) { box.hidden = true; box.innerHTML = ''; }
+            }
+
+            function getFormData(form) {
+                var get = function(n) { var el = form.querySelector('[name="' + n + '"]'); return el ? el.value : ''; };
+                return {
+                    nome: get('nome').trim(),
+                    email: get('email').trim(),
+                    telefoneRaw: get('telefone').trim(),
+                    cnpjRaw: get('cnpj').trim(),
+                    senha: get('senha'),
+                    senhaConfirm: get('senha_confirm'),
+                };
+            }
+
+            function validate(form, data) {
+                clearFieldErrors(form);
+                hideError(form);
+                if (data.nome.length < 2) { setFieldError(form, 'nome'); showError(form, 'Digite seu nome.'); return false; }
+                if (!EMAIL_RE.test(data.email)) { setFieldError(form, 'email'); showError(form, 'Digite um e-mail válido.'); return false; }
+                var phoneDigits = data.telefoneRaw.replace(/\D/g, '');
+                if (phoneDigits.length < 10) { setFieldError(form, 'telefone'); showError(form, 'Digite seu WhatsApp com DDD.'); return false; }
+                if (!isValidCNPJ(data.cnpjRaw)) { setFieldError(form, 'cnpj'); showError(form, 'CNPJ inválido. Confira os dígitos.'); return false; }
+                if (!isStrongPassword(data.senha)) {
+                    setFieldError(form, 'senha');
+                    showError(form, 'Sua senha não atende a todos os requisitos. Confira a lista abaixo do campo.');
+                    return false;
+                }
+                if (data.senha !== data.senhaConfirm) {
+                    setFieldError(form, 'senha_confirm');
+                    showError(form, 'As senhas não conferem. Digite a mesma senha nos dois campos.');
+                    return false;
+                }
+                return true;
+            }
+
+            function setLoading(form, on) {
                 var btn = form.querySelector('[type="submit"]');
-                btn.disabled = true;
-                btn.textContent = 'Aguarde...';
+                if (!btn) return;
+                btn.disabled = !!on;
+                btn.classList.toggle('is-loading', !!on);
+                if (on) {
+                    btn.dataset._label = btn.textContent;
+                    btn.textContent = 'Criando sua conta...';
+                } else if (btn.dataset._label) {
+                    btn.textContent = btn.dataset._label;
+                }
+            }
+
+            // Mapa: nome do campo na API → name do input no form
+            var FIELD_MAP = {
+                username: 'email',
+                password: 'senha',
+                name: 'nome',
+                phone: 'telefone',
+                taxNumber: 'cnpj'
+            };
+
+            function handleApiError(form, info) {
+                var code = info.code || '';
+                var field = info.field || '';
+                var msg = info.message || '';
+                var status = info.status || 0;
+
+                // Email duplicado (PDF: 401; algumas APIs retornam 409/422 — cobrimos todos)
+                if (status === 401 || code === 'email_already_registered' || code === 'user_already_exists') {
+                    showError(form,
+                        'Este e-mail já está cadastrado. ' +
+                        '<a href="' + LOGIN_URL + '" target="_blank" rel="noopener">Faça login</a> ' +
+                        'ou recupere sua senha.'
+                    );
+                    setFieldError(form, 'email');
+                    return;
+                }
+                // CNPJ inválido pro país
+                if (code === 'company_taxNumber_is_not_allowed' || msg.indexOf('company_taxNumber_is_not_allowed') >= 0) {
+                    showError(form, 'CNPJ inválido para o país. Confira os dígitos.');
+                    setFieldError(form, 'cnpj');
+                    return;
+                }
+                // CNPJ pertence a outro email
+                if (code === 'company_taxNumber_contact_support' || msg.indexOf('company_taxNumber_contact_support') >= 0) {
+                    showError(form, 'Este CNPJ já está vinculado a outro e-mail. Entre em contato com nosso suporte.');
+                    setFieldError(form, 'cnpj');
+                    return;
+                }
+                // Erros internos do servidor (PDF)
+                if (code === 'tenant_creation_failed' || code === 'company_creation_failed' ||
+                    msg.indexOf('tenant_creation_failed') >= 0 || msg.indexOf('company_creation_failed') >= 0) {
+                    showError(form, 'Tivemos um problema ao criar sua conta. Tente novamente em instantes ou fale com nosso suporte.');
+                    return;
+                }
+                // Erro de validação por campo (422): destaca o input correspondente
+                if (field && FIELD_MAP[field]) {
+                    setFieldError(form, FIELD_MAP[field]);
+                }
+                showError(form, msg || 'Não foi possível criar sua conta agora. Tente novamente em instantes.');
+            }
+
+            // Extrai code/field/message de qualquer um dos formatos retornados pela API
+            function parseApiResponse(status, body) {
+                body = body || {};
+                if (body.status === 'ok') return { ok: true, body: body };
+
+                // Formato 422: { error: { code, field, customMessage, message } }
+                if (body.error && typeof body.error === 'object' && (body.error.code || body.error.field || body.error.customMessage)) {
+                    return {
+                        ok: false,
+                        status: status,
+                        code: body.error.code || '',
+                        field: body.error.field || '',
+                        message: body.error.customMessage || body.error.message || ''
+                    };
+                }
+                // Formato 200/status=error: { status: "error", name, message }
+                if (body.status === 'error') {
+                    return {
+                        ok: false,
+                        status: status,
+                        code: body.message || body.name || '',  // PDF coloca code de regra de negócio em "message"
+                        field: '',
+                        message: body.message || ''
+                    };
+                }
+                // Fallback genérico
+                return {
+                    ok: false,
+                    status: status,
+                    code: body.name || '',
+                    field: '',
+                    message: body.message || ''
+                };
+            }
+
+            function showSuccessAndRedirect(form, info) {
+                var modal = form.closest('.lead-overlay');
+                if (modal) {
+                    form.hidden = true;
+                    var ok = modal.querySelector('[data-lead-success]');
+                    if (ok) {
+                        ok.hidden = false;
+                        if (window.lucide && window.lucide.createIcons) window.lucide.createIcons();
+                    }
+                }
+
+                var qs = new URLSearchParams();
+                qs.set('email', info.email);
+                qs.set('from', 'lp');
+                if (info.name)      qs.set('name', info.name);
+                if (info.tenant_id) qs.set('tenant_id', info.tenant_id);
+
+                setTimeout(function() {
+                    window.location.href = LOGIN_URL + '?' + qs.toString();
+                }, 1200);
+            }
+
+            function submitRegistration(e, opts) {
+                e.preventDefault();
+                opts = opts || {};
+                var form = e.currentTarget;
+                var data = getFormData(form);
+                if (!validate(form, data)) return;
+
+                var phone = normalizePhone(data.telefoneRaw);
+                var cnpj  = data.cnpjRaw.replace(/\D/g, '');
+                var utm   = getUtmObject();
+                var mediaString = Object.keys(utm).map(function(k) {
+                    return encodeURIComponent(k) + '=' + encodeURIComponent(utm[k]);
+                }).join('&');
+
+                var payload = {
+                    username: data.email,
+                    password: data.senha,
+                    name:     data.nome,
+                    phone:    phone,
+                    country_id: 'BR',
+                    taxNumber:  cnpj,
+                    media:    mediaString,
+                    customFields: utm
+                };
+
+                setLoading(form, true);
 
                 window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push({ event: 'lead_capturado', lead_nome: nome, lead_email: email, lead_plano: currentPlan });
+                window.dataLayer.push({
+                    event: 'lead_capturado',
+                    lead_nome: data.nome,
+                    lead_email: data.email,
+                    lead_plano: opts.plan || ''
+                });
 
+                // Webhook em paralelo (não bloqueia o cadastro)
                 fetch(WEBHOOK, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ etapa: 1, nome: nome, email: email, telefone: telefone, plano: currentPlan, utm: getUtmMedia() }),
+                    body: JSON.stringify({
+                        etapa: 1,
+                        nome: data.nome,
+                        email: data.email,
+                        telefone: phone,
+                        cnpj: cnpj,
+                        plano: opts.plan || '',
+                        utm: getUtmMedia()
+                    }),
                     keepalive: true
                 }).catch(function() {});
 
-                var params = new URLSearchParams(window.location.search);
-                params.set('name', nome);
-                params.set('email', email);
-                if (telefone) params.set('phone', telefone);
-                params.set('plan', currentPlan);
-                window.location.href = REGISTER_URL + '?' + params.toString();
-            });
+                fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                }).then(function(res) {
+                    return res.json().catch(function() { return {}; }).then(function(json) {
+                        return { status: res.status, body: json };
+                    });
+                }).then(function(r) {
+                    var parsed = parseApiResponse(r.status, r.body);
+                    if (parsed.ok) {
+                        var tenantId = (r.body.dataResponse && r.body.dataResponse.tenant_id) || '';
+                        window.dataLayer.push({
+                            event: 'conta_criada',
+                            lead_email: data.email,
+                            lead_plano: opts.plan || '',
+                            tenant_id: tenantId
+                        });
+                        showSuccessAndRedirect(form, {
+                            email: data.email,
+                            name: data.nome,
+                            tenant_id: tenantId
+                        });
+                        return;
+                    }
+                    setLoading(form, false);
+                    handleApiError(form, parsed);
+                }).catch(function() {
+                    setLoading(form, false);
+                    showError(form, 'Falha de conexão. Confira sua internet e tente novamente.');
+                });
+            }
+
+            // Hero/CTA form (inline na página)
+            var ctaForm = document.getElementById('cta-form');
+            if (ctaForm) ctaForm.addEventListener('submit', function(e) { submitRegistration(e, { plan: '' }); });
+
+            // ─── Plan modal ───
+            (function() {
+                var overlay  = document.getElementById('plan-modal');
+                if (!overlay) return;
+                var badge    = document.getElementById('plan-modal-badge');
+                var form     = document.getElementById('plan-modal-form');
+                var closeBtn = document.getElementById('plan-modal-close');
+                var successEl= overlay.querySelector('[data-lead-success]');
+                var currentPlan = '';
+
+                function openModal(plan) {
+                    currentPlan = plan;
+                    if (plan) badge.textContent = plan.charAt(0).toUpperCase() + plan.slice(1);
+                    overlay.classList.add('open');
+                    document.body.style.overflow = 'hidden';
+                    form.hidden = false;
+                    if (successEl) successEl.hidden = true;
+                    hideError(form);
+                    clearFieldErrors(form);
+                    setLoading(form, false);
+                    setTimeout(function() { form.querySelector('[name="nome"]').focus(); }, 50);
+                }
+
+                function closeModal() {
+                    overlay.classList.remove('open');
+                    document.body.style.overflow = '';
+                    form.reset();
+                    setLoading(form, false);
+                    form.hidden = false;
+                    if (successEl) successEl.hidden = true;
+                    hideError(form);
+                    clearFieldErrors(form);
+                }
+
+                document.querySelectorAll('[data-lead-modal]').forEach(function(el) {
+                    el.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        openModal(el.dataset.plan || '');
+                    });
+                });
+
+                closeBtn.addEventListener('click', closeModal);
+                overlay.addEventListener('click', function(e) { if (e.target === overlay) closeModal(); });
+                document.addEventListener('keydown', function(e) {
+                    if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+                });
+
+                form.addEventListener('submit', function(e) {
+                    submitRegistration(e, { plan: currentPlan });
+                });
+            })();
         })();
 
         // FAQ — esconde extras no mobile + botão "Ver todas"
