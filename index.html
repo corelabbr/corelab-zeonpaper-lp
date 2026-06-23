@@ -3266,11 +3266,20 @@
             var LOGIN_URL    = 'https://app.zeonpaper.com.br/login';
             var EMAIL_RE     = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+            // Formato do webhook (Make): 55 + DDD + número, ex.: 5549991842769
             function normalizePhone(v) {
                 var d = (v || '').replace(/\D/g, '');
                 if (!d) return '';
                 if (d.length >= 12 && d.startsWith('55')) return d;
                 return '55' + d;
+            }
+
+            // Formato exigido pela API: +55-0 + DDD + número, ex.: +55-049991842769
+            function phoneForApi(v) {
+                var d = (v || '').replace(/\D/g, '');
+                if (!d) return '';
+                if (d.length >= 12 && d.startsWith('55')) d = d.slice(2);
+                return '+55-0' + d;
             }
 
             function setFieldError(form, name) {
@@ -3468,7 +3477,7 @@
                     username: data.email,
                     password: data.senha,
                     name:     data.nome,
-                    phone:    phone,
+                    phone:    phoneForApi(data.telefoneRaw),
                     country_id: 'BR',
                     taxNumber:  cnpj,
                     media:    mediaString,
