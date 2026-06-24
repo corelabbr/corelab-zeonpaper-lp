@@ -35,12 +35,15 @@ jobs:
             --cache-control "public,max-age=604800"
 
       # 2. HTML: sempre revalida, para que mudancas apareçam no proximo acesso.
+      # O --exclude "docs/*" vem DEPOIS do --include para que o include
+      # recursivo de *.html nao reinclua os HTML internos de docs/.
       - name: Deploy HTML para S3 (sem cache)
         run: |
           aws s3 sync . s3://${{ vars.PROD_S3_BUCKET }}/ \
             --delete \
             --exclude "*" \
             --include "*.html" \
+            --exclude "docs/*" \
             --cache-control "no-cache,no-store,must-revalidate"
 
       - name: Invalidar cache do CloudFront
