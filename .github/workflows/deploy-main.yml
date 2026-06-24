@@ -1,0 +1,37 @@
+name: Deploy - Production - LP Zeonpaper
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - name: Checkout do repositorio
+        uses: actions/checkout@v6
+
+      - name: Configurar credenciais AWS
+        uses: aws-actions/configure-aws-credentials@v6
+        with:
+          aws-access-key-id: ${{ vars.PROD_AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ vars.PROD_S3_BUCKET_REGION }}
+
+      - name: Deploy to S3 (aws sync)
+        run: |
+          aws s3 sync . s3://${{ vars.PROD_S3_BUCKET }}/ \
+            --delete \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "docs/*" \
+            --exclude ".gitignore" \
+            --cache-control "no-cache,no-store,must-revalidate"
+
+      - name: Invalidar cache do CloudFront
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ vars.PROD_CLOUDFRONT_DISTRIBUTION_ID }} \
+            --paths "/*"
