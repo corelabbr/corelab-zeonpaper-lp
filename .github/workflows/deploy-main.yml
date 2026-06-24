@@ -20,7 +20,10 @@ jobs:
           aws-secret-access-key: ${{ secrets.PROD_AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ vars.PROD_S3_BUCKET_REGION }}
 
-      - name: Deploy to S3 (aws sync)
+      # 1. Assets (imagens, icones, etc): cache no navegador/CDN.
+      # Roda primeiro, com --delete, para limpar assets removidos.
+      # Os .html sao excluidos aqui e preservados (nao sao apagados).
+      - name: Deploy assets para S3 (cache longo)
         run: |
           aws s3 sync . s3://${{ vars.PROD_S3_BUCKET }}/ \
             --delete \
@@ -28,6 +31,16 @@ jobs:
             --exclude ".github/*" \
             --exclude "docs/*" \
             --exclude ".gitignore" \
+            --exclude "*.html" \
+            --cache-control "public,max-age=604800"
+
+      # 2. HTML: sempre revalida, para que mudancas apareçam no proximo acesso.
+      - name: Deploy HTML para S3 (sem cache)
+        run: |
+          aws s3 sync . s3://${{ vars.PROD_S3_BUCKET }}/ \
+            --delete \
+            --exclude "*" \
+            --include "*.html" \
             --cache-control "no-cache,no-store,must-revalidate"
 
       - name: Invalidar cache do CloudFront
