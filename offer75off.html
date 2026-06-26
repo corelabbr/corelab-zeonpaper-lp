@@ -470,6 +470,57 @@
             align-items: center;
         }
 
+        /* ─── HERO CENTRALIZADO (one time offer) ─── */
+        @media (min-width: 901px) {
+            .hero-offer-centered .hero-grid {
+                grid-template-columns: 1fr;
+                max-width: 640px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                gap: 0;
+            }
+            .hero-offer-centered .hero-text {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+            /* ritmo vertical controlado só pelo gap */
+            .hero-offer-centered .offer-pill,
+            .hero-offer-centered .hero h1,
+            .hero-offer-centered .hero-text > p,
+            .hero-offer-centered .hero-audience,
+            .hero-offer-centered .hero-lead-form,
+            .hero-offer-centered .hero-social-proof,
+            .hero-offer-centered .hero-proof { margin: 0; }
+            .hero-offer-centered .hero-audience,
+            .hero-offer-centered .hero-social-proof,
+            .hero-offer-centered .hero-proof { justify-content: center; width: 100%; }
+            .hero-offer-centered .hero-lead-form {
+                width: 100%;
+                max-width: 460px;
+            }
+            .hero-offer-centered .hero-form-microcopy { display: block; margin-top: 0.85rem; }
+            .hero-offer-centered .hero-text > p { max-width: 30rem; text-wrap: balance; }
+            .hero-offer-centered .hero h1 { max-width: 16em; text-wrap: balance; }
+            .hero-offer-centered .hero-proof { padding-top: 1.75rem; }
+            /* dashboard reto e centralizado (sem o tilt/float que desalinhava) */
+            .hero-offer-centered .hero-visual {
+                width: 100%;
+                max-width: 560px;
+                margin: 2.5rem auto 0;
+            }
+            .hero-offer-centered .hero-product-frame {
+                width: 100%;
+                margin-right: 0;
+                transform: none;
+                transform-origin: center;
+                animation: none;
+                box-shadow: 0 0 0 1px rgba(255,255,255,0.07), 0 30px 70px rgba(0,0,0,0.5), 0 0 90px rgba(121,59,237,0.35);
+            }
+        }
+
         .hero h1 {
             font-size: clamp(1.9rem, 3vw, 2.75rem);
             margin-bottom: 1.25rem;
@@ -2347,12 +2398,12 @@
 
     <main>
         <!-- ═══ HERO ═══ -->
-        <section class="hero">
+        <section class="hero hero-offer-centered">
             <div class="container hero-grid">
                 <div class="hero-text grid-item">
-                    <span class="offer-pill"><span class="offer-pill-off">75% OFF</span> Oferta única · R$9,90/mês para sempre</span>
-                    <h1>Saiba hoje quanto vai ter <span class="text-gradient">no caixa daqui 30 dias.</span></h1>
-                    <p>O controle financeiro completo do Zeonpaper por <strong>R$9,90/mês</strong> — preço travado para sempre.<br>Sem planilha, sem contador, sem ERP pesado.</p>
+                    <span class="offer-pill"><span class="offer-pill-off">75% OFF</span> Oferta única · só nesta página</span>
+                    <h1>Controle financeiro completo por <span class="text-gradient">R$9,90/mês. Para sempre.</span></h1>
+                    <p>De <strong>R$39,90</strong> por <strong>R$9,90/mês</strong> — preço travado para sempre. Saia da planilha sem contador e sem ERP pesado.</p>
                     <ul class="hero-audience" aria-label="Para quem é o Zeonpaper">
                         <li><i data-lucide="user" size="14"></i> MEI</li>
                         <li><i data-lucide="briefcase" size="14"></i> Prestador de serviço</li>
@@ -2365,7 +2416,7 @@
                     </ul>
                     <div class="hero-lead-form">
                         <a href="#precos" class="btn btn-cta" style="height: 52px; font-size: 1rem; display: inline-flex; align-items: center; justify-content: center; width: 100%; border: 0; cursor: pointer; text-decoration: none;">Assinar por R$9,90/mês</a>
-                        <p class="hero-form-microcopy">Preço travado para sempre · Sem fidelidade · Cancele quando quiser</p>
+                        <p class="hero-form-microcopy">Ativa na hora · Sem fidelidade · Garantia de 7 dias</p>
                     </div>
                     <div class="hero-social-proof">
                         <div class="social-avatars">
@@ -2389,16 +2440,6 @@
                         </div>
                         <div class="hero-proof-item">
                             <i data-lucide="trending-up" size="16"></i> Lucro real, não achismo
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-visual grid-item">
-                    <div class="hero-img-wrap">
-                        <div class="hero-product-frame">
-                            <picture>
-                                <source srcset="./assets/example-zeonpaper.webp" type="image/webp">
-                                <img src="./assets/example-zeonpaper.png" alt="Dashboard do Zeonpaper — controle financeiro para MEI e pequena empresa" fetchpriority="high" decoding="async">
-                            </picture>
                         </div>
                     </div>
                 </div>
@@ -2707,7 +2748,7 @@
 
                 <p class="pricing-flex-note">
                     <i data-lucide="shield-check" size="16" style="vertical-align: -3px; color: var(--accent-dark);"></i>
-                    <strong>Garantia de 7 dias.</strong> Assine por R$9,90, use sem limites e, se não for pra você, devolvemos 100% do valor. O preço de R$9,90/mês fica travado enquanto você for cliente — sem reajuste.
+                    <strong>Garantia de 7 dias.</strong>
                 </p>
             </div>
         </section>
