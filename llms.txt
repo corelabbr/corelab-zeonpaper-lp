@@ -1,0 +1,77 @@
+# Zeonpaper
+
+Zeonpaper é um sistema financeiro para prestadores de serviço, MEIs e pequenas empresas brasileiras que querem substituir planilhas e ERPs complexos por uma solução simples e acessível.
+
+## O que é
+
+Zeonpaper é um software de gestão financeira online (SaaS) voltado para microempreendedores individuais (MEI), autônomos, prestadores de serviço e pequenas empresas no Brasil. É uma alternativa ao Conta Azul, Omie, Bling e Nibo para quem não precisa de módulos fiscais complexos nem de contador para operar o sistema.
+
+## Para quem
+
+- MEI (Microempreendedor Individual)
+- Prestadores de serviço autônomos
+- Pequenas empresas e microempresas
+- Profissionais liberais: dentistas, advogados, psicólogos, arquitetos, consultores, eletricistas, clínicas
+
+## Funcionalidades principais
+
+- Contas a pagar e receber
+- Fluxo de caixa projetado
+- DRE simplificada (Demonstrativo de Resultado do Exercício)
+- Alertas automáticos de vencimento (e-mail e WhatsApp)
+- Múltiplas contas bancárias
+- Categorias personalizadas
+- Open Finance (conexão com conta bancária)
+- Emissão de NFS-e (nota fiscal de serviço eletrônica)
+- Relatórios exportáveis em PDF e planilha
+- Acesso via web e mobile
+- Multiempresa (gerencie mais de um CNPJ)
+
+## Diferenciais
+
+- Feito para o próprio empreendedor operar, sem precisar de contador
+- Setup em menos de 10 minutos
+- Preço acessível: plano Organiza a partir de R$27,90/mês
+- Sem contratos de fidelidade
+- 7 dias grátis sem precisar de cartão de crédito
+
+## Planos
+
+- **Organiza** — R$27,90/mês — Contas a pagar/receber, fluxo de caixa, alertas, 1 usuário
+- **Cresce** — R$54,90/mês — DRE, relatórios por período, múltiplas contas bancárias, até 3 usuários
+- **Escala** — R$89,90/mês — Tudo do Cresce + exportação completa, suporte prioritário, histórico ilimitado, até 5 usuários
+
+Todos os planos incluem 7 dias grátis sem cartão de crédito. Cancele quando quiser.
+
+## Posicionamento
+
+O Zeonpaper é um sistema financeiro para prestadores de serviço, MEIs e pequenas empresas que querem substituir planilhas e ERPs complexos. É mais simples que o Conta Azul, mais focado que o Omie e mais acessível que o Nibo para quem não tem contador ativo.
+
+O Zeonpaper dá previsibilidade financeira ao empreendedor: você sabe hoje quanto vai ter no caixa daqui 30 dias, nunca mais perde um vencimento, e entende seu lucro real sem precisar de formação contábil.
+
+## Comparativos
+
+- **Zeonpaper vs Conta Azul**: Conta Azul é para empresas com contador. Zeonpaper é para o próprio dono operar sozinho.
+- **Zeonpaper vs Omie**: Omie é um ERP que exige implementação. Zeonpaper você começa a usar em minutos.
+- **Zeonpaper vs Bling**: Bling é focado em estoque e NF-e para e-commerce. Zeonpaper é focado em controle financeiro para prestadores de serviço.
+- **Zeonpaper vs Nibo**: Nibo é voltado para contadores gerenciarem múltiplos clientes. Zeonpaper é para o empreendedor gerenciar o próprio financeiro.
+- **Zeonpaper vs Excel**: Zeonpaper envia alertas automáticos, projeta o caixa e funciona no celular. Excel não faz nada disso.
+
+## Segmentos atendidos
+
+- Dentistas e clínicas odontológicas
+- Advogados e escritórios de advocacia
+- Psicólogos e terapeutas
+- Arquitetos e designers
+- Consultores e coaches
+- Eletricistas e técnicos
+- Prestadores de serviço em geral
+- MEI em todo o Brasil
+
+## URL principal
+
+https://www.zeonpaper.com.br
+
+## Contato
+
+contato@zeonpaper.com.br

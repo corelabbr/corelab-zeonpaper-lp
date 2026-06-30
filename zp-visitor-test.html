@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Teste zp_visitor_id</title>
+    <style>
+        :root {
+            color-scheme: light;
+            font-family: Arial, sans-serif;
+            color: #1f2937;
+            background: #f8fafc;
+        }
+        body {
+            margin: 0;
+            padding: 32px;
+        }
+        main {
+            max-width: 980px;
+            margin: 0 auto;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+        }
+        h1 {
+            margin: 0 0 8px;
+            font-size: 24px;
+        }
+        p {
+            margin: 0 0 20px;
+            color: #4b5563;
+            line-height: 1.5;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 14px;
+        }
+        label {
+            display: grid;
+            gap: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            color: #374151;
+        }
+        input,
+        select,
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px 12px;
+            font: inherit;
+        }
+        textarea {
+            min-height: 280px;
+            margin-top: 18px;
+            font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+        button,
+        a.button {
+            border: 0;
+            border-radius: 6px;
+            background: #111827;
+            color: #fff;
+            padding: 10px 14px;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        button.secondary {
+            background: #eef2ff;
+            color: #3730a3;
+        }
+        button.danger {
+            background: #991b1b;
+        }
+        button:disabled {
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+        .status {
+            margin-top: 14px;
+            min-height: 20px;
+            color: #374151;
+            font-size: 14px;
+        }
+        .warning {
+            margin-top: 18px;
+            padding: 12px;
+            border: 1px solid #fde68a;
+            border-radius: 6px;
+            background: #fffbeb;
+            color: #92400e;
+            font-size: 14px;
+        }
+        @media (max-width: 720px) {
+            body { padding: 16px; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+<main>
+    <h1>Teste de zp_visitor_id</h1>
+    <p>Use este arquivo para gerar um visitante de teste, abrir a landing com parametros de atribuicao e disparar um payload de lead para o webhook.</p>
+
+    <div class="grid">
+        <label>
+            Landing
+            <select id="landing">
+                <option value="index.html">index.html</option>
+                <option value="offer75off.html">offer75off.html</option>
+                <option value="v2.html">v2.html</option>
+                <option value="v3.html">v3.html</option>
+            </select>
+        </label>
+        <label>
+            zp_visitor_id
+            <input id="visitorId">
+        </label>
+        <label>
+            Nome
+            <input id="name" value="Lead Teste ZP">
+        </label>
+        <label>
+            Email
+            <input id="email">
+        </label>
+        <label>
+            Telefone
+            <input id="phone" value="5549999999999">
+        </label>
+        <label>
+            CNPJ
+            <input id="cnpj" value="">
+        </label>
+        <label>
+            Plano
+            <input id="plan" value="organiza">
+        </label>
+        <label>
+            Segmento
+            <input id="segment" value="AGRONEGOCIO">
+        </label>
+        <label>
+            Porte da empresa
+            <input id="companySize" value="MEI">
+        </label>
+        <label>
+            Funcionarios
+            <input id="employeesCount" value="SOLO">
+        </label>
+        <label>
+            Idade da empresa
+            <input id="companyAge" value="LT_1">
+        </label>
+        <label>
+            Senha do usuario teste
+            <input id="password" value="Teste123!">
+        </label>
+        <label>
+            UTM campaign
+            <input id="campaign" value="teste_zp_visitor">
+        </label>
+    </div>
+
+    <div class="actions">
+        <button type="button" id="newVisitor">Gerar novo visitor</button>
+        <button type="button" id="createUser" class="danger">Criar usuario teste</button>
+        <button type="button" id="openLanding" class="secondary">Abrir landing com parametros</button>
+        <button type="button" id="sendWebhook">Disparar webhook Make</button>
+        <button type="button" id="copyPayload" class="secondary">Copiar payload</button>
+    </div>
+
+    <div class="warning">
+        O botao "Criar usuario teste" chama o endpoint real de cadastro e pode criar uma conta de teste no Zeonpaper.
+    </div>
+
+    <textarea id="payload" readonly></textarea>
+    <div id="status" class="status"></div>
+</main>
+
+<script>
+    var API_URL = 'https://back.zeonpaper.com.br/api/register/submit';
+    var API_PROXY_URL = 'http://127.0.0.1:8787/api/register-test';
+    var WEBHOOK = 'https://hook.us1.make.com/4w9ewge45cwym9rj6vcmrycu1ifrz1sr';
+    var DEFAULT_SEGMENT = 'AGRONEGOCIO';
+    var DEFAULT_COMPANY_SIZE = 'MEI';
+    var DEFAULT_EMPLOYEES_COUNT = 'SOLO';
+    var DEFAULT_COMPANY_AGE = 'LT_1';
+
+    function pad(n) {
+        return String(n).padStart(2, '0');
+    }
+
+    function createTestVisitorId() {
+        var now = new Date();
+        var stamp = [
+            now.getFullYear(),
+            pad(now.getMonth() + 1),
+            pad(now.getDate()),
+            pad(now.getHours()),
+            pad(now.getMinutes()),
+            pad(now.getSeconds())
+        ].join('');
+        return 'zp_test_' + stamp + '_' + Math.random().toString(36).slice(2, 8);
+    }
+
+    function cnpjCheckDigit(base) {
+        var weights = base.length === 12
+            ? [5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2]
+            : [6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2];
+        var sum = 0;
+        for (var i = 0; i < base.length; i++) {
+            sum += Number(base[i]) * weights[i];
+        }
+        var mod = sum % 11;
+        return mod < 2 ? 0 : 11 - mod;
+    }
+
+    function createTestCnpj() {
+        var base = '';
+        for (var i = 0; i < 8; i++) {
+            base += Math.floor(Math.random() * 10);
+        }
+        base += '0001';
+        base += cnpjCheckDigit(base);
+        base += cnpjCheckDigit(base);
+        return base;
+    }
+
+    function resetTestIdentity() {
+        document.getElementById('visitorId').value = createTestVisitorId();
+        document.getElementById('email').value = 'teste+' + getValue('visitorId') + '@zeonpaper.com.br';
+        document.getElementById('cnpj').value = createTestCnpj();
+        document.getElementById('segment').value = DEFAULT_SEGMENT;
+        document.getElementById('companySize').value = DEFAULT_COMPANY_SIZE;
+        document.getElementById('employeesCount').value = DEFAULT_EMPLOYEES_COUNT;
+        document.getElementById('companyAge').value = DEFAULT_COMPANY_AGE;
+    }
+
+    function getValue(id) {
+        return document.getElementById(id).value.trim();
+    }
+
+    function phoneForApi(v) {
+        var d = (v || '').replace(/\D/g, '');
+        if (!d) return '';
+        if (d.length >= 12 && d.startsWith('55')) d = d.slice(2);
+        return '+55-0' + d;
+    }
+
+    function apiPlanValue(value) {
+        var plan = (value || '').trim().toLowerCase();
+        var map = { organiza: 'ORGANIZA', cresce: 'CRESCE', pro: 'PRO', promo9: 'PROMO9' };
+        return map[plan] || value;
+    }
+
+    function buildAttribution() {
+        return {
+            utm_source: 'codex_test',
+            utm_medium: 'qa',
+            utm_campaign: getValue('campaign') || 'teste_zp_visitor',
+            utm_content: 'zp_visitor_test_page',
+            utm_term: 'teste_match_compra',
+            gclid: 'TEST_GCLID_' + getValue('visitorId'),
+            fbclid: 'TEST_FBCLID_' + getValue('visitorId'),
+            zp_visitor_id: getValue('visitorId'),
+            landing_page: location.href.split('#')[0],
+            current_page: location.href.split('#')[0],
+            referrer: document.referrer || 'manual_test'
+        };
+    }
+
+    function buildCustomFields() {
+        var customFields = buildAttribution();
+        customFields.segment = getValue('segment') || DEFAULT_SEGMENT;
+        customFields.companySize = getValue('companySize') || DEFAULT_COMPANY_SIZE;
+        customFields.employeesCount = getValue('employeesCount') || DEFAULT_EMPLOYEES_COUNT;
+        customFields.companyAge = getValue('companyAge') || DEFAULT_COMPANY_AGE;
+        return customFields;
+    }
+
+    function buildPayload() {
+        var attribution = buildCustomFields();
+        return {
+            etapa: 1,
+            teste: true,
+            nome: getValue('name'),
+            email: getValue('email'),
+            telefone: getValue('phone'),
+            cnpj: getValue('cnpj').replace(/\D/g, ''),
+            plano: getValue('plan'),
+            segment: attribution.segment,
+            companySize: attribution.companySize,
+            employeesCount: attribution.employeesCount,
+            companyAge: attribution.companyAge,
+            utm: attribution.utm_source,
+            zp_visitor_id: attribution.zp_visitor_id,
+            attribution: attribution
+        };
+    }
+
+    function buildRegistrationPayload() {
+        var attribution = buildCustomFields();
+        var mediaString = Object.keys(attribution).map(function(key) {
+            return encodeURIComponent(key) + '=' + encodeURIComponent(attribution[key]);
+        }).join('&');
+        return {
+            username: getValue('email'),
+            password: getValue('password'),
+            name: getValue('name'),
+            phone: phoneForApi(getValue('phone')),
+            country_id: 'BR',
+            taxNumber: getValue('cnpj').replace(/\D/g, ''),
+            segment: attribution.segment,
+            companySize: attribution.companySize,
+            employeesCount: attribution.employeesCount,
+            companyAge: attribution.companyAge,
+            media: mediaString,
+            customFields: attribution,
+            plan: apiPlanValue(getValue('plan'))
+        };
+    }
+
+    function getRegistrationEndpoint() {
+        if (location.protocol === 'file:') return API_PROXY_URL;
+        if (location.hostname === '127.0.0.1' || location.hostname === 'localhost') return API_PROXY_URL;
+        return API_URL;
+    }
+
+    function buildLandingUrl() {
+        var attribution = buildAttribution();
+        var params = new URLSearchParams(attribution);
+        params.set('name', getValue('name'));
+        params.set('email', getValue('email'));
+        params.set('plan', getValue('plan'));
+        var landing = getValue('landing');
+        return landing + '?' + params.toString();
+    }
+
+    function refreshPayload() {
+        document.getElementById('payload').value = JSON.stringify({
+            landing_url: buildLandingUrl(),
+            register_endpoint: getRegistrationEndpoint(),
+            register_payload: buildRegistrationPayload(),
+            webhook_payload: buildPayload()
+        }, null, 2);
+    }
+
+    function setStatus(message) {
+        document.getElementById('status').textContent = message;
+    }
+
+    document.getElementById('newVisitor').addEventListener('click', function() {
+        resetTestIdentity();
+        refreshPayload();
+        setStatus('Novo visitor, email, CNPJ e segment gerados.');
+    });
+
+    document.getElementById('openLanding').addEventListener('click', function() {
+        refreshPayload();
+        window.open(buildLandingUrl(), '_blank', 'noopener');
+        setStatus('Landing aberta com parametros de teste.');
+    });
+
+    document.getElementById('createUser').addEventListener('click', function() {
+        resetTestIdentity();
+        refreshPayload();
+        setStatus('Criando usuario teste...');
+        fetch(getRegistrationEndpoint(), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(buildRegistrationPayload())
+        }).then(function(res) {
+            return res.json().catch(function() { return {}; }).then(function(body) {
+                return { status: res.status, body: body };
+            });
+        }).then(function(result) {
+            document.getElementById('payload').value = JSON.stringify({
+                request: buildRegistrationPayload(),
+                response: result
+            }, null, 2);
+            setStatus('Endpoint de cadastro respondeu HTTP ' + result.status + '. Veja o response abaixo.');
+        }).catch(function(err) {
+            setStatus('Falha ao chamar cadastro: ' + err.message);
+        });
+    });
+
+    document.getElementById('sendWebhook').addEventListener('click', function() {
+        refreshPayload();
+        setStatus('Disparando webhook...');
+        fetch(WEBHOOK, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(buildPayload()),
+            keepalive: true
+        }).then(function(res) {
+            setStatus('Webhook disparado. Status HTTP: ' + res.status);
+        }).catch(function(err) {
+            setStatus('Falha ao disparar webhook: ' + err.message);
+        });
+    });
+
+    document.getElementById('copyPayload').addEventListener('click', function() {
+        refreshPayload();
+        navigator.clipboard.writeText(document.getElementById('payload').value).then(function() {
+            setStatus('Payload copiado.');
+        }).catch(function() {
+            setStatus('Nao foi possivel copiar automaticamente.');
+        });
+    });
+
+    ['landing', 'visitorId', 'name', 'email', 'phone', 'cnpj', 'plan', 'segment', 'companySize', 'employeesCount', 'companyAge', 'password', 'campaign'].forEach(function(id) {
+        document.getElementById(id).addEventListener('input', refreshPayload);
+        document.getElementById(id).addEventListener('change', refreshPayload);
+    });
+
+    resetTestIdentity();
+    refreshPayload();
+</script>
+</body>
+</html>

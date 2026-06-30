@@ -36,17 +36,17 @@
 
     <!-- Open Graph / WhatsApp / LinkedIn -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://lp.zeonpaper.com.br">
+    <meta property="og:url" content="https://www.zeonpaper.com.br">
     <meta property="og:title" content="Controle Financeiro para MEI e Pequena Empresa | Zeonpaper">
     <meta property="og:description" content="Sistema financeiro para MEI, microempresa e prestador de serviço. Controle contas a pagar e receber, fluxo de caixa e alertas de vencimento sem planilha e sem ERP pesado. 7 dias grátis, sem cartão.">
-    <meta property="og:image" content="https://lp.zeonpaper.com.br/assets/og-image.jpg">
+    <meta property="og:image" content="https://www.zeonpaper.com.br/assets/og-image.jpg">
     <meta property="og:locale" content="pt_BR">
     <meta property="og:site_name" content="Zeonpaper">
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Controle Financeiro para MEI e Pequena Empresa | Zeonpaper">
     <meta name="twitter:description" content="Sistema financeiro para MEI, microempresa e prestador de serviço. Controle contas a pagar e receber, fluxo de caixa e alertas de vencimento sem planilha e sem ERP pesado. 7 dias grátis, sem cartão.">
-    <meta name="twitter:image" content="https://lp.zeonpaper.com.br/assets/og-image.jpg">
+    <meta name="twitter:image" content="https://www.zeonpaper.com.br/assets/og-image.jpg">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
@@ -2655,25 +2655,87 @@
             });
         });
 
-        // ─── UTM cookie capture ───
+        // ─── Attribution cookie capture ───
+        var VISITOR_ID_KEY = 'zp_visitor_id';
+        var LANDING_PAGE_KEY = 'zp_landing_page';
+        var REFERRER_KEY = 'zp_referrer';
+        var ATTRIBUTION_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'gclid', 'gbraid', 'wbraid', 'fbclid', 'msclkid', 'ttclid'];
+        var DEFAULT_REGISTRATION_FIELDS = {
+            segment: 'OUTRO',
+            companySize: 'MEI',
+            employeesCount: 'SOLO',
+            companyAge: 'LT_1'
+        };
+
+        function writeCookie(key, value) {
+            var expires = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toUTCString();
+            document.cookie = key + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/; SameSite=Lax';
+        }
+
+        function readCookie(key) {
+            var match = document.cookie.match('(?:^|; )' + key + '=([^;]*)');
+            return match ? decodeURIComponent(match[1]) : '';
+        }
+
+        function createVisitorId() {
+            if (window.crypto && window.crypto.randomUUID) return 'zp_' + window.crypto.randomUUID();
+            return 'zp_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2);
+        }
+
+        function getVisitorId() {
+            var visitorId = readCookie(VISITOR_ID_KEY);
+            if (!visitorId) {
+                visitorId = createVisitorId();
+                writeCookie(VISITOR_ID_KEY, visitorId);
+            }
+            return visitorId;
+        }
+
         (function() {
             const params = new URLSearchParams(window.location.search);
-            const utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
-            const expires = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toUTCString();
-            utmKeys.forEach(function(key) {
+            ATTRIBUTION_KEYS.forEach(function(key) {
                 if (params.has(key)) {
-                    document.cookie = key + '=' + encodeURIComponent(params.get(key)) + '; expires=' + expires + '; path=/';
+                    writeCookie(key, params.get(key));
                 }
             });
+            if (params.has(VISITOR_ID_KEY)) writeCookie(VISITOR_ID_KEY, params.get(VISITOR_ID_KEY));
+            if (!readCookie(LANDING_PAGE_KEY)) writeCookie(LANDING_PAGE_KEY, window.location.href.split('#')[0]);
+            if (!readCookie(REFERRER_KEY) && document.referrer) writeCookie(REFERRER_KEY, document.referrer);
+            getVisitorId();
         })();
 
         function getUtmMedia() {
             const keys = ['utm_source', 'utm_medium', 'utm_campaign'];
             for (var i = 0; i < keys.length; i++) {
-                var match = document.cookie.match('(?:^|; )' + keys[i] + '=([^;]*)');
-                if (match) return decodeURIComponent(match[1]);
+                var value = readCookie(keys[i]);
+                if (value) return value;
             }
             return 'lp';
+        }
+
+        function getAttributionObject() {
+            var out = {};
+            ATTRIBUTION_KEYS.forEach(function(key) {
+                var value = readCookie(key);
+                if (value) out[key] = value;
+            });
+            out[VISITOR_ID_KEY] = getVisitorId();
+            out.landing_page = readCookie(LANDING_PAGE_KEY) || window.location.href.split('#')[0];
+            out.current_page = window.location.href.split('#')[0];
+            var referrer = readCookie(REFERRER_KEY) || document.referrer;
+            if (referrer) out.referrer = referrer;
+            Object.keys(DEFAULT_REGISTRATION_FIELDS).forEach(function(key) {
+                out[key] = DEFAULT_REGISTRATION_FIELDS[key];
+            });
+            return out;
+        }
+
+        function appendAttributionParams(params) {
+            var attribution = getAttributionObject();
+            Object.keys(attribution).forEach(function(key) {
+                if (attribution[key] && !params.has(key)) params.set(key, attribution[key]);
+            });
+            return attribution;
         }
 
         // ─── Lead form submission ───
@@ -2697,18 +2759,21 @@
                 btn.textContent = 'Aguarde...';
 
                 window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push({ event: 'lead_capturado', lead_nome: nome, lead_email: email });
+                var attribution = getAttributionObject();
+                var visitorId = getVisitorId();
+                window.dataLayer.push({ event: 'lead_capturado', lead_nome: nome, lead_email: email, zp_visitor_id: visitorId });
 
                 fetch(WEBHOOK, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ etapa: 1, nome: nome, email: email, utm: getUtmMedia() }),
+                    body: JSON.stringify({ etapa: 1, nome: nome, email: email, utm: getUtmMedia(), zp_visitor_id: visitorId, attribution: attribution }),
                     keepalive: true
                 }).catch(function() {});
 
                 var params = new URLSearchParams(window.location.search);
                 params.set('name', nome);
                 params.set('email', email);
+                appendAttributionParams(params);
                 window.location.href = REGISTER_URL + '?' + params.toString();
             }
 
@@ -2772,12 +2837,14 @@
                 btn.textContent = 'Aguarde...';
 
                 window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push({ event: 'lead_capturado', lead_nome: nome, lead_email: email, lead_plano: currentPlan });
+                var attribution = getAttributionObject();
+                var visitorId = getVisitorId();
+                window.dataLayer.push({ event: 'lead_capturado', lead_nome: nome, lead_email: email, lead_plano: currentPlan, zp_visitor_id: visitorId });
 
                 fetch(WEBHOOK, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ etapa: 1, nome: nome, email: email, telefone: telefone, plano: currentPlan, utm: getUtmMedia() }),
+                    body: JSON.stringify({ etapa: 1, nome: nome, email: email, telefone: telefone, plano: currentPlan, utm: getUtmMedia(), zp_visitor_id: visitorId, attribution: attribution }),
                     keepalive: true
                 }).catch(function() {});
 
@@ -2785,6 +2852,7 @@
                 params.set('name', nome);
                 params.set('email', email);
                 params.set('plan', currentPlan);
+                appendAttributionParams(params);
                 window.location.href = REGISTER_URL + '?' + params.toString();
             });
         })();

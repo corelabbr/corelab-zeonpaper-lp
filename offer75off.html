@@ -3086,26 +3086,75 @@
             });
         });
 
-        // ─── UTM capture (Google + Meta) + cookie 30d ───
-        var UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_adgroup','matchtype','keyword'];
+        // ─── UTM capture (Google + Meta) + visitor match cookie 30d ───
+        var UTM_KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_adgroup','matchtype','keyword','gclid','gbraid','wbraid','fbclid','msclkid','ttclid'];
+        var VISITOR_ID_KEY = 'zp_visitor_id';
+        var LANDING_PAGE_KEY = 'zp_landing_page';
+        var REFERRER_KEY = 'zp_referrer';
+        var DEFAULT_REGISTRATION_FIELDS = {
+            segment: 'OUTRO',
+            companySize: 'MEI',
+            employeesCount: 'SOLO',
+            companyAge: 'LT_1'
+        };
+
+        function writeCookie(key, value) {
+            var expires = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toUTCString();
+            document.cookie = key + '=' + encodeURIComponent(value) + '; expires=' + expires + '; path=/; SameSite=Lax';
+        }
+
+        function readCookie(key) {
+            var m = document.cookie.match('(?:^|; )' + key + '=([^;]*)');
+            return m ? decodeURIComponent(m[1]) : '';
+        }
+
+        function createVisitorId() {
+            if (window.crypto && window.crypto.randomUUID) return 'zp_' + window.crypto.randomUUID();
+            return 'zp_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2);
+        }
+
+        function getVisitorId() {
+            var visitorId = readCookie(VISITOR_ID_KEY);
+            if (!visitorId) {
+                visitorId = createVisitorId();
+                writeCookie(VISITOR_ID_KEY, visitorId);
+            }
+            return visitorId;
+        }
+
         (function() {
             var params = new URLSearchParams(window.location.search);
-            var expires = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toUTCString();
             UTM_KEYS.forEach(function(key) {
                 if (params.has(key)) {
-                    document.cookie = key + '=' + encodeURIComponent(params.get(key)) + '; expires=' + expires + '; path=/';
+                    writeCookie(key, params.get(key));
                 }
             });
+            if (params.has(VISITOR_ID_KEY)) writeCookie(VISITOR_ID_KEY, params.get(VISITOR_ID_KEY));
+            if (!readCookie(LANDING_PAGE_KEY)) writeCookie(LANDING_PAGE_KEY, window.location.href.split('#')[0]);
+            if (!readCookie(REFERRER_KEY) && document.referrer) writeCookie(REFERRER_KEY, document.referrer);
+            getVisitorId();
         })();
 
         function readUtm(key) {
-            var m = document.cookie.match('(?:^|; )' + key + '=([^;]*)');
-            return m ? decodeURIComponent(m[1]) : '';
+            return readCookie(key);
         }
 
         function getUtmObject() {
             var out = {};
             UTM_KEYS.forEach(function(k) { var v = readUtm(k); if (v) out[k] = v; });
+            return out;
+        }
+
+        function getAttributionObject() {
+            var out = getUtmObject();
+            out[VISITOR_ID_KEY] = getVisitorId();
+            out.landing_page = readCookie(LANDING_PAGE_KEY) || window.location.href.split('#')[0];
+            out.current_page = window.location.href.split('#')[0];
+            var referrer = readCookie(REFERRER_KEY) || document.referrer;
+            if (referrer) out.referrer = referrer;
+            Object.keys(DEFAULT_REGISTRATION_FIELDS).forEach(function(key) {
+                out[key] = DEFAULT_REGISTRATION_FIELDS[key];
+            });
             return out;
         }
 
@@ -3432,6 +3481,7 @@
                 qs.set('from', 'lp');
                 if (info.name)      qs.set('name', info.name);
                 if (info.tenant_id) qs.set('tenant_id', info.tenant_id);
+                if (info.zp_visitor_id) qs.set('zp_visitor_id', info.zp_visitor_id);
 
                 setTimeout(function() {
                     window.location.href = LOGIN_URL + '?' + qs.toString();
@@ -3447,9 +3497,10 @@
 
                 var phone = normalizePhone(data.telefoneRaw);
                 var cnpj  = data.cnpjRaw.replace(/\D/g, '');
-                var utm   = getUtmObject();
-                var mediaString = Object.keys(utm).map(function(k) {
-                    return encodeURIComponent(k) + '=' + encodeURIComponent(utm[k]);
+                var attribution = getAttributionObject();
+                var visitorId = getVisitorId();
+                var mediaString = Object.keys(attribution).map(function(k) {
+                    return encodeURIComponent(k) + '=' + encodeURIComponent(attribution[k]);
                 }).join('&');
 
                 var payload = {
@@ -3459,8 +3510,12 @@
                     phone:    phoneForApi(data.telefoneRaw),
                     country_id: 'BR',
                     taxNumber:  cnpj,
+                    segment: attribution.segment,
+                    companySize: attribution.companySize,
+                    employeesCount: attribution.employeesCount,
+                    companyAge: attribution.companyAge,
                     media:    mediaString,
-                    customFields: utm
+                    customFields: attribution
                 };
                 // Oferta 75% OFF desta LP: enviamos sempre o código promocional
                 // no campo "plan" (o backend resolve PROMO9 → Organiza a R$9,90/mês).
@@ -3473,7 +3528,8 @@
                     event: 'lead_capturado',
                     lead_nome: data.nome,
                     lead_email: data.email,
-                    lead_plano: opts.plan || ''
+                    lead_plano: opts.plan || '',
+                    zp_visitor_id: visitorId
                 });
 
                 // Webhook em paralelo (não bloqueia o cadastro)
@@ -3487,7 +3543,9 @@
                         telefone: phone,
                         cnpj: cnpj,
                         plano: opts.plan || '',
-                        utm: getUtmMedia()
+                        utm: getUtmMedia(),
+                        zp_visitor_id: visitorId,
+                        attribution: attribution
                     }),
                     keepalive: true
                 }).catch(function() {});
@@ -3508,12 +3566,14 @@
                             event: 'conta_criada',
                             lead_email: data.email,
                             lead_plano: opts.plan || '',
-                            tenant_id: tenantId
+                            tenant_id: tenantId,
+                            zp_visitor_id: visitorId
                         });
                         showSuccessAndRedirect(form, {
                             email: data.email,
                             name: data.nome,
-                            tenant_id: tenantId
+                            tenant_id: tenantId,
+                            zp_visitor_id: visitorId
                         });
                         return;
                     }
