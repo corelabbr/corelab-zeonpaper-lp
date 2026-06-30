@@ -141,6 +141,86 @@
         .section-subtitle { color:var(--text-gray); font-size:1rem; max-width:580px; }
         @media (max-width:900px) { .nav-links { display:none; } .nav-actions { display:none; } .hamburger { display:flex; } .mobile-drawer { display:flex; } .footer-grid { grid-template-columns:1fr 1fr; gap:2rem; } .problems-grid { grid-template-columns:1fr; } .features-grid { grid-template-columns:1fr; } .plans-grid { grid-template-columns:1fr; max-width:420px; margin-left:auto; margin-right:auto; } }
         @media (max-width:600px) { .footer-grid { grid-template-columns:1fr; } .footer-bottom { flex-direction:column; text-align:center; gap:0.5rem; } .hero-cta-group { flex-direction:column; align-items:flex-start; } }
+
+        /* ─── Plan modal ─── */
+        .lead-overlay {
+            position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+            z-index: 2000; display: flex; align-items: center; justify-content: center;
+            padding: 1.5rem; opacity: 0; visibility: hidden;
+            transition: opacity 0.25s ease, visibility 0.25s ease;
+        }
+        .lead-overlay.open { opacity: 1; visibility: visible; }
+        .lead-plan-badge {
+            display: inline-block; background: var(--primary-light); color: var(--primary);
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.08em; padding: 0.25rem 0.75rem; border-radius: 999px;
+            margin-bottom: 1rem;
+        }
+        .lead-modal {
+            background: white; border-radius: 1rem; padding: 2.5rem;
+            width: 100%; max-width: 440px; max-height: 90vh; overflow-y: auto;
+            position: relative; transform: translateY(16px) scale(0.97);
+            transition: transform 0.25s ease;
+        }
+        .lead-overlay.open .lead-modal { transform: translateY(0) scale(1); }
+        .lead-close {
+            position: absolute; top: 1rem; right: 1rem; width: 32px; height: 32px;
+            border: none; background: rgba(0,0,0,0.05); border-radius: 50%;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; color: var(--text-gray); transition: background 0.2s;
+        }
+        .lead-close:hover { background: rgba(0,0,0,0.1); }
+        .lead-title { font-size: 1.35rem; font-weight: 800; color: var(--text-dark); margin-bottom: 0.35rem; letter-spacing: -0.02em; }
+        .lead-subtitle { font-size: 0.88rem; color: var(--text-gray); margin-bottom: 2rem; line-height: 1.5; }
+        .lead-input {
+            width: 100%; padding: 0.85rem 1rem; border: 1.5px solid rgba(0,0,0,0.12);
+            border-radius: 0.6rem; font-family: inherit; font-size: 0.95rem;
+            color: var(--text-dark); background: white; outline: none;
+            transition: border-color 0.2s; margin-bottom: 1rem;
+        }
+        .lead-input:focus { border-color: var(--primary); }
+        .lead-input::placeholder { color: #94a3b8; }
+        .lead-input.invalid { border-color: #ef4444; background: #fef2f2; }
+        .lead-password-wrap { position: relative; }
+        .lead-password-wrap .lead-input { padding-right: 3rem; }
+        .lead-password-toggle {
+            position: absolute; top: calc(50% - 0.5rem); right: 0.5rem; transform: translateY(-50%);
+            background: transparent; border: 0; padding: 0.5rem; cursor: pointer;
+            color: #94a3b8; display: flex; align-items: center; justify-content: center; border-radius: 6px;
+        }
+        .lead-password-toggle:hover { color: var(--primary); }
+        .lead-submit {
+            width: 100%; padding: 1rem; border: none; border-radius: 0.6rem;
+            background: var(--gradient); color: white; font-family: inherit;
+            font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 0.5rem;
+            transition: opacity 0.2s;
+        }
+        .lead-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+        .lead-submit:not(:disabled):hover { opacity: 0.9; }
+        .lead-error {
+            background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca;
+            border-radius: 8px; padding: 0.65rem 0.85rem; font-size: 0.85rem;
+            line-height: 1.35; margin-bottom: 0.85rem;
+        }
+        .lead-error a { color: inherit; text-decoration: underline; font-weight: 600; }
+        .lead-submit.is-loading { opacity: 0.7; cursor: wait; }
+        .pwd-rules {
+            list-style: none; padding: 0; margin: -0.4rem 0 0.85rem;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 0.25rem 0.6rem;
+        }
+        .pwd-rules li {
+            display: flex; align-items: center; gap: 0.35rem; font-size: 0.78rem;
+            color: #94a3b8; line-height: 1.25; transition: color 0.15s;
+        }
+        .pwd-rules li.met { color: #16a34a; font-weight: 500; }
+        .lead-success { text-align: center; padding: 1rem 0; }
+        .lead-success-icon { color: #16a34a; display: flex; justify-content: center; margin-bottom: 0.75rem; }
+        .lead-success-title { font-size: 1.25rem; font-weight: 700; color: var(--text-dark); margin: 0 0 0.5rem; }
+        .lead-success-text { color: #475569; font-size: 0.95rem; line-height: 1.5; margin: 0; }
+        .lead-terms-microcopy { font-size: 0.75rem; color: #64748b; text-align: center; margin: 0.75rem 0 0; line-height: 1.45; }
+        .lead-terms-microcopy a { color: var(--primary); text-decoration: underline; }
+        .plan-cta-note { font-size: 0.78rem; color: var(--text-gray); text-align: center; margin-top: 0.5rem; }
     </style>
 </head>
 <body>
@@ -314,7 +394,7 @@
             <div class="plans-grid">
                 <div class="plan-card">
                     <div class="plan-name">Organiza</div>
-                    <div class="plan-price">R$27,90<span>/mês</span></div>
+                    <div class="plan-price">R$39,90<span>/mês</span></div>
                     <p class="plan-desc">Para o advogado solo que quer organizar honorários e contas sem complicação.</p>
                     <ul class="plan-features">
                         <li>Honorários e contas a receber</li>
@@ -323,7 +403,8 @@
                         <li>Categorias personalizadas</li>
                         <li>1 usuário</li>
                     </ul>
-                    <a href="https://app.zeonpaper.com.br/user/register" class="plan-cta secondary">Testar 7 dias grátis</a>
+                    <button type="button" class="plan-cta secondary" data-lead-modal data-plan="organiza">Começar grátis</button>
+                    <p class="plan-cta-note">7 dias de teste · sem cartão</p>
                 </div>
                 <div class="plan-card featured">
                     <div class="plan-badge">Mais popular para advogados</div>
@@ -337,11 +418,12 @@
                         <li>Múltiplas contas bancárias</li>
                         <li>Até 3 usuários</li>
                     </ul>
-                    <a href="https://app.zeonpaper.com.br/user/register" class="plan-cta">Testar 7 dias grátis</a>
+                    <button type="button" class="plan-cta" data-lead-modal data-plan="cresce">Começar com Cresce</button>
+                    <p class="plan-cta-note">7 dias de teste · sem cartão</p>
                 </div>
                 <div class="plan-card">
-                    <div class="plan-name">Escala</div>
-                    <div class="plan-price">R$89,90<span>/mês</span></div>
+                    <div class="plan-name">Pro</div>
+                    <div class="plan-price">R$75,90<span>/mês</span></div>
                     <p class="plan-desc">Para escritórios em crescimento com mais de um sócio.</p>
                     <ul class="plan-features">
                         <li>Tudo do plano Cresce</li>
@@ -350,7 +432,8 @@
                         <li>Histórico ilimitado</li>
                         <li>Até 5 usuários</li>
                     </ul>
-                    <a href="https://app.zeonpaper.com.br/user/register" class="plan-cta secondary">Testar 7 dias grátis</a>
+                    <button type="button" class="plan-cta secondary" data-lead-modal data-plan="pro">Começar com Pro</button>
+                    <p class="plan-cta-note">7 dias de teste · sem cartão</p>
                 </div>
             </div>
             <p style="text-align:center; color:var(--text-gray); font-size:0.82rem; margin-top:1.5rem;">Todos os planos incluem 7 dias grátis sem cartão de crédito. Cancele quando quiser.</p>
@@ -472,5 +555,124 @@
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Zeonpaper","applicationCategory":"BusinessApplication","operatingSystem":"Web","url":"https://www.zeonpaper.com.br","description":"Controle financeiro para advogados com gestão de honorários, fluxo de caixa projetado e DRE simplificada.","offers":{"@type":"Offer","price":"27.90","priceCurrency":"BRL"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.8","reviewCount":"312"}}
 </script>
+
+    <!-- Plan modal -->
+    <div class="lead-overlay" id="plan-modal" role="dialog" aria-modal="true" aria-labelledby="plan-modal-title">
+        <div class="lead-modal">
+            <button class="lead-close" id="plan-modal-close" aria-label="Fechar">&#x2715;</button>
+            <div class="lead-plan-badge" id="plan-modal-badge">Organiza</div>
+            <h2 class="lead-title" id="plan-modal-title">Comece seu teste grátis</h2>
+            <p class="lead-subtitle">7 dias grátis · Sem cartão · Cancele quando quiser</p>
+            <form id="plan-modal-form" novalidate>
+                <input type="text" name="nome" class="lead-input" placeholder="Seu nome" autocomplete="name" required>
+                <input type="email" name="email" class="lead-input" placeholder="Seu melhor e-mail" autocomplete="email" required>
+                <input type="tel" name="telefone" class="lead-input" placeholder="WhatsApp (com DDD)" autocomplete="tel" inputmode="numeric" maxlength="15" required>
+                <input type="text" name="cnpj" class="lead-input" placeholder="CNPJ" autocomplete="off" inputmode="numeric" maxlength="18" required>
+                <div class="lead-password-wrap">
+                    <input type="password" name="senha" class="lead-input lead-password-input" placeholder="Crie uma senha forte" autocomplete="new-password" minlength="8" required>
+                    <button type="button" class="lead-password-toggle" aria-label="Mostrar senha" tabindex="-1">
+                        <i data-lucide="eye" width="18" height="18"></i>
+                    </button>
+                </div>
+                <ul class="pwd-rules" data-pwd-rules>
+                    <li data-rule="length"><i data-lucide="circle" width="13" height="13"></i> 8 caracteres ou mais</li>
+                    <li data-rule="upper"><i data-lucide="circle" width="13" height="13"></i> 1 letra maiúscula</li>
+                    <li data-rule="lower"><i data-lucide="circle" width="13" height="13"></i> 1 letra minúscula</li>
+                    <li data-rule="number"><i data-lucide="circle" width="13" height="13"></i> 1 número</li>
+                </ul>
+                <input type="password" name="senha_confirm" class="lead-input" placeholder="Confirme sua senha" autocomplete="new-password" minlength="8" required>
+                <div class="lead-error" data-lead-error hidden></div>
+                <button type="submit" class="lead-submit">Criar minha conta grátis</button>
+                <p class="lead-terms-microcopy">Ao continuar, você concorda com nossos <a href="https://www.zeonpaper.com.br/termos" target="_blank" rel="noopener">Termos</a> e <a href="https://www.zeonpaper.com.br/privacidade" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
+                <input type="hidden" name="utm_source"><input type="hidden" name="utm_medium">
+                <input type="hidden" name="utm_campaign"><input type="hidden" name="utm_content">
+                <input type="hidden" name="utm_term"><input type="hidden" name="utm_adgroup">
+                <input type="hidden" name="matchtype"><input type="hidden" name="keyword">
+            </form>
+            <div class="lead-success" data-lead-success hidden>
+                <div class="lead-success-icon"><i data-lucide="check-circle-2" width="44" height="44"></i></div>
+                <h3 class="lead-success-title">Conta criada com sucesso!</h3>
+                <p class="lead-success-text">Te enviamos um e-mail de boas-vindas. Em instantes você vai para a tela de login.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // ─── Plan modal ───────────────────────────────────────────────────────
+    (function() {
+        var API_URL   = 'https://back.zeonpaper.com.br/api/register/submit';
+        var WEBHOOK   = 'https://hook.us1.make.com/4w9ewge45cwym9rj6vcmrycu1ifrz1sr';
+        var LOGIN_URL = 'https://app.zeonpaper.com.br/login';
+        var EMAIL_RE  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        var UTM_KEYS  = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_adgroup','matchtype','keyword'];
+
+        function writeCookie(k,v){var e=new Date(Date.now()+30*864e5).toUTCString();document.cookie=k+'='+encodeURIComponent(v)+'; expires='+e+'; path=/; SameSite=Lax';}
+        function readCookie(k){var m=document.cookie.match('(?:^|; )'+k+'=([^;]*)');return m?decodeURIComponent(m[1]):'';}
+        function getVisitorId(){var k='zp_visitor_id',v=readCookie(k);if(!v){v='zp_'+(window.crypto&&window.crypto.randomUUID?window.crypto.randomUUID():Date.now().toString(36)+'_'+Math.random().toString(36).slice(2));writeCookie(k,v);}return v;}
+        (function(){var p=new URLSearchParams(window.location.search);UTM_KEYS.forEach(function(k){if(p.has(k))writeCookie(k,p.get(k));});if(!readCookie('zp_landing_page'))writeCookie('zp_landing_page',window.location.href.split('#')[0]);if(!readCookie('zp_referrer')&&document.referrer)writeCookie('zp_referrer',document.referrer);getVisitorId();})();
+        function getUtmObj(){var o={};UTM_KEYS.forEach(function(k){var v=readCookie(k);if(v)o[k]=v;});return o;}
+        function getAttr(){var o=getUtmObj();o.zp_visitor_id=getVisitorId();o.landing_page=readCookie('zp_landing_page')||window.location.href.split('#')[0];o.current_page=window.location.href.split('#')[0];var r=readCookie('zp_referrer')||document.referrer;if(r)o.referrer=r;o.segment='OUTRO';o.companySize='MEI';o.employeesCount='SOLO';o.companyAge='LT_1';return o;}
+
+        function maskCNPJ(v){var d=(v||'').replace(/\D/g,'').slice(0,14);if(d.length<=2)return d;if(d.length<=5)return d.replace(/^(\d{2})(\d+)/,'$1.$2');if(d.length<=8)return d.replace(/^(\d{2})(\d{3})(\d+)/,'$1.$2.$3');if(d.length<=12)return d.replace(/^(\d{2})(\d{3})(\d{3})(\d+)/,'$1.$2.$3/$4');return d.replace(/^(\d{2})(\d{3})(\d{3})(\d{4})(\d+)/,'$1.$2.$3/$4-$5');}
+        function isValidCNPJ(v){var c=(v||'').replace(/\D/g,'');if(c.length!==14)return false;if(/^(\d)\1{13}$/.test(c))return false;var calc=function(s){var n=s.split('').map(Number),w=n.length===12?[5,4,3,2,9,8,7,6,5,4,3,2]:[6,5,4,3,2,9,8,7,6,5,4,3,2],sum=0;for(var i=0;i<n.length;i++)sum+=n[i]*w[i];var r=sum%11;return r<2?0:11-r;};var d1=calc(c.slice(0,12)),d2=calc(c.slice(0,12)+d1);return d1===parseInt(c.charAt(12),10)&&d2===parseInt(c.charAt(13),10);}
+        document.querySelectorAll('input[name="cnpj"]').forEach(function(inp){inp.addEventListener('input',function(){var p=inp.selectionStart,b=inp.value;inp.value=maskCNPJ(inp.value);if(b.length<inp.value.length)p+=(inp.value.length-b.length);try{inp.setSelectionRange(p,p);}catch(_){}});});
+
+        function maskPhone(v){var d=(v||'').replace(/\D/g,'').slice(0,11);if(!d)return'';if(d.length<=2)return'('+d;if(d.length<=6)return d.replace(/^(\d{2})(\d+)/,'($1) $2');if(d.length<=10)return d.replace(/^(\d{2})(\d{4})(\d+)/,'($1) $2-$3');return d.replace(/^(\d{2})(\d{5})(\d+)/,'($1) $2-$3');}
+        document.querySelectorAll('input[name="telefone"]').forEach(function(inp){inp.addEventListener('input',function(){var p=inp.selectionStart,b=inp.value;inp.value=maskPhone(inp.value);if(b.length<inp.value.length)p+=(inp.value.length-b.length);try{inp.setSelectionRange(p,p);}catch(_){}});});
+
+        document.querySelectorAll('.lead-password-toggle').forEach(function(btn){btn.addEventListener('click',function(){var inp=btn.parentElement.querySelector('input[name="senha"]');if(!inp)return;var s=inp.type==='text';inp.type=s?'password':'text';btn.setAttribute('aria-label',s?'Mostrar senha':'Ocultar senha');var ic=btn.querySelector('[data-lucide]');if(ic){ic.setAttribute('data-lucide',s?'eye':'eye-off');if(window.lucide)lucide.createIcons();}});});
+
+        function evalPwd(p){return{length:p.length>=8,upper:/[A-Z]/.test(p),lower:/[a-z]/.test(p),number:/\d/.test(p)};}
+        function isStrong(p){var r=evalPwd(p);return r.length&&r.upper&&r.lower&&r.number;}
+        document.querySelectorAll('input[name="senha"]').forEach(function(inp){var form=inp.closest('form');if(!form)return;var rules=form.querySelector('[data-pwd-rules]');if(!rules)return;inp.addEventListener('input',function(){var r=evalPwd(inp.value);Object.keys(r).forEach(function(k){var li=rules.querySelector('[data-rule="'+k+'"]');if(!li)return;li.classList.toggle('met',r[k]);var ic=li.querySelector('[data-lucide]');if(ic){ic.setAttribute('data-lucide',r[k]?'check-circle-2':'circle');if(window.lucide)lucide.createIcons();}});});});
+
+        // Hidrata hidden UTM
+        (function(){var utm=getUtmObj();document.querySelectorAll('form').forEach(function(form){UTM_KEYS.forEach(function(k){var inp=form.querySelector('input[type="hidden"][name="'+k+'"]');if(inp&&utm[k])inp.value=utm[k];});});})();
+
+        function normalizePhone(v){var d=(v||'').replace(/\D/g,'');if(!d)return'';if(d.length>=12&&d.startsWith('55'))return d;return'55'+d;}
+        function phoneForApi(v){var d=(v||'').replace(/\D/g,'');if(!d)return'';if(d.length>=12&&d.startsWith('55'))d=d.slice(2);return'+55-0'+d;}
+
+        function showErr(form,html){var b=form.querySelector('[data-lead-error]');if(b){b.innerHTML=html;b.hidden=false;}}
+        function hideErr(form){var b=form.querySelector('[data-lead-error]');if(b){b.hidden=true;b.innerHTML='';}}
+        function setInvalid(form,name){var el=form.querySelector('[name="'+name+'"]');if(el){el.classList.add('invalid');el.focus();}}
+        function clearInvalid(form){form.querySelectorAll('.invalid').forEach(function(el){el.classList.remove('invalid');});}
+        function setLoading(form,on){var btn=form.querySelector('[type="submit"]');if(!btn)return;btn.disabled=!!on;btn.classList.toggle('is-loading',!!on);if(on){btn.dataset._l=btn.textContent;btn.textContent='Criando sua conta...';}else if(btn.dataset._l){btn.textContent=btn.dataset._l;}}
+
+        function validate(form,d){clearInvalid(form);hideErr(form);if(d.nome.length<2){setInvalid(form,'nome');showErr(form,'Digite seu nome.');return false;}if(!EMAIL_RE.test(d.email)){setInvalid(form,'email');showErr(form,'Digite um e-mail válido.');return false;}if(d.tel.replace(/\D/g,'').length<10){setInvalid(form,'telefone');showErr(form,'Digite seu WhatsApp com DDD.');return false;}if(!isValidCNPJ(d.cnpj)){setInvalid(form,'cnpj');showErr(form,'CNPJ inválido. Confira os dígitos.');return false;}if(!isStrong(d.senha)){setInvalid(form,'senha');showErr(form,'Senha não atende aos requisitos.');return false;}if(d.senha!==d.senha2){setInvalid(form,'senha_confirm');showErr(form,'As senhas não conferem.');return false;}return true;}
+
+        function getData(form){var g=function(n){var el=form.querySelector('[name="'+n+'"]');return el?el.value:'';};return{nome:g('nome').trim(),email:g('email').trim(),tel:g('telefone').trim(),cnpj:g('cnpj').trim(),senha:g('senha'),senha2:g('senha_confirm')};}
+
+        function submit(e,plan){e.preventDefault();var form=e.currentTarget,d=getData(form);if(!validate(form,d))return;
+            var attr=getAttr(),vid=getVisitorId(),planMap={organiza:'ORGANIZA',cresce:'CRESCE',pro:'PRO'},apiPlan=planMap[(plan||'').toLowerCase()]||'';
+            var payload={username:d.email,password:d.senha,name:d.nome,phone:phoneForApi(d.tel),country_id:'BR',taxNumber:d.cnpj.replace(/\D/g,''),segment:attr.segment,companySize:attr.companySize,employeesCount:attr.employeesCount,companyAge:attr.companyAge,media:Object.keys(attr).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(attr[k]);}).join('&'),customFields:attr};
+            if(apiPlan)payload.plan=apiPlan;
+            setLoading(form,true);
+            window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'lead_capturado',lead_nome:d.nome,lead_email:d.email,lead_plano:plan||'',zp_visitor_id:vid});
+            fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({etapa:1,nome:d.nome,email:d.email,telefone:normalizePhone(d.tel),cnpj:d.cnpj.replace(/\D/g,''),plano:plan||'',zp_visitor_id:vid,attribution:attr}),keepalive:true}).catch(function(){});
+            fetch(API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).then(function(r){return r.json().catch(function(){return{};}).then(function(j){return{status:r.status,body:j};});}).then(function(r){
+                var b=r.body||{};if(b.status==='ok'){var tid=(b.dataResponse&&b.dataResponse.tenant_id)||'';window.dataLayer.push({event:'conta_criada',lead_email:d.email,lead_plano:plan||'',tenant_id:tid,zp_visitor_id:vid});
+                    var overlay=form.closest('.lead-overlay');if(overlay){form.hidden=true;var ok=overlay.querySelector('[data-lead-success]');if(ok){ok.hidden=false;if(window.lucide)lucide.createIcons();}}
+                    setTimeout(function(){var qs=new URLSearchParams();qs.set('email',d.email);qs.set('from','lp');if(b.dataResponse&&b.dataResponse.tenant_id)qs.set('tenant_id',b.dataResponse.tenant_id);qs.set('zp_visitor_id',vid);window.location.href=LOGIN_URL+'?'+qs.toString();},1200);return;}
+                setLoading(form,false);
+                var err=b.error||{},code=err.code||b.message||b.name||'',msg=err.customMessage||err.message||b.message||'';
+                if(r.status===401||code==='email_already_registered'||code==='user_already_exists'){showErr(form,'Este e-mail já está cadastrado. <a href="'+LOGIN_URL+'" target="_blank">Faça login</a>.');setInvalid(form,'email');}
+                else if(code.indexOf('taxNumber')>=0||code.indexOf('cnpj')>=0){showErr(form,'CNPJ inválido ou já em uso. Confira os dígitos.');setInvalid(form,'cnpj');}
+                else{showErr(form,msg||'Não foi possível criar sua conta agora. Tente novamente.');}
+            }).catch(function(){setLoading(form,false);showErr(form,'Falha de conexão. Confira sua internet e tente novamente.');});}
+
+        // Modal open/close
+        var overlay=document.getElementById('plan-modal');
+        if(overlay){
+            var badge=document.getElementById('plan-modal-badge'),form=document.getElementById('plan-modal-form'),closeBtn=document.getElementById('plan-modal-close'),successEl=overlay.querySelector('[data-lead-success]'),currentPlan='';
+            function openModal(plan){currentPlan=plan;if(badge)badge.textContent=plan?plan.charAt(0).toUpperCase()+plan.slice(1):'Plano';overlay.classList.add('open');document.body.style.overflow='hidden';form.hidden=false;if(successEl)successEl.hidden=true;hideErr(form);clearInvalid(form);setLoading(form,false);setTimeout(function(){var n=form.querySelector('[name="nome"]');if(n)n.focus();},50);}
+            function closeModal(){overlay.classList.remove('open');document.body.style.overflow='';form.reset();form.hidden=false;if(successEl)successEl.hidden=true;hideErr(form);clearInvalid(form);setLoading(form,false);}
+            document.querySelectorAll('[data-lead-modal]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();openModal(el.dataset.plan||'');});});
+            closeBtn.addEventListener('click',closeModal);
+            overlay.addEventListener('click',function(e){if(e.target===overlay)closeModal();});
+            document.addEventListener('keydown',function(e){if(e.key==='Escape'&&overlay.classList.contains('open'))closeModal();});
+            form.addEventListener('submit',function(e){submit(e,currentPlan);});
+        }
+    })();
+    </script>
 </body>
 </html>
