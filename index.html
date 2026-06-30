@@ -2900,7 +2900,7 @@
     <script src="./assets/js/zp-plans.js"></script>
 
     <script>
-        lucide.createIcons();
+        if (window.lucide && window.lucide.createIcons) window.lucide.createIcons();
 
         // Reveal on scroll
         const observer = new IntersectionObserver((entries) => {
@@ -3495,11 +3495,11 @@
                     clearFieldErrors(form);
                 }
 
-                document.querySelectorAll('[data-lead-modal]').forEach(function(el) {
-                    el.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        openModal(el.dataset.plan || '');
-                    });
+                document.addEventListener('click', function(e) {
+                    var el = e.target.closest('[data-lead-modal]');
+                    if (!el) return;
+                    e.preventDefault();
+                    openModal(el.dataset.plan || '');
                 });
 
                 closeBtn.addEventListener('click', closeModal);
@@ -3531,15 +3531,14 @@
 
         // Pricing tabs (mobile)
         (function () {
-            var tabs = document.querySelectorAll('.pricing-tabs [data-tab]');
-            var cards = document.querySelectorAll('.pricing-grid [data-plan-card]');
-            if (!tabs.length || !cards.length) return;
-            tabs.forEach(function (tab) {
-                tab.addEventListener('click', function () {
-                    var plan = tab.dataset.tab;
-                    tabs.forEach(function (t) { t.classList.toggle('active', t === tab); });
-                    cards.forEach(function (c) { c.classList.toggle('active', c.dataset.planCard === plan); });
-                });
+            document.addEventListener('click', function (e) {
+                var tab = e.target.closest('.pricing-tabs [data-tab]');
+                if (!tab) return;
+                var tabs = document.querySelectorAll('.pricing-tabs [data-tab]');
+                var cards = document.querySelectorAll('.pricing-grid [data-plan-card]');
+                var plan = tab.dataset.tab;
+                tabs.forEach(function (t) { t.classList.toggle('active', t === tab); });
+                cards.forEach(function (c) { c.classList.toggle('active', c.dataset.planCard === plan); });
             });
         })();
 
