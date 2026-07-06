@@ -2331,6 +2331,34 @@
         .lead-input::placeholder { color: #94a3b8; }
         .lead-input.invalid { border-color: #ef4444; background: #fef2f2; }
 
+        /* Seletor Pessoa Jurídica (CNPJ) / Pessoa Física (CPF) */
+        .lead-doctype {
+            display: flex;
+            gap: 6px;
+            background: rgba(0, 0, 0, 0.04);
+            border-radius: 0.6rem;
+            padding: 4px;
+            margin-bottom: 1rem;
+        }
+        .lead-doctype-btn {
+            flex: 1;
+            padding: 0.6rem 0.5rem;
+            border: 0;
+            border-radius: 0.45rem;
+            background: transparent;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-gray);
+            cursor: pointer;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        }
+        .lead-doctype-btn.active {
+            background: #fff;
+            color: var(--primary);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
         /* Password field + toggle (modal) */
         .lead-password-wrap { position: relative; }
         .lead-password-wrap .lead-input { padding-right: 3rem; }
@@ -3221,6 +3249,11 @@
             <h2 class="lead-title" id="plan-modal-title">Comece seu teste grátis</h2>
             <p class="lead-subtitle">7 dias grátis · Sem cartão · Cancele quando quiser</p>
             <form id="plan-modal-form" novalidate>
+                <div class="lead-doctype" role="group" aria-label="Você é pessoa jurídica ou física?">
+                    <button type="button" class="lead-doctype-btn active" data-doctype="LP">Pessoa Jurídica</button>
+                    <button type="button" class="lead-doctype-btn" data-doctype="PP">Pessoa Física</button>
+                </div>
+                <input type="hidden" name="contactType" value="LP">
                 <input type="text" name="nome" class="lead-input" placeholder="Seu nome" autocomplete="name" required>
                 <input type="email" name="email" class="lead-input" placeholder="Seu melhor e-mail" autocomplete="email" required>
                 <input type="tel" name="telefone" class="lead-input" placeholder="WhatsApp (com DDD)" autocomplete="tel" inputmode="numeric" maxlength="15" required>
@@ -3531,14 +3564,65 @@
             return d1 === parseInt(c.charAt(12), 10) && d2 === parseInt(c.charAt(13), 10);
         }
 
-        // Aplica máscara CNPJ em todos os inputs name="cnpj"
+        // ─── CPF: máscara + validação dígito verificador ───
+        function maskCPF(value) {
+            var d = (value || '').replace(/\D/g, '').slice(0, 11);
+            if (d.length <= 3) return d;
+            if (d.length <= 6) return d.replace(/^(\d{3})(\d+)/, '$1.$2');
+            if (d.length <= 9) return d.replace(/^(\d{3})(\d{3})(\d+)/, '$1.$2.$3');
+            return d.replace(/^(\d{3})(\d{3})(\d{3})(\d+)/, '$1.$2.$3-$4');
+        }
+
+        function isValidCPF(value) {
+            var c = (value || '').replace(/\D/g, '');
+            if (c.length !== 11) return false;
+            if (/^(\d)\1{10}$/.test(c)) return false;
+            var sum = 0, i, rest;
+            for (i = 0; i < 9; i++) sum += parseInt(c.charAt(i), 10) * (10 - i);
+            rest = (sum * 10) % 11; if (rest === 10) rest = 0;
+            if (rest !== parseInt(c.charAt(9), 10)) return false;
+            sum = 0;
+            for (i = 0; i < 10; i++) sum += parseInt(c.charAt(i), 10) * (11 - i);
+            rest = (sum * 10) % 11; if (rest === 10) rest = 0;
+            return rest === parseInt(c.charAt(10), 10);
+        }
+
+        // Tipo de documento atual (LP = PJ/CNPJ, PP = PF/CPF)
+        function getDocType() {
+            var el = document.querySelector('input[name="contactType"]');
+            return el && el.value === 'PP' ? 'PP' : 'LP';
+        }
+
+        // Aplica máscara no documento conforme o tipo (CNPJ ou CPF)
         document.querySelectorAll('input[name="cnpj"]').forEach(function(input) {
             input.addEventListener('input', function() {
                 var pos = input.selectionStart;
                 var before = input.value;
-                input.value = maskCNPJ(input.value);
+                input.value = getDocType() === 'PP' ? maskCPF(input.value) : maskCNPJ(input.value);
                 if (before.length < input.value.length) pos += (input.value.length - before.length);
                 try { input.setSelectionRange(pos, pos); } catch(_) {}
+            });
+        });
+
+        // Alterna Pessoa Jurídica (CNPJ) / Pessoa Física (CPF)
+        document.querySelectorAll('.lead-doctype-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var type = btn.getAttribute('data-doctype'); // LP ou PP
+                var group = btn.closest('.lead-doctype');
+                if (group) group.querySelectorAll('.lead-doctype-btn').forEach(function(b) {
+                    b.classList.toggle('active', b === btn);
+                });
+                var form = btn.closest('form');
+                if (!form) return;
+                var hidden = form.querySelector('input[name="contactType"]');
+                if (hidden) hidden.value = type;
+                var doc = form.querySelector('input[name="cnpj"]');
+                if (doc) {
+                    doc.placeholder = type === 'PP' ? 'CPF' : 'CNPJ';
+                    doc.maxLength = type === 'PP' ? 14 : 18;
+                    doc.value = '';
+                    doc.classList.remove('invalid');
+                }
             });
         });
 
@@ -3661,6 +3745,7 @@
             function getFormData(form) {
                 var get = function(n) { var el = form.querySelector('[name="' + n + '"]'); return el ? el.value : ''; };
                 return {
+                    contactType: get('contactType') === 'PP' ? 'PP' : 'LP',
                     nome: get('nome').trim(),
                     email: get('email').trim(),
                     telefoneRaw: get('telefone').trim(),
@@ -3677,7 +3762,11 @@
                 if (!EMAIL_RE.test(data.email)) { setFieldError(form, 'email'); showError(form, 'Digite um e-mail válido.'); return false; }
                 var phoneDigits = data.telefoneRaw.replace(/\D/g, '');
                 if (phoneDigits.length < 10) { setFieldError(form, 'telefone'); showError(form, 'Digite seu WhatsApp com DDD.'); return false; }
-                if (!isValidCNPJ(data.cnpjRaw)) { setFieldError(form, 'cnpj'); showError(form, 'CNPJ inválido. Confira os dígitos.'); return false; }
+                if (data.contactType === 'PP') {
+                    if (!isValidCPF(data.cnpjRaw)) { setFieldError(form, 'cnpj'); showError(form, 'CPF inválido. Confira os dígitos.'); return false; }
+                } else {
+                    if (!isValidCNPJ(data.cnpjRaw)) { setFieldError(form, 'cnpj'); showError(form, 'CNPJ inválido. Confira os dígitos.'); return false; }
+                }
                 if (!isStrongPassword(data.senha)) {
                     setFieldError(form, 'senha');
                     showError(form, 'Sua senha não atende a todos os requisitos. Confira a lista abaixo do campo.');
@@ -3833,6 +3922,7 @@
                 var payload = {
                     username: data.email,
                     password: data.senha,
+                    contactType: data.contactType || 'LP',
                     name:     data.nome,
                     phone:    phoneForApi(data.telefoneRaw),
                     country_id: 'BR',
@@ -3866,6 +3956,8 @@
                         nome: data.nome,
                         email: data.email,
                         telefone: phone,
+                        contactType: data.contactType || 'LP',
+                        documento: cnpj,
                         cnpj: cnpj,
                         plano: opts.plan || '',
                         utm: getUtmMedia(),
@@ -3945,6 +4037,15 @@
                         if (subtitleEl) subtitleEl.textContent = DEF.subtitle;
                         if (submitBtn)  submitBtn.textContent  = DEF.submit;
                     }
+                    // Reseta o seletor de documento para Pessoa Jurídica (padrão)
+                    var dtGroup = overlay.querySelector('.lead-doctype');
+                    if (dtGroup) dtGroup.querySelectorAll('.lead-doctype-btn').forEach(function(b) {
+                        b.classList.toggle('active', b.getAttribute('data-doctype') === 'LP');
+                    });
+                    var ctInput = form.querySelector('input[name="contactType"]');
+                    if (ctInput) ctInput.value = 'LP';
+                    var docInput = form.querySelector('input[name="cnpj"]');
+                    if (docInput) { docInput.placeholder = 'CNPJ'; docInput.maxLength = 18; }
                     overlay.classList.add('open');
                     document.body.style.overflow = 'hidden';
                     form.hidden = false;
