@@ -3803,6 +3803,8 @@
                 var field = info.field || '';
                 var msg = info.message || '';
                 var status = info.status || 0;
+                var ctEl = form.querySelector('input[name="contactType"]');
+                var docLabel = (ctEl && ctEl.value === 'PP') ? 'CPF' : 'CNPJ';
 
                 // Email duplicado (PDF: 401; algumas APIs retornam 409/422 — cobrimos todos)
                 if (status === 401 || code === 'email_already_registered' || code === 'user_already_exists') {
@@ -3814,15 +3816,15 @@
                     setFieldError(form, 'email');
                     return;
                 }
-                // CNPJ inválido pro país
+                // Documento (CPF/CNPJ) não aceito
                 if (code === 'company_taxNumber_is_not_allowed' || msg.indexOf('company_taxNumber_is_not_allowed') >= 0) {
-                    showError(form, 'CNPJ inválido para o país. Confira os dígitos.');
+                    showError(form, 'Não foi possível validar seu ' + docLabel + '. Confira o número digitado.');
                     setFieldError(form, 'cnpj');
                     return;
                 }
-                // CNPJ pertence a outro email
+                // Documento pertence a outro email
                 if (code === 'company_taxNumber_contact_support' || msg.indexOf('company_taxNumber_contact_support') >= 0) {
-                    showError(form, 'Este CNPJ já está vinculado a outro e-mail. Entre em contato com nosso suporte.');
+                    showError(form, 'Este ' + docLabel + ' já está vinculado a outro e-mail. Entre em contato com nosso suporte.');
                     setFieldError(form, 'cnpj');
                     return;
                 }
