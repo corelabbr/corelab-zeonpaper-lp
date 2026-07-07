@@ -34,9 +34,7 @@
     <meta name="description" content="Zeonpaper é o sistema financeiro para MEI, microempresa e prestador de serviço. Controle contas a pagar e receber, fluxo de caixa e alertas de vencimento — sem planilha, sem ERP pesado. Teste grátis por 7 dias, sem cartão.">
     <meta name="keywords" content="controle financeiro para MEI, sistema financeiro para pequena empresa, contas a pagar e receber online, software financeiro para microempresa, fluxo de caixa para pequena empresa, alternativa ao excel para financeiro, substituir planilha financeiro empresa, gestão financeira sem ERP">
 
-    <!-- Página de VALIDAÇÃO (não indexar — evita conteúdo duplicado com a home) -->
-    <meta name="robots" content="noindex, nofollow">
-    <link rel="canonical" href="https://www.zeonpaper.com.br/home-nova.html">
+    <link rel="canonical" href="https://www.zeonpaper.com.br/">
 
     <!-- Open Graph / WhatsApp / LinkedIn -->
     <meta property="og:type" content="website">
@@ -793,100 +791,6 @@
             z-index: 1;
         }
 
-        /* ─── HERO CENTRALIZADA (vídeo demo) ─── */
-        .hero-center {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            max-width: 880px;
-            margin: 0 auto;
-        }
-        .hero-center .hero-label { justify-content: center; margin-bottom: 1rem; }
-        .hero-center h1 {
-            font-size: clamp(1.9rem, 3.4vw, 2.6rem);
-            max-width: 100%;
-        }
-        .hero-center > p { max-width: 54ch; }
-        .hero-center .hero-audience { justify-content: center; }
-        .hero-center .hero-lead-form { margin-left: auto; margin-right: auto; }
-        .hero-center .hero-social-proof { justify-content: center; margin-bottom: 2.75rem; }
-
-        .hero-video-wrap {
-            width: 100%;
-            max-width: 960px;
-            margin: 0 auto;
-        }
-        .hero-video-frame {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16 / 9;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid rgba(121, 59, 237, 0.35);
-            background: #000;
-            animation: glow-pulse 5s ease-in-out infinite;
-        }
-        .hero-video-frame iframe {
-            /* Iframe renderizado MAIOR que o frame (não é zoom via transform, então não borra):
-               o YouTube renderiza nesse tamanho e o overflow:hidden recorta a faixa de título
-               no topo e os logos do YouTube nos cantos inferiores. */
-            position: absolute;
-            top: -16%;
-            left: -16%;
-            width: 132%;
-            height: 132%;
-            border: 0;
-            display: block;
-        }
-        /* Camada que bloqueia a interação do player (evita a faixa de título/autor do YouTube no hover) */
-        .hero-video-guard {
-            position: absolute;
-            inset: 0;
-            z-index: 4;
-            cursor: pointer;
-            background: transparent;
-        }
-        .hero-video-sound {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 5;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 13px 22px;
-            background: rgba(15, 23, 42, 0.78);
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.22);
-            border-radius: 999px;
-            color: #fff;
-            font-family: inherit;
-            font-size: 0.92rem;
-            font-weight: 600;
-            cursor: pointer;
-            box-shadow: 0 8px 30px rgba(0,0,0,0.35);
-            transition: background 0.2s, transform 0.25s ease, padding 0.25s ease, font-size 0.25s ease;
-        }
-        .hero-video-sound svg { width: 18px; height: 18px; flex-shrink: 0; }
-        .hero-video-sound:not(.is-playing):hover { background: rgba(15, 23, 42, 0.94); transform: translate(-50%, -50%) scale(1.05); }
-        /* Depois de ativar o som, encolhe e vai pro canto pra não tapar a demo */
-        .hero-video-sound.is-playing {
-            top: auto;
-            left: auto;
-            bottom: 14px;
-            right: 14px;
-            transform: none;
-            padding: 8px 13px;
-            font-size: 0.8rem;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-        }
-        .hero-video-sound.is-playing svg { width: 16px; height: 16px; }
-        .hero-video-sound.is-playing:hover { background: rgba(15, 23, 42, 0.94); transform: translateY(-1px); }
-        .hero-center .hero-proof { justify-content: center; margin-top: 2rem; }
-
         /* ─── SOCIAL PROOF BAR ─── */
         .proof-bar {
             padding: 80px 0;
@@ -1343,118 +1247,6 @@
         @media (max-width: 1024px) {
             .pricing-grid { grid-template-columns: 1fr; max-width: 480px; gap: 2rem; }
         }
-
-        /* ─── Herança de plano ("Tudo do X, e mais:") ─── */
-        .plan-inherit {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.82rem;
-            font-weight: 600;
-            color: var(--primary);
-            margin: 0 0 0.85rem;
-            line-height: 1.3;
-        }
-        .plan-inherit strong { color: var(--text-dark); font-weight: 700; }
-        .plan-inherit svg { color: var(--primary); flex-shrink: 0; }
-
-        /* ─── Caixa comparativa expansível ─── */
-        .plan-compare { max-width: 1180px; margin: 2rem auto 0; }
-        .plan-compare-toggle {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            padding: 1rem 1.25rem;
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: var(--radius-card, 16px);
-            font-family: inherit;
-            font-size: 0.98rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            cursor: pointer;
-            transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
-        }
-        .plan-compare-toggle:hover { border-color: var(--primary); box-shadow: var(--shadow-card, 0 8px 24px rgba(0,0,0,0.06)); }
-        .plan-compare-toggle svg { color: var(--primary); transition: transform 0.25s ease; }
-        .plan-compare-toggle.open svg { transform: rotate(180deg); }
-        .plan-compare-panel {
-            margin-top: 1rem;
-            background: #fff;
-            border: 1px solid #e2e8f0;
-            border-radius: var(--radius-card, 16px);
-            overflow: hidden;
-        }
-        .plan-compare-scroll { overflow-x: auto; }
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            min-width: 640px;
-            font-size: 0.9rem;
-        }
-        .comparison-table th,
-        .comparison-table td {
-            padding: 0.8rem 1rem;
-            text-align: center;
-            border-bottom: 1px solid #eef2f7;
-        }
-        .comparison-table thead { background: #fff; }
-        .comparison-table thead th {
-            font-weight: 800;
-            color: var(--text-dark);
-            font-size: 1rem;
-            background: #fff;
-        }
-        .comparison-table thead th.cmp-corner {
-            text-align: left;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-gray);
-            font-weight: 700;
-        }
-        .comparison-table tbody th[scope="row"] {
-            text-align: left;
-            font-weight: 500;
-            color: var(--text-dark);
-        }
-        /* Primeira coluna fixa ao rolar a tabela na horizontal (mobile) */
-        .comparison-table thead th.cmp-corner,
-        .comparison-table tbody th[scope="row"] {
-            position: sticky;
-            left: 0;
-            background: #fff;
-            z-index: 2;
-        }
-        .comparison-table tr.cmp-group th {
-            text-align: left;
-            background: #f8fafc;
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            font-weight: 700;
-            color: var(--text-gray);
-            padding: 0.6rem 1rem;
-        }
-        .comparison-table .cmp-featured { background: rgba(121, 59, 237, 0.045); }
-        .comparison-table thead th.cmp-featured { color: var(--primary); }
-        .cmp-yes { color: #16a34a; display: inline-flex; }
-        .cmp-no { color: #cbd5e1; }
-        .cmp-val { font-weight: 600; color: var(--text-dark); font-size: 0.85rem; }
-        @media (max-width: 640px) {
-            .comparison-table { min-width: 460px; }
-            .comparison-table th,
-            .comparison-table td { padding: 0.7rem 0.55rem; font-size: 0.8rem; }
-            .comparison-table thead th { font-size: 0.85rem; }
-            .comparison-table thead th.cmp-corner,
-            .comparison-table tbody th[scope="row"] { width: 160px; min-width: 160px; }
-            .comparison-table thead th:not(.cmp-corner),
-            .comparison-table td { width: 100px; min-width: 100px; }
-            .cmp-val { font-size: 0.78rem; }
-        }
-
         .plan-tagline {
             font-size: 0.72rem;
             font-weight: 700;
@@ -1804,10 +1596,6 @@
             section { padding: 80px 0; }
             .hero { padding-top: 88px; padding-bottom: 40px; min-height: auto; }
             .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 0.75rem; }
-            /* Hero centralizada: ignora os order: legados e usa a ordem natural do DOM */
-            .hero-center { gap: 0.85rem; }
-            .hero-center > * { order: 0 !important; }
-            .hero-center .hero-social-proof { margin-bottom: 0.35rem; }
             .hero-label { display: none; }
             .hero-text { display: contents; }
             .hero-label { order: 1; }
@@ -2014,160 +1802,6 @@
             opacity: 1;
             visibility: visible;
         }
-
-        /* ─── Exit-intent offer modal ─── */
-        .exit-overlay {
-            position: fixed;
-            inset: 0;
-            z-index: 1990;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-            background: rgba(2, 6, 23, 0.72);
-            -webkit-backdrop-filter: blur(6px);
-            backdrop-filter: blur(6px);
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.25s ease, visibility 0.25s ease;
-        }
-        .exit-overlay.open { opacity: 1; visibility: visible; }
-        .exit-modal {
-            position: relative;
-            background: #fff;
-            border-radius: 1.35rem;
-            padding: 2.85rem 2.6rem 2.1rem;
-            width: 100%;
-            max-width: 560px;
-            max-height: 94vh;
-            overflow-y: auto;
-            text-align: center;
-            box-shadow: 0 30px 80px -20px rgba(0,0,0,0.5);
-            transform: translateY(16px) scale(0.97);
-            transition: transform 0.25s ease;
-        }
-        .exit-overlay.open .exit-modal { transform: none; }
-        .exit-close {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            width: 32px;
-            height: 32px;
-            border: 0;
-            border-radius: 50%;
-            background: rgba(0,0,0,0.05);
-            color: var(--text-gray);
-            font-size: 1.05rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .exit-close:hover { background: rgba(0,0,0,0.1); }
-        .exit-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(245, 158, 11, 0.12);
-            color: #b45309;
-            font-size: 0.72rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            padding: 0.3rem 0.7rem 0.3rem 0.35rem;
-            border-radius: 999px;
-            margin-bottom: 1rem;
-        }
-        .exit-pill-off {
-            background: #f59e0b;
-            color: #fff;
-            padding: 0.12rem 0.45rem;
-            border-radius: 999px;
-        }
-        .exit-title {
-            font-size: 1.9rem;
-            font-weight: 800;
-            line-height: 1.18;
-            color: var(--text-dark);
-            letter-spacing: -0.02em;
-            margin-bottom: 0.7rem;
-        }
-        .exit-sub {
-            font-size: 1rem;
-            color: var(--text-gray);
-            line-height: 1.55;
-            margin-bottom: 1.3rem;
-        }
-        .exit-sub s { color: #94a3b8; }
-        .exit-highlight {
-            display: flex;
-            align-items: center;
-            gap: 0.55rem;
-            justify-content: center;
-            text-align: left;
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.28);
-            color: #b45309;
-            font-size: 0.9rem;
-            font-weight: 600;
-            line-height: 1.35;
-            padding: 0.75rem 1rem;
-            border-radius: 0.7rem;
-            margin-bottom: 1.4rem;
-        }
-        .exit-highlight svg { flex-shrink: 0; color: #d97706; }
-        .exit-benefits {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 1.5rem;
-            text-align: left;
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-        }
-        .exit-benefits li {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.55rem;
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            line-height: 1.4;
-        }
-        .exit-benefits li svg { color: #16a34a; flex-shrink: 0; margin-top: 2px; }
-        .exit-cta {
-            width: 100%;
-            padding: 1.1rem;
-            border: 0;
-            border-radius: 0.75rem;
-            background: var(--gradient);
-            color: #fff;
-            font-family: inherit;
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: opacity 0.2s ease, transform 0.2s ease;
-        }
-        .exit-cta:hover { opacity: 0.92; transform: translateY(-1px); }
-        .exit-dismiss {
-            display: block;
-            width: 100%;
-            margin-top: 0.75rem;
-            background: transparent;
-            border: 0;
-            color: var(--text-gray);
-            font-family: inherit;
-            font-size: 0.82rem;
-            cursor: pointer;
-            text-decoration: underline;
-        }
-        .exit-dismiss:hover { color: var(--text-dark); }
-        @media (max-width: 480px) {
-            .exit-modal { padding: 2rem 1.4rem 1.5rem; border-radius: 1.1rem; }
-            .exit-title { font-size: 1.5rem; }
-            .exit-sub { font-size: 0.92rem; }
-            .exit-highlight { font-size: 0.84rem; }
-        }
-
         .lead-plan-badge {
             display: inline-block;
             background: var(--primary-light);
@@ -2652,59 +2286,58 @@
     <main>
         <!-- ═══ HERO ═══ -->
         <section class="hero">
-            <div class="container hero-center">
-                <div class="hero-label">Para MEI, prestadores e pequenas empresas</div>
-                <h1>Organize o financeiro da sua empresa<br><span class="text-gradient">de uma vez por todas.</span></h1>
-                <p>Chega de planilha desatualizada e conta esquecida.<br>Veja tudo o que entra, sai e vence — num só lugar e em tempo real.</p>
-                <ul class="hero-audience" aria-label="Para quem é o Zeonpaper">
-                    <li><i data-lucide="user" size="14"></i> MEI</li>
-                    <li><i data-lucide="briefcase" size="14"></i> Prestador de serviço</li>
-                    <li><i data-lucide="building-2" size="14"></i> Pequena empresa</li>
-                </ul>
-                <div class="hero-lead-form">
-                    <a href="#precos" class="btn btn-cta" style="height: 52px; font-size: 1rem; display: inline-flex; align-items: center; justify-content: center; width: 100%; border: 0; cursor: pointer; text-decoration: none;">Testar grátis por 7 dias</a>
-                    <p class="hero-form-microcopy">7 dias grátis · Sem cartão · Cancele quando quiser</p>
+            <div class="container hero-grid">
+                <div class="hero-text grid-item">
+                    <div class="hero-label">Para MEI, prestadores e pequenas empresas</div>
+                    <h1>Saiba hoje quanto vai ter <span class="text-gradient">no caixa daqui 30 dias.</span></h1>
+                    <p>Pare de descobrir tarde demais que o dinheiro acabou.<br>Sem planilha, sem contador, sem ERP pesado.</p>
+                    <ul class="hero-audience" aria-label="Para quem é o Zeonpaper">
+                        <li><i data-lucide="user" size="14"></i> MEI</li>
+                        <li><i data-lucide="briefcase" size="14"></i> Prestador de serviço</li>
+                        <li><i data-lucide="building-2" size="14"></i> Pequena empresa</li>
+                    </ul>
+                    <ul class="hero-chips">
+                        <li><i data-lucide="zap" size="15"></i> Setup em 10 min</li>
+                        <li><i data-lucide="bell-ring" size="15"></i> Alertas automáticos</li>
+                        <li><i data-lucide="bar-chart-3" size="15"></i> DRE automática</li>
+                    </ul>
+                    <div class="hero-lead-form">
+                        <a href="#precos" class="btn btn-cta" style="height: 52px; font-size: 1rem; display: inline-flex; align-items: center; justify-content: center; width: 100%; border: 0; cursor: pointer; text-decoration: none;">Testar grátis por 7 dias</a>
+                        <p class="hero-form-microcopy">7 dias grátis · Sem cartão · Cancele quando quiser</p>
+                    </div>
+                    <div class="hero-social-proof">
+                        <div class="social-avatars">
+                            <img class="social-avatar" src="https://i.pravatar.cc/80?img=32" alt="Empreendedora">
+                            <img class="social-avatar" src="https://i.pravatar.cc/80?img=16" alt="Empreendedor">
+                            <img class="social-avatar" src="https://i.pravatar.cc/80?img=64" alt="Empreendedora">
+                            <img class="social-avatar" src="https://i.pravatar.cc/80?img=52" alt="Empreendedor">
+                            <img class="social-avatar" src="https://i.pravatar.cc/80?img=39" alt="Empreendedora">
+                        </div>
+                        <div class="social-proof-info">
+                            <div class="social-stars">★★★★★ <strong>5.0</strong></div>
+                            <div class="social-count">+1.347 empreendedores ativos</div>
+                        </div>
+                    </div>
+                    <div class="hero-proof">
+                        <div class="hero-proof-item">
+                            <i data-lucide="eye" size="16"></i> Saiba pra onde vai seu dinheiro
+                        </div>
+                        <div class="hero-proof-item">
+                            <i data-lucide="bell-ring" size="16"></i> Nunca mais perca um vencimento
+                        </div>
+                        <div class="hero-proof-item">
+                            <i data-lucide="trending-up" size="16"></i> Lucro real, não achismo
+                        </div>
+                    </div>
                 </div>
-                <div class="hero-social-proof">
-                    <div class="social-avatars">
-                        <img class="social-avatar" src="https://i.pravatar.cc/80?img=32" alt="Empreendedora">
-                        <img class="social-avatar" src="https://i.pravatar.cc/80?img=16" alt="Empreendedor">
-                        <img class="social-avatar" src="https://i.pravatar.cc/80?img=64" alt="Empreendedora">
-                        <img class="social-avatar" src="https://i.pravatar.cc/80?img=52" alt="Empreendedor">
-                        <img class="social-avatar" src="https://i.pravatar.cc/80?img=39" alt="Empreendedora">
-                    </div>
-                    <div class="social-proof-info">
-                        <div class="social-stars">★★★★★ <strong>5.0</strong></div>
-                        <div class="social-count">+1.347 empreendedores ativos</div>
-                    </div>
-                </div>
-
-                <!-- ─── Vídeo demo do produto ─── -->
-                <div class="hero-video-wrap">
-                    <div class="hero-video-frame">
-                        <iframe id="heroYt"
-                            src="https://www.youtube.com/embed/foGn85YURBY?autoplay=1&mute=1&loop=1&playlist=foGn85YURBY&controls=0&modestbranding=1&rel=0&playsinline=1&enablejsapi=1&cc_load_policy=0&iv_load_policy=3"
-                            title="Demo do Zeonpaper — controle financeiro para MEI e pequena empresa"
-                            frameborder="0"
-                            allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
-                            allowfullscreen
-                            loading="eager"></iframe>
-                        <div class="hero-video-guard" id="heroVideoGuard" aria-hidden="true"></div>
-                        <button type="button" class="hero-video-sound" id="heroVideoSound" aria-label="Ativar som do vídeo">
-                            <i data-lucide="volume-x" size="18"></i> <span>Ativar som</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="hero-proof">
-                    <div class="hero-proof-item">
-                        <i data-lucide="eye" size="16"></i> Saiba pra onde vai seu dinheiro
-                    </div>
-                    <div class="hero-proof-item">
-                        <i data-lucide="bell-ring" size="16"></i> Nunca mais perca um vencimento
-                    </div>
-                    <div class="hero-proof-item">
-                        <i data-lucide="trending-up" size="16"></i> Lucro real, não achismo
+                <div class="hero-visual grid-item">
+                    <div class="hero-img-wrap">
+                        <div class="hero-product-frame">
+                            <picture>
+                                <source srcset="./assets/example-zeonpaper.webp" type="image/webp">
+                                <img src="./assets/example-zeonpaper.png" alt="Dashboard do Zeonpaper — controle financeiro para MEI e pequena empresa" fetchpriority="high" decoding="async">
+                            </picture>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -3258,102 +2891,16 @@
         </div>
     </div>
 
-    <!-- ═══ Exit-intent: oferta única Organiza R$ 9,90/mês ═══ -->
-    <div class="exit-overlay" id="exit-offer" role="dialog" aria-modal="true" aria-labelledby="exit-offer-title" hidden>
-        <div class="exit-modal">
-            <button type="button" class="exit-close" id="exit-offer-close" aria-label="Fechar">&#x2715;</button>
-            <span class="exit-pill"><span class="exit-pill-off">75% OFF</span> Oferta única e exclusiva</span>
-            <h2 class="exit-title" id="exit-offer-title">Espera! Leve o <span class="text-gradient">Organiza por R$ 9,90/mês</span></h2>
-            <p class="exit-sub">De <s>R$ 39,90</s> por <strong>R$ 9,90/mês</strong> — uma condição <strong>exclusiva deste acesso</strong>. Organize o financeiro da sua empresa sem trocar a planilha por um ERP caro.</p>
-            <p class="exit-highlight"><i data-lucide="lock" width="18" height="18"></i> Esta oferta é única e só aparece agora, neste acesso. Se você sair, ela não volta.</p>
-            <ul class="exit-benefits">
-                <li><i data-lucide="check" width="16" height="16"></i> Contas a pagar e receber, fluxo de caixa e DRE</li>
-                <li><i data-lucide="check" width="16" height="16"></i> 7 dias grátis · sem cartão · cancele quando quiser</li>
-                <li><i data-lucide="check" width="16" height="16"></i> Preço travado — continua R$ 9,90 depois do teste</li>
-            </ul>
-            <button type="button" class="exit-cta" data-lead-modal data-plan="promo9">Quero por R$ 9,90/mês</button>
-            <button type="button" class="exit-dismiss" id="exit-offer-dismiss">Não, obrigado</button>
-        </div>
-    </div>
-
     <!-- Sticky CTA mobile (aparece após rolar 1ª dobra, some no CTA final) -->
     <div class="sticky-cta-mobile" aria-hidden="true">
         <button type="button" class="sticky-cta-mobile-btn" data-lead-modal data-plan="cresce">Testar grátis por 7 dias</button>
         <span class="sticky-cta-mobile-micro">Sem cartão · Cancele quando quiser</span>
     </div>
 
-    <script src="./assets/js/zp-plans-v2.js"></script>
+    <script src="./assets/js/zp-plans.js"></script>
 
     <script>
         if (window.lucide && window.lucide.createIcons) window.lucide.createIcons();
-
-        // ─── Vídeo demo da hero: autoplay mudo em loop + toggle de som ───
-        (function () {
-            var soundBtn = document.getElementById('heroVideoSound');
-            var guard = document.getElementById('heroVideoGuard');
-            var iframe = document.getElementById('heroYt');
-            if (!soundBtn || !iframe) return;
-
-            var player = null;
-            var soundOn = false;
-
-            function setLabel() {
-                soundBtn.classList.toggle('is-playing', soundOn);
-                soundBtn.innerHTML = soundOn
-                    ? '<i data-lucide="volume-2" size="18"></i> <span>Desativar som</span>'
-                    : '<i data-lucide="volume-x" size="18"></i> <span>Ativar som</span>';
-                soundBtn.setAttribute('aria-label', soundOn ? 'Desativar som do vídeo' : 'Ativar som do vídeo');
-                if (window.lucide && window.lucide.createIcons) window.lucide.createIcons();
-            }
-
-            function toggleSound(force) {
-                if (!player || typeof player.unMute !== 'function') return;
-                var turnOn = (typeof force === 'boolean') ? force : !soundOn;
-                if (turnOn === soundOn) return;
-                if (turnOn) {
-                    player.unMute();
-                    player.setVolume(100);
-                    player.seekTo(0);
-                    player.playVideo();
-                    soundOn = true;
-                } else {
-                    player.mute();
-                    soundOn = false;
-                }
-                setLabel();
-            }
-
-            function initPlayer() {
-                player = new YT.Player('heroYt', {
-                    events: {
-                        onReady: function (e) { e.target.mute(); e.target.playVideo(); }
-                    }
-                });
-            }
-
-            function loadApi() {
-                if (window.YT && window.YT.Player) { initPlayer(); return; }
-                var prev = window.onYouTubeIframeAPIReady;
-                window.onYouTubeIframeAPIReady = function () {
-                    if (typeof prev === 'function') prev();
-                    initPlayer();
-                };
-                if (!document.getElementById('yt-iframe-api')) {
-                    var tag = document.createElement('script');
-                    tag.id = 'yt-iframe-api';
-                    tag.src = 'https://www.youtube.com/iframe_api';
-                    document.head.appendChild(tag);
-                }
-            }
-
-            soundBtn.addEventListener('click', function (e) {
-                e.stopPropagation();
-                toggleSound();
-            });
-            if (guard) guard.addEventListener('click', function () { toggleSound(true); });
-
-            loadApi();
-        })();
 
         // Reveal on scroll
         const observer = new IntersectionObserver((entries) => {
@@ -3827,7 +3374,7 @@
                     return encodeURIComponent(k) + '=' + encodeURIComponent(attribution[k]);
                 }).join('&');
 
-                var PLAN_MAP = { organiza: 'ORGANIZA', cresce: 'CRESCE', pro: 'PRO', promo9: 'PROMO9' };
+                var PLAN_MAP = { organiza: 'ORGANIZA', cresce: 'CRESCE', pro: 'PRO' };
                 var apiPlan = PLAN_MAP[(opts.plan || '').toLowerCase()] || '';
 
                 var payload = {
@@ -3922,29 +3469,11 @@
                 var form     = document.getElementById('plan-modal-form');
                 var closeBtn = document.getElementById('plan-modal-close');
                 var successEl= overlay.querySelector('[data-lead-success]');
-                var titleEl    = document.getElementById('plan-modal-title');
-                var subtitleEl = overlay.querySelector('.lead-subtitle');
-                var submitBtn  = form.querySelector('[type="submit"]');
-                var DEF = {
-                    title:    titleEl    ? titleEl.textContent    : '',
-                    subtitle: subtitleEl ? subtitleEl.textContent : '',
-                    submit:   submitBtn  ? submitBtn.textContent  : ''
-                };
                 var currentPlan = '';
 
                 function openModal(plan) {
                     currentPlan = plan;
-                    if (plan === 'promo9') {
-                        badge.textContent = 'Organiza · Oferta única';
-                        if (titleEl)    titleEl.textContent    = 'Garanta o Organiza por R$ 9,90/mês';
-                        if (subtitleEl) subtitleEl.textContent = 'Preço de oferta única · 7 dias grátis · Sem cartão';
-                        if (submitBtn)  submitBtn.textContent  = 'Assinar por R$ 9,90/mês';
-                    } else {
-                        if (plan) badge.textContent = plan.charAt(0).toUpperCase() + plan.slice(1);
-                        if (titleEl)    titleEl.textContent    = DEF.title;
-                        if (subtitleEl) subtitleEl.textContent = DEF.subtitle;
-                        if (submitBtn)  submitBtn.textContent  = DEF.submit;
-                    }
+                    if (plan) badge.textContent = plan.charAt(0).toUpperCase() + plan.slice(1);
                     overlay.classList.add('open');
                     document.body.style.overflow = 'hidden';
                     form.hidden = false;
@@ -3983,79 +3512,6 @@
                     submitRegistration(e, { plan: currentPlan });
                 });
             })();
-        })();
-
-        // ─── Exit-intent: oferta única Organiza R$ 9,90/mês ───
-        (function () {
-            var overlay = document.getElementById('exit-offer');
-            if (!overlay) return;
-            var closeBtn   = document.getElementById('exit-offer-close');
-            var dismissBtn = document.getElementById('exit-offer-dismiss');
-            var planModal  = document.getElementById('plan-modal');
-            var SHOWN_KEY  = 'zp_exit_offer_shown';
-            var armed = false;
-            var shown = false;
-
-            function alreadyShown() {
-                try { return sessionStorage.getItem(SHOWN_KEY) === '1'; } catch (e) { return false; }
-            }
-            function markShown() {
-                try { sessionStorage.setItem(SHOWN_KEY, '1'); } catch (e) {}
-            }
-            function leadModalOpen() {
-                return planModal && planModal.classList.contains('open');
-            }
-            function show() {
-                if (shown || alreadyShown() || leadModalOpen()) return;
-                shown = true;
-                markShown();
-                overlay.hidden = false;
-                void overlay.offsetWidth; // reflow p/ disparar a transição
-                overlay.classList.add('open');
-                document.body.style.overflow = 'hidden';
-                if (window.lucide && window.lucide.createIcons) window.lucide.createIcons();
-                window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push({ event: 'exit_offer_shown' });
-            }
-            function hide() {
-                overlay.classList.remove('open');
-                document.body.style.overflow = '';
-                setTimeout(function () { overlay.hidden = true; }, 250);
-            }
-
-            if (closeBtn)   closeBtn.addEventListener('click', hide);
-            if (dismissBtn) dismissBtn.addEventListener('click', hide);
-            overlay.addEventListener('click', function (e) {
-                if (e.target === overlay) { hide(); return; }
-                // clicar no CTA abre o modal de cadastro (delegação global) — fecha a oferta
-                if (e.target.closest('[data-lead-modal]')) hide();
-            });
-            document.addEventListener('keydown', function (e) {
-                if (e.key === 'Escape' && overlay.classList.contains('open')) hide();
-            });
-
-            if (alreadyShown()) return; // já exibido nesta sessão — não arma gatilhos
-
-            // Arma os gatilhos só após alguns segundos (evita disparo acidental no load)
-            setTimeout(function () { armed = true; }, 4000);
-
-            // Desktop: cursor sai pelo topo da viewport
-            document.addEventListener('mouseout', function (e) {
-                if (!armed || e.relatedTarget) return;
-                if (e.clientY > 0) return;
-                show();
-            });
-
-            // Mobile: intercepta o botão "voltar" uma vez
-            var coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
-            if (coarse && window.history && window.history.pushState) {
-                window.history.pushState(null, '', window.location.href);
-                window.addEventListener('popstate', function () {
-                    if (alreadyShown()) return;
-                    window.history.pushState(null, '', window.location.href);
-                    show();
-                });
-            }
         })();
 
         // FAQ — esconde extras no mobile + botão "Ver todas"

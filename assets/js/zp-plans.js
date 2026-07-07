@@ -25,6 +25,15 @@
       popTag: null,
       ctaLabel: 'Começar grátis',
       ctaClass: 'btn btn-outline',
+      inherits: null,
+      highlights: [
+        { label: 'Contas a pagar e receber' },
+        { label: 'Fluxo de caixa em tempo real' },
+        { label: 'Alertas automáticos de vencimento' },
+        { label: 'Pagamentos e recebimentos em massa' },
+        { label: '1 conta Open Finance incluída' },
+        { label: 'Relatórios gerenciais e DRE' }
+      ],
       featureGroups: [
         {
           title: 'Controle financeiro',
@@ -47,13 +56,17 @@
           title: 'Cadastros e relatórios',
           items: [
             { label: 'Contas bancárias e contatos' },
+            { label: '1 conta Open Finance incluída' },
             { label: 'Agenda financeira e centro de custos' },
             { label: 'Relatórios gerenciais e DRE' }
           ]
         }
       ],
-      extraNote: 'PJ adicional: + R$ 19,90/mês',
-      extras: null
+      extraNote: null,
+      extras: [
+        { icon: 'building-2', label: 'PJ adicional',              value: '+ R$ 19,90/mês' },
+        { icon: 'landmark',   label: 'Conta Open Finance adicional', value: '+ R$ 9,90/mês' }
+      ]
     },
     {
       key: 'cresce',
@@ -65,6 +78,12 @@
       popTag: 'MAIS ESCOLHIDO',
       ctaLabel: 'Começar com Cresce',
       ctaClass: 'btn btn-cta',
+      inherits: 'Organiza',
+      highlights: [
+        { label: 'Multiempresas e usuários ilimitados' },
+        { label: 'Emissão de NF-e e NFS-e — 50/mês' },
+        { label: 'Suporte prioritário' }
+      ],
       featureGroups: [
         {
           title: 'Controle financeiro',
@@ -87,6 +106,7 @@
           title: 'Cadastros e relatórios',
           items: [
             { label: 'Contas bancárias e contatos' },
+            { label: '1 conta Open Finance incluída' },
             { label: 'Agenda financeira e centro de custos' },
             { label: 'Relatórios gerenciais e DRE' },
             { label: 'Multiempresas e usuários ilimitados' }
@@ -103,7 +123,8 @@
       extraNote: null,
       extras: [
         { icon: 'receipt',    label: 'NFs excedentes', value: 'R$ 0,40/unidade' },
-        { icon: 'building-2', label: 'PJ adicional',   value: '+ R$ 19,90/mês'  }
+        { icon: 'building-2', label: 'PJ adicional',   value: '+ R$ 19,90/mês'  },
+        { icon: 'landmark',   label: 'Conta Open Finance adicional', value: '+ R$ 9,90/mês' }
       ]
     },
     {
@@ -116,6 +137,13 @@
       popTag: null,
       ctaLabel: 'Começar com Pro',
       ctaClass: 'btn btn-outline',
+      inherits: 'Cresce',
+      highlights: [
+        { label: 'Emissão de NF-e e NFS-e — 100/mês' },
+        { label: 'Resumo diário do caixa no WhatsApp', badge: 'novo' },
+        { label: 'Onboarding com consultoria de migração' },
+        { label: 'Suporte dedicado no WhatsApp' }
+      ],
       featureGroups: [
         {
           title: 'Controle financeiro',
@@ -138,6 +166,7 @@
           title: 'Cadastros e relatórios',
           items: [
             { label: 'Contas bancárias e contatos' },
+            { label: '1 conta Open Finance incluída' },
             { label: 'Agenda financeira e centro de custos' },
             { label: 'Relatórios gerenciais e DRE' },
             { label: 'Multiempresas e usuários ilimitados' }
@@ -161,9 +190,49 @@
       extraNote: null,
       extras: [
         { icon: 'receipt',    label: 'NFs excedentes', value: 'R$ 0,40/unidade' },
-        { icon: 'building-2', label: 'PJ adicional',   value: '+ R$ 19,90/mês'  }
+        { icon: 'building-2', label: 'PJ adicional',   value: '+ R$ 19,90/mês'  },
+        { icon: 'landmark',   label: 'Conta Open Finance adicional', value: '+ R$ 9,90/mês' }
       ]
     }
+  ];
+
+  /* =========================================================================
+   * COMPARATIVO — matriz recurso × plano (fonte única da tabela expansível)
+   *   valor: true = incluído · false/null = não incluído (—) · string = texto
+   * ======================================================================= */
+  var COMPARISON = [
+    { title: 'Controle financeiro', rows: [
+      { label: 'Contas a pagar e receber',            values: { organiza: true, cresce: true, pro: true } },
+      { label: 'Fluxo de caixa em tempo real',        values: { organiza: true, cresce: true, pro: true } },
+      { label: 'Lançamentos recorrentes',             values: { organiza: true, cresce: true, pro: true } },
+      { label: 'Alertas automáticos de vencimento',   values: { organiza: true, cresce: true, pro: true } }
+    ]},
+    { title: 'Operação em escala', rows: [
+      { label: 'Pagamentos e recebimentos em massa',  values: { organiza: true, cresce: true, pro: true } },
+      { label: 'Parcelamento e amortização',          values: { organiza: true, cresce: true, pro: true } },
+      { label: 'Recibos automáticos de recebimento',  values: { organiza: true, cresce: true, pro: true } }
+    ]},
+    { title: 'Cadastros e relatórios', rows: [
+      { label: 'Contas bancárias e contatos',         values: { organiza: true, cresce: true, pro: true } },
+      { label: 'Conta Open Finance incluída',         values: { organiza: '1', cresce: '1', pro: '1' } },
+      { label: 'Agenda financeira e centro de custos', values: { organiza: true, cresce: true, pro: true } },
+      { label: 'Relatórios gerenciais e DRE',         values: { organiza: true, cresce: true, pro: true } },
+      { label: 'Multiempresas e usuários ilimitados', values: { organiza: false, cresce: true, pro: true } }
+    ]},
+    { title: 'Nota fiscal', rows: [
+      { label: 'Emissão de NF-e e NFS-e',             values: { organiza: false, cresce: true, pro: true } },
+      { label: 'Resumo diário do caixa no WhatsApp',  values: { organiza: false, cresce: false, pro: true } }
+    ]},
+    { title: 'Suporte', rows: [
+      { label: 'Suporte prioritário',                 values: { organiza: false, cresce: true, pro: true } },
+      { label: 'Onboarding com consultoria de migração', values: { organiza: false, cresce: false, pro: true } },
+      { label: 'Suporte dedicado no WhatsApp',        values: { organiza: false, cresce: false, pro: true } }
+    ]},
+    { title: 'Cobranças por uso', rows: [
+      { label: 'NFs excedentes',            values: { organiza: false, cresce: 'R$ 0,40/un', pro: 'R$ 0,40/un' } },
+      { label: 'PJ adicional',              values: { organiza: 'R$ 19,90/mês', cresce: 'R$ 19,90/mês', pro: 'R$ 19,90/mês' } },
+      { label: 'Conta Open Finance adicional', values: { organiza: 'R$ 9,90/mês', cresce: 'R$ 9,90/mês', pro: 'R$ 9,90/mês' } }
+    ]}
   ];
 
   /* =========================================================================
@@ -190,15 +259,18 @@
         + (p.featured ? ' featured' : '')
         + (i === PLANS.length - 1 ? ' anchor' : '');
 
-      var feats = p.featureGroups.map(function (g) {
-        var lis = g.items.map(function (it) {
-          return '<li>' + icon('check', 15) + ' ' + esc(it.label)
-            + (it.badge ? ' <span class="plan-feature-new">' + esc(it.badge) + '</span>' : '')
-            + '</li>';
-        }).join('');
-        return '<p class="plan-feature-group-title">' + esc(g.title) + '</p>'
-          + '<ul class="plan-features-list">' + lis + '</ul>';
+      var hlItems = (p.highlights && p.highlights.length)
+        ? p.highlights
+        : (p.featureGroups[0] ? p.featureGroups[0].items : []);
+      var lis = hlItems.map(function (it) {
+        return '<li>' + icon('check', 15) + ' ' + esc(it.label)
+          + (it.badge ? ' <span class="plan-feature-new">' + esc(it.badge) + '</span>' : '')
+          + '</li>';
       }).join('');
+      var featsHead = p.inherits
+        ? '<p class="plan-inherit">' + icon('check-check', 15) + ' Tudo do <strong>' + esc(p.inherits) + '</strong>, e mais:</p>'
+        : '<p class="plan-feature-group-title">Recursos inclusos</p>';
+      var feats = featsHead + '<ul class="plan-features-list">' + lis + '</ul>';
 
       var extras = p.extras
         ? '<div class="plan-extras">'
@@ -230,6 +302,60 @@
         + extras
         + '</div>';
     }).join('');
+  }
+
+  /* =========================================================================
+   * Renderização — caixa comparativa expansível (home)
+   * ======================================================================= */
+  function buildComparison() {
+    function cell(v) {
+      if (v === true)  return '<span class="cmp-yes">' + icon('check', 16) + '</span>';
+      if (!v)          return '<span class="cmp-no" aria-label="Não incluído">—</span>';
+      return '<span class="cmp-val">' + esc(v) + '</span>';
+    }
+    var head = '<tr><th scope="col" class="cmp-corner">Recurso</th>'
+      + PLANS.map(function (p) {
+          return '<th scope="col"' + (p.featured ? ' class="cmp-featured"' : '') + '>' + esc(p.name) + '</th>';
+        }).join('')
+      + '</tr>';
+
+    var body = COMPARISON.map(function (group) {
+      var groupRow = '<tr class="cmp-group"><th scope="colgroup" colspan="' + (PLANS.length + 1) + '">'
+        + esc(group.title) + '</th></tr>';
+      var rows = group.rows.map(function (row) {
+        var cells = PLANS.map(function (p) {
+          return '<td' + (p.featured ? ' class="cmp-featured"' : '') + '>' + cell(row.values[p.key]) + '</td>';
+        }).join('');
+        return '<tr><th scope="row">' + esc(row.label) + '</th>' + cells + '</tr>';
+      }).join('');
+      return groupRow + rows;
+    }).join('');
+
+    return '<div class="plan-compare">'
+      + '<button type="button" class="plan-compare-toggle" aria-expanded="false" aria-controls="plan-compare-panel">'
+      +   '<span>Comparar todos os recursos dos planos</span>'
+      +   icon('chevron-down', 20)
+      + '</button>'
+      + '<div class="plan-compare-panel" id="plan-compare-panel" hidden>'
+      +   '<div class="plan-compare-scroll">'
+      +     '<table class="comparison-table"><thead>' + head + '</thead><tbody>' + body + '</tbody></table>'
+      +   '</div>'
+      + '</div>'
+      + '</div>';
+  }
+
+  function initComparison(gridEl) {
+    if (!gridEl || document.querySelector('.plan-compare')) return;
+    gridEl.insertAdjacentHTML('afterend', buildComparison());
+    var toggle = document.querySelector('.plan-compare-toggle');
+    var panel  = document.getElementById('plan-compare-panel');
+    if (!toggle || !panel) return;
+    toggle.addEventListener('click', function () {
+      var open = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', open ? 'false' : 'true');
+      toggle.classList.toggle('open', !open);
+      panel.hidden = open;
+    });
   }
 
   /* =========================================================================
@@ -469,9 +595,10 @@
     var homeGrid = document.querySelector('.pricing-grid');
     var seoRoot  = document.getElementById('zp-pricing-root');
 
-    // Modo home: renderiza os cards e deixa o JS inline da home cuidar do modal
+    // Modo home: renderiza os cards + a caixa comparativa; o JS inline da home cuida do modal
     if (homeGrid) {
       homeGrid.innerHTML = buildHomeCards();
+      initComparison(homeGrid);
     }
 
     // Modo SEO: renderiza cards simples + injeta modal CSS + HTML + JS
