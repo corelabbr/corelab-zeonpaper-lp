@@ -3257,7 +3257,7 @@
                 <input type="text" name="nome" class="lead-input" placeholder="Seu nome" autocomplete="name" required>
                 <input type="email" name="email" class="lead-input" placeholder="Seu melhor e-mail" autocomplete="email" required>
                 <input type="tel" name="telefone" class="lead-input" placeholder="WhatsApp (com DDD)" autocomplete="tel" inputmode="numeric" maxlength="15" required>
-                <input type="text" name="cnpj" class="lead-input" placeholder="CNPJ" autocomplete="off" inputmode="numeric" maxlength="18" required>
+                <input type="text" name="cnpj" class="lead-input" placeholder="CPF ou CNPJ" autocomplete="off" inputmode="numeric" maxlength="18" required>
                 <div class="lead-password-wrap">
                     <input type="password" name="senha" class="lead-input lead-password-input" placeholder="Crie uma senha forte" autocomplete="new-password" minlength="8" required>
                     <button type="button" class="lead-password-toggle" aria-label="Mostrar senha" tabindex="-1">
@@ -3587,43 +3587,34 @@
             return rest === parseInt(c.charAt(10), 10);
         }
 
-        // Tipo de documento atual (LP = PJ/CNPJ, PP = PF/CPF)
-        function getDocType() {
-            var el = document.querySelector('input[name="contactType"]');
-            return el && el.value === 'PP' ? 'PP' : 'LP';
+        // ─── Documento: aceita CPF ou CNPJ, detecta pelo nº de dígitos ───
+        // (≤ 11 dígitos = CPF/PP · 12–14 dígitos = CNPJ/LP)
+        function maskDocumento(v) {
+            var d = (v || '').replace(/\D/g, '').slice(0, 14);
+            return d.length <= 11 ? maskCPF(d) : maskCNPJ(d);
         }
-
-        // Aplica máscara no documento conforme o tipo (CNPJ ou CPF)
+        function reflectDocType(type) {
+            document.querySelectorAll('.lead-doctype-btn').forEach(function(b) {
+                b.classList.toggle('active', b.getAttribute('data-doctype') === type);
+            });
+            var hidden = document.querySelector('input[name="contactType"]');
+            if (hidden) hidden.value = type;
+        }
+        // Máscara adaptativa + sincroniza o seletor PF/PJ conforme o que é digitado
         document.querySelectorAll('input[name="cnpj"]').forEach(function(input) {
             input.addEventListener('input', function() {
                 var pos = input.selectionStart;
                 var before = input.value;
-                input.value = getDocType() === 'PP' ? maskCPF(input.value) : maskCNPJ(input.value);
+                input.value = maskDocumento(input.value);
                 if (before.length < input.value.length) pos += (input.value.length - before.length);
                 try { input.setSelectionRange(pos, pos); } catch(_) {}
+                var len = input.value.replace(/\D/g, '').length;
+                if (len > 0) reflectDocType(len > 11 ? 'LP' : 'PP');
             });
         });
-
-        // Alterna Pessoa Jurídica (CNPJ) / Pessoa Física (CPF)
+        // Clique manual no seletor (dica visual; a validação final é pelo tamanho)
         document.querySelectorAll('.lead-doctype-btn').forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                var type = btn.getAttribute('data-doctype'); // LP ou PP
-                var group = btn.closest('.lead-doctype');
-                if (group) group.querySelectorAll('.lead-doctype-btn').forEach(function(b) {
-                    b.classList.toggle('active', b === btn);
-                });
-                var form = btn.closest('form');
-                if (!form) return;
-                var hidden = form.querySelector('input[name="contactType"]');
-                if (hidden) hidden.value = type;
-                var doc = form.querySelector('input[name="cnpj"]');
-                if (doc) {
-                    doc.placeholder = type === 'PP' ? 'CPF' : 'CNPJ';
-                    doc.maxLength = type === 'PP' ? 14 : 18;
-                    doc.value = '';
-                    doc.classList.remove('invalid');
-                }
-            });
+            btn.addEventListener('click', function() { reflectDocType(btn.getAttribute('data-doctype')); });
         });
 
         // ─── Telefone BR: máscara + bloqueio de letras ───
@@ -3762,10 +3753,15 @@
                 if (!EMAIL_RE.test(data.email)) { setFieldError(form, 'email'); showError(form, 'Digite um e-mail válido.'); return false; }
                 var phoneDigits = data.telefoneRaw.replace(/\D/g, '');
                 if (phoneDigits.length < 10) { setFieldError(form, 'telefone'); showError(form, 'Digite seu WhatsApp com DDD.'); return false; }
-                if (data.contactType === 'PP') {
-                    if (!isValidCPF(data.cnpjRaw)) { setFieldError(form, 'cnpj'); showError(form, 'CPF inválido. Confira os dígitos.'); return false; }
+                var docDigits = data.cnpjRaw.replace(/\D/g, '');
+                if (docDigits.length === 11) {
+                    if (!isValidCPF(docDigits)) { setFieldError(form, 'cnpj'); showError(form, 'CPF inválido. Confira os dígitos.'); return false; }
+                    data.contactType = 'PP';
+                } else if (docDigits.length === 14) {
+                    if (!isValidCNPJ(docDigits)) { setFieldError(form, 'cnpj'); showError(form, 'CNPJ inválido. Confira os dígitos.'); return false; }
+                    data.contactType = 'LP';
                 } else {
-                    if (!isValidCNPJ(data.cnpjRaw)) { setFieldError(form, 'cnpj'); showError(form, 'CNPJ inválido. Confira os dígitos.'); return false; }
+                    setFieldError(form, 'cnpj'); showError(form, 'Digite um CPF (11 dígitos) ou CNPJ (14 dígitos) válido.'); return false;
                 }
                 if (!isStrongPassword(data.senha)) {
                     setFieldError(form, 'senha');
@@ -4045,7 +4041,7 @@
                     var ctInput = form.querySelector('input[name="contactType"]');
                     if (ctInput) ctInput.value = 'LP';
                     var docInput = form.querySelector('input[name="cnpj"]');
-                    if (docInput) { docInput.placeholder = 'CNPJ'; docInput.maxLength = 18; }
+                    if (docInput) { docInput.placeholder = 'CPF ou CNPJ'; docInput.maxLength = 18; }
                     overlay.classList.add('open');
                     document.body.style.overflow = 'hidden';
                     form.hidden = false;
