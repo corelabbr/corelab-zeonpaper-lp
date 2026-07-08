@@ -1,25 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-<!-- A/B Home (dark = control | white = variação B) — split 50/50, mesma URL, sem redirect -->
-<script>
-  (function () {
-    try {
-      var COOKIE = 'zp_ab_home';
-      var m = document.cookie.match(/(?:^|;\s*)zp_ab_home=([^;]+)/);
-      var variant = m ? m[1] : null;
-      if (variant !== 'control' && variant !== 'white') {
-        variant = (Math.random() < 0.5) ? 'control' : 'white';
-        var exp = new Date();
-        exp.setTime(exp.getTime() + 90 * 864e5); // 90 dias
-        document.cookie = COOKIE + '=' + variant + ';expires=' + exp.toUTCString() + ';path=/;SameSite=Lax';
-      }
-      window.__zpVariant = variant;
-      if (variant === 'white') document.documentElement.classList.add('theme-white');
-    } catch (e) { window.__zpVariant = 'control'; }
-  })();
-</script>
-<!-- End A/B Home -->
 <!-- Consent Mode -->
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -36,11 +17,7 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y90E5LTR3V"></script>
 <script>
   gtag('js', new Date());
-  // A/B Home: envia a variante como user property + parâmetro em todos os eventos
-  gtag('set', 'user_properties', { ab_home_variant: window.__zpVariant });
-  gtag('config', 'G-Y90E5LTR3V', { ab_home_variant: window.__zpVariant });
-  // Evento de exposição (denominador) + sinal pro GTM
-  window.dataLayer.push({ event: 'ab_exposure', ab_home_variant: window.__zpVariant });
+  gtag('config', 'G-Y90E5LTR3V');
 </script>
 <!-- End Google Analytics GA4 -->
 <!-- Google Tag Manager -->
@@ -2592,152 +2569,150 @@
             }
         }
         /* ═══════════════════════════════════════════════════════════
-           WHITE / CLEAN THEME — variação B do teste A/B da home.
-           Ativada quando o <html> recebe a classe .theme-white (via
-           script de split no <head>). Clareia as seções escuras (nav,
-           hero, CTA, footer, thead, drawer) e inverte os elementos
-           "glass" que assumiam fundo escuro. Toques de gradiente
-           rosa/roxo suaves no hero e na CTA.
+           WHITE / CLEAN THEME — variação A/B da home
+           Clareia as seções escuras (nav, hero, CTA, footer, thead,
+           drawer mobile) e inverte os elementos "glass" que assumiam
+           fundo escuro. Escopo: body.theme-white.
            ═══════════════════════════════════════════════════════════ */
-        .theme-white {
+        body.theme-white {
             --bg-dark: #FFFFFF;
             --line: rgba(2, 8, 23, 0.08);
             --line-strong: rgba(2, 8, 23, 0.12);
         }
 
         /* ─── NAV ─── */
-        .theme-white nav {
+        body.theme-white nav {
             background: rgba(255, 255, 255, 0.85);
             border-bottom: 1px solid var(--line);
         }
-        .theme-white .logo img,
-        .theme-white .footer-logo img { filter: none; }
-        .theme-white .nav-link,
-        .theme-white .nav-dropdown-toggle { color: var(--text-gray); }
-        .theme-white .nav-link:hover,
-        .theme-white .nav-dropdown:hover .nav-dropdown-toggle { color: var(--text-dark); }
-        .theme-white .btn-nav-login { color: var(--text-gray); }
-        .theme-white .btn-nav-login:hover { color: var(--text-dark); }
-        .theme-white .btn-nav-outline { color: var(--primary); border-color: rgba(121, 59, 237, 0.35); }
-        .theme-white .btn-nav-outline:hover { color: var(--primary-dark); background: var(--primary-light); }
-        .theme-white .hamburger span { background: var(--text-dark); }
-        .theme-white .btn-nav-cta {
+        body.theme-white .logo img,
+        body.theme-white .footer-logo img { filter: none; }
+        body.theme-white .nav-link,
+        body.theme-white .nav-dropdown-toggle { color: var(--text-gray); }
+        body.theme-white .nav-link:hover,
+        body.theme-white .nav-dropdown:hover .nav-dropdown-toggle { color: var(--text-dark); }
+        body.theme-white .btn-nav-login { color: var(--text-gray); }
+        body.theme-white .btn-nav-login:hover { color: var(--text-dark); }
+        body.theme-white .btn-nav-outline { color: var(--primary); border-color: rgba(121, 59, 237, 0.35); }
+        body.theme-white .btn-nav-outline:hover { color: var(--primary-dark); background: var(--primary-light); }
+        body.theme-white .hamburger span { background: var(--text-dark); }
+        body.theme-white .btn-nav-cta {
             background: var(--gradient);
             box-shadow: 0 6px 18px rgba(121, 59, 237, 0.28);
         }
-        .theme-white .btn-nav-cta:hover { filter: brightness(1.05); background: var(--gradient); }
+        body.theme-white .btn-nav-cta:hover { filter: brightness(1.05); background: var(--gradient); }
 
         /* Dropdown do nav */
-        .theme-white .nav-dropdown-menu {
+        body.theme-white .nav-dropdown-menu {
             background: #FFFFFF;
             border: 1px solid var(--line);
             box-shadow: var(--shadow-card);
         }
-        .theme-white .nav-dropdown-item { color: var(--text-gray); }
-        .theme-white .nav-dropdown-item:hover { color: var(--text-dark); background: var(--primary-50); }
-        .theme-white .nav-dropdown-divider { background: var(--line); }
+        body.theme-white .nav-dropdown-item { color: var(--text-gray); }
+        body.theme-white .nav-dropdown-item:hover { color: var(--text-dark); background: var(--primary-50); }
+        body.theme-white .nav-dropdown-divider { background: var(--line); }
 
         /* Drawer mobile */
-        .theme-white .mobile-drawer {
+        body.theme-white .mobile-drawer {
             background: #FFFFFF;
             border-top: 1px solid var(--line);
         }
-        .theme-white .mobile-drawer-link { color: var(--text-dark); border-bottom: 1px solid var(--line); }
-        .theme-white .mobile-drawer-link:hover,
-        .theme-white .mobile-drawer-link:active { color: var(--primary); }
-        .theme-white .mobile-drawer-login { color: var(--text-gray); border: 1px solid var(--line-strong); }
-        .theme-white .mobile-drawer-login:hover { color: var(--text-dark); border-color: var(--primary); }
-        .theme-white .mobile-drawer-section-label { color: var(--text-gray); }
-        .theme-white .mobile-drawer-sublink { color: var(--text-gray); border-bottom: 1px solid var(--line); }
-        .theme-white .mobile-drawer-sublink:hover { color: var(--text-dark); }
+        body.theme-white .mobile-drawer-link { color: var(--text-dark); border-bottom: 1px solid var(--line); }
+        body.theme-white .mobile-drawer-link:hover,
+        body.theme-white .mobile-drawer-link:active { color: var(--primary); }
+        body.theme-white .mobile-drawer-login { color: var(--text-gray); border: 1px solid var(--line-strong); }
+        body.theme-white .mobile-drawer-login:hover { color: var(--text-dark); border-color: var(--primary); }
+        body.theme-white .mobile-drawer-section-label { color: var(--text-gray); }
+        body.theme-white .mobile-drawer-sublink { color: var(--text-gray); border-bottom: 1px solid var(--line); }
+        body.theme-white .mobile-drawer-sublink:hover { color: var(--text-dark); }
 
         /* ─── HERO ─── */
-        .theme-white .hero {
+        body.theme-white .hero {
             background: #FFFFFF;
             background-image:
                 radial-gradient(900px 480px at 12% -8%, rgba(121, 59, 237, 0.07) 0%, transparent 60%),
                 radial-gradient(820px 460px at 92% 4%, rgba(236, 70, 153, 0.06) 0%, transparent 62%),
                 linear-gradient(180deg, #FDFBFF 0%, #FFFFFF 55%);
         }
-        .theme-white .hero h1 { color: var(--text-dark); }
-        .theme-white .hero p { color: var(--text-gray); }
-        .theme-white .hero-label { color: var(--primary); }
-        .theme-white .hero-proof { border-top: 1px solid var(--line); }
-        .theme-white .hero-proof-item { color: var(--text-gray); }
-        .theme-white .hero-audience { color: var(--text-dark); }
-        .theme-white .hero-audience li svg { color: var(--primary); }
-        .theme-white .hero-benefits li { color: #334155; }
-        .theme-white .hero-chips li {
+        body.theme-white .hero h1 { color: var(--text-dark); }
+        body.theme-white .hero p { color: var(--text-gray); }
+        body.theme-white .hero-label { color: var(--primary); }
+        body.theme-white .hero-proof { border-top: 1px solid var(--line); }
+        body.theme-white .hero-proof-item { color: var(--text-gray); }
+        body.theme-white .hero-audience { color: var(--text-dark); }
+        body.theme-white .hero-audience li svg { color: var(--primary); }
+        body.theme-white .hero-benefits li { color: #334155; }
+        body.theme-white .hero-chips li {
             background: #FFFFFF;
             border: 1px solid var(--line-strong);
             color: var(--text-dark);
         }
 
         /* Form do hero */
-        .theme-white .hero-form-input,
-        .theme-white .cta-form-input {
+        body.theme-white .hero-form-input,
+        body.theme-white .cta-form-input {
             background: #FFFFFF;
             border: 1px solid var(--line-strong);
             color: var(--text-dark);
             box-shadow: var(--shadow-card);
         }
-        .theme-white .hero-form-input::placeholder,
-        .theme-white .cta-form-input::placeholder { color: var(--text-gray); }
-        .theme-white .hero-form-input:focus,
-        .theme-white .cta-form-input:focus { border-color: var(--primary); background: #FFFFFF; }
-        .theme-white .hero-form-microcopy,
-        .theme-white .cta-form-microcopy { color: var(--text-gray); }
+        body.theme-white .hero-form-input::placeholder,
+        body.theme-white .cta-form-input::placeholder { color: var(--text-gray); }
+        body.theme-white .hero-form-input:focus,
+        body.theme-white .cta-form-input:focus { border-color: var(--primary); background: #FFFFFF; }
+        body.theme-white .hero-form-microcopy,
+        body.theme-white .cta-form-microcopy { color: var(--text-gray); }
 
         /* Badge flutuante (glass) do hero */
-        .theme-white .hero-float-badge {
+        body.theme-white .hero-float-badge {
             background: #FFFFFF;
             border: 1px solid var(--line-strong);
             box-shadow: var(--shadow-card);
         }
-        .theme-white .hero-float-badge .float-number { color: var(--text-dark); }
-        .theme-white .hero-float-badge .float-label { color: var(--text-gray); }
+        body.theme-white .hero-float-badge .float-number { color: var(--text-dark); }
+        body.theme-white .hero-float-badge .float-label { color: var(--text-gray); }
 
         /* Social proof */
-        .theme-white .social-avatar { border-color: #FFFFFF; }
-        .theme-white .social-stars strong { color: var(--text-dark); }
-        .theme-white .social-count { color: var(--text-gray); }
+        body.theme-white .social-avatar { border-color: #FFFFFF; }
+        body.theme-white .social-stars strong { color: var(--text-dark); }
+        body.theme-white .social-count { color: var(--text-gray); }
 
         /* Moldura do produto/vídeo — sombra clara em vez de glow escuro */
-        .theme-white .hero-product-frame,
-        .theme-white .hero-video-frame { animation: none; box-shadow: var(--shadow-strong); }
+        body.theme-white .hero-product-frame,
+        body.theme-white .hero-video-frame { animation: none; box-shadow: var(--shadow-strong); }
 
         /* ─── TABELA COMPARATIVA (thead escuro) ─── */
-        .theme-white thead { background: var(--primary); }
+        body.theme-white thead { background: var(--primary); }
 
         /* ─── CTA FINAL ─── */
-        .theme-white .cta-section {
+        body.theme-white .cta-section {
             background:
                 radial-gradient(700px 380px at 18% 12%, rgba(121, 59, 237, 0.09) 0%, transparent 62%),
                 radial-gradient(700px 420px at 85% 88%, rgba(236, 70, 153, 0.07) 0%, transparent 60%),
                 linear-gradient(135deg, #FCF9FF 0%, #FFFAFD 100%);
         }
-        .theme-white .cta-section::before {
+        body.theme-white .cta-section::before {
             background: radial-gradient(circle, rgba(236, 70, 153, 0.07) 0%, transparent 70%);
         }
-        .theme-white .cta-section h2 { color: var(--text-dark); }
-        .theme-white .cta-section p { color: var(--text-gray); }
+        body.theme-white .cta-section h2 { color: var(--text-dark); }
+        body.theme-white .cta-section p { color: var(--text-gray); }
 
         /* ─── FOOTER ─── */
-        .theme-white footer {
+        body.theme-white footer {
             background: var(--bg-light);
             color: var(--text-gray);
             border-top: 1px solid var(--line);
         }
-        .theme-white .footer-col h4 { color: var(--text-dark); }
-        .theme-white .footer-col a { color: var(--text-gray); }
-        .theme-white .footer-col a:hover { color: var(--text-dark); }
-        .theme-white .footer-bottom { border-top: 1px solid var(--line); }
-        .theme-white .footer-legal a { color: var(--text-gray); }
-        .theme-white .footer-legal a:hover { color: var(--text-dark); }
+        body.theme-white .footer-col h4 { color: var(--text-dark); }
+        body.theme-white .footer-col a { color: var(--text-gray); }
+        body.theme-white .footer-col a:hover { color: var(--text-dark); }
+        body.theme-white .footer-bottom { border-top: 1px solid var(--line); }
+        body.theme-white .footer-legal a { color: var(--text-gray); }
+        body.theme-white .footer-legal a:hover { color: var(--text-dark); }
 
     </style>
 </head>
-<body>
+<body class="theme-white">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVQCX5G5"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -3641,8 +3616,6 @@
             out.current_page = window.location.href.split('#')[0];
             var referrer = readCookie(REFERRER_KEY) || document.referrer;
             if (referrer) out.referrer = referrer;
-            // A/B Home: qual versão o usuário viu (dark = control | white)
-            out.ab_home_variant = window.__zpVariant || readCookie('zp_ab_home') || 'control';
             Object.keys(DEFAULT_REGISTRATION_FIELDS).forEach(function(key) {
                 out[key] = DEFAULT_REGISTRATION_FIELDS[key];
             });
