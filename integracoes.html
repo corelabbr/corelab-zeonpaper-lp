@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{'ad_storage':'granted','analytics_storage':'granted','ad_user_data':'granted','ad_personalization':'granted'});</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y90E5LTR3V"></script>
+<script>gtag('js',new Date());gtag('config','G-Y90E5LTR3V');</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NVQCX5G5');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Integrações do Zeonpaper: Open Finance, Bancos, WhatsApp e Mais</title>
+    <meta name="description" content="Veja todas as integrações do Zeonpaper: Open Finance (conexão bancária automática), WhatsApp, importação OFX/CSV, migração do ZeroPaper e mais.">
+    <link rel="canonical" href="https://www.zeonpaper.com.br/integracoes">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Integrações do Zeonpaper: Open Finance, Bancos e WhatsApp">
+    <meta property="og:description" content="Conecte seu banco, receba alertas no WhatsApp e importe dados de planilhas ou outros sistemas.">
+    <meta property="og:url" content="https://www.zeonpaper.com.br/integracoes">
+    <meta property="og:image" content="https://www.zeonpaper.com.br/assets/og-image.jpg">
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        :root{--primary:#793BED;--primary-dark:#6B21A8;--primary-light:#EFE8FD;--accent:#22C55E;--accent-dark:#16A34A;--text-dark:#020817;--text-gray:#64748B;--bg-light:#FAF9F5;--bg-dark:#020817;--radius-card:12px;--radius-btn:10px;--radius-pill:9999px;--shadow-card:0 4px 20px rgba(0,0,0,0.06);--container:1200px;--gradient:linear-gradient(135deg,#793BED 0%,#EC4699 100%)}
+        *{margin:0;padding:0;box-sizing:border-box}body{font-family:'Plus Jakarta Sans',sans-serif;color:var(--text-dark);line-height:1.6;background:#fff;-webkit-font-smoothing:antialiased}h1,h2,h3{font-weight:800;letter-spacing:-0.02em}.container{max-width:var(--container);margin:0 auto;padding:0 1.5rem}.text-gradient{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        nav{position:fixed;top:0;left:0;right:0;background:rgba(15,23,42,0.88);backdrop-filter:blur(14px);z-index:1000;border-bottom:1px solid rgba(255,255,255,0.07);padding:0.75rem 0}.nav-content{display:flex;justify-content:space-between;align-items:center}.logo{text-decoration:none;display:flex;align-items:center}.nav-actions{display:flex;align-items:center;gap:0.5rem}.btn-nav-login{background:transparent;border:none;color:rgba(255,255,255,0.65);font-family:inherit;font-weight:500;font-size:0.82rem;padding:0.45rem 0.9rem;border-radius:var(--radius-btn);text-decoration:none}.btn-nav-cta{background:var(--primary);color:white;font-family:inherit;font-weight:600;font-size:0.82rem;padding:0.45rem 1rem;border-radius:var(--radius-btn);border:none;text-decoration:none}
+        .page-hero{padding:140px 0 60px;background:var(--bg-dark);text-align:center}.page-hero h1{font-size:clamp(2rem,4vw,3rem);color:white;margin-bottom:1rem}.page-hero p{color:rgba(255,255,255,0.65);font-size:1.1rem;max-width:600px;margin:0 auto}
+        .integrations-section{padding:4rem 0 5rem}
+        .integrations-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-bottom:3rem}
+        .integration-card{background:white;border:1px solid #e2e8f0;border-radius:var(--radius-card);padding:2rem;transition:box-shadow 0.2s}
+        .integration-card:hover{box-shadow:var(--shadow-card)}
+        .integration-card .icon-row{display:flex;align-items:center;gap:0.75rem;margin-bottom:1rem}
+        .integration-card .icon-box{width:44px;height:44px;background:var(--primary-light);border-radius:10px;display:flex;align-items:center;justify-content:center}
+        .integration-card .icon-box i{color:var(--primary)}
+        .integration-card .badge{font-size:0.68rem;font-weight:600;padding:0.15rem 0.5rem;border-radius:var(--radius-pill);background:#ecfdf5;color:var(--accent)}
+        .integration-card h3{font-size:1.1rem;margin-bottom:0.5rem}
+        .integration-card p{font-size:0.9rem;color:var(--text-gray);line-height:1.6}
+        .integration-card ul{margin:0.75rem 0 0 1.25rem;font-size:0.88rem;color:var(--text-gray)}
+        .integration-card li{margin-bottom:0.3rem}
+        .cta-section{background:var(--bg-dark);border-radius:var(--radius-card);padding:3rem;text-align:center}
+        .cta-section h2{color:white;font-size:1.5rem;margin-bottom:0.75rem}
+        .cta-section p{color:rgba(255,255,255,0.6);font-size:0.95rem;margin-bottom:1.5rem}
+        .cta-section .btn-cta{display:inline-flex;background:var(--accent);color:white;padding:0.85rem 2rem;border-radius:var(--radius-btn);font-weight:700;font-size:1rem;text-decoration:none}
+        .cta-section .btn-cta:hover{background:var(--accent-dark)}
+        .footer-minimal{background:var(--bg-dark);color:#94a3b8;padding:2.5rem 0;text-align:center;font-size:0.85rem}.footer-minimal a{color:#94a3b8;text-decoration:none;margin:0 0.75rem}.footer-minimal a:hover{color:white}
+        @media(max-width:768px){.integrations-grid{grid-template-columns:1fr}}
+    </style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVQCX5G5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<nav><div class="container nav-content"><a href="./index.html" class="logo"><img src="./assets/logo.png" alt="Zeonpaper" style="height:30px;filter:brightness(0) invert(1);"></a><div class="nav-actions"><a href="https://app.zeonpaper.com.br/user/login" class="btn-nav-login">Login</a><a href="./index.html#precos" class="btn-nav-cta">Testar grátis</a></div></div></nav>
+
+<section class="page-hero">
+    <div class="container">
+        <h1>Integrações do <span class="text-gradient">Zeonpaper</span></h1>
+        <p>Conecte seu banco, receba alertas no WhatsApp e importe dados de qualquer lugar. Tudo para você gastar menos tempo com o financeiro.</p>
+    </div>
+</section>
+
+<main class="integrations-section">
+    <div class="container">
+        <div class="integrations-grid">
+            <div class="integration-card">
+                <div class="icon-row">
+                    <div class="icon-box"><i data-lucide="landmark" style="width:22px;height:22px;"></i></div>
+                    <span class="badge">Incluso em todos os planos</span>
+                </div>
+                <h3>Open Finance (Conexão Bancária)</h3>
+                <p>Conecte sua conta bancária e o Zeonpaper importa automaticamente todas as transações. Sem exportar extrato, sem digitar manualmente.</p>
+                <ul>
+                    <li>Conexão segura via Open Finance (regulado pelo Banco Central)</li>
+                    <li>Importação automática de lançamentos</li>
+                    <li>Conciliação bancária com um clique</li>
+                    <li>Compatível com os principais bancos brasileiros</li>
+                </ul>
+            </div>
+
+            <div class="integration-card">
+                <div class="icon-row">
+                    <div class="icon-box"><i data-lucide="message-circle" style="width:22px;height:22px;"></i></div>
+                    <span class="badge">Plano Cresce e Pro</span>
+                </div>
+                <h3>WhatsApp</h3>
+                <p>Receba alertas de vencimento e resumo diário do caixa direto no WhatsApp — sem precisar abrir o sistema.</p>
+                <ul>
+                    <li>Alerta antes de cada vencimento</li>
+                    <li>Resumo diário do saldo (Plano Pro)</li>
+                    <li>Notificação de recebimentos confirmados</li>
+                </ul>
+            </div>
+
+            <div class="integration-card">
+                <div class="icon-row">
+                    <div class="icon-box"><i data-lucide="file-spreadsheet" style="width:22px;height:22px;"></i></div>
+                    <span class="badge">Incluso em todos os planos</span>
+                </div>
+                <h3>Importação de Planilhas (CSV/Excel)</h3>
+                <p>Migre seus dados de qualquer planilha para o Zeonpaper em minutos. Mapeie as colunas e importe centenas de lançamentos de uma vez.</p>
+                <ul>
+                    <li>Suporte a CSV e XLSX</li>
+                    <li>Mapeamento inteligente de colunas</li>
+                    <li>Importação em lote (sem limite de linhas)</li>
+                </ul>
+            </div>
+
+            <div class="integration-card">
+                <div class="icon-row">
+                    <div class="icon-box"><i data-lucide="download" style="width:22px;height:22px;"></i></div>
+                    <span class="badge">Incluso em todos os planos</span>
+                </div>
+                <h3>Importação OFX (Extrato Bancário)</h3>
+                <p>Exporte o extrato do seu banco em formato OFX e importe direto no Zeonpaper. Ideal para bancos que ainda não suportam Open Finance.</p>
+                <ul>
+                    <li>Formato padrão bancário (OFX/QFX)</li>
+                    <li>Categorização automática sugerida</li>
+                    <li>Detecção de duplicatas</li>
+                </ul>
+            </div>
+
+            <div class="integration-card">
+                <div class="icon-row">
+                    <div class="icon-box"><i data-lucide="repeat" style="width:22px;height:22px;"></i></div>
+                    <span class="badge">Migração gratuita</span>
+                </div>
+                <h3>Migração do ZeroPaper</h3>
+                <p>Vindo do ZeroPaper? Importe todos os seus dados (lançamentos, categorias, clientes) automaticamente para o Zeonpaper.</p>
+                <ul>
+                    <li>Importação completa de histórico</li>
+                    <li>Mapeamento de categorias</li>
+                    <li>Migração de clientes e fornecedores</li>
+                </ul>
+            </div>
+
+            <div class="integration-card">
+                <div class="icon-row">
+                    <div class="icon-box"><i data-lucide="mail" style="width:22px;height:22px;"></i></div>
+                    <span class="badge">Incluso em todos os planos</span>
+                </div>
+                <h3>E-mail (Alertas)</h3>
+                <p>Receba alertas de vencimento por e-mail com antecedência configurável. Nunca mais perca um boleto ou esqueça de cobrar um cliente.</p>
+                <ul>
+                    <li>Alerta 1, 3 ou 7 dias antes do vencimento</li>
+                    <li>Resumo semanal de pendências</li>
+                    <li>Configuração por tipo de conta</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Conecte, importe e automatize</h2>
+            <p>Comece com 7 dias grátis e conecte seu banco em menos de 2 minutos.</p>
+            <a href="./index.html#precos" class="btn-cta">Testar grátis por 7 dias</a>
+        </div>
+    </div>
+<section style="padding:2rem 0 3rem;background:#f8fafc;"><div style="max-width:780px;margin:0 auto;padding:0 1.5rem;"><p style="font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#64748B;margin-bottom:0.75rem;">Explore mais</p><div style="display:flex;flex-wrap:wrap;gap:0.5rem;"><a href="./roadmap.html" style="display:inline-flex;align-items:center;gap:0.3rem;background:#EFE8FD;color:#793BED;font-size:0.82rem;font-weight:600;padding:0.4rem 0.9rem;border-radius:9999px;text-decoration:none;">Roadmap Público</a><a href="./sobre.html" style="display:inline-flex;align-items:center;gap:0.3rem;background:#EFE8FD;color:#793BED;font-size:0.82rem;font-weight:600;padding:0.4rem 0.9rem;border-radius:9999px;text-decoration:none;">Sobre Nós</a></div></div></section>
+</main>
+
+<footer class="footer-minimal"><div class="container"><p>&copy; 2025 Zeonpaper · <a href="./index.html">Início</a> <a href="./aprenda/index.html">Aprenda</a> <a href="./glossario/index.html">Glossário</a> <a href="./index.html#precos">Planos</a> <a href="./politica-de-privacidade.html">Privacidade</a></p></div></footer>
+<script>lucide.createIcons();</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Integrações do Zeonpaper","description":"Todas as integrações disponíveis no Zeonpaper: Open Finance, WhatsApp, importação OFX/CSV, migração do ZeroPaper.","url":"https://www.zeonpaper.com.br/integracoes"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Início","item":"https://www.zeonpaper.com.br/"},{"@type":"ListItem","position":2,"name":"Integrações","item":"https://www.zeonpaper.com.br/integracoes"}]}
+</script>
+</body>
+</html>

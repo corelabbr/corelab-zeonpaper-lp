@@ -2,166 +2,604 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://www.zeonpaper.com.br/</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
+
+    <!-- Segmentos -->
     <url>
         <loc>https://www.zeonpaper.com.br/controle-financeiro-para-mei</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.zeonpaper.com.br/controle-financeiro-para-prestador-de-servico</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>https://www.zeonpaper.com.br/controle-financeiro-para-advogados</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://www.zeonpaper.com.br/sistema-financeiro-para-microempresa</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.zeonpaper.com.br/sistema-financeiro-para-dentistas</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.zeonpaper.com.br/sistema-financeiro-para-advogados</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.zeonpaper.com.br/sistema-financeiro-para-psicologos</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.zeonpaper.com.br/zeonpaper-vs-conta-azul</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.zeonpaper.com.br/zeonpaper-vs-bling</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.zeonpaper.com.br/zeonpaper-vs-nibo</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.zeonpaper.com.br/zeonpaper-vs-omie</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
-    <url>
-        <loc>https://www.zeonpaper.com.br/zeonpaper-vs-excel</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.zeonpaper.com.br/sistema-financeiro-para-arquitetos</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.zeonpaper.com.br/sistema-financeiro-para-eletricistas</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.zeonpaper.com.br/sistema-financeiro-para-clinicas</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.zeonpaper.com.br/melhor-alternativa-ao-conta-azul</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://www.zeonpaper.com.br/melhor-alternativa-ao-omie</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://www.zeonpaper.com.br/melhor-alternativa-ao-bling</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
-        <loc>https://www.zeonpaper.com.br/melhor-alternativa-ao-excel</loc>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
-    <url>
         <loc>https://www.zeonpaper.com.br/fluxo-de-caixa-para-mei</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
         <loc>https://www.zeonpaper.com.br/dre-para-psicologos</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://www.zeonpaper.com.br/sistema-financeiro-para-nutricionistas</loc>
+        <lastmod>2025-07-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://www.zeonpaper.com.br/controle-financeiro-para-advogados</loc>
+        <loc>https://www.zeonpaper.com.br/sistema-financeiro-para-personal-trainers</loc>
+        <lastmod>2025-07-12</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/sistema-financeiro-para-fotografos</loc>
+        <lastmod>2025-07-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/sistema-financeiro-para-contadores</loc>
+        <lastmod>2025-07-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/sistema-financeiro-para-freelancers</loc>
+        <lastmod>2025-07-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/sistema-financeiro-para-ecommerce</loc>
+        <lastmod>2025-07-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Comparativos diretos -->
+    <url>
+        <loc>https://www.zeonpaper.com.br/zeonpaper-vs-conta-azul</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/zeonpaper-vs-bling</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/zeonpaper-vs-nibo</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/zeonpaper-vs-omie</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/zeonpaper-vs-excel</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Alternativas -->
+    <url>
+        <loc>https://www.zeonpaper.com.br/melhor-alternativa-ao-conta-azul</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/melhor-alternativa-ao-omie</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/melhor-alternativa-ao-bling</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/melhor-alternativa-ao-excel</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
     </url>
     <url>
         <loc>https://www.zeonpaper.com.br/alternativa-conta-azul</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://www.zeonpaper.com.br/alternativa-omie</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://www.zeonpaper.com.br/alternativa-excel</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
+
+    <!-- Calculadoras -->
     <url>
         <loc>https://www.zeonpaper.com.br/calculadoras</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.zeonpaper.com.br/calculadora-margem-de-lucro</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.zeonpaper.com.br/calculadora-lucro-liquido</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.zeonpaper.com.br/calculadora-pro-labore</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.zeonpaper.com.br/calculadora-capital-de-giro</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://www.zeonpaper.com.br/calculadora-preco-de-venda</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Centro de Conhecimento -->
+    <url>
+        <loc>https://www.zeonpaper.com.br/aprenda/</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/aprenda/como-fazer-fluxo-de-caixa</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/aprenda/como-controlar-contas-a-pagar-e-receber</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/aprenda/o-que-e-dre</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/aprenda/como-reduzir-inadimplencia</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/aprenda/separar-pessoal-empresa</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/aprenda/capital-de-giro</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/aprenda/margem-de-lucro</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/aprenda/conciliacao-bancaria</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/aprenda/fluxo-de-caixa-projetado</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/aprenda/fluxo-de-caixa-diario-semanal-mensal</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/aprenda/controle-financeiro-mei</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/aprenda/pro-labore-mei</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Templates -->
+    <url>
+        <loc>https://www.zeonpaper.com.br/templates/</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>https://www.zeonpaper.com.br/templates/planilha-fluxo-de-caixa</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/templates/planilha-contas-a-pagar-receber</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/templates/modelo-dre-simplificado</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/templates/planilha-controle-financeiro-mei</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/templates/modelo-orcamento-proposta</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/templates/planilha-precificacao-servico</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Glossário Financeiro -->
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/fluxo-de-caixa</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/capital-de-giro</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/conciliacao-bancaria</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/dre</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/pro-labore</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/margem-de-lucro</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/inadimplencia</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/contas-a-pagar</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/contas-a-receber</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/custo-fixo</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/custo-variavel</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/lucro-bruto</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/lucro-liquido</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/receita-bruta</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/faturamento</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/regime-de-caixa</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/regime-de-competencia</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/das-mei</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/ebitda</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/adiantamento-de-recebiveis</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/ativo-circulante</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/passivo-circulante</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/balanco-patrimonial</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/break-even</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/despesa-fixa</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/margem-de-contribuicao</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/nota-fiscal</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/planejamento-financeiro</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/simples-nacional</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/glossario/ticket-medio</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Institucional -->
+    <url>
+        <loc>https://www.zeonpaper.com.br/sobre</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/integracoes</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/roadmap</loc>
+        <lastmod>2025-07-08</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Produto -->
+    <url>
+        <loc>https://www.zeonpaper.com.br/dashboard</loc>
+        <lastmod>2025-07-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/benchmarks</loc>
+        <lastmod>2025-07-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/cases</loc>
+        <lastmod>2025-07-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://www.zeonpaper.com.br/inteligencia-artificial</loc>
+        <lastmod>2025-07-12</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Legal -->
+    <url>
         <loc>https://www.zeonpaper.com.br/termos-de-uso</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
     <url>
         <loc>https://www.zeonpaper.com.br/politica-de-privacidade</loc>
+        <lastmod>2025-07-08</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>

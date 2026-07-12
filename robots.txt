@@ -2,3 +2,30 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.zeonpaper.com.br/sitemap.xml
+
+# LLM-friendly content
+# Resumo do produto para modelos de linguagem
+# Ref: https://llmstxt.org
+User-agent: GPTBot
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: ChatGPT-User
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: Claude-Web
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: Amazonbot
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: PerplexityBot
+Allow: /llms.txt
+Allow: /llms-full.txt
+
+User-agent: Bytespider
+Allow: /llms.txt
+Allow: /llms-full.txt

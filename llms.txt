@@ -75,3 +75,9 @@ https://www.zeonpaper.com.br
 ## Contato
 
 contato@zeonpaper.com.br
+
+## Documentação completa para LLMs
+
+Para informações detalhadas sobre funcionalidades, planos, preços, FAQ, integrações, comparativos e segmentos atendidos, consulte o arquivo completo:
+
+https://www.zeonpaper.com.br/llms-full.txt

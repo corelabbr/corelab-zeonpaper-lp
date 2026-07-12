@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', { 'ad_storage': 'granted', 'analytics_storage': 'granted', 'ad_user_data': 'granted', 'ad_personalization': 'granted' });
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y90E5LTR3V"></script>
+<script>gtag('js', new Date()); gtag('config', 'G-Y90E5LTR3V');</script>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NVQCX5G5');</script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprenda: Centro de Conhecimento Financeiro | Zeonpaper</title>
+    <meta name="description" content="Guias práticos, tutoriais e artigos sobre gestão financeira para MEI, microempresa e prestador de serviço. Aprenda fluxo de caixa, DRE, controle de inadimplência e mais.">
+    <link rel="canonical" href="https://www.zeonpaper.com.br/aprenda/">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.zeonpaper.com.br/aprenda/">
+    <meta property="og:title" content="Aprenda: Centro de Conhecimento Financeiro | Zeonpaper">
+    <meta property="og:description" content="Guias práticos sobre gestão financeira para MEI, microempresa e prestador de serviço.">
+    <meta property="og:image" content="https://www.zeonpaper.com.br/assets/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        :root {
+            --primary: #793BED; --primary-dark: #6B21A8; --primary-light: #EFE8FD;
+            --accent: #22C55E; --text-dark: #020817; --text-gray: #64748B;
+            --bg-light: #FAF9F5; --bg-dark: #020817; --white: #FFFFFF;
+            --radius-pill: 9999px; --radius-card: 12px; --radius-btn: 10px;
+            --shadow-card: 0 4px 20px rgba(0,0,0,0.06);
+            --container: 1200px;
+            --gradient: linear-gradient(135deg, #793BED 0%, #EC4699 100%);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Plus Jakarta Sans',sans-serif; color:var(--text-dark); line-height:1.6; background:#fff; -webkit-font-smoothing:antialiased; }
+        h1,h2,h3 { font-weight:800; letter-spacing:-0.02em; }
+        .container { max-width:var(--container); margin:0 auto; padding:0 1.5rem; }
+        .text-gradient { background:var(--gradient); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+        nav { position:fixed; top:0; left:0; right:0; background:rgba(15,23,42,0.88); backdrop-filter:blur(14px); z-index:1000; border-bottom:1px solid rgba(255,255,255,0.07); padding:0.75rem 0; }
+        .nav-content { display:flex; justify-content:space-between; align-items:center; }
+        .logo { text-decoration:none; display:flex; align-items:center; }
+        .nav-actions { display:flex; align-items:center; gap:0.5rem; }
+        .btn-nav-login { background:transparent; border:none; color:rgba(255,255,255,0.65); font-family:inherit; font-weight:500; font-size:0.82rem; padding:0.45rem 0.9rem; border-radius:var(--radius-btn); text-decoration:none; }
+        .btn-nav-cta { background:var(--primary); color:white; font-family:inherit; font-weight:600; font-size:0.82rem; padding:0.45rem 1rem; border-radius:var(--radius-btn); border:none; text-decoration:none; }
+
+        .page-hero { padding:140px 0 60px; background:var(--bg-dark); text-align:center; }
+        .page-hero h1 { font-size:clamp(2rem, 4vw, 3rem); color:white; margin-bottom:1rem; }
+        .page-hero p { color:rgba(255,255,255,0.65); font-size:1.1rem; max-width:600px; margin:0 auto; }
+
+        .topics-section { padding:4rem 0; }
+        .topic-group { margin-bottom:3rem; }
+        .topic-group h2 { font-size:1.3rem; margin-bottom:1.25rem; display:flex; align-items:center; gap:0.5rem; }
+        .topic-group h2 i { color:var(--primary); }
+        .articles-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.25rem; }
+        .article-card { background:white; border:1px solid #e2e8f0; border-radius:var(--radius-card); padding:1.5rem; text-decoration:none; transition:box-shadow 0.2s, transform 0.2s; }
+        .article-card:hover { box-shadow:var(--shadow-card); transform:translateY(-2px); }
+        .article-card h3 { font-size:1rem; font-weight:700; color:var(--text-dark); margin-bottom:0.4rem; line-height:1.35; }
+        .article-card p { font-size:0.85rem; color:var(--text-gray); line-height:1.5; margin:0; }
+        .article-card .tag { display:inline-block; font-size:0.7rem; font-weight:600; color:var(--primary); background:var(--primary-light); padding:0.15rem 0.5rem; border-radius:var(--radius-pill); margin-bottom:0.75rem; }
+
+        .footer-minimal { background:var(--bg-dark); color:#94a3b8; padding:2.5rem 0; text-align:center; font-size:0.85rem; }
+        .footer-minimal a { color:#94a3b8; text-decoration:none; margin:0 0.75rem; }
+        .footer-minimal a:hover { color:white; }
+
+        @media (max-width:768px) {
+            .articles-grid { grid-template-columns:1fr; }
+        }
+    </style>
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVQCX5G5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav>
+    <div class="container nav-content">
+        <a href="../index.html" class="logo">
+            <img src="../assets/logo.png" alt="Zeonpaper" style="height:30px;filter:brightness(0) invert(1);">
+        </a>
+        <div class="nav-actions">
+            <a href="https://app.zeonpaper.com.br/user/login" class="btn-nav-login">Login</a>
+            <a href="../index.html#precos" class="btn-nav-cta">Testar grátis</a>
+        </div>
+    </div>
+</nav>
+
+<section class="page-hero">
+    <div class="container">
+        <h1>Centro de <span class="text-gradient">Conhecimento Financeiro</span></h1>
+        <p>Guias práticos para organizar o financeiro da sua empresa. Sem jargão, sem enrolação — só o que funciona.</p>
+    </div>
+</section>
+
+<main class="topics-section">
+    <div class="container">
+
+        <!-- Fluxo de Caixa -->
+        <div class="topic-group">
+            <h2><i data-lucide="trending-up" style="width:22px;height:22px;"></i> Fluxo de Caixa</h2>
+            <div class="articles-grid">
+                <a href="./como-fazer-fluxo-de-caixa.html" class="article-card">
+                    <span class="tag">Guia completo</span>
+                    <h3>Como fazer fluxo de caixa</h3>
+                    <p>Passo a passo para montar e manter o fluxo de caixa da sua empresa atualizado.</p>
+                </a>
+                <a href="./fluxo-de-caixa-projetado.html" class="article-card">
+                    <span class="tag">Em breve</span>
+                    <h3>Fluxo de caixa projetado</h3>
+                    <p>Como prever o saldo futuro e se preparar para meses apertados.</p>
+                </a>
+                <a href="./fluxo-de-caixa-diario-semanal-mensal.html" class="article-card">
+                    <span class="tag">Em breve</span>
+                    <h3>Fluxo diário, semanal ou mensal?</h3>
+                    <p>Qual frequência usar dependendo do tamanho e tipo do seu negócio.</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Contas a Pagar e Receber -->
+        <div class="topic-group">
+            <h2><i data-lucide="wallet" style="width:22px;height:22px;"></i> Contas a Pagar e Receber</h2>
+            <div class="articles-grid">
+                <a href="./como-controlar-contas-a-pagar-e-receber.html" class="article-card">
+                    <span class="tag">Em breve</span>
+                    <h3>Como controlar contas a pagar e receber</h3>
+                    <p>Organize vencimentos, evite atrasos e saiba o que entra e sai do caixa.</p>
+                </a>
+                <a href="./como-reduzir-inadimplencia.html" class="article-card">
+                    <span class="tag">Em breve</span>
+                    <h3>Como reduzir inadimplência</h3>
+                    <p>Estratégias para receber em dia e recuperar valores em atraso.</p>
+                </a>
+                <a href="./conciliacao-bancaria.html" class="article-card">
+                    <span class="tag">Em breve</span>
+                    <h3>O que é conciliação bancária</h3>
+                    <p>Como conferir se o que está no banco bate com o que está no sistema.</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Indicadores e Relatórios -->
+        <div class="topic-group">
+            <h2><i data-lucide="bar-chart-2" style="width:22px;height:22px;"></i> Indicadores e Relatórios</h2>
+            <div class="articles-grid">
+                <a href="./o-que-e-dre.html" class="article-card">
+                    <span class="tag">Em breve</span>
+                    <h3>O que é DRE</h3>
+                    <p>Entenda o Demonstrativo de Resultado e descubra se está lucrando de verdade.</p>
+                </a>
+                <a href="./margem-de-lucro.html" class="article-card">
+                    <span class="tag">Em breve</span>
+                    <h3>Como calcular margem de lucro</h3>
+                    <p>Margem bruta, líquida e de contribuição explicadas de forma simples.</p>
+                </a>
+                <a href="./capital-de-giro.html" class="article-card">
+                    <span class="tag">Em breve</span>
+                    <h3>O que é capital de giro</h3>
+                    <p>Quanto dinheiro sua empresa precisa para operar sem sufoco.</p>
+                </a>
+            </div>
+        </div>
+
+        <!-- Gestão para MEI -->
+        <div class="topic-group">
+            <h2><i data-lucide="user" style="width:22px;height:22px;"></i> Gestão Financeira para MEI</h2>
+            <div class="articles-grid">
+                <a href="./controle-financeiro-mei.html" class="article-card">
+                    <span class="tag">Em breve</span>
+                    <h3>Controle financeiro para MEI</h3>
+                    <p>O mínimo que todo MEI precisa fazer para não se perder nas finanças.</p>
+                </a>
+                <a href="./separar-pessoal-empresa.html" class="article-card">
+                    <span class="tag">Em breve</span>
+                    <h3>Como separar financeiro pessoal do empresarial</h3>
+                    <p>Passo a passo para parar de misturar contas e ver o resultado real.</p>
+                </a>
+                <a href="./pro-labore-mei.html" class="article-card">
+                    <span class="tag">Em breve</span>
+                    <h3>Pró-labore para MEI: como definir</h3>
+                    <p>Quanto tirar da empresa para si mesmo sem comprometer o caixa.</p>
+                </a>
+            </div>
+        </div>
+
+    </div>
+</main>
+
+<footer class="footer-minimal">
+    <div class="container">
+        <p>&copy; 2025 Zeonpaper · <a href="../index.html">Início</a> <a href="../index.html#precos">Planos</a> <a href="../politica-de-privacidade.html">Privacidade</a></p>
+    </div>
+</footer>
+
+<script>lucide.createIcons();</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Centro de Conhecimento Financeiro",
+  "description": "Guias práticos sobre gestão financeira para MEI, microempresa e prestador de serviço.",
+  "url": "https://www.zeonpaper.com.br/aprenda/",
+  "publisher": { "@type": "Organization", "name": "Zeonpaper", "url": "https://www.zeonpaper.com.br" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://www.zeonpaper.com.br/" },
+    { "@type": "ListItem", "position": 2, "name": "Aprenda", "item": "https://www.zeonpaper.com.br/aprenda/" }
+  ]
+}
+</script>
+</body>
+</html>

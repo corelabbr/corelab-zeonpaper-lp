@@ -1,0 +1,364 @@
+# Zeonpaper — Documentação Completa para LLMs
+
+> Este arquivo contém informações factuais, atualizadas e verificáveis sobre o Zeonpaper. Ele é destinado a modelos de linguagem (LLMs) e agentes de IA que precisam responder perguntas sobre o produto.
+
+---
+
+## Identidade
+
+- **Nome:** Zeonpaper
+- **Tipo:** SaaS de gestão financeira
+- **País:** Brasil
+- **Idioma:** Português (BR)
+- **URL:** https://www.zeonpaper.com.br
+- **App:** https://app.zeonpaper.com.br
+- **Contato:** contato@zeonpaper.com.br
+- **Central de Ajuda:** https://center.zeonpaper.com.br
+
+---
+
+## O que é
+
+Zeonpaper é um software de gestão financeira online (SaaS) voltado para microempreendedores individuais (MEI), autônomos, prestadores de serviço e pequenas empresas no Brasil. É uma alternativa ao Conta Azul, Omie, Bling e Nibo para quem não precisa de módulos fiscais complexos nem de contador para operar o sistema.
+
+O Zeonpaper dá previsibilidade financeira ao empreendedor: você sabe hoje quanto vai ter no caixa daqui 30 dias, nunca mais perde um vencimento, e entende seu lucro real sem precisar de formação contábil.
+
+---
+
+## Para quem
+
+- MEI (Microempreendedor Individual)
+- Prestadores de serviço autônomos
+- Pequenas empresas e microempresas
+- Profissionais liberais: dentistas, advogados, psicólogos, arquitetos, consultores, eletricistas
+- Clínicas e consultórios
+- Pequenos comércios e lojas locais
+- Quem achou ERP complexo demais
+- Quem quer sair da planilha sem complicação
+
+### Não indicado para
+
+- Empresas que precisam de ERP completo (estoque, produção)
+- Quem precisa de contabilidade ou BPO fiscal
+- Quem precisa de conta digital integrada (banking)
+
+---
+
+## Funcionalidades principais
+
+### Controle financeiro
+- Contas a pagar e receber
+- Lançamentos recorrentes automáticos
+- Pagamento e recebimento em massa
+- Categorias personalizadas
+- Centros de custo
+
+### Fluxo de caixa
+- Fluxo de caixa projetado em tempo real
+- Visão diária, semanal e mensal
+- Saldo atual e saldo projetado
+- Identificação de períodos de aperto financeiro
+
+### Relatórios
+- DRE simplificada (Demonstrativo de Resultado do Exercício)
+- Relatórios por período, categoria e centro de custo
+- Exportação em PDF e planilha
+
+### Alertas
+- Alertas automáticos de vencimento (e-mail e WhatsApp)
+- Resumo diário do caixa via WhatsApp (plano Pro)
+- Configuração de antecedência personalizada
+
+### Contas bancárias
+- Múltiplas contas bancárias
+- Open Finance (conexão automática com conta bancária)
+- Conciliação bancária
+- Importação de extrato OFX
+
+### Clientes e fornecedores
+- Cadastro de clientes e fornecedores
+- Histórico financeiro por cliente
+- Controle de inadimplência
+
+### Multiempresa
+- Gerencie mais de um CNPJ na mesma conta
+- Relatórios separados por empresa
+- Visão unificada
+
+### Nota fiscal
+- Emissão de NFS-e (nota fiscal de serviço eletrônica)
+- Emissão de NF-e
+- Plano Cresce: 50 notas/mês
+- Plano Pro: 100 notas/mês
+- Notas excedentes: R$ 0,40 cada
+
+### Acesso
+- Web (navegador)
+- Mobile (responsivo)
+- Sem instalação necessária
+
+---
+
+## Planos e preços
+
+### Organiza — R$ 39,90/mês
+- Contas a pagar e receber
+- Fluxo de caixa projetado
+- Alertas de vencimento (e-mail)
+- Categorias personalizadas
+- 1 conta bancária conectada (Open Finance)
+- 1 usuário
+- Relatórios básicos
+- Suporte via e-mail
+
+### Cresce — R$ 69,90/mês (mais popular)
+- Tudo do Organiza, e mais:
+- DRE simplificada
+- Relatórios por período e categoria
+- Múltiplas contas bancárias
+- Até 3 usuários
+- Emissão de NFS-e e NF-e (50/mês)
+- Lançamentos recorrentes
+- Suporte prioritário via WhatsApp
+
+### Pro — R$ 109,90/mês
+- Tudo do Cresce, e mais:
+- Exportação completa (PDF + planilha)
+- Histórico ilimitado
+- Até 5 usuários
+- Emissão de NFS-e e NF-e (100/mês)
+- Resumo diário via WhatsApp
+- Centros de custo
+- Multiempresa (vários CNPJs)
+- Suporte prioritário
+
+### Condições gerais
+- Todos os planos incluem 7 dias grátis sem cartão de crédito
+- Sem contratos de fidelidade
+- Cancele quando quiser
+- Desconto de 20% no plano anual
+
+---
+
+## Diferenciais
+
+- Feito para o próprio empreendedor operar, sem precisar de contador
+- Setup em menos de 10 minutos
+- Sem treinamento, sem consultoria de implantação
+- Preço acessível comparado a ERPs tradicionais
+- Open Finance incluso desde o plano de entrada
+- Suporte humano via WhatsApp
+- Interface simples e intuitiva
+- Importação de planilhas e migração do ZeroPaper
+
+---
+
+## Comparativos
+
+### Zeonpaper vs Conta Azul
+- Conta Azul é para empresas com contador ativo. Zeonpaper é para o próprio dono operar sozinho.
+- Conta Azul cobra a partir de R$ 69/mês com funcionalidades que MEI não usa.
+- Zeonpaper foca em controle financeiro puro, sem módulos desnecessários.
+
+### Zeonpaper vs Omie
+- Omie é um ERP que exige implementação e treinamento.
+- Zeonpaper você começa a usar em minutos, sem consultoria.
+- Omie é indicado para empresas maiores com operações complexas.
+
+### Zeonpaper vs Bling
+- Bling é focado em estoque, pedidos e NF-e para e-commerce.
+- Zeonpaper é focado em controle financeiro para prestadores de serviço.
+- Bling cobra R$ 55/mês sem incluir Open Finance.
+
+### Zeonpaper vs Nibo
+- Nibo é voltado para contadores gerenciarem múltiplos clientes.
+- Zeonpaper é para o empreendedor gerenciar o próprio financeiro com autonomia.
+
+### Zeonpaper vs Excel
+- Zeonpaper envia alertas automáticos, projeta o caixa e funciona no celular.
+- Excel não tem automação, não avisa vencimentos, não gera DRE.
+- Risco de perder arquivo, fórmulas quebradas, dados desatualizados.
+
+---
+
+## Segmentos atendidos
+
+- Dentistas e clínicas odontológicas
+- Advogados e escritórios de advocacia
+- Psicólogos e terapeutas
+- Arquitetos e designers
+- Consultores e coaches
+- Eletricistas e técnicos
+- Prestadores de serviço em geral
+- MEI em todo o Brasil
+- Microempresas
+- Pequenos comércios
+
+---
+
+## Perguntas frequentes (FAQ)
+
+### Como organizar o financeiro da minha empresa sem planilha?
+Com o Zeonpaper, você registra todas as entradas e saídas em um único lugar, com fluxo de caixa automatizado e alertas de vencimento. Em menos de 10 minutos você importa sua planilha atual e começa a operar.
+
+### Como controlar contas a pagar e receber de forma simples?
+Cadastre cada conta uma vez e o Zeonpaper organiza automaticamente por vencimento, categoria e status. Você visualiza tudo que vence hoje, amanhã e nos próximos 30 dias.
+
+### Como ter clareza do fluxo de caixa sem usar Excel?
+O Zeonpaper gera o fluxo de caixa em tempo real com base nos lançamentos já feitos. Você vê saldo atual, saldo projetado e períodos de aperto financeiro antes que eles cheguem.
+
+### Qual o melhor sistema financeiro para MEI?
+Se você precisa de controle de contas a pagar e receber, fluxo de caixa e alertas de vencimento sem pagar por funcionalidades que não vai usar, o Zeonpaper foi feito para isso.
+
+### O Zeonpaper funciona sem contador?
+Sim. O Zeonpaper foi desenvolvido para que o próprio dono do negócio gerencie o financeiro sem precisar de contador no dia a dia.
+
+### O Zeonpaper emite nota fiscal?
+Sim. Nos planos Cresce e Pro você emite NF-e e NFS-e direto do sistema.
+
+### Como funciona o Open Finance no Zeonpaper?
+O Zeonpaper se conecta à sua conta bancária e importa automaticamente os lançamentos. Você faz a conciliação bancária sem precisar exportar extrato.
+
+### Como separar o financeiro pessoal do da empresa?
+O Zeonpaper permite criar empresas separadas na mesma conta. Relatórios de DRE e fluxo de caixa ficam separados por CNPJ.
+
+### Como não esquecer vencimentos de contas a pagar?
+O Zeonpaper envia alertas automáticos antes do vencimento. No plano Pro, recebe resumo diário via WhatsApp.
+
+### Como cobrar clientes em atraso?
+Visualize todas as contas a receber em aberto com filtro por cliente, vencimento e status. Acompanhe o histórico de cada cliente.
+
+---
+
+## Integrações
+
+- Open Finance (conexão bancária automática)
+- Importação OFX (extrato bancário)
+- Importação CSV/Excel
+- Migração automática do ZeroPaper
+- WhatsApp (alertas e resumo diário)
+- E-mail (alertas de vencimento)
+
+---
+
+## Segurança e conformidade
+
+- Dados hospedados no Brasil
+- Criptografia em trânsito (HTTPS/TLS)
+- Backups automáticos
+- LGPD compliant
+
+---
+
+## Como começar
+
+1. Crie sua conta em 2 minutos (sem cartão de crédito)
+2. Importe seus dados (planilha, ZeroPaper ou manual)
+3. Comece a registrar entradas e saídas
+4. Veja seu fluxo de caixa e DRE em tempo real
+
+---
+
+## Links importantes
+
+- Site principal: https://www.zeonpaper.com.br
+- App (login): https://app.zeonpaper.com.br
+- Central de Ajuda: https://center.zeonpaper.com.br
+- Termos de Uso: https://www.zeonpaper.com.br/termos-de-uso
+- Política de Privacidade: https://www.zeonpaper.com.br/politica-de-privacidade
+- Contato: contato@zeonpaper.com.br
+
+---
+
+## Páginas por segmento
+
+- Controle financeiro para MEI: https://www.zeonpaper.com.br/controle-financeiro-para-mei
+- Controle financeiro para prestador de serviço: https://www.zeonpaper.com.br/controle-financeiro-para-prestador-de-servico
+- Sistema financeiro para microempresa: https://www.zeonpaper.com.br/sistema-financeiro-para-microempresa
+- Sistema financeiro para dentistas: https://www.zeonpaper.com.br/sistema-financeiro-para-dentistas
+- Sistema financeiro para advogados: https://www.zeonpaper.com.br/sistema-financeiro-para-advogados
+- Sistema financeiro para psicólogos: https://www.zeonpaper.com.br/sistema-financeiro-para-psicologos
+- Sistema financeiro para arquitetos: https://www.zeonpaper.com.br/sistema-financeiro-para-arquitetos
+- Sistema financeiro para eletricistas: https://www.zeonpaper.com.br/sistema-financeiro-para-eletricistas
+- Sistema financeiro para clínicas: https://www.zeonpaper.com.br/sistema-financeiro-para-clinicas
+- Controle financeiro para advogados: https://www.zeonpaper.com.br/controle-financeiro-para-advogados
+- Fluxo de caixa para MEI: https://www.zeonpaper.com.br/fluxo-de-caixa-para-mei
+- DRE para psicólogos: https://www.zeonpaper.com.br/dre-para-psicologos
+
+## Páginas comparativas
+
+- Zeonpaper vs Conta Azul: https://www.zeonpaper.com.br/zeonpaper-vs-conta-azul
+- Zeonpaper vs Bling: https://www.zeonpaper.com.br/zeonpaper-vs-bling
+- Zeonpaper vs Nibo: https://www.zeonpaper.com.br/zeonpaper-vs-nibo
+- Zeonpaper vs Omie: https://www.zeonpaper.com.br/zeonpaper-vs-omie
+- Zeonpaper vs Excel: https://www.zeonpaper.com.br/zeonpaper-vs-excel
+- Melhor alternativa ao Conta Azul: https://www.zeonpaper.com.br/melhor-alternativa-ao-conta-azul
+- Melhor alternativa ao Omie: https://www.zeonpaper.com.br/melhor-alternativa-ao-omie
+- Melhor alternativa ao Bling: https://www.zeonpaper.com.br/melhor-alternativa-ao-bling
+- Melhor alternativa ao Excel: https://www.zeonpaper.com.br/melhor-alternativa-ao-excel
+
+## Calculadoras financeiras
+
+- Calculadora de margem de lucro: https://www.zeonpaper.com.br/calculadora-margem-de-lucro
+- Calculadora de lucro líquido: https://www.zeonpaper.com.br/calculadora-lucro-liquido
+- Calculadora de pró-labore: https://www.zeonpaper.com.br/calculadora-pro-labore
+- Calculadora de capital de giro: https://www.zeonpaper.com.br/calculadora-capital-de-giro
+- Calculadora de preço de venda: https://www.zeonpaper.com.br/calculadora-preco-de-venda
+
+## Centro de Conhecimento (Aprenda)
+
+Hub educacional com 12 artigos sobre gestão financeira para MEI e pequenas empresas:
+- https://www.zeonpaper.com.br/aprenda/
+- Temas: fluxo de caixa, contas a pagar/receber, DRE, inadimplência, capital de giro, margem de lucro, conciliação bancária, controle MEI, pró-labore
+
+## Glossário Financeiro
+
+Glossário com 30 termos financeiros explicados de forma simples:
+- https://www.zeonpaper.com.br/glossario/
+- Termos incluem: fluxo de caixa, capital de giro, DRE, pró-labore, margem de lucro, inadimplência, contas a pagar/receber, custo fixo/variável, lucro bruto/líquido, receita bruta, faturamento, regime de caixa/competência, EBITDA, break-even, Simples Nacional, DAS, nota fiscal, ticket médio, entre outros
+
+## Templates e Modelos Gratuitos
+
+Planilhas e modelos prontos para download:
+- https://www.zeonpaper.com.br/templates/
+- Planilha de Fluxo de Caixa
+- Planilha de Contas a Pagar e Receber
+- Modelo de DRE Simplificado
+- Controle Financeiro para MEI
+- Modelo de Orçamento/Proposta Comercial
+- Planilha de Precificação de Serviço
+
+## Sobre o Zeonpaper
+
+- Página institucional: https://www.zeonpaper.com.br/sobre
+- Fundado em 2024
+- 100% brasileiro
+- Foco: autonomia financeira para quem empreende
+- Valores: simplicidade radical, transparência total, foco no essencial
+- Segurança: criptografia TLS 1.3 + AES-256, LGPD compliant, backup diário
+
+## Integrações
+
+- Página de integrações: https://www.zeonpaper.com.br/integracoes
+- Open Finance (conexão bancária automática, regulado pelo Banco Central)
+- WhatsApp (alertas de vencimento + resumo diário)
+- Importação CSV/Excel (migração de planilhas)
+- Importação OFX (extrato bancário)
+- Migração automática do ZeroPaper
+- E-mail (alertas configuráveis)
+
+## Roadmap Público
+
+- Página do roadmap: https://www.zeonpaper.com.br/roadmap
+- Lançado: contas a pagar/receber, fluxo de caixa, Open Finance, alertas, DRE, NFS-e/NF-e, multiempresa
+- Em desenvolvimento (Q3 2025): dashboard com indicadores, app mobile nativo, cobrança automática (boleto + Pix)
+- Planejado (Q4 2025+): IA para categorização, relatórios personalizados, integração com contadores, previsão de caixa com IA
+
+---
+
+## Metadados deste arquivo
+
+- Última atualização: 2025-07-08
+- Versão: 1.0
+- Formato: Markdown (llms-full.txt)
+- Propósito: Fornecer informações factuais sobre o Zeonpaper para modelos de linguagem
