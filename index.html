@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html lang="pt-BR" class="scroll-smooth">
 <head>
-<!-- A/B Home (dark = control | white = variação B) — split 50/50, mesma URL, sem redirect -->
+<!-- Home theme: white is now the default after the A/B test -->
 <script>
   (function () {
     try {
       var COOKIE = 'zp_ab_home';
-      var m = document.cookie.match(/(?:^|;\s*)zp_ab_home=([^;]+)/);
-      var variant = m ? m[1] : null;
-      if (variant !== 'control' && variant !== 'white') {
-        variant = (Math.random() < 0.5) ? 'control' : 'white';
-        var exp = new Date();
-        exp.setTime(exp.getTime() + 90 * 864e5); // 90 dias
-        document.cookie = COOKIE + '=' + variant + ';expires=' + exp.toUTCString() + ';path=/;SameSite=Lax';
-      }
+      var variant = 'white';
+      var exp = new Date();
+      exp.setTime(exp.getTime() + 90 * 864e5);
+      document.cookie = COOKIE + '=' + variant + ';expires=' + exp.toUTCString() + ';path=/;SameSite=Lax';
       window.__zpVariant = variant;
-      if (variant === 'white') document.documentElement.classList.add('theme-white');
-    } catch (e) { window.__zpVariant = 'control'; }
+      document.documentElement.classList.add('theme-white');
+    } catch (e) {
+      window.__zpVariant = 'white';
+      document.documentElement.classList.add('theme-white');
+    }
   })();
 </script>
-<!-- End A/B Home -->
+<!-- End Home theme -->
 <!-- Consent Mode -->
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -36,10 +35,10 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y90E5LTR3V"></script>
 <script>
   gtag('js', new Date());
-  // A/B Home: envia a variante como user property + parâmetro em todos os eventos
+  // Keeps the former A/B dimension stable for reporting continuity.
   gtag('set', 'user_properties', { ab_home_variant: window.__zpVariant });
   gtag('config', 'G-Y90E5LTR3V', { ab_home_variant: window.__zpVariant });
-  // Evento de exposição (denominador) + sinal pro GTM
+  // Legacy exposure event for dashboards that still use the A/B dimension.
   window.dataLayer.push({ event: 'ab_exposure', ab_home_variant: window.__zpVariant });
 </script>
 <!-- End Google Analytics GA4 -->
@@ -3676,8 +3675,8 @@
             out.current_page = window.location.href.split('#')[0];
             var referrer = readCookie(REFERRER_KEY) || document.referrer;
             if (referrer) out.referrer = referrer;
-            // A/B Home: qual versão o usuário viu (dark = control | white)
-            out.ab_home_variant = window.__zpVariant || readCookie('zp_ab_home') || 'control';
+            // Former A/B dimension retained so new leads are attributed to the default white theme.
+            out.ab_home_variant = window.__zpVariant || 'white';
             Object.keys(DEFAULT_REGISTRATION_FIELDS).forEach(function(key) {
                 out[key] = DEFAULT_REGISTRATION_FIELDS[key];
             });
