@@ -1458,8 +1458,8 @@
             color: var(--text-gray);
             padding: 0.6rem 1rem;
         }
-        .comparison-table .cmp-featured { background: rgba(121, 59, 237, 0.045); }
-        .comparison-table thead th.cmp-featured { color: var(--primary); }
+        .comparison-table .cmp-featured { background: #f3eefc; }
+        .comparison-table thead th.cmp-featured { color: var(--primary); background: #e7ddfb; }
         .cmp-yes { color: #16a34a; display: inline-flex; }
         .cmp-no { color: #cbd5e1; }
         .cmp-val { font-weight: 600; color: var(--text-dark); font-size: 0.85rem; }
@@ -3452,7 +3452,7 @@
             <div class="lead-success" data-lead-success hidden>
                 <div class="lead-success-icon"><i data-lucide="check-circle-2" width="44" height="44"></i></div>
                 <h3 class="lead-success-title">Conta criada com sucesso!</h3>
-                <p class="lead-success-text">Te enviamos um e-mail de boas-vindas. Em instantes você vai para a tela de login.</p>
+                <p class="lead-success-text">Te enviamos um e-mail de boas-vindas. Estamos te levando para dentro do Zeonpaper...</p>
             </div>
         </div>
     </div>
@@ -3860,8 +3860,10 @@
         // ─── Cadastro: chamada à API Zeonpaper ───
         (function() {
             var API_URL      = 'https://back.zeonpaper.com.br/api/register/submit';
+            var LOGIN_API_URL = 'https://back.zeonpaper.com.br/api/login/account';
             var WEBHOOK      = 'https://hook.us1.make.com/4w9ewge45cwym9rj6vcmrycu1ifrz1sr';
             var LOGIN_URL    = 'https://app.zeonpaper.com.br/login';
+            var APP_URL      = 'https://app.zeonpaper.com.br/';
             var EMAIL_RE     = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
             // Formato do webhook (Make): 55 + DDD + número, ex.: 5549991842769
@@ -4044,6 +4046,17 @@
                 };
             }
 
+            // URL de fallback: tela de login com e-mail já preenchido (se o auto-login falhar)
+            function loginFallbackUrl(info) {
+                var qs = new URLSearchParams();
+                qs.set('email', info.email);
+                qs.set('from', 'lp');
+                if (info.name)      qs.set('name', info.name);
+                if (info.tenant_id) qs.set('tenant_id', info.tenant_id);
+                if (info.zp_visitor_id) qs.set('zp_visitor_id', info.zp_visitor_id);
+                return LOGIN_URL + '?' + qs.toString();
+            }
+
             function showSuccessAndRedirect(form, info) {
                 var modal = form.closest('.lead-overlay');
                 if (modal) {
@@ -4055,16 +4068,51 @@
                     }
                 }
 
-                var qs = new URLSearchParams();
-                qs.set('email', info.email);
-                qs.set('from', 'lp');
-                if (info.name)      qs.set('name', info.name);
-                if (info.tenant_id) qs.set('tenant_id', info.tenant_id);
-                if (info.zp_visitor_id) qs.set('zp_visitor_id', info.zp_visitor_id);
+                // Redireciona só uma vez, seja para o app (logado) ou para o login (fallback)
+                var redirected = false;
+                function go(url) {
+                    if (redirected) return;
+                    redirected = true;
+                    window.location.href = url;
+                }
 
-                setTimeout(function() {
-                    window.location.href = LOGIN_URL + '?' + qs.toString();
-                }, 1200);
+                // Rede de segurança: se a API de login travar/demorar, não deixa o usuário preso
+                var guard = setTimeout(function() { go(loginFallbackUrl(info)); }, 6000);
+
+                // Auto-login: estabelece a sessão (cookie zeonpaper-session em back.zeonpaper.com.br,
+                // que é same-site com app.zeonpaper.com.br) usando as credenciais recém-cadastradas.
+                fetch(LOGIN_API_URL, {
+                    method: 'POST',
+                    credentials: 'include',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        username: info.email,
+                        password: info.password,
+                        type: 'account'
+                    })
+                }).then(function(res) {
+                    return res.json().catch(function() { return {}; }).then(function(json) {
+                        return { status: res.status, body: json };
+                    });
+                }).then(function(r) {
+                    clearTimeout(guard);
+                    if (r.status === 200 && r.body && r.body.status === 'ok') {
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({
+                            event: 'login_automatico',
+                            lead_email: info.email,
+                            tenant_id: info.tenant_id || '',
+                            zp_visitor_id: info.zp_visitor_id
+                        });
+                        setTimeout(function() { go(APP_URL); }, 800);
+                    } else {
+                        // Credenciais não aceitas na hora (raro): cai no login com e-mail preenchido
+                        go(loginFallbackUrl(info));
+                    }
+                }).catch(function() {
+                    clearTimeout(guard);
+                    go(loginFallbackUrl(info));
+                });
             }
 
             function submitRegistration(e, opts) {
@@ -4154,6 +4202,7 @@
                         });
                         showSuccessAndRedirect(form, {
                             email: data.email,
+                            password: data.senha,
                             name: data.nome,
                             tenant_id: tenantId,
                             zp_visitor_id: visitorId
