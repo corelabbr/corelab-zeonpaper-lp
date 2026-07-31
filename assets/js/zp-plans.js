@@ -220,7 +220,7 @@
       { label: 'Multiempresas e usuários ilimitados', values: { organiza: false, cresce: true, pro: true } }
     ]},
     { title: 'Nota fiscal', rows: [
-      { label: 'Emissão de NF-e e NFS-e',             values: { organiza: false, cresce: true, pro: true } },
+      { label: 'Emissão de NF-e e NFS-e',             values: { organiza: false, cresce: true, pro: true }, pjOnly: true },
       { label: 'Resumo diário do caixa no WhatsApp',  values: { organiza: false, cresce: false, pro: true } }
     ]},
     { title: 'Suporte', rows: [
@@ -229,7 +229,7 @@
       { label: 'Suporte dedicado no WhatsApp',        values: { organiza: false, cresce: false, pro: true } }
     ]},
     { title: 'Cobranças por uso', rows: [
-      { label: 'NFs excedentes',            values: { organiza: false, cresce: 'R$ 0,40/un', pro: 'R$ 0,40/un' } },
+      { label: 'NFs excedentes',            values: { organiza: false, cresce: 'R$ 0,40/un', pro: 'R$ 0,40/un' }, pjOnly: true },
       { label: 'PJ adicional',              values: { organiza: 'R$ 19,90/mês', cresce: 'R$ 19,90/mês', pro: 'R$ 19,90/mês' } },
       { label: 'Conta Open Finance adicional', values: { organiza: 'R$ 9,90/mês', cresce: 'R$ 9,90/mês', pro: 'R$ 9,90/mês' } }
     ]}
@@ -247,6 +247,84 @@
   function icon(name, size) {
     size = size || 15;
     return '<i data-lucide="' + esc(name) + '" width="' + size + '" height="' + size + '"></i>';
+  }
+
+  /* =========================================================================
+   * Doctype PF / PJ — o preço-base é de Pessoa Física; PJ soma o adicional
+   * ======================================================================= */
+  var PJ_ADICIONAL = 19.90; // R$/mês — adicional de Pessoa Jurídica (CNPJ) por empresa
+
+  function toPJPrice(pfPrice) {
+    var base = parseFloat(String(pfPrice).replace(',', '.'));
+    if (isNaN(base)) return pfPrice;
+    var pj = Math.round((base + PJ_ADICIONAL) * 100) / 100;
+    return pj.toFixed(2).replace('.', ',');
+  }
+
+  var DOCTYPE_CSS = [
+    '.plan-doctype{display:flex;gap:6px;max-width:340px;margin:0 auto 1.8rem;background:rgba(121,59,237,.08);border-radius:999px;padding:4px}',
+    '.plan-doctype-btn{flex:1;padding:.6rem .5rem;border:0;border-radius:999px;background:transparent;font-family:inherit;font-size:.9rem;font-weight:600;color:var(--text-dark);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:background .2s,color .2s}',
+    '.plan-doctype-btn.active{background:var(--primary);color:#fff;box-shadow:0 4px 14px rgba(121,59,237,.25)}',
+    '.plan-doctype-tag{font-size:.62rem;font-weight:700;padding:2px 6px;border-radius:999px;background:rgba(255,255,255,.18);color:inherit}',
+    '.plan-doctype-btn:not(.active) .plan-doctype-tag{background:rgba(121,59,237,.12);color:var(--primary)}',
+    '.comparison-table .cmp-price-row th[scope="row"]{font-weight:700}',
+    '.comparison-table .cmp-price{font-weight:800;font-size:.95rem;color:var(--text-dark);white-space:nowrap}',
+    '.comparison-table .cmp-featured .cmp-price{color:var(--primary)}',
+    '.comparison-table .cmp-pfval{display:none}',
+    '.comparison-table.cmp-pf .cmp-pjval{display:none}',
+    '.comparison-table.cmp-pf .cmp-pfval{display:inline}'
+  ].join('');
+
+  function injectDoctypeCss() {
+    if (document.getElementById('zp-doctype-css')) return;
+    var s = document.createElement('style');
+    s.id = 'zp-doctype-css';
+    s.textContent = DOCTYPE_CSS;
+    document.head.appendChild(s);
+  }
+
+  function buildDoctypeToggle() {
+    return '<div class="plan-doctype" role="tablist" aria-label="Tipo de conta">'
+      +   '<button type="button" class="plan-doctype-btn active" data-doctype="pj" role="tab" aria-selected="true">Conta PJ</button>'
+      +   '<button type="button" class="plan-doctype-btn" data-doctype="pf" role="tab" aria-selected="false">Conta PF</button>'
+      + '</div>';
+  }
+
+  function applyDoctype(type) {
+    var isPJ = type === 'pj';
+    document.querySelectorAll('.plan-price-amount').forEach(function (el) {
+      var v = isPJ ? el.getAttribute('data-price-pj') : el.getAttribute('data-price-pf');
+      if (v) el.textContent = v;
+    });
+    document.querySelectorAll('.plan-extras-item--pj').forEach(function (el) {
+      el.style.display = isPJ ? 'none' : '';
+    });
+    document.querySelectorAll('.cmp-price').forEach(function (el) {
+      var v = isPJ ? el.getAttribute('data-price-pj') : el.getAttribute('data-price-pf');
+      if (v) el.textContent = 'R$ ' + v;
+    });
+    document.querySelectorAll('.cmp-row--pj').forEach(function (el) {
+      el.style.display = isPJ ? 'none' : '';
+    });
+    var cmpTable = document.querySelector('.comparison-table');
+    if (cmpTable) cmpTable.classList.toggle('cmp-pf', !isPJ);
+    document.querySelectorAll('.plan-doctype-btn').forEach(function (b) {
+      var on = b.getAttribute('data-doctype') === type;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    try { localStorage.setItem('zp_doctype', type); } catch (_) {}
+  }
+
+  function initDoctype() {
+    document.addEventListener('click', function (e) {
+      var btn = e.target && e.target.closest ? e.target.closest('[data-doctype]') : null;
+      if (!btn) return;
+      applyDoctype(btn.getAttribute('data-doctype'));
+    });
+    var saved = 'pj';
+    try { saved = localStorage.getItem('zp_doctype') || 'pj'; } catch (_) {}
+    applyDoctype(saved);
   }
 
   /* =========================================================================
@@ -275,7 +353,8 @@
       var extras = p.extras
         ? '<div class="plan-extras">'
           + p.extras.map(function (e) {
-              return '<div class="plan-extras-item">'
+              var isPJ = /PJ adicional/i.test(e.label);
+              return '<div class="plan-extras-item' + (isPJ ? ' plan-extras-item--pj' : '') + '">'
                 + '<span>' + icon(e.icon, 12) + ' ' + esc(e.label) + '</span>'
                 + '<span>' + esc(e.value) + '</span>'
                 + '</div>';
@@ -289,7 +368,7 @@
         + '<p class="plan-desc">' + esc(p.desc) + '</p>'
         + '<div class="plan-price">'
         +   '<span class="plan-price-currency">R$</span>'
-        +   '<span class="plan-price-amount">' + esc(p.price) + '</span>'
+        +   '<span class="plan-price-amount" data-price-pf="' + esc(p.price) + '" data-price-pj="' + esc(toPJPrice(p.price)) + '">' + esc(p.price) + '</span>'
         +   '<span class="plan-price-period">/mês</span>'
         + '</div>'
         + '<p class="plan-price-note">' + esc(p.priceNote) + '</p>'
@@ -319,14 +398,27 @@
         }).join('')
       + '</tr>';
 
-    var body = COMPARISON.map(function (group) {
+    var priceRow = '<tr class="cmp-price-row"><th scope="row">Preço mensal</th>'
+      + PLANS.map(function (p) {
+          return '<td' + (p.featured ? ' class="cmp-featured"' : '') + '>'
+            + '<span class="cmp-price" data-price-pf="' + esc(p.price) + '" data-price-pj="' + esc(toPJPrice(p.price)) + '">R$ ' + esc(p.price) + '</span>'
+            + '</td>';
+        }).join('')
+      + '</tr>';
+
+    var body = priceRow + COMPARISON.map(function (group) {
       var groupRow = '<tr class="cmp-group"><th scope="colgroup" colspan="' + (PLANS.length + 1) + '">'
         + esc(group.title) + '</th></tr>';
       var rows = group.rows.map(function (row) {
+        var pjRow = /^PJ adicional/i.test(row.label);
         var cells = PLANS.map(function (p) {
-          return '<td' + (p.featured ? ' class="cmp-featured"' : '') + '>' + cell(row.values[p.key]) + '</td>';
+          var inner = row.pjOnly
+            ? '<span class="cmp-pjval">' + cell(row.values[p.key]) + '</span><span class="cmp-pfval">' + cell(false) + '</span>'
+            : cell(row.values[p.key]);
+          return '<td' + (p.featured ? ' class="cmp-featured"' : '') + '>' + inner + '</td>';
         }).join('');
-        return '<tr><th scope="row">' + esc(row.label) + '</th>' + cells + '</tr>';
+        var cls = pjRow ? ' class="cmp-row--pj"' : (row.pjOnly ? ' class="cmp-row--pjonly"' : '');
+        return '<tr' + cls + '><th scope="row">' + esc(row.label) + '</th>' + cells + '</tr>';
       }).join('');
       return groupRow + rows;
     }).join('');
@@ -597,8 +689,11 @@
 
     // Modo home: renderiza os cards + a caixa comparativa; o JS inline da home cuida do modal
     if (homeGrid) {
+      injectDoctypeCss();
+      homeGrid.insertAdjacentHTML('beforebegin', buildDoctypeToggle());
       homeGrid.innerHTML = buildHomeCards();
       initComparison(homeGrid);
+      initDoctype();
     }
 
     // Modo SEO: renderiza cards simples + injeta modal CSS + HTML + JS
