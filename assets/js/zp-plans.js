@@ -18,6 +18,7 @@
     {
       key: 'organiza',
       name: 'Organiza',
+      namePF: 'Controla',
       price: '39,90',
       priceNote: 'Depois dos 7 dias grátis. Cancele quando quiser.',
       desc: 'O ponto de partida ideal. Saia da planilha hoje e organize o financeiro do seu negócio sem complicação.',
@@ -71,6 +72,7 @@
     {
       key: 'cresce',
       name: 'Cresce',
+      namePF: 'Prospera',
       price: '54,90',
       priceNote: 'Depois dos 7 dias grátis. Cancele quando quiser.',
       desc: 'A escolha de quem já saiu da planilha e quer emitir nota fiscal no mesmo lugar do financeiro.',
@@ -130,6 +132,7 @@
     {
       key: 'pro',
       name: 'Pro',
+      namePF: 'Realiza',
       price: '75,90',
       priceNote: 'Depois dos 7 dias grátis. Cancele quando quiser.',
       desc: 'Para quem já tem volume alto e quer automação completa com atendimento dedicado.',
@@ -261,6 +264,17 @@
     return pj.toFixed(2).replace('.', ',');
   }
 
+  function pfName(p) { return p.namePF || p.name; }
+  function pfNameByName(pjName) {
+    for (var i = 0; i < PLANS.length; i++) {
+      if (PLANS[i].name === pjName) return PLANS[i].namePF || pjName;
+    }
+    return pjName;
+  }
+  function ctaLabelPF(p) {
+    return (p.namePF && p.ctaLabel) ? p.ctaLabel.split(p.name).join(pfName(p)) : p.ctaLabel;
+  }
+
   var DOCTYPE_CSS = [
     '.plan-doctype{display:flex;gap:6px;max-width:340px;margin:0 auto 1.8rem;background:rgba(121,59,237,.08);border-radius:999px;padding:4px}',
     '.plan-doctype-btn{flex:1;padding:.6rem .5rem;border:0;border-radius:999px;background:transparent;font-family:inherit;font-size:.9rem;font-weight:600;color:var(--text-dark);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:background .2s,color .2s}',
@@ -292,6 +306,10 @@
 
   function applyDoctype(type) {
     var isPJ = type === 'pj';
+    document.querySelectorAll('[data-name-pj]').forEach(function (el) {
+      var v = isPJ ? el.getAttribute('data-name-pj') : el.getAttribute('data-name-pf');
+      if (v != null) el.textContent = v;
+    });
     document.querySelectorAll('.plan-price-amount').forEach(function (el) {
       var v = isPJ ? el.getAttribute('data-price-pj') : el.getAttribute('data-price-pf');
       if (v) el.textContent = v;
@@ -346,7 +364,7 @@
           + '</li>';
       }).join('');
       var featsHead = p.inherits
-        ? '<p class="plan-inherit">' + icon('check-check', 15) + ' Tudo do <strong>' + esc(p.inherits) + '</strong>, e mais:</p>'
+        ? '<p class="plan-inherit">' + icon('check-check', 15) + ' Tudo do <strong data-name-pj="' + esc(p.inherits) + '" data-name-pf="' + esc(pfNameByName(p.inherits)) + '">' + esc(p.inherits) + '</strong>, e mais:</p>'
         : '<p class="plan-feature-group-title">Recursos inclusos</p>';
       var feats = featsHead + '<ul class="plan-features-list">' + lis + '</ul>';
 
@@ -364,7 +382,7 @@
 
       return '<div class="' + cls + '" data-plan-card="' + esc(p.key) + '">'
         + (p.popTag ? '<div class="pop-tag">' + esc(p.popTag) + '</div>' : '')
-        + '<h3 class="plan-name">' + esc(p.name) + '</h3>'
+        + '<h3 class="plan-name" data-name-pj="' + esc(p.name) + '" data-name-pf="' + esc(pfName(p)) + '">' + esc(p.name) + '</h3>'
         + '<p class="plan-desc">' + esc(p.desc) + '</p>'
         + '<div class="plan-price">'
         +   '<span class="plan-price-currency">R$</span>'
@@ -373,7 +391,7 @@
         + '</div>'
         + '<p class="plan-price-note">' + esc(p.priceNote) + '</p>'
         + '<button type="button" class="' + p.ctaClass + '" style="width:100%;"'
-        +   ' data-lead-modal data-plan="' + esc(p.key) + '">' + esc(p.ctaLabel) + '</button>'
+        +   ' data-lead-modal data-plan="' + esc(p.key) + '" data-name-pj="' + esc(p.ctaLabel) + '" data-name-pf="' + esc(ctaLabelPF(p)) + '">' + esc(p.ctaLabel) + '</button>'
         + '<p class="plan-cta-note">7 dias de teste · sem cartão de crédito</p>'
         + '<hr class="plan-features-divider">'
         + '<div class="plan-features">' + feats + '</div>'
@@ -394,7 +412,7 @@
     }
     var head = '<tr><th scope="col" class="cmp-corner">Recurso</th>'
       + PLANS.map(function (p) {
-          return '<th scope="col"' + (p.featured ? ' class="cmp-featured"' : '') + '>' + esc(p.name) + '</th>';
+          return '<th scope="col"' + (p.featured ? ' class="cmp-featured"' : '') + ' data-name-pj="' + esc(p.name) + '" data-name-pf="' + esc(pfName(p)) + '">' + esc(p.name) + '</th>';
         }).join('')
       + '</tr>';
 
