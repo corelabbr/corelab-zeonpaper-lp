@@ -4131,7 +4131,11 @@
                 }).join('&');
 
                 var PLAN_MAP = { organiza: 'ORGANIZA', cresce: 'CRESCE', pro: 'PRO', promo9: 'PROMO9' };
-                var apiPlan = PLAN_MAP[(opts.plan || '').toLowerCase()] || '';
+                var PLAN_MAP_PF = { organiza: 'CONTROLA', cresce: 'PROSPERA', pro: 'REALIZA' };
+                var _dtBtn = document.querySelector('.plan-doctype-btn.active');
+                var _isPF = !!(_dtBtn && _dtBtn.getAttribute('data-doctype') === 'pf');
+                var _planKey = (opts.plan || '').toLowerCase();
+                var apiPlan = (_isPF && PLAN_MAP_PF[_planKey]) ? PLAN_MAP_PF[_planKey] : (PLAN_MAP[_planKey] || '');
 
                 var payload = {
                     username: data.email,

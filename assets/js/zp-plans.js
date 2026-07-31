@@ -605,6 +605,7 @@
     var EMAIL_RE  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var UTM_KEYS  = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_adgroup','matchtype','keyword'];
     var PLAN_MAP  = { organiza:'ORGANIZA', cresce:'CRESCE', pro:'PRO' };
+    var PLAN_MAP_PF = { organiza:'CONTROLA', cresce:'PROSPERA', pro:'REALIZA' };
 
     // ── Cookies / UTM ────────────────────────────────────────────────────
     function writeCookie(k,v){var e=new Date(Date.now()+30*864e5).toUTCString();document.cookie=k+'='+encodeURIComponent(v)+'; expires='+e+'; path=/; SameSite=Lax';}
@@ -661,7 +662,11 @@
     form.addEventListener('submit',function(e){
       e.preventDefault();
       var d=validate();if(!d)return;
-      var attr=getAttr(),vid=getVisitorId(),apiPlan=PLAN_MAP[(currentPlan||'').toLowerCase()]||'';
+      var attr=getAttr(),vid=getVisitorId();
+      var _dtBtn=document.querySelector('.plan-doctype-btn.active');
+      var _isPF=!!(_dtBtn&&_dtBtn.getAttribute('data-doctype')==='pf');
+      var _pk=(currentPlan||'').toLowerCase();
+      var apiPlan=(_isPF&&PLAN_MAP_PF[_pk])?PLAN_MAP_PF[_pk]:(PLAN_MAP[_pk]||'');
       var payload={username:d.email,password:d.senha,name:d.nome,phone:apiPhone(d.tel),country_id:'BR',taxNumber:d.cnpj.replace(/\D/g,''),segment:attr.segment,companySize:attr.companySize,employeesCount:attr.employeesCount,companyAge:attr.companyAge,media:Object.keys(attr).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(attr[k]);}).join('&'),customFields:attr};
       if(apiPlan)payload.plan=apiPlan;
       setLoad(true);
