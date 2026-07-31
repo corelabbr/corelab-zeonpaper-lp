@@ -327,6 +327,9 @@
     document.querySelectorAll('.plan-extras-item--pj').forEach(function (el) {
       el.style.display = isPJ ? '' : 'none';
     });
+    document.querySelectorAll('.plan-feat--pj').forEach(function (el) {
+      el.style.display = isPJ ? '' : 'none';
+    });
     document.querySelectorAll('.cmp-price').forEach(function (el) {
       var v = isPJ ? el.getAttribute('data-price-pj') : el.getAttribute('data-price-pf');
       if (v) el.textContent = 'R$ ' + v;
@@ -369,7 +372,8 @@
         ? p.highlights
         : (p.featureGroups[0] ? p.featureGroups[0].items : []);
       var lis = hlItems.map(function (it) {
-        return '<li>' + icon('check', 15) + ' ' + esc(it.label)
+        var pj = /NF-e|NFS-e|nota fiscal/i.test(it.label);
+        return '<li' + (pj ? ' class="plan-feat--pj"' : '') + '>' + icon('check', 15) + ' ' + esc(it.label)
           + (it.badge ? ' <span class="plan-feature-new">' + esc(it.badge) + '</span>' : '')
           + '</li>';
       }).join('');
@@ -381,7 +385,7 @@
       var extras = p.extras
         ? '<div class="plan-extras">'
           + p.extras.map(function (e) {
-              var isPJ = /PJ adicional/i.test(e.label);
+              var isPJ = /PJ adicional|NFs excedentes/i.test(e.label);
               return '<div class="plan-extras-item' + (isPJ ? ' plan-extras-item--pj' : '') + '">'
                 + '<span>' + icon(e.icon, 12) + ' ' + esc(e.label) + '</span>'
                 + '<span>' + esc(e.value) + '</span>'
