@@ -226,7 +226,7 @@
       { label: 'Conta Open Finance incluída',         values: { organiza: '1', cresce: '1', pro: '1' } },
       { label: 'Agenda financeira e centro de custos', values: { organiza: true, cresce: true, pro: true } },
       { label: 'Relatórios gerenciais e DRE',         values: { organiza: true, cresce: true, pro: true } },
-      { label: 'Multiempresas e usuários ilimitados', values: { organiza: false, cresce: true, pro: true } }
+      { label: 'Multiempresas e usuários ilimitados', values: { organiza: false, cresce: true, pro: true }, pjOnly: true }
     ]},
     { title: 'Nota fiscal', rows: [
       { label: 'Emissão de NF-e e NFS-e',             values: { organiza: false, cresce: true, pro: true }, pjOnly: true },
@@ -372,7 +372,7 @@
         ? p.highlights
         : (p.featureGroups[0] ? p.featureGroups[0].items : []);
       var lis = hlItems.map(function (it) {
-        var pj = /NF-e|NFS-e|nota fiscal/i.test(it.label);
+        var pj = /NF-e|NFS-e|nota fiscal|multiempresa/i.test(it.label);
         return '<li' + (pj ? ' class="plan-feat--pj"' : '') + '>' + icon('check', 15) + ' ' + esc(it.label)
           + (it.badge ? ' <span class="plan-feature-new">' + esc(it.badge) + '</span>' : '')
           + '</li>';
