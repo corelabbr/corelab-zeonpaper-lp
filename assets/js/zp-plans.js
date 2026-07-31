@@ -20,8 +20,10 @@
       name: 'Organiza',
       namePF: 'Controla',
       price: '39,90',
+      pricePF: '16,90',
       priceNote: 'Depois dos 7 dias grátis. Cancele quando quiser.',
       desc: 'O ponto de partida ideal. Saia da planilha hoje e organize o financeiro do seu negócio sem complicação.',
+      descPF: 'O ponto de partida pra assumir o controle do seu dinheiro e sair da planilha, sem complicação.',
       featured: false,
       popTag: null,
       ctaLabel: 'Começar grátis',
@@ -74,8 +76,10 @@
       name: 'Cresce',
       namePF: 'Prospera',
       price: '54,90',
+      pricePF: '29,90',
       priceNote: 'Depois dos 7 dias grátis. Cancele quando quiser.',
       desc: 'A escolha de quem já saiu da planilha e quer emitir nota fiscal no mesmo lugar do financeiro.',
+      descPF: 'Pra quem já se organizou e quer ver o dinheiro render e crescer, com DRE e relatórios num só lugar.',
       featured: true,
       popTag: 'MAIS ESCOLHIDO',
       ctaLabel: 'Começar com Cresce',
@@ -134,8 +138,10 @@
       name: 'Pro',
       namePF: 'Realiza',
       price: '75,90',
+      pricePF: '49,90',
       priceNote: 'Depois dos 7 dias grátis. Cancele quando quiser.',
       desc: 'Para quem já tem volume alto e quer automação completa com atendimento dedicado.',
+      descPF: 'Pra realizar seus objetivos com previsibilidade total, relatórios completos e suporte dedicado.',
       featured: false,
       popTag: null,
       ctaLabel: 'Começar com Pro',
@@ -310,19 +316,23 @@
       var v = isPJ ? el.getAttribute('data-name-pj') : el.getAttribute('data-name-pf');
       if (v != null) el.textContent = v;
     });
+    document.querySelectorAll('.plan-desc').forEach(function (el) {
+      var d = isPJ ? el.getAttribute('data-desc-pj') : el.getAttribute('data-desc-pf');
+      if (d != null) el.textContent = d;
+    });
     document.querySelectorAll('.plan-price-amount').forEach(function (el) {
       var v = isPJ ? el.getAttribute('data-price-pj') : el.getAttribute('data-price-pf');
       if (v) el.textContent = v;
     });
     document.querySelectorAll('.plan-extras-item--pj').forEach(function (el) {
-      el.style.display = isPJ ? 'none' : '';
+      el.style.display = isPJ ? '' : 'none';
     });
     document.querySelectorAll('.cmp-price').forEach(function (el) {
       var v = isPJ ? el.getAttribute('data-price-pj') : el.getAttribute('data-price-pf');
       if (v) el.textContent = 'R$ ' + v;
     });
     document.querySelectorAll('.cmp-row--pj').forEach(function (el) {
-      el.style.display = isPJ ? 'none' : '';
+      el.style.display = isPJ ? '' : 'none';
     });
     var cmpTable = document.querySelector('.comparison-table');
     if (cmpTable) cmpTable.classList.toggle('cmp-pf', !isPJ);
@@ -383,10 +393,10 @@
       return '<div class="' + cls + '" data-plan-card="' + esc(p.key) + '">'
         + (p.popTag ? '<div class="pop-tag">' + esc(p.popTag) + '</div>' : '')
         + '<h3 class="plan-name" data-name-pj="' + esc(p.name) + '" data-name-pf="' + esc(pfName(p)) + '">' + esc(p.name) + '</h3>'
-        + '<p class="plan-desc">' + esc(p.desc) + '</p>'
+        + '<p class="plan-desc" data-desc-pj="' + esc(p.desc) + '" data-desc-pf="' + esc(p.descPF || p.desc) + '">' + esc(p.desc) + '</p>'
         + '<div class="plan-price">'
         +   '<span class="plan-price-currency">R$</span>'
-        +   '<span class="plan-price-amount" data-price-pf="' + esc(p.price) + '" data-price-pj="' + esc(toPJPrice(p.price)) + '">' + esc(p.price) + '</span>'
+        +   '<span class="plan-price-amount" data-price-pf="' + esc(p.pricePF) + '" data-price-pj="' + esc(p.price) + '">' + esc(p.price) + '</span>'
         +   '<span class="plan-price-period">/mês</span>'
         + '</div>'
         + '<p class="plan-price-note">' + esc(p.priceNote) + '</p>'
@@ -419,7 +429,7 @@
     var priceRow = '<tr class="cmp-price-row"><th scope="row">Preço mensal</th>'
       + PLANS.map(function (p) {
           return '<td' + (p.featured ? ' class="cmp-featured"' : '') + '>'
-            + '<span class="cmp-price" data-price-pf="' + esc(p.price) + '" data-price-pj="' + esc(toPJPrice(p.price)) + '">R$ ' + esc(p.price) + '</span>'
+            + '<span class="cmp-price" data-price-pf="' + esc(p.pricePF) + '" data-price-pj="' + esc(p.price) + '">R$ ' + esc(p.price) + '</span>'
             + '</td>';
         }).join('')
       + '</tr>';
