@@ -4256,15 +4256,30 @@
                         if (subtitleEl) subtitleEl.textContent = DEF.subtitle;
                         if (submitBtn)  submitBtn.textContent  = DEF.submit;
                     }
-                    // Reseta o seletor de documento para Pessoa Jurídica (padrão)
+                    // Herda PF/PJ do toggle de preços — não pergunta de novo no modal
+                    var _pricingDt = document.querySelector('.plan-doctype-btn.active');
+                    var _ct = (_pricingDt && _pricingDt.getAttribute('data-doctype') === 'pf') ? 'PP' : 'LP';
                     var dtGroup = overlay.querySelector('.lead-doctype');
-                    if (dtGroup) dtGroup.querySelectorAll('.lead-doctype-btn').forEach(function(b) {
-                        b.classList.toggle('active', b.getAttribute('data-doctype') === 'LP');
-                    });
+                    if (dtGroup) {
+                        dtGroup.style.display = 'none'; // seletor redundante: doctype vem do toggle
+                        dtGroup.querySelectorAll('.lead-doctype-btn').forEach(function(b) {
+                            b.classList.toggle('active', b.getAttribute('data-doctype') === _ct);
+                        });
+                    }
                     var ctInput = form.querySelector('input[name="contactType"]');
-                    if (ctInput) ctInput.value = 'LP';
+                    if (ctInput) ctInput.value = _ct;
                     var docInput = form.querySelector('input[name="cnpj"]');
-                    if (docInput) { docInput.placeholder = 'CPF ou CNPJ'; docInput.maxLength = 18; }
+                    if (docInput) {
+                        docInput.placeholder = (_ct === 'PP') ? 'CPF' : 'CNPJ';
+                        docInput.maxLength = (_ct === 'PP') ? 14 : 18;
+                    }
+                    // Badge reflete o nome PF/PJ do plano selecionado
+                    if (plan && plan !== 'promo9' && badge) {
+                        var _NM_PF = { organiza: 'Controla', cresce: 'Prospera', pro: 'Realiza' };
+                        var _NM_PJ = { organiza: 'Organiza', cresce: 'Cresce', pro: 'Pro' };
+                        var _nm = (_ct === 'PP' ? _NM_PF[plan] : _NM_PJ[plan]);
+                        if (_nm) badge.textContent = _nm;
+                    }
                     overlay.classList.add('open');
                     document.body.style.overflow = 'hidden';
                     form.hidden = false;
