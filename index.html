@@ -91,10 +91,10 @@
     <style>
         :root {
             /* ─── Brand Palette (MIV Zeonpaper) ─── */
-            --primary: #793BED;
-            --primary-dark: #6B21A8;
-            --primary-light: #EFE8FD;
-            --primary-50: #F5F3FF;
+            --primary: #4E9D5E;
+            --primary-dark: #3B7D49;
+            --primary-light: #E9F4EB;
+            --primary-50: #F2F9F3;
             --accent: #22C55E;
             --accent-dark: #16A34A;
             --accent-light: #DCFCE7;
@@ -104,7 +104,7 @@
             --bg-light: #FAF9F5;
             --bg-dark: #020817;
             --white: #FFFFFF;
-            --pink: #EC4699;
+            --pink: #86C48A;
             --amber: #FACC15;
 
             /* Radius (MIV) */
@@ -126,11 +126,11 @@
             --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.06);
             --shadow-warm: 0 4px 14px rgba(217, 119, 87, 0.12);
             --shadow-warm-lg: 0 40px 80px rgba(217, 119, 87, 0.16);
-            --shadow-strong: 0 20px 50px rgba(121, 59, 237, 0.15);
-            --shadow-purple: 0 20px 50px rgba(121, 59, 237, 0.15);
+            --shadow-strong: 0 20px 50px rgba(78, 157, 94, 0.15);
+            --shadow-purple: 0 20px 50px rgba(78, 157, 94, 0.15);
 
             --container: 1200px;
-            --gradient: linear-gradient(135deg, #793BED 0%, #EC4699 100%);
+            --gradient: linear-gradient(135deg, #86C48A 0%, #4E9D5E 100%);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -203,15 +203,15 @@
         .btn-primary {
             background: var(--primary);
             color: white;
-            box-shadow: 0 4px 14px rgba(121, 59, 237, 0.2);
+            box-shadow: 0 4px 14px rgba(78, 157, 94, 0.2);
             border-radius: var(--radius-btn);
         }
-        .btn-primary:hover { box-shadow: 0 6px 20px rgba(121, 59, 237, 0.3); }
+        .btn-primary:hover { box-shadow: 0 6px 20px rgba(78, 157, 94, 0.3); }
 
         .btn-outline {
             background: transparent;
             color: var(--primary);
-            border: 2px solid rgba(121, 59, 237, 0.3);
+            border: 2px solid rgba(78, 157, 94, 0.3);
             border-radius: var(--radius-btn);
         }
         .btn-outline:hover { background: var(--primary-light); border-color: var(--primary); }
@@ -224,7 +224,7 @@
             padding: 0.6rem 1.4rem;
             font-size: 0.9rem;
         }
-        .btn-nav-outline:hover { border-color: var(--primary); color: #A78BFA; background: rgba(121, 59, 237, 0.08); }
+        .btn-nav-outline:hover { border-color: var(--primary); color: #7FBF86; background: rgba(78, 157, 94, 0.08); }
 
         .btn-white {
             background: white;
@@ -306,10 +306,13 @@
         .btn-nav-cta:hover { background: var(--primary-dark); }
         .logo {
             text-decoration: none;
-            display: flex; align-items: center;
+            display: flex; align-items: center; gap: 9px;
             flex-shrink: 0;
         }
-        .logo img { height: 30px; width: auto; display: block; filter: brightness(0) invert(1); }
+        .logo img { height: 34px; width: auto; display: block; }
+        .logo-word { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.3rem; letter-spacing: -.02em; line-height: 1; }
+        .lw-zeon { color: var(--primary); font-weight: 800; }
+        .lw-paper { color: var(--text-gray); font-weight: 500; }
 
         /* ─── HAMBURGER + MOBILE DRAWER ─── */
         .hamburger {
@@ -787,8 +790,8 @@
             50%       { transform: perspective(1200px) rotateY(-4deg) rotateX(2deg) translateY(-10px); }
         }
         @keyframes glow-pulse {
-            0%, 100% { box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 24px 64px rgba(0,0,0,0.55), 0 0 80px rgba(121,59,237,0.30); }
-            50%       { box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 32px 80px rgba(0,0,0,0.55), 0 0 130px rgba(121,59,237,0.55); }
+            0%, 100% { box-shadow: 0 0 0 1px rgba(255,255,255,0.06), 0 24px 64px rgba(0,0,0,0.55), 0 0 80px rgba(78,157,94,0.30); }
+            50%       { box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 32px 80px rgba(0,0,0,0.55), 0 0 130px rgba(78,157,94,0.55); }
         }
         .hero-product-frame {
             position: relative;
@@ -796,7 +799,7 @@
             margin-right: -4%;
             border-radius: 16px;
             overflow: hidden;
-            border: 1px solid rgba(121, 59, 237, 0.35);
+            border: 1px solid rgba(78, 157, 94, 0.35);
             transform-origin: left center;
             animation: dashboard-float 5s ease-in-out infinite, glow-pulse 5s ease-in-out infinite;
         }
@@ -843,7 +846,7 @@
             aspect-ratio: 16 / 9;
             border-radius: 16px;
             overflow: hidden;
-            border: 1px solid rgba(121, 59, 237, 0.35);
+            border: 1px solid rgba(78, 157, 94, 0.35);
             background: #000;
             animation: glow-pulse 5s ease-in-out infinite;
         }
@@ -1008,7 +1011,7 @@
             background: var(--primary-50);
             padding: 5px 14px;
             border-radius: 999px;
-            border: 1px solid rgba(121, 59, 237, 0.2);
+            border: 1px solid rgba(78, 157, 94, 0.2);
         }
         .section-title {
             font-size: clamp(2.2rem, 4.5vw, 3.2rem);
@@ -1092,7 +1095,7 @@
             display: none;
             width: 100%;
             border-radius: 10px;
-            box-shadow: 0 8px 32px rgba(121, 59, 237, 0.12);
+            box-shadow: 0 8px 32px rgba(78, 157, 94, 0.12);
         }
         .feat-screenshot.active { display: block; animation: fadeInUp 0.3s ease; }
         .features-trust {
@@ -1124,7 +1127,7 @@
                 width: 100%;
                 margin-top: 1rem;
                 border-radius: 10px;
-                box-shadow: 0 4px 20px rgba(121, 59, 237, 0.10);
+                box-shadow: 0 4px 20px rgba(78, 157, 94, 0.10);
             }
             .features-trust { gap: 1.5rem; }
         }
@@ -1178,7 +1181,7 @@
             text-align: left;
             font-weight: 600;
         }
-        th:nth-child(3) { color: #A78BFA; }
+        th:nth-child(3) { color: #7FBF86; }
         td {
             padding: 1.1rem 1.5rem;
             border-bottom: 1px solid rgba(0,0,0,0.04);
@@ -1505,7 +1508,7 @@
             margin-left: 0.4rem;
             padding: 0.05rem 0.4rem;
             border-radius: 999px;
-            background: rgba(121, 59, 237, 0.1);
+            background: rgba(78, 157, 94, 0.1);
             color: var(--primary);
             font-size: 0.65rem;
             font-weight: 700;
@@ -1578,7 +1581,7 @@
             border: 2px solid var(--primary);
             box-shadow: var(--shadow-strong);
         }
-        .price-card.featured:hover { box-shadow: 0 25px 60px rgba(121, 59, 237, 0.18); }
+        .price-card.featured:hover { box-shadow: 0 25px 60px rgba(78, 157, 94, 0.18); }
         .pop-tag {
             position: absolute;
             top: -14px; left: 50%;
@@ -1754,7 +1757,7 @@
             position: absolute;
             top: -30%; right: -10%;
             width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(121, 59, 237, 0.2) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(78, 157, 94, 0.2) 0%, transparent 70%);
             pointer-events: none;
         }
         .cta-section h2 { color: white; font-size: clamp(2.2rem, 4.5vw, 3.2rem); margin-bottom: 1.25rem; }
@@ -1806,9 +1809,9 @@
         .footer-legal a:hover { color: rgba(255,255,255,0.75); }
         .footer-logo {
             text-decoration: none;
-            display: flex; align-items: center;
+            display: flex; align-items: center; gap: 9px;
         }
-        .footer-logo img { height: 30px; width: auto; display: block; filter: brightness(0) invert(1); }
+        .footer-logo img { height: 30px; width: auto; display: block; }
 
         /* ─── SCROLL MARGIN ─── */
         #funcionalidades, #precos, #faq, #como-funciona {
@@ -2513,7 +2516,7 @@
             font-family: inherit;
             transition: background 0.2s, border-color 0.2s;
         }
-        .faq-toggle:hover { background: rgba(121, 59, 237, 0.04); border-color: var(--primary); color: var(--primary); }
+        .faq-toggle:hover { background: rgba(78, 157, 94, 0.04); border-color: var(--primary); color: var(--primary); }
         .faq-grid .faq-item.faq-extra { display: none; }
         .faq-grid.expanded .faq-item.faq-extra { display: block; }
 
@@ -2521,12 +2524,12 @@
         .pricing-tabs { display: none; }
         @media (max-width: 900px) {
             .pricing-tabs {
-                display: flex;
+                display: none;
                 gap: 6px;
                 padding: 4px;
                 margin: 0 auto 1.5rem;
                 max-width: 480px;
-                background: rgba(121, 59, 237, 0.08);
+                background: rgba(78, 157, 94, 0.08);
                 border-radius: 999px;
                 position: relative;
             }
@@ -2550,7 +2553,7 @@
             .pricing-tab.active {
                 background: var(--primary);
                 color: var(--white);
-                box-shadow: 0 4px 14px rgba(121, 59, 237, 0.25);
+                box-shadow: 0 4px 14px rgba(78, 157, 94, 0.25);
             }
             .pricing-tab-badge {
                 font-size: 0.62rem;
@@ -2563,12 +2566,11 @@
                 border-radius: 999px;
             }
             .pricing-tab:not(.active) .pricing-tab-badge {
-                background: rgba(121, 59, 237, 0.12);
+                background: rgba(78, 157, 94, 0.12);
                 color: var(--primary);
             }
-            /* Esconde cards não selecionados no mobile */
-            .pricing-grid > .price-card { display: none; }
-            .pricing-grid > .price-card.active { display: flex; }
+            /* Mobile: mostra todos os cards empilhados (abas removidas) */
+            .pricing-grid > .price-card { display: flex; }
         }
 
         /* ─── STICKY CTA MOBILE ─── */
@@ -2645,14 +2647,14 @@
         .theme-white .nav-dropdown:hover .nav-dropdown-toggle { color: var(--text-dark); }
         .theme-white .btn-nav-login { color: var(--text-gray); }
         .theme-white .btn-nav-login:hover { color: var(--text-dark); }
-        .theme-white .btn-nav-outline { color: var(--primary); border-color: rgba(121, 59, 237, 0.35); }
+        .theme-white .btn-nav-outline { color: var(--primary); border-color: rgba(78, 157, 94, 0.35); }
         .theme-white .btn-nav-outline:hover { color: var(--primary-dark); background: var(--primary-light); }
         .theme-white .hamburger span { background: var(--text-dark); }
         .theme-white .btn-nav-cta {
-            background: var(--gradient);
-            box-shadow: 0 6px 18px rgba(121, 59, 237, 0.28);
+            background: var(--primary);
+            box-shadow: 0 6px 18px rgba(78, 157, 94, 0.28);
         }
-        .theme-white .btn-nav-cta:hover { filter: brightness(1.05); background: var(--gradient); }
+        .theme-white .btn-nav-cta:hover { background: var(--primary-dark); }
 
         /* Dropdown do nav */
         .theme-white .nav-dropdown-menu {
@@ -2682,8 +2684,8 @@
         .theme-white .hero {
             background: #FFFFFF;
             background-image:
-                radial-gradient(900px 480px at 12% -8%, rgba(121, 59, 237, 0.07) 0%, transparent 60%),
-                radial-gradient(820px 460px at 92% 4%, rgba(236, 70, 153, 0.06) 0%, transparent 62%),
+                radial-gradient(900px 480px at 12% -8%, rgba(78, 157, 94, 0.07) 0%, transparent 60%),
+                radial-gradient(820px 460px at 92% 4%, rgba(134, 196, 138, 0.06) 0%, transparent 62%),
                 linear-gradient(180deg, #FDFBFF 0%, #FFFFFF 55%);
         }
         .theme-white .hero h1 { color: var(--text-dark); }
@@ -2739,12 +2741,12 @@
         /* ─── CTA FINAL ─── */
         .theme-white .cta-section {
             background:
-                radial-gradient(700px 380px at 18% 12%, rgba(121, 59, 237, 0.09) 0%, transparent 62%),
-                radial-gradient(700px 420px at 85% 88%, rgba(236, 70, 153, 0.07) 0%, transparent 60%),
+                radial-gradient(700px 380px at 18% 12%, rgba(78, 157, 94, 0.09) 0%, transparent 62%),
+                radial-gradient(700px 420px at 85% 88%, rgba(134, 196, 138, 0.07) 0%, transparent 60%),
                 linear-gradient(135deg, #FCF9FF 0%, #FFFAFD 100%);
         }
         .theme-white .cta-section::before {
-            background: radial-gradient(circle, rgba(236, 70, 153, 0.07) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(134, 196, 138, 0.07) 0%, transparent 70%);
         }
         .theme-white .cta-section h2 { color: var(--text-dark); }
         .theme-white .cta-section p { color: var(--text-gray); }
@@ -2776,9 +2778,9 @@
             <div class="nav-left">
                 <a href="#" class="logo">
                     <picture>
-                        <source srcset="./assets/logo.webp" type="image/webp">
                         <img src="./assets/logo.png" alt="Zeonpaper" decoding="async">
                     </picture>
+                    <span class="logo-word"><span class="lw-zeon">zeon</span><span class="lw-paper">paper</span></span>
                 </a>
             </div>
             <div class="nav-links">
@@ -3342,7 +3344,7 @@
         <!-- ═══ CTA FINAL ═══ -->
         <section id="cta-final" class="cta-section text-center" data-reveal>
             <div class="container" style="max-width: 600px; position: relative; z-index: 1;">
-                <h2>Organize o financeiro do seu negócio <span style="color: #A78BFA;">sem depender de planilhas</span></h2>
+                <h2>Organize o financeiro do seu negócio <span style="color: #7FBF86;">sem depender de planilhas</span></h2>
                 <p>Para MEIs, microempresas e pequenos negócios com financeiro ainda manual.</p>
                 <div class="cta-lead-form">
                     <a href="#precos" class="btn btn-cta" style="height: 52px; font-size: 1rem; display: inline-flex; align-items: center; justify-content: center; width: 100%; text-decoration: none;">Ver planos e começar grátis</a>
@@ -3359,9 +3361,9 @@
                 <div class="footer-brand">
                     <a href="#" class="footer-logo">
                         <picture>
-                        <source srcset="./assets/logo.webp" type="image/webp">
                         <img src="./assets/logo.png" alt="Zeonpaper" decoding="async">
                     </picture>
+                        <span class="logo-word"><span class="lw-zeon">zeon</span><span class="lw-paper">paper</span></span>
                     </a>
                     <p>Sistema financeiro simples para MEI, microempresa e prestador de serviço. Controle contas a pagar e receber sem ERP pesado.</p>
                 </div>
@@ -4130,7 +4132,7 @@
                     return encodeURIComponent(k) + '=' + encodeURIComponent(attribution[k]);
                 }).join('&');
 
-                var PLAN_MAP = { organiza: 'ORGANIZA', cresce: 'CRESCE', pro: 'PRO', promo9: 'PROMO9' };
+                var PLAN_MAP = { organiza: 'ORGANIZA', cresce: 'CRESCE', pro: 'PRO', controla: 'CONTROLA', prospera: 'PROSPERA', promo9: 'PROMO9' };
                 var apiPlan = PLAN_MAP[(opts.plan || '').toLowerCase()] || '';
 
                 var payload = {
@@ -4252,15 +4254,23 @@
                         if (subtitleEl) subtitleEl.textContent = DEF.subtitle;
                         if (submitBtn)  submitBtn.textContent  = DEF.submit;
                     }
-                    // Reseta o seletor de documento para Pessoa Jurídica (padrão)
+                    // Herda PF/PJ do toggle de preços — não pergunta de novo no modal
+                    var _pricingDt = document.querySelector('.plan-doctype-btn.active');
+                    var _ct = (_pricingDt && _pricingDt.getAttribute('data-doctype') === 'pf') ? 'PP' : 'LP';
                     var dtGroup = overlay.querySelector('.lead-doctype');
-                    if (dtGroup) dtGroup.querySelectorAll('.lead-doctype-btn').forEach(function(b) {
-                        b.classList.toggle('active', b.getAttribute('data-doctype') === 'LP');
-                    });
+                    if (dtGroup) {
+                        dtGroup.style.display = 'none'; // seletor redundante: doctype vem do toggle
+                        dtGroup.querySelectorAll('.lead-doctype-btn').forEach(function(b) {
+                            b.classList.toggle('active', b.getAttribute('data-doctype') === _ct);
+                        });
+                    }
                     var ctInput = form.querySelector('input[name="contactType"]');
-                    if (ctInput) ctInput.value = 'LP';
+                    if (ctInput) ctInput.value = _ct;
                     var docInput = form.querySelector('input[name="cnpj"]');
-                    if (docInput) { docInput.placeholder = 'CPF ou CNPJ'; docInput.maxLength = 18; }
+                    if (docInput) {
+                        docInput.placeholder = (_ct === 'PP') ? 'CPF' : 'CNPJ';
+                        docInput.maxLength = (_ct === 'PP') ? 14 : 18;
+                    }
                     overlay.classList.add('open');
                     document.body.style.overflow = 'hidden';
                     form.hidden = false;

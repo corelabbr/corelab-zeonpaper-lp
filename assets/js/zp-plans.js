@@ -18,9 +18,12 @@
     {
       key: 'organiza',
       name: 'Organiza',
+      namePF: 'Controla',
       price: '39,90',
+      pricePF: '16,90',
       priceNote: 'Depois dos 7 dias grátis. Cancele quando quiser.',
       desc: 'O ponto de partida ideal. Saia da planilha hoje e organize o financeiro do seu negócio sem complicação.',
+      descPF: 'O ponto de partida pra assumir o controle do seu dinheiro e sair da planilha, sem complicação.',
       featured: false,
       popTag: null,
       ctaLabel: 'Começar grátis',
@@ -71,9 +74,12 @@
     {
       key: 'cresce',
       name: 'Cresce',
+      namePF: 'Prospera',
       price: '54,90',
+      pricePF: '29,90',
       priceNote: 'Depois dos 7 dias grátis. Cancele quando quiser.',
       desc: 'A escolha de quem já saiu da planilha e quer emitir nota fiscal no mesmo lugar do financeiro.',
+      descPF: 'Pra quem já se organizou e quer ver o dinheiro render e crescer, com DRE e relatórios num só lugar.',
       featured: true,
       popTag: 'MAIS ESCOLHIDO',
       ctaLabel: 'Começar com Cresce',
@@ -130,9 +136,12 @@
     {
       key: 'pro',
       name: 'Pro',
+      namePF: 'Realiza',
       price: '75,90',
+      pricePF: '49,90',
       priceNote: 'Depois dos 7 dias grátis. Cancele quando quiser.',
       desc: 'Para quem já tem volume alto e quer automação completa com atendimento dedicado.',
+      descPF: 'Pra realizar seus objetivos com previsibilidade total, relatórios completos e suporte dedicado.',
       featured: false,
       popTag: null,
       ctaLabel: 'Começar com Pro',
@@ -217,10 +226,10 @@
       { label: 'Conta Open Finance incluída',         values: { organiza: '1', cresce: '1', pro: '1' } },
       { label: 'Agenda financeira e centro de custos', values: { organiza: true, cresce: true, pro: true } },
       { label: 'Relatórios gerenciais e DRE',         values: { organiza: true, cresce: true, pro: true } },
-      { label: 'Multiempresas e usuários ilimitados', values: { organiza: false, cresce: true, pro: true } }
+      { label: 'Multiempresas e usuários ilimitados', values: { organiza: false, cresce: true, pro: true }, pjOnly: true }
     ]},
     { title: 'Nota fiscal', rows: [
-      { label: 'Emissão de NF-e e NFS-e',             values: { organiza: false, cresce: true, pro: true } },
+      { label: 'Emissão de NF-e e NFS-e',             values: { organiza: false, cresce: true, pro: true }, pjOnly: true },
       { label: 'Resumo diário do caixa no WhatsApp',  values: { organiza: false, cresce: false, pro: true } }
     ]},
     { title: 'Suporte', rows: [
@@ -229,7 +238,7 @@
       { label: 'Suporte dedicado no WhatsApp',        values: { organiza: false, cresce: false, pro: true } }
     ]},
     { title: 'Cobranças por uso', rows: [
-      { label: 'NFs excedentes',            values: { organiza: false, cresce: 'R$ 0,40/un', pro: 'R$ 0,40/un' } },
+      { label: 'NFs excedentes',            values: { organiza: false, cresce: 'R$ 0,40/un', pro: 'R$ 0,40/un' }, pjOnly: true },
       { label: 'PJ adicional',              values: { organiza: 'R$ 19,90/mês', cresce: 'R$ 19,90/mês', pro: 'R$ 19,90/mês' } },
       { label: 'Conta Open Finance adicional', values: { organiza: 'R$ 9,90/mês', cresce: 'R$ 9,90/mês', pro: 'R$ 9,90/mês' } }
     ]}
@@ -238,6 +247,78 @@
   /* =========================================================================
    * Helpers
    * ======================================================================= */
+  /* =========================================================================
+   * PLANOS PF — linha Pessoa Física (2 planos, sem nota fiscal/multiempresa)
+   * ======================================================================= */
+  var PLANS_PF = [
+    {
+      key: 'controla',
+      name: 'Controla',
+      price: '16,90',
+      priceNote: 'Depois dos 7 dias grátis. Cancele quando quiser.',
+      desc: 'O ponto de partida pra assumir o controle do seu dinheiro e sair da planilha, sem complicação.',
+      featured: false,
+      popTag: null,
+      ctaLabel: 'Começar grátis',
+      ctaClass: 'btn btn-outline',
+      inherits: null,
+      highlights: [
+        { label: 'Contas a pagar e receber' },
+        { label: 'Fluxo de caixa em tempo real' },
+        { label: 'Alertas automáticos de vencimento' },
+        { label: 'Pagamentos e recebimentos em massa' },
+        { label: 'Relatórios gerenciais e DRE' }
+      ],
+      extras: null
+    },
+    {
+      key: 'prospera',
+      name: 'Prospera',
+      price: '34,90',
+      priceNote: 'Depois dos 7 dias grátis. Cancele quando quiser.',
+      desc: 'Pra quem já se organizou e quer ver o dinheiro render e crescer, com automacao e mais controle.',
+      featured: true,
+      popTag: 'MAIS ESCOLHIDO',
+      ctaLabel: 'Começar com Prospera',
+      ctaClass: 'btn btn-cta',
+      inherits: 'Controla',
+      highlights: [
+        { label: '1 conta Open Finance incluída' },
+        { label: 'Relatórios por período' },
+        { label: 'Resumo diário do caixa no WhatsApp', badge: 'novo' }
+      ],
+      extras: [
+        { icon: 'landmark', label: 'Conta Open Finance adicional', value: '+ R$ 9,90/mês' }
+      ]
+    }
+  ];
+
+  var COMPARISON_PF = [
+    { title: 'Controle financeiro', rows: [
+      { label: 'Contas a pagar e receber',          values: { controla: true, prospera: true } },
+      { label: 'Fluxo de caixa em tempo real',      values: { controla: true, prospera: true } },
+      { label: 'Lançamentos recorrentes',           values: { controla: true, prospera: true } },
+      { label: 'Alertas automáticos de vencimento', values: { controla: true, prospera: true } }
+    ]},
+    { title: 'Operação em escala', rows: [
+      { label: 'Pagamentos e recebimentos em massa', values: { controla: true, prospera: true } },
+      { label: 'Parcelamento e amortização',         values: { controla: true, prospera: true } },
+      { label: 'Recibos automáticos de recebimento', values: { controla: true, prospera: true } }
+    ]},
+    { title: 'Cadastros e relatórios', rows: [
+      { label: 'Contas bancárias e contatos',     values: { controla: true, prospera: true } },
+      { label: 'Relatórios gerenciais e DRE',     values: { controla: true, prospera: true } },
+      { label: 'Relatórios por período',          values: { controla: false, prospera: true } },
+      { label: 'Open Finance (conexão bancária)', values: { controla: false, prospera: '1 conta' } }
+    ]},
+    { title: 'Automação', rows: [
+      { label: 'Resumo diário do caixa no WhatsApp', values: { controla: false, prospera: true } }
+    ]},
+    { title: 'Cobranças por uso', rows: [
+      { label: 'Conta Open Finance adicional', values: { controla: false, prospera: 'R$ 9,90/mês' } }
+    ]}
+  ];
+
   function esc(s) {
     return String(s == null ? '' : s)
       .replace(/&/g, '&amp;').replace(/</g, '&lt;')
@@ -250,18 +331,106 @@
   }
 
   /* =========================================================================
+   * Doctype PF / PJ — o preço-base é de Pessoa Física; PJ soma o adicional
+   * ======================================================================= */
+  var PJ_ADICIONAL = 19.90; // R$/mês — adicional de Pessoa Jurídica (CNPJ) por empresa
+
+  function toPJPrice(pfPrice) {
+    var base = parseFloat(String(pfPrice).replace(',', '.'));
+    if (isNaN(base)) return pfPrice;
+    var pj = Math.round((base + PJ_ADICIONAL) * 100) / 100;
+    return pj.toFixed(2).replace('.', ',');
+  }
+
+  function pfName(p) { return p.namePF || p.name; }
+  function pfNameByName(pjName) {
+    for (var i = 0; i < PLANS.length; i++) {
+      if (PLANS[i].name === pjName) return PLANS[i].namePF || pjName;
+    }
+    return pjName;
+  }
+  function ctaLabelPF(p) {
+    return (p.namePF && p.ctaLabel) ? p.ctaLabel.split(p.name).join(pfName(p)) : p.ctaLabel;
+  }
+
+  var DOCTYPE_CSS = [
+    '.plan-doctype{display:flex;gap:6px;max-width:340px;margin:0 auto 1.8rem;background:rgba(78,157,94,.08);border-radius:999px;padding:4px}',
+    '.plan-doctype-btn{flex:1;padding:.6rem .5rem;border:0;border-radius:999px;background:transparent;font-family:inherit;font-size:.9rem;font-weight:600;color:var(--text-dark);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;transition:background .2s,color .2s}',
+    '.plan-doctype-btn.active{background:var(--primary);color:#fff;box-shadow:0 4px 14px rgba(78,157,94,.25)}',
+    '.plan-doctype-tag{font-size:.62rem;font-weight:700;padding:2px 6px;border-radius:999px;background:rgba(255,255,255,.18);color:inherit}',
+    '.plan-doctype-btn:not(.active) .plan-doctype-tag{background:rgba(78,157,94,.12);color:var(--primary)}',
+    '.comparison-table .cmp-price-row th[scope="row"]{font-weight:700}',
+    '.comparison-table .cmp-price{font-weight:800;font-size:.95rem;color:var(--text-dark);white-space:nowrap}',
+    '.comparison-table .cmp-featured .cmp-price{color:var(--primary)}',
+    '.comparison-table .cmp-pfval{display:none}',
+    '.comparison-table.cmp-pf .cmp-pjval{display:none}',
+    '.comparison-table.cmp-pf .cmp-pfval{display:inline}',
+    '@media (min-width:1025px){.pricing-grid--2cols{grid-template-columns:repeat(2,1fr);max-width:780px}}'
+  ].join('');
+
+  function injectDoctypeCss() {
+    if (document.getElementById('zp-doctype-css')) return;
+    var s = document.createElement('style');
+    s.id = 'zp-doctype-css';
+    s.textContent = DOCTYPE_CSS;
+    document.head.appendChild(s);
+  }
+
+  function buildDoctypeToggle() {
+    return '<div class="plan-doctype" role="tablist" aria-label="Tipo de conta">'
+      +   '<button type="button" class="plan-doctype-btn active" data-doctype="pj" role="tab" aria-selected="true">Conta PJ</button>'
+      +   '<button type="button" class="plan-doctype-btn" data-doctype="pf" role="tab" aria-selected="false">Conta PF</button>'
+      + '</div>';
+  }
+
+  function renderPlans(type) {
+    var grid = document.querySelector('.pricing-grid');
+    if (!grid) return;
+    var plans = type === 'pf' ? PLANS_PF : PLANS;
+    var comparison = type === 'pf' ? COMPARISON_PF : COMPARISON;
+    grid.classList.toggle('pricing-grid--2cols', plans.length === 2);
+    grid.innerHTML = buildHomeCards(plans);
+    var oldCmp = document.querySelector('.plan-compare');
+    if (oldCmp && oldCmp.parentNode) oldCmp.parentNode.removeChild(oldCmp);
+    grid.insertAdjacentHTML('afterend', buildComparison(plans, comparison));
+    bindComparisonToggle();
+    if (window.lucide) lucide.createIcons();
+  }
+
+  function applyDoctype(type) {
+    renderPlans(type);
+    document.querySelectorAll('.plan-doctype-btn').forEach(function (b) {
+      var on = b.getAttribute('data-doctype') === type;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+    });
+    try { localStorage.setItem('zp_doctype', type); } catch (_) {}
+  }
+
+  function initDoctype() {
+    document.addEventListener('click', function (e) {
+      var btn = e.target && e.target.closest ? e.target.closest('[data-doctype]') : null;
+      if (!btn) return;
+      applyDoctype(btn.getAttribute('data-doctype'));
+    });
+    var saved = 'pj';
+    try { saved = localStorage.getItem('zp_doctype') || 'pj'; } catch (_) {}
+    applyDoctype(saved);
+  }
+
+  /* =========================================================================
    * Renderização — home (.pricing-grid)
    * ======================================================================= */
-  function buildHomeCards() {
-    return PLANS.map(function (p, i) {
+  function buildHomeCards(plans) {
+    return plans.map(function (p, i) {
       var cls = 'price-card'
         + (i === 0 ? ' active' : '')
         + (p.featured ? ' featured' : '')
-        + (i === PLANS.length - 1 ? ' anchor' : '');
+        + (i === plans.length - 1 ? ' anchor' : '');
 
       var hlItems = (p.highlights && p.highlights.length)
         ? p.highlights
-        : (p.featureGroups[0] ? p.featureGroups[0].items : []);
+        : (p.featureGroups && p.featureGroups[0] ? p.featureGroups[0].items : []);
       var lis = hlItems.map(function (it) {
         return '<li>' + icon('check', 15) + ' ' + esc(it.label)
           + (it.badge ? ' <span class="plan-feature-new">' + esc(it.badge) + '</span>' : '')
@@ -307,23 +476,31 @@
   /* =========================================================================
    * Renderização — caixa comparativa expansível (home)
    * ======================================================================= */
-  function buildComparison() {
+  function buildComparison(plans, comparison) {
     function cell(v) {
       if (v === true)  return '<span class="cmp-yes">' + icon('check', 16) + '</span>';
       if (!v)          return '<span class="cmp-no" aria-label="Não incluído">—</span>';
       return '<span class="cmp-val">' + esc(v) + '</span>';
     }
     var head = '<tr><th scope="col" class="cmp-corner">Recurso</th>'
-      + PLANS.map(function (p) {
+      + plans.map(function (p) {
           return '<th scope="col"' + (p.featured ? ' class="cmp-featured"' : '') + '>' + esc(p.name) + '</th>';
         }).join('')
       + '</tr>';
 
-    var body = COMPARISON.map(function (group) {
-      var groupRow = '<tr class="cmp-group"><th scope="colgroup" colspan="' + (PLANS.length + 1) + '">'
+    var priceRow = '<tr class="cmp-price-row"><th scope="row">Preço mensal</th>'
+      + plans.map(function (p) {
+          return '<td' + (p.featured ? ' class="cmp-featured"' : '') + '>'
+            + '<span class="cmp-price">R$ ' + esc(p.price) + '</span>'
+            + '</td>';
+        }).join('')
+      + '</tr>';
+
+    var body = priceRow + comparison.map(function (group) {
+      var groupRow = '<tr class="cmp-group"><th scope="colgroup" colspan="' + (plans.length + 1) + '">'
         + esc(group.title) + '</th></tr>';
       var rows = group.rows.map(function (row) {
-        var cells = PLANS.map(function (p) {
+        var cells = plans.map(function (p) {
           return '<td' + (p.featured ? ' class="cmp-featured"' : '') + '>' + cell(row.values[p.key]) + '</td>';
         }).join('');
         return '<tr><th scope="row">' + esc(row.label) + '</th>' + cells + '</tr>';
@@ -344,9 +521,7 @@
       + '</div>';
   }
 
-  function initComparison(gridEl) {
-    if (!gridEl || document.querySelector('.plan-compare')) return;
-    gridEl.insertAdjacentHTML('afterend', buildComparison());
+  function bindComparisonToggle() {
     var toggle = document.querySelector('.plan-compare-toggle');
     var panel  = document.getElementById('plan-compare-panel');
     if (!toggle || !panel) return;
@@ -481,6 +656,7 @@
     var EMAIL_RE  = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     var UTM_KEYS  = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','utm_adgroup','matchtype','keyword'];
     var PLAN_MAP  = { organiza:'ORGANIZA', cresce:'CRESCE', pro:'PRO' };
+    var PLAN_MAP_PF = { organiza:'CONTROLA', cresce:'PROSPERA', pro:'REALIZA' };
 
     // ── Cookies / UTM ────────────────────────────────────────────────────
     function writeCookie(k,v){var e=new Date(Date.now()+30*864e5).toUTCString();document.cookie=k+'='+encodeURIComponent(v)+'; expires='+e+'; path=/; SameSite=Lax';}
@@ -537,7 +713,11 @@
     form.addEventListener('submit',function(e){
       e.preventDefault();
       var d=validate();if(!d)return;
-      var attr=getAttr(),vid=getVisitorId(),apiPlan=PLAN_MAP[(currentPlan||'').toLowerCase()]||'';
+      var attr=getAttr(),vid=getVisitorId();
+      var _dtBtn=document.querySelector('.plan-doctype-btn.active');
+      var _isPF=!!(_dtBtn&&_dtBtn.getAttribute('data-doctype')==='pf');
+      var _pk=(currentPlan||'').toLowerCase();
+      var apiPlan=(_isPF&&PLAN_MAP_PF[_pk])?PLAN_MAP_PF[_pk]:(PLAN_MAP[_pk]||'');
       var payload={username:d.email,password:d.senha,name:d.nome,phone:apiPhone(d.tel),country_id:'BR',taxNumber:d.cnpj.replace(/\D/g,''),segment:attr.segment,companySize:attr.companySize,employeesCount:attr.employeesCount,companyAge:attr.companyAge,media:Object.keys(attr).map(function(k){return encodeURIComponent(k)+'='+encodeURIComponent(attr[k]);}).join('&'),customFields:attr};
       if(apiPlan)payload.plan=apiPlan;
       setLoad(true);
@@ -597,8 +777,9 @@
 
     // Modo home: renderiza os cards + a caixa comparativa; o JS inline da home cuida do modal
     if (homeGrid) {
-      homeGrid.innerHTML = buildHomeCards();
-      initComparison(homeGrid);
+      injectDoctypeCss();
+      homeGrid.insertAdjacentHTML('beforebegin', buildDoctypeToggle());
+      initDoctype();
     }
 
     // Modo SEO: renderiza cards simples + injeta modal CSS + HTML + JS
