@@ -2637,7 +2637,7 @@
             border-bottom: 1px solid var(--line);
         }
         .theme-white .logo img,
-        .theme-white .footer-logo img { filter: none; }
+        .theme-white .footer-logo img { filter: hue-rotate(160deg) saturate(0.85); }
         .theme-white .nav-link,
         .theme-white .nav-dropdown-toggle { color: var(--text-gray); }
         .theme-white .nav-link:hover,
@@ -2648,10 +2648,10 @@
         .theme-white .btn-nav-outline:hover { color: var(--primary-dark); background: var(--primary-light); }
         .theme-white .hamburger span { background: var(--text-dark); }
         .theme-white .btn-nav-cta {
-            background: var(--gradient);
+            background: var(--primary);
             box-shadow: 0 6px 18px rgba(78, 157, 94, 0.28);
         }
-        .theme-white .btn-nav-cta:hover { filter: brightness(1.05); background: var(--gradient); }
+        .theme-white .btn-nav-cta:hover { background: var(--primary-dark); }
 
         /* Dropdown do nav */
         .theme-white .nav-dropdown-menu {
