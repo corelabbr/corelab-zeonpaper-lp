@@ -247,6 +247,78 @@
   /* =========================================================================
    * Helpers
    * ======================================================================= */
+  /* =========================================================================
+   * PLANOS PF — linha Pessoa Física (2 planos, sem nota fiscal/multiempresa)
+   * ======================================================================= */
+  var PLANS_PF = [
+    {
+      key: 'controla',
+      name: 'Controla',
+      price: '16,90',
+      priceNote: 'Depois dos 7 dias grátis. Cancele quando quiser.',
+      desc: 'O ponto de partida pra assumir o controle do seu dinheiro e sair da planilha, sem complicação.',
+      featured: false,
+      popTag: null,
+      ctaLabel: 'Começar grátis',
+      ctaClass: 'btn btn-outline',
+      inherits: null,
+      highlights: [
+        { label: 'Contas a pagar e receber' },
+        { label: 'Fluxo de caixa em tempo real' },
+        { label: 'Alertas automáticos de vencimento' },
+        { label: 'Pagamentos e recebimentos em massa' },
+        { label: 'Relatórios gerenciais e DRE' }
+      ],
+      extras: null
+    },
+    {
+      key: 'prospera',
+      name: 'Prospera',
+      price: '34,90',
+      priceNote: 'Depois dos 7 dias grátis. Cancele quando quiser.',
+      desc: 'Pra quem já se organizou e quer ver o dinheiro render e crescer, com automacao e mais controle.',
+      featured: true,
+      popTag: 'MAIS ESCOLHIDO',
+      ctaLabel: 'Começar com Prospera',
+      ctaClass: 'btn btn-cta',
+      inherits: 'Controla',
+      highlights: [
+        { label: '1 conta Open Finance incluída' },
+        { label: 'Relatórios por período' },
+        { label: 'Resumo diário do caixa no WhatsApp', badge: 'novo' }
+      ],
+      extras: [
+        { icon: 'landmark', label: 'Conta Open Finance adicional', value: '+ R$ 9,90/mês' }
+      ]
+    }
+  ];
+
+  var COMPARISON_PF = [
+    { title: 'Controle financeiro', rows: [
+      { label: 'Contas a pagar e receber',          values: { controla: true, prospera: true } },
+      { label: 'Fluxo de caixa em tempo real',      values: { controla: true, prospera: true } },
+      { label: 'Lançamentos recorrentes',           values: { controla: true, prospera: true } },
+      { label: 'Alertas automáticos de vencimento', values: { controla: true, prospera: true } }
+    ]},
+    { title: 'Operação em escala', rows: [
+      { label: 'Pagamentos e recebimentos em massa', values: { controla: true, prospera: true } },
+      { label: 'Parcelamento e amortização',         values: { controla: true, prospera: true } },
+      { label: 'Recibos automáticos de recebimento', values: { controla: true, prospera: true } }
+    ]},
+    { title: 'Cadastros e relatórios', rows: [
+      { label: 'Contas bancárias e contatos',     values: { controla: true, prospera: true } },
+      { label: 'Relatórios gerenciais e DRE',     values: { controla: true, prospera: true } },
+      { label: 'Relatórios por período',          values: { controla: false, prospera: true } },
+      { label: 'Open Finance (conexão bancária)', values: { controla: false, prospera: '1 conta' } }
+    ]},
+    { title: 'Automação', rows: [
+      { label: 'Resumo diário do caixa no WhatsApp', values: { controla: false, prospera: true } }
+    ]},
+    { title: 'Cobranças por uso', rows: [
+      { label: 'Conta Open Finance adicional', values: { controla: false, prospera: 'R$ 9,90/mês' } }
+    ]}
+  ];
+
   function esc(s) {
     return String(s == null ? '' : s)
       .replace(/&/g, '&amp;').replace(/</g, '&lt;')
@@ -310,35 +382,21 @@
       + '</div>';
   }
 
+  function renderPlans(type) {
+    var grid = document.querySelector('.pricing-grid');
+    if (!grid) return;
+    var plans = type === 'pf' ? PLANS_PF : PLANS;
+    var comparison = type === 'pf' ? COMPARISON_PF : COMPARISON;
+    grid.innerHTML = buildHomeCards(plans);
+    var oldCmp = document.querySelector('.plan-compare');
+    if (oldCmp && oldCmp.parentNode) oldCmp.parentNode.removeChild(oldCmp);
+    grid.insertAdjacentHTML('afterend', buildComparison(plans, comparison));
+    bindComparisonToggle();
+    if (window.lucide) lucide.createIcons();
+  }
+
   function applyDoctype(type) {
-    var isPJ = type === 'pj';
-    document.querySelectorAll('[data-name-pj]').forEach(function (el) {
-      var v = isPJ ? el.getAttribute('data-name-pj') : el.getAttribute('data-name-pf');
-      if (v != null) el.textContent = v;
-    });
-    document.querySelectorAll('.plan-desc').forEach(function (el) {
-      var d = isPJ ? el.getAttribute('data-desc-pj') : el.getAttribute('data-desc-pf');
-      if (d != null) el.textContent = d;
-    });
-    document.querySelectorAll('.plan-price-amount').forEach(function (el) {
-      var v = isPJ ? el.getAttribute('data-price-pj') : el.getAttribute('data-price-pf');
-      if (v) el.textContent = v;
-    });
-    document.querySelectorAll('.plan-extras-item--pj').forEach(function (el) {
-      el.style.display = isPJ ? '' : 'none';
-    });
-    document.querySelectorAll('.plan-feat--pj').forEach(function (el) {
-      el.style.display = isPJ ? '' : 'none';
-    });
-    document.querySelectorAll('.cmp-price').forEach(function (el) {
-      var v = isPJ ? el.getAttribute('data-price-pj') : el.getAttribute('data-price-pf');
-      if (v) el.textContent = 'R$ ' + v;
-    });
-    document.querySelectorAll('.cmp-row--pj').forEach(function (el) {
-      el.style.display = isPJ ? '' : 'none';
-    });
-    var cmpTable = document.querySelector('.comparison-table');
-    if (cmpTable) cmpTable.classList.toggle('cmp-pf', !isPJ);
+    renderPlans(type);
     document.querySelectorAll('.plan-doctype-btn').forEach(function (b) {
       var on = b.getAttribute('data-doctype') === type;
       b.classList.toggle('active', on);
@@ -361,32 +419,30 @@
   /* =========================================================================
    * Renderização — home (.pricing-grid)
    * ======================================================================= */
-  function buildHomeCards() {
-    return PLANS.map(function (p, i) {
+  function buildHomeCards(plans) {
+    return plans.map(function (p, i) {
       var cls = 'price-card'
         + (i === 0 ? ' active' : '')
         + (p.featured ? ' featured' : '')
-        + (i === PLANS.length - 1 ? ' anchor' : '');
+        + (i === plans.length - 1 ? ' anchor' : '');
 
       var hlItems = (p.highlights && p.highlights.length)
         ? p.highlights
-        : (p.featureGroups[0] ? p.featureGroups[0].items : []);
+        : (p.featureGroups && p.featureGroups[0] ? p.featureGroups[0].items : []);
       var lis = hlItems.map(function (it) {
-        var pj = /NF-e|NFS-e|nota fiscal|multiempresa/i.test(it.label);
-        return '<li' + (pj ? ' class="plan-feat--pj"' : '') + '>' + icon('check', 15) + ' ' + esc(it.label)
+        return '<li>' + icon('check', 15) + ' ' + esc(it.label)
           + (it.badge ? ' <span class="plan-feature-new">' + esc(it.badge) + '</span>' : '')
           + '</li>';
       }).join('');
       var featsHead = p.inherits
-        ? '<p class="plan-inherit">' + icon('check-check', 15) + ' Tudo do <strong data-name-pj="' + esc(p.inherits) + '" data-name-pf="' + esc(pfNameByName(p.inherits)) + '">' + esc(p.inherits) + '</strong>, e mais:</p>'
+        ? '<p class="plan-inherit">' + icon('check-check', 15) + ' Tudo do <strong>' + esc(p.inherits) + '</strong>, e mais:</p>'
         : '<p class="plan-feature-group-title">Recursos inclusos</p>';
       var feats = featsHead + '<ul class="plan-features-list">' + lis + '</ul>';
 
       var extras = p.extras
         ? '<div class="plan-extras">'
           + p.extras.map(function (e) {
-              var isPJ = /PJ adicional|NFs excedentes/i.test(e.label);
-              return '<div class="plan-extras-item' + (isPJ ? ' plan-extras-item--pj' : '') + '">'
+              return '<div class="plan-extras-item">'
                 + '<span>' + icon(e.icon, 12) + ' ' + esc(e.label) + '</span>'
                 + '<span>' + esc(e.value) + '</span>'
                 + '</div>';
@@ -396,16 +452,16 @@
 
       return '<div class="' + cls + '" data-plan-card="' + esc(p.key) + '">'
         + (p.popTag ? '<div class="pop-tag">' + esc(p.popTag) + '</div>' : '')
-        + '<h3 class="plan-name" data-name-pj="' + esc(p.name) + '" data-name-pf="' + esc(pfName(p)) + '">' + esc(p.name) + '</h3>'
-        + '<p class="plan-desc" data-desc-pj="' + esc(p.desc) + '" data-desc-pf="' + esc(p.descPF || p.desc) + '">' + esc(p.desc) + '</p>'
+        + '<h3 class="plan-name">' + esc(p.name) + '</h3>'
+        + '<p class="plan-desc">' + esc(p.desc) + '</p>'
         + '<div class="plan-price">'
         +   '<span class="plan-price-currency">R$</span>'
-        +   '<span class="plan-price-amount" data-price-pf="' + esc(p.pricePF) + '" data-price-pj="' + esc(p.price) + '">' + esc(p.price) + '</span>'
+        +   '<span class="plan-price-amount">' + esc(p.price) + '</span>'
         +   '<span class="plan-price-period">/mês</span>'
         + '</div>'
         + '<p class="plan-price-note">' + esc(p.priceNote) + '</p>'
         + '<button type="button" class="' + p.ctaClass + '" style="width:100%;"'
-        +   ' data-lead-modal data-plan="' + esc(p.key) + '" data-name-pj="' + esc(p.ctaLabel) + '" data-name-pf="' + esc(ctaLabelPF(p)) + '">' + esc(p.ctaLabel) + '</button>'
+        +   ' data-lead-modal data-plan="' + esc(p.key) + '">' + esc(p.ctaLabel) + '</button>'
         + '<p class="plan-cta-note">7 dias de teste · sem cartão de crédito</p>'
         + '<hr class="plan-features-divider">'
         + '<div class="plan-features">' + feats + '</div>'
@@ -418,39 +474,34 @@
   /* =========================================================================
    * Renderização — caixa comparativa expansível (home)
    * ======================================================================= */
-  function buildComparison() {
+  function buildComparison(plans, comparison) {
     function cell(v) {
       if (v === true)  return '<span class="cmp-yes">' + icon('check', 16) + '</span>';
       if (!v)          return '<span class="cmp-no" aria-label="Não incluído">—</span>';
       return '<span class="cmp-val">' + esc(v) + '</span>';
     }
     var head = '<tr><th scope="col" class="cmp-corner">Recurso</th>'
-      + PLANS.map(function (p) {
-          return '<th scope="col"' + (p.featured ? ' class="cmp-featured"' : '') + ' data-name-pj="' + esc(p.name) + '" data-name-pf="' + esc(pfName(p)) + '">' + esc(p.name) + '</th>';
+      + plans.map(function (p) {
+          return '<th scope="col"' + (p.featured ? ' class="cmp-featured"' : '') + '>' + esc(p.name) + '</th>';
         }).join('')
       + '</tr>';
 
     var priceRow = '<tr class="cmp-price-row"><th scope="row">Preço mensal</th>'
-      + PLANS.map(function (p) {
+      + plans.map(function (p) {
           return '<td' + (p.featured ? ' class="cmp-featured"' : '') + '>'
-            + '<span class="cmp-price" data-price-pf="' + esc(p.pricePF) + '" data-price-pj="' + esc(p.price) + '">R$ ' + esc(p.price) + '</span>'
+            + '<span class="cmp-price">R$ ' + esc(p.price) + '</span>'
             + '</td>';
         }).join('')
       + '</tr>';
 
-    var body = priceRow + COMPARISON.map(function (group) {
-      var groupRow = '<tr class="cmp-group"><th scope="colgroup" colspan="' + (PLANS.length + 1) + '">'
+    var body = priceRow + comparison.map(function (group) {
+      var groupRow = '<tr class="cmp-group"><th scope="colgroup" colspan="' + (plans.length + 1) + '">'
         + esc(group.title) + '</th></tr>';
       var rows = group.rows.map(function (row) {
-        var pjRow = /^PJ adicional/i.test(row.label);
-        var cells = PLANS.map(function (p) {
-          var inner = row.pjOnly
-            ? '<span class="cmp-pjval">' + cell(row.values[p.key]) + '</span><span class="cmp-pfval">' + cell(false) + '</span>'
-            : cell(row.values[p.key]);
-          return '<td' + (p.featured ? ' class="cmp-featured"' : '') + '>' + inner + '</td>';
+        var cells = plans.map(function (p) {
+          return '<td' + (p.featured ? ' class="cmp-featured"' : '') + '>' + cell(row.values[p.key]) + '</td>';
         }).join('');
-        var cls = pjRow ? ' class="cmp-row--pj"' : (row.pjOnly ? ' class="cmp-row--pjonly"' : '');
-        return '<tr' + cls + '><th scope="row">' + esc(row.label) + '</th>' + cells + '</tr>';
+        return '<tr><th scope="row">' + esc(row.label) + '</th>' + cells + '</tr>';
       }).join('');
       return groupRow + rows;
     }).join('');
@@ -468,9 +519,7 @@
       + '</div>';
   }
 
-  function initComparison(gridEl) {
-    if (!gridEl || document.querySelector('.plan-compare')) return;
-    gridEl.insertAdjacentHTML('afterend', buildComparison());
+  function bindComparisonToggle() {
     var toggle = document.querySelector('.plan-compare-toggle');
     var panel  = document.getElementById('plan-compare-panel');
     if (!toggle || !panel) return;
@@ -728,8 +777,6 @@
     if (homeGrid) {
       injectDoctypeCss();
       homeGrid.insertAdjacentHTML('beforebegin', buildDoctypeToggle());
-      homeGrid.innerHTML = buildHomeCards();
-      initComparison(homeGrid);
       initDoctype();
     }
 

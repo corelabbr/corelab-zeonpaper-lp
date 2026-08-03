@@ -4129,12 +4129,8 @@
                     return encodeURIComponent(k) + '=' + encodeURIComponent(attribution[k]);
                 }).join('&');
 
-                var PLAN_MAP = { organiza: 'ORGANIZA', cresce: 'CRESCE', pro: 'PRO', promo9: 'PROMO9' };
-                var PLAN_MAP_PF = { organiza: 'CONTROLA', cresce: 'PROSPERA', pro: 'REALIZA' };
-                var _dtBtn = document.querySelector('.plan-doctype-btn.active');
-                var _isPF = !!(_dtBtn && _dtBtn.getAttribute('data-doctype') === 'pf');
-                var _planKey = (opts.plan || '').toLowerCase();
-                var apiPlan = (_isPF && PLAN_MAP_PF[_planKey]) ? PLAN_MAP_PF[_planKey] : (PLAN_MAP[_planKey] || '');
+                var PLAN_MAP = { organiza: 'ORGANIZA', cresce: 'CRESCE', pro: 'PRO', controla: 'CONTROLA', prospera: 'PROSPERA', promo9: 'PROMO9' };
+                var apiPlan = PLAN_MAP[(opts.plan || '').toLowerCase()] || '';
 
                 var payload = {
                     username: data.email,
@@ -4271,13 +4267,6 @@
                     if (docInput) {
                         docInput.placeholder = (_ct === 'PP') ? 'CPF' : 'CNPJ';
                         docInput.maxLength = (_ct === 'PP') ? 14 : 18;
-                    }
-                    // Badge reflete o nome PF/PJ do plano selecionado
-                    if (plan && plan !== 'promo9' && badge) {
-                        var _NM_PF = { organiza: 'Controla', cresce: 'Prospera', pro: 'Realiza' };
-                        var _NM_PJ = { organiza: 'Organiza', cresce: 'Cresce', pro: 'Pro' };
-                        var _nm = (_ct === 'PP' ? _NM_PF[plan] : _NM_PJ[plan]);
-                        if (_nm) badge.textContent = _nm;
                     }
                     overlay.classList.add('open');
                     document.body.style.overflow = 'hidden';
