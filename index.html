@@ -309,7 +309,7 @@
             display: flex; align-items: center;
             flex-shrink: 0;
         }
-        .logo img { height: 30px; width: auto; display: block; filter: brightness(0) invert(1); }
+        .logo img { height: 40px; width: auto; display: block; }
 
         /* ─── HAMBURGER + MOBILE DRAWER ─── */
         .hamburger {
@@ -1808,7 +1808,7 @@
             text-decoration: none;
             display: flex; align-items: center;
         }
-        .footer-logo img { height: 30px; width: auto; display: block; filter: brightness(0) invert(1); }
+        .footer-logo img { height: 30px; width: auto; display: block; }
 
         /* ─── SCROLL MARGIN ─── */
         #funcionalidades, #precos, #faq, #como-funciona {
@@ -2637,7 +2637,7 @@
             border-bottom: 1px solid var(--line);
         }
         .theme-white .logo img,
-        .theme-white .footer-logo img { filter: hue-rotate(160deg) saturate(0.85); }
+        .theme-white .footer-logo img { filter: none; }
         .theme-white .nav-link,
         .theme-white .nav-dropdown-toggle { color: var(--text-gray); }
         .theme-white .nav-link:hover,
@@ -2775,7 +2775,6 @@
             <div class="nav-left">
                 <a href="#" class="logo">
                     <picture>
-                        <source srcset="./assets/logo.webp" type="image/webp">
                         <img src="./assets/logo.png" alt="Zeonpaper" decoding="async">
                     </picture>
                 </a>
@@ -3358,7 +3357,6 @@
                 <div class="footer-brand">
                     <a href="#" class="footer-logo">
                         <picture>
-                        <source srcset="./assets/logo.webp" type="image/webp">
                         <img src="./assets/logo.png" alt="Zeonpaper" decoding="async">
                     </picture>
                     </a>
