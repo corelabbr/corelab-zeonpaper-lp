@@ -364,7 +364,8 @@
     '.comparison-table .cmp-featured .cmp-price{color:var(--primary)}',
     '.comparison-table .cmp-pfval{display:none}',
     '.comparison-table.cmp-pf .cmp-pjval{display:none}',
-    '.comparison-table.cmp-pf .cmp-pfval{display:inline}'
+    '.comparison-table.cmp-pf .cmp-pfval{display:inline}',
+    '@media (min-width:1025px){.pricing-grid--2cols{grid-template-columns:repeat(2,1fr);max-width:780px}}'
   ].join('');
 
   function injectDoctypeCss() {
@@ -387,6 +388,7 @@
     if (!grid) return;
     var plans = type === 'pf' ? PLANS_PF : PLANS;
     var comparison = type === 'pf' ? COMPARISON_PF : COMPARISON;
+    grid.classList.toggle('pricing-grid--2cols', plans.length === 2);
     grid.innerHTML = buildHomeCards(plans);
     var oldCmp = document.querySelector('.plan-compare');
     if (oldCmp && oldCmp.parentNode) oldCmp.parentNode.removeChild(oldCmp);
