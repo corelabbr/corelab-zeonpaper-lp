@@ -306,10 +306,14 @@
         .btn-nav-cta:hover { background: var(--primary-dark); }
         .logo {
             text-decoration: none;
-            display: flex; align-items: center;
+            display: flex; align-items: center; gap: 9px;
             flex-shrink: 0;
         }
-        .logo img { height: 40px; width: auto; display: block; }
+        .logo img { height: 34px; width: auto; display: block; }
+        .logo-word { font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 800; font-size: 1.3rem; letter-spacing: -.02em; line-height: 1; }
+        .lw-zeon { color: var(--primary); }
+        .lw-paper { color: var(--text-gray); }
+        .footer-logo .lw-paper { color: rgba(255,255,255,.8); }
 
         /* ─── HAMBURGER + MOBILE DRAWER ─── */
         .hamburger {
@@ -1806,7 +1810,7 @@
         .footer-legal a:hover { color: rgba(255,255,255,0.75); }
         .footer-logo {
             text-decoration: none;
-            display: flex; align-items: center;
+            display: flex; align-items: center; gap: 9px;
         }
         .footer-logo img { height: 30px; width: auto; display: block; }
 
@@ -2777,6 +2781,7 @@
                     <picture>
                         <img src="./assets/logo.png" alt="Zeonpaper" decoding="async">
                     </picture>
+                    <span class="logo-word"><span class="lw-zeon">zeon</span><span class="lw-paper">paper</span></span>
                 </a>
             </div>
             <div class="nav-links">
@@ -3359,6 +3364,7 @@
                         <picture>
                         <img src="./assets/logo.png" alt="Zeonpaper" decoding="async">
                     </picture>
+                        <span class="logo-word"><span class="lw-zeon">zeon</span><span class="lw-paper">paper</span></span>
                     </a>
                     <p>Sistema financeiro simples para MEI, microempresa e prestador de serviço. Controle contas a pagar e receber sem ERP pesado.</p>
                 </div>
