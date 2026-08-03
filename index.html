@@ -2521,7 +2521,7 @@
         .pricing-tabs { display: none; }
         @media (max-width: 900px) {
             .pricing-tabs {
-                display: flex;
+                display: none;
                 gap: 6px;
                 padding: 4px;
                 margin: 0 auto 1.5rem;
@@ -2566,9 +2566,8 @@
                 background: rgba(121, 59, 237, 0.12);
                 color: var(--primary);
             }
-            /* Esconde cards não selecionados no mobile */
-            .pricing-grid > .price-card { display: none; }
-            .pricing-grid > .price-card.active { display: flex; }
+            /* Mobile: mostra todos os cards empilhados (abas removidas) */
+            .pricing-grid > .price-card { display: flex; }
         }
 
         /* ─── STICKY CTA MOBILE ─── */
