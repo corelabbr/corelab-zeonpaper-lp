@@ -1882,7 +1882,12 @@
             .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
             .how-section, .faq-section { border-radius: 24px 24px 0 0; }
             .nav-links { display: none; }
-            .nav-actions { display: none; }
+            /* Mobile: mantém o Login visível no header; só o CTA vai pro drawer */
+            .nav-content { gap: 0.75rem; }
+            .nav-actions { gap: 0.5rem; margin-left: auto; }
+            .btn-nav-cta { display: none; }
+            .btn-nav-login { border: 1px solid rgba(255,255,255,0.25); padding: 0.4rem 0.85rem; }
+            .theme-white .btn-nav-login { border-color: var(--line-strong); }
             .hamburger { display: flex; }
             .mobile-drawer { display: flex; }
         }
